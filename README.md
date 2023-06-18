@@ -1,16 +1,19 @@
 # My Note
 
-## Rustscan
+## rustscan
 - Basic rustscan command:
     ```
   rustscan -a $ip
+    ```
 - nmap -A:
     ```
   rustscan -a $ip -- -Pn -A -oA nmap-A_$(date +%y%m%d-%H%M)# note
+  ```
 ## nmap -sV
 - grep
     ```
     grep -P '^PORT|^\d' *.nmap | sed 's/syn-ack//'
+    ```
 ## nuclei
 - http tcp/80
 ```
@@ -44,13 +47,24 @@ feroxbuster -nu $ip:$port -o ferox-${port}_$(date +%y%m%d-%H%M).txt
 ## curl
 ```
 curl -sv $ip |html2text
+```
+```
 curl -s $ip |html2text |grep -v ^$
+```
+```
 curl -s $ip |sed -n '/<form /,/form>/p'
 ```
+## lynx
 ```
 lynx -dump -listonly -nonumbers $ip
+```
+```
 lynx -dump -listonly -nonumbers $ip |uniq
+```
+```
 lynx -dump -listonly -nonumbers $ip/simple |sort|uniq|nl
+```
+```
 lynx -dump -listonly -nonumbers $ip:$p
 ```
 ## nikto
@@ -60,6 +74,10 @@ nikto -h $ip -o nikto_$(date +%y%m%d-%H%M).txt
 ## smbclient
 ```
 smbclient -NL $ip
+```
+```
 smbclient -N //$ip/xxx
+```
+```
 enum4linux $ip | tee enum4linux_$(date +%y%m%d-%H%M).txt
 ```
