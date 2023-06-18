@@ -4,7 +4,7 @@
 - Basic rustscan command:
     ```
   rustscan -a $ip
-- Advanced rustscan command:
+- nmap -A:
     ```
   rustscan -a $ip -- -Pn -A -oA nmap-A_$(date +%y%m%d-%H%M)# note
 ## nmap -sV
@@ -12,16 +12,33 @@
     ```
     grep -P '^PORT|^\d' *.nmap | sed 's/syn-ack//'
 ## nuclei
+- http tcp/80
 ```
 nuclei -u http://$ip | tee nuclei-80_$(date +%y%m%d-%H%M).txt
+```
+- https tcp/443
+```
 nuclei -u $ip | tee nuclei-443_$(date +%y%m%d-%H%M).txt
+```
+- Custom port
+```
 nuclei -u $ip:$p | tee nuclei-${p}_$(date +%y%m%d-%H%M).txt
 ```
 ## feroxbuster
+- http tcp/80
 ```
 feroxbuster -nu http://$ip -o ferox-80_$(date +%y%m%d-%H%M).txt
+```
+- https tcp/443
+```
 feroxbuster -nu $ip -o ferox-443_$(date +%y%m%d-%H%M).txt
+```
+- https tcp/443 ignore cert
+```
 feroxbuster -knu $ip -o ferox-443_$(date +%y%m%d-%H%M).txt
+```
+- Custom port
+```
 feroxbuster -nu $ip:$port -o ferox-${port}_$(date +%y%m%d-%H%M).txt
 ```
 ## curl
