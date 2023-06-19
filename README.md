@@ -7,7 +7,7 @@
     ```
 - nmap -A:
     ```
-  rustscan -a $ip -- -Pn -A -oA nmap-A_$(date +%y%m%d-%H%M)# note
+  rustscan -a $ip -- -Pn -A -oA nmap-A_$(date +%y%m%d-%H%M)
   ```
 ## nmap -sV
 - grep
