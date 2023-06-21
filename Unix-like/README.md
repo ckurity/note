@@ -15,3 +15,9 @@ https://tldp.org/LDP/abs/html/textproc.html
 >Text Processing
 
 https://learnbyexample.gitbooks.io/linux-command-line/content/Text_Processing.html
+
+
+### Copy the output of a command into the clipboard
+```
+$ echo {A..Z} | tr ' ' '\n' | xclip -selection clipboard
+```
