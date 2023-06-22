@@ -14,6 +14,11 @@
     ```
     grep -P '^PORT|^\d' *.nmap | sed 's/syn-ack//'
     ```
+
+- Create a new directory based on Rustscan/Nmap output
+    ```
+    grep -oP '^\d+' *.nmap | xargs -I {} mkdir tcp-{}
+    ```
 ## nuclei
 - http tcp/80
 ```
@@ -80,4 +85,10 @@ smbclient -N //$ip/xxx
 ```
 ```
 enum4linux $ip | tee enum4linux_$(date +%y%m%d-%H%M).txt
+```
+
+```
+```
+
+```
 ```
