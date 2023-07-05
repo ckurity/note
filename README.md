@@ -1,1 +1,1 @@
-https://ckurity.gitbook.io/note
+[Personal Notes][https://ckurity.gitbook.io/note]
