@@ -4,6 +4,3 @@
 * [Network Pentest](<Network Pentest/README.md>)
   * [80,443-Web](<Network Pentest/80,443-Web.md>)
   * [3389-RDP](<Network Pentest/3389-RDP.md>)
-* [Shell](shell.md)
-* [Remove Empty Lines](remove-empty-lines.md)
-* [Unix-like/Linux Text Processing](unix-like-linux-text-processing.md)
