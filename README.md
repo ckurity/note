@@ -1,4 +1,4 @@
-# My Note
+# Methodology
 
 ## rustscan
 - Basic rustscan command:
