@@ -21,3 +21,5 @@ https://learnbyexample.gitbooks.io/linux-command-line/content/Text_Processing.ht
 ```
 $ echo {A..Z} | tr ' ' '\n' | xclip -selection clipboard
 ```
+When do you need this?
+
