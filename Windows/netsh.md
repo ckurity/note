@@ -1,19 +1,17 @@
-netsh diag show adapter
-show dns
+# Show Configuration
 
-https://www.csie.ntu.edu.tw/~b90047/ebook/winXPhack/0596005113_winxphks-chp-5-sect-13.html
-
-## Show Interface CONFIGuration
+## Show Interface Configuration (including DNS)
 ```
 netsh i i sh con
 netsh interface ipv4 show config
 ```
-## Only IP Addresses of all LAN adapters
+## Show only IP Addresses of all LAN adapters
 ```
 netsh i i sh a
 netsh interface ipv4 show address
 ```
 
+# Make Changes
 ## Set DNS
 ```
 netsh i i se d "Ethernet" s 10.1.1.1
@@ -33,7 +31,7 @@ netsh int set int name="ethernet" admin=enabled
 ```
 netsh interface ipv4 show interfaces
 ```
-# Example
+# Examples
 ## No IP (show address)
 ```
 C:\Users\user>netsh i i sh a "Ethernet"
@@ -165,3 +163,5 @@ PS C:\Users\Administrator>
 
 
 https://michlstechblog.info/blog/windows-show-and-configure-network-settings-using-netsh/
+
+https://www.csie.ntu.edu.tw/~b90047/ebook/winXPhack/0596005113_winxphks-chp-5-sect-13.html
