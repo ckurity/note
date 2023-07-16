@@ -105,7 +105,7 @@ C:\Users\Administrator>
 
 ## 
 ```
-reg view "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v AutoAdminLogon
+reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v AutoAdminLogon
 ```
 ## 
 ```
