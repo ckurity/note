@@ -1,5 +1,6 @@
 ### Temporary Static IP
 ```
+ip a a 10.1.1.1/24 dev eth0
 ip addr add 10.1.1.1/24 dev eth0
 ```
 
