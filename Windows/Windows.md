@@ -72,7 +72,7 @@ Configuration for interface "Ethernet"
 
 PS C:\Users\Administrator>
 ```
-## Can only be seen with show config
+## DNS can only be seen with show config
 ```
 PS C:\Users\Administrator> netsh i i sh con "Ethernet"
 
