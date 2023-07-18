@@ -5,7 +5,14 @@ https://www.trustedsec.com/blog/adexplorer-on-engagements/
 ### Offensive Active Directory 101 slide by TACTICX
 https://owasp.org/www-pdf-archive/OWASP_FFM_41_OffensiveActiveDirectory_101_MichaelRitter.pdf
 
+### BloodHound & Other AD Enum Tools
+
+https://github.com/carlospolop/hacktricks/blob/master/windows-hardening/active-directory-methodology/bloodhound.md
+
 # Next
+
+Active Directory Enumeration Cheetsheet
+https://zflemingg1.gitbook.io/undergrad-tutorials/active-directory-enumeration-cheetsheet
 
 https://www.blackhillsinfosec.com/domain-goodness-learned-love-ad-explorer/
 
