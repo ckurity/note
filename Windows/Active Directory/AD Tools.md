@@ -4,6 +4,8 @@ https://github.com/shellster/LDAPPER
 
 https://github.com/Synzack/ldapper
 
+https://github.com/stufus/ADEGrab
+
 ## Collector
 
 https://github.com/OPENCYBER-FR/RustHound

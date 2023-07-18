@@ -30,7 +30,7 @@ April 27, 2021 |
 By Oddvar Moe |
 https://www.trustedsec.com/blog/adexplorer-on-engagements/
 
-Offensive Active Directory 101 slide by TACTICX
+Offensive Active Directory 101 slide by TACTICX |
 https://owasp.org/www-pdf-archive/OWASP_FFM_41_OffensiveActiveDirectory_101_MichaelRitter.pdf
 
 BloodHound & Other AD Enum Tools | 
