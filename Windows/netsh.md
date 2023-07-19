@@ -3,12 +3,16 @@
 ## Show Interface Configuration (including DNS)
 ```
 netsh i i sh con
+netsh i i sh con "Ethernet"
 netsh interface ipv4 show config
+netsh interface ipv4 show config "Ethernet"
 ```
 ## Show only IP Addresses of all LAN adapters
 ```
 netsh i i sh a
+netsh i i sh a "Ethernet"
 netsh interface ipv4 show address
+netsh interface ipv4 show address "Ethernet"
 ```
 
 # Make Changes
