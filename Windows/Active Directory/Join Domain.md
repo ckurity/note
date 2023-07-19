@@ -1,3 +1,11 @@
+## Status Joined Domain or Not?
+```
+whoami
+```
+In the example, "domain\username" indicates that the PC is logged into the domain, and "domain" is the domain name.
+
+If you see the local computer name instead of a domain name, it means the PC is not logged into a domain.
+
 ## Before Join Domain
 ```
 C:\PC02>set u
