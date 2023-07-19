@@ -1,0 +1,7 @@
+net localgroup group_name UserLoginName /add
+net localgroup administrators John /add
+
+net localgroup users domainname\username /add
+net localgroup administrators domainname\username /add
+
+https://www.windows-commandline.com/add-user-to-group-from-command-line/
