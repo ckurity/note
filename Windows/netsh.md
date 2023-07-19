@@ -1,5 +1,6 @@
 # TLDR Initial Config
 ```
+net sess
 netsh i i sh con "Ethernet"
 netsh i i se a "Ethernet" s 10.1.1.1 255.255.255.0
 netsh i i se d "Ethernet" s 10.1.1.1
