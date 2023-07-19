@@ -28,3 +28,4 @@ doskey pwd=echo %cd%
 doskey r=shutdown -r -f -t 0
 doskey s=shutdown -s -f -t 0
 doskey t=tracert $*
+doskey w=whoami $*
