@@ -24,4 +24,5 @@ doskey pr=netsh winhttp show proxy
 doskey pu=curl ifconfig.me
 doskey pwd=echo %cd%
 doskey r=shutdown -r -f -t 0
+doskey s=shutdown -s -f -t 0
 doskey t=tracert $*
