@@ -1,8 +1,10 @@
+:notepad a.bat
 doskey 1=ping google.com
 doskey 1t=ping -t google.com
 doskey 2=ping 8.8.8.8
 doskey 2t=ping -t 8.8.8.8
 doskey 7z="C:\Program Files\7-Zip\7z.exe" $*
+doskey a=%USERPROFILE%\a.bat
 doskey c=cls
 doskey d=echo %date% (MM/DD/YYYY) -%time% GMT+8
 doskey e=echo $*
@@ -11,6 +13,7 @@ doskey i=netsh interface ip show config Ethernet
 doskey ip=ipconfig
 doskey ipa=ipconfig /all
 doskey ia=ipconfig /all
+doskey n=notepad $*
 doskey p=ping $*
 doskey p8=ping 8.8.8.8
 doskey p8t=ping 8.8.8.8 -t
@@ -20,5 +23,5 @@ doskey pgt=ping google.com -t
 doskey pr=netsh winhttp show proxy
 doskey pu=curl ifconfig.me
 doskey pwd=echo %cd%
-doskey r="shutdown -r -f -t 0"
+doskey r=shutdown -r -f -t 0
 doskey t=tracert $*
