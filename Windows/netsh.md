@@ -12,6 +12,11 @@ netsh interface ipv4 show address
 ```
 
 # Make Changes
+## Set Static IP
+```
+netsh i i se a "Ethernet" s 10.1.1.1 255.255.255.0
+netsh interface ipv4 set "Ethernet" static 10.1.1.1 255.255.255.0
+```
 ## Set DNS
 ```
 netsh i i se d "Ethernet" s 10.1.1.1
