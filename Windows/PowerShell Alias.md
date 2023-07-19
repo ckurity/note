@@ -6,8 +6,10 @@ notepad $PROFILE.CurrentUserAllHosts
 ```
 Set-Alias a alias
 Set-Alias c cls
+Remove-Item -Path Alias:h
 Set-Alias h hostname
 Set-Alias i ipconfig
+Set-Alias p powershell
 # Set-Alias i "netsh i i sh con Ethernet" # troubleshoot this
 ```
 
