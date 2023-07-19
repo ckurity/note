@@ -27,7 +27,13 @@ Instead of filling in connection details, I simply choose ‘Enter the path of a
 ![](https://www.trustedsec.com/wp-content/uploads/2021/04/Blog042721_15.png)
 
 ## [3. CN=Configuration](https://www.trustedsec.com/blog/adexplorer-on-engagements/)
-SITES AND SERVICES
+
+Example: In this case, the **CN=10.100.10.0/24** subnet is linked to the site named Norway.
+
+![SITES AND SERVICES](https://www.trustedsec.com/wp-content/uploads/2021/04/Blog042721_16.png)
+
+![](https://www.trustedsec.com/wp-content/uploads/2021/04/Blog042721_17.png)
+
 ```
 
 ```

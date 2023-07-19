@@ -15,7 +15,9 @@ netsh interface ipv4 show address
 ## Set DNS
 ```
 netsh i i se d "Ethernet" s 10.1.1.1
+netsh interface ipv4 set dnsservers "Ethernet" static 10.1.1.1
 ```
+https://stackoverflow.com/questions/18620173/how-can-i-set-change-dns-using-the-command-prompt-at-windows-8
 
 ## Show global TCP/IP Parameters
 ```

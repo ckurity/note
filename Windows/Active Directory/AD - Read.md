@@ -25,14 +25,16 @@ https://github.com/coolx28/Red-Team-tips
 
 # Processing
 
-ADExplorer on Engagements | 
-April 27, 2021 | 
-By Oddvar Moe |
-https://www.trustedsec.com/blog/adexplorer-on-engagements/
-
 Offensive Active Directory 101 slide by TACTICX |
 https://owasp.org/www-pdf-archive/OWASP_FFM_41_OffensiveActiveDirectory_101_MichaelRitter.pdf
 
 BloodHound & Other AD Enum Tools | 
 
 https://github.com/carlospolop/hacktricks/blob/master/windows-hardening/active-directory-methodology/bloodhound.md
+
+# Done, great
+
+ADExplorer on Engagements | 
+April 27, 2021 | 
+By Oddvar Moe |
+https://www.trustedsec.com/blog/adexplorer-on-engagements/
