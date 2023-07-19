@@ -1,3 +1,11 @@
+# TLDR Initial Config
+```
+netsh i i sh con "Ethernet"
+netsh i i se a "Ethernet" s 10.1.1.1 255.255.255.0
+netsh i i se d "Ethernet" s 10.1.1.1
+netsh i i sh con "Ethernet"
+```
+
 # Show Configuration
 
 ## Show Interface Configuration (including DNS)
@@ -21,12 +29,12 @@ netsh interface ipv4 show address "Ethernet"
 netsh i i se a "Ethernet" s 10.1.1.1 255.255.255.0
 netsh interface ipv4 set "Ethernet" static 10.1.1.1 255.255.255.0
 ```
-## Set DNS
+## [Set DNS](https://stackoverflow.com/questions/18620173/how-can-i-set-change-dns-using-the-command-prompt-at-windows-8)
 ```
 netsh i i se d "Ethernet" s 10.1.1.1
 netsh interface ipv4 set dnsservers "Ethernet" static 10.1.1.1
 ```
-https://stackoverflow.com/questions/18620173/how-can-i-set-change-dns-using-the-command-prompt-at-windows-8
+Just ignore "The configured DNS server is incorrect or does not exist." error
 
 ## Show global TCP/IP Parameters
 ```
