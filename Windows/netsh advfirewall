@@ -1,12 +1,24 @@
+netsh a sh a state
+netsh advfirewall show allprofiles state
+
+https://www.techtarget.com/searchenterprisedesktop/photostory/4500257332/Top-Windows-command-line-commands/6/Check-Windows-Firewall-status-with-netsh-advfirewall-show-allprofiles
+
+netsh a sh a
+netsh advfirewall show allprofiles
+
 Top 10: Windows Firewall Netsh Commands
 https://www.itprotoday.com/windows-8/top-10-windows-firewall-netsh-commands
 Michael Otey | Feb 21, 2012
 
 Query firewall rules:
+netsh a f sh r n=all
 netsh advfirewall firewall show rule name=all
 
-Enable and disable Windows Firewall
+Enable Windows Firewall
 netsh advfirewall set allprofiles state on
+
+Disable Windows Firewall
+netsh a se a state off
 netsh advfirewall set allprofiles state off
 
 Reset Windows Firewall back to its default settings
