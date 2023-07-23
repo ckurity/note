@@ -1,3 +1,5 @@
+# Doesn't work
+
 # ScreenSaverIsSecure
 0 = disable password protection for the screen saver
 ```
