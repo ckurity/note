@@ -5,3 +5,4 @@
 [Flagged by Defender as Trojan:Win32/MpTamperSrvDisableAV.D](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Trojan:Win32/MpTamperSrvDisableAV.D&ThreatID=2147752484)
 
 sc stop WinDefend
+sc stop winfefend
