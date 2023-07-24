@@ -58,11 +58,11 @@ git config --global credential.helper 'cache --timeout=1800'
 Once you've configured credential caching, Git will remember your username and password for the specified duration. During that time, you won't need to re-enter them when performing Git push operations.
 
 # Example
-
+14400 seconds = 4 hours
 ```
 $ git config --global credential.helper 'cache --timeout=14400
 ```
 ```
-$ git config --get credential.helper                           
+$ git config --get credential.helper
 cache --timeout=14400
 ```
