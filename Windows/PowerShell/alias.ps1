@@ -1,3 +1,4 @@
+# New-Item -ItemType File -Path $PROFILE -Force
 # New-Item -ItemType File -Path $PROFILE.CurrentUserAllHosts -Force
 # notepad $PROFILE
 
