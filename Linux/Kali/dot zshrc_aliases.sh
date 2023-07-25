@@ -42,10 +42,10 @@ alias v='cat -n'
 alias waybackurls='~/go/bin/waybackurls'
 alias z=zsh
 
-# vi .zshrc
+# vi ~/.zshrc
 
 # if [ -f ~/.zshrc_aliases ]; then
 #     . ~/.zshrc_aliases
 # fi
 
-# vi .zshrc_aliases
+# vi ~/.zshrc_aliases
