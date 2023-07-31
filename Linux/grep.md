@@ -1,3 +1,16 @@
+### grep before (?<=) and after (?=)
+```
+$ cat text 
+BEFOREXYZAFTER
+$ 
+$ cat text | grep -oP '(?<=BEFORE)'
+$ cat text | grep -oP '(?<=BEFORE).*'
+XYZAFTER
+$ cat text | grep -oP '(?<=BEFORE).*(?=AFTER)'
+XYZ
+$ 
+```
+
 ```
 $ echo $f              
 ./active.htb/Policies/{31B2F340-016D-11D2-945F-00C04FB984F9}/MACHINE/Preferences/Groups/Groups.xml
