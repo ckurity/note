@@ -19,7 +19,20 @@ meterpreter >
 
 ##########################################################################################
 
+## Windows CMD
+
+### Search All starting from C:\
+dir /s /b c:\*.txt
+dir /s /b c:\*shell.exe
+
+### Current Directory Only
 dir /s /b *.txt
+
+/s: This option tells the "dir" command to search recursively through all subdirectories.
+/b: This option displays only the bare format (file names) without any additional information like file size or date.
+
+## Windows PowerShell
+
 ls -r *.txt
 ls -r .. *.txt
 Get-ChildItem -Recurse *.txt
