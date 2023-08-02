@@ -1,45 +1,70 @@
 # find /path/to/directory -type f \( -name "file1.txt" -o -name "file2.txt" \)
-
+```
 find / -name *root*.txt -o -name *flag*.txt -o -name *user*.txt 2>/dev/null
-
+```
+```
 root@agent-sudo:/home# find / -name *root*.txt -o -name *flag*.txt 2>/dev/null
 /home/james/user_flag.txt
 /root/root.txt
 root@agent-sudo:/home# 
+```
 
 This command will search the / directory for files named *root*.txt and *flag*.txt. 
 The -o option is used to specify an "or" condition. 
 This means that the command will find any file that matches the name *root*.txt or the name *flag*.txt.
 
-##########################################################################################
-
+```
 meterpreter > search -f *flag*.txt
 No files matching your search were found.
 meterpreter >
+```
 
-##########################################################################################
 
 ## Windows CMD
 
 ### Search All starting from C:\
+```
 dir /s /b c:\*.txt
 dir /s /b c:\*shell.exe
 
-### Current Directory Only
-dir /s /b *.txt
+dir /s /b c:\*.txt c:\*shell.exe
+dir /s /b c:\*user.txt c:\*root.txt
+```
 
+```
+C:\Windows\system32>dir /s /b c:\*user.txt c:\*root.txt
+dir /s /b c:\*user.txt c:\*root.txt
+c:\Users\Administrator\Desktop\root.txt
+c:\Users\babis\Desktop\user.txt
+```
+
+### "xargs" in Windows?
+
+In Windows, there is no direct equivalent to the xargs command found in Unix-like systems. However, you can achieve the same result using a combination of dir and a for loop in the Windows Command Prompt (cmd.exe).
+```
+C:\Windows\system32>for /f "delims=" %i in ('dir /s /b c:\*user.txt c:\*root.txt') do @type "%i"
+for /f "delims=" %i in ('dir /s /b c:\*user.txt c:\*root.txt') do @type "%i"
+9f3ac3c9240b5d303b1c8b0c6786145a
+a0de5a083364094dea4f92259981529b
+```
+
+### Current Directory Only
+```
+dir /s /b *.txt
+```
 /s: This option tells the "dir" command to search recursively through all subdirectories.
+
 /b: This option displays only the bare format (file names) without any additional information like file size or date.
 
 ## Windows PowerShell
-
+```
 ls -r *.txt
 ls -r .. *.txt
 Get-ChildItem -Recurse *.txt
 Get-ChildItem -Path "c:\Users" -Recurse -Filter "flag.txt"
+```
 
-##########################################################################################
-
+```
 *Evil-WinRM* PS C:\Users> Get-ChildItem -Recurse *.txt
 
 
@@ -89,9 +114,9 @@ TryHackMe{B4ckM3UpSc0tty!}
 
 *Evil-WinRM* PS C:\Users> cat C:\Users\svc-admin\Desktop\user.txt.txt
 TryHackMe{K3rb3r0s_Pr3_4uth}
+```
 
-##########################################################################################
-
+```
 [10.10.10.161]: PS C:\Users\svc-alfresco\Documents> whoami
 htb\svc-alfresco
 [10.10.10.161]: PS C:\Users\svc-alfresco\Documents> ls -r *.txt
@@ -109,7 +134,7 @@ Mode                LastWriteTime         Length Name
 9d036056703c60311cbf1c67e93b6df7
 [10.10.10.161]: PS C:\Users\svc-alfresco\Documents>
 
-##########################################################################################
+
 
 [10.10.10.161]: PS C:\Users\svc-alfresco\Documents> ls -r ..\.. *.txt
 ls : Access to the path 'C:\Users\Administrator' is denied.
@@ -135,5 +160,4 @@ Mode                LastWriteTime         Length Name
 
 
 [10.10.10.161]: PS C:\Users\svc-alfresco\Documents>
-
-##########################################################################################
+```
