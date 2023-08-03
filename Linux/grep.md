@@ -65,3 +65,62 @@ active.htb\SVC_TGS
 ```
 ```
 
+### TLDR
+```
+
+```
+### 
+```
+$ cat Forest.txt 
+user:[Administrator] rid:[0x1f4]
+user:[Guest] rid:[0x1f5]
+user:[krbtgt] rid:[0x1f6]
+```
+### 
+```
+$ cat Forest.txt | grep -o user:
+user:
+```
+### 
+```
+$ cat Forest.txt | grep -o user:[
+zsh: bad pattern: user:[
+
+$ cat Forest.txt | grep -o 'user:['
+grep: Invalid regular expression
+```
+
+### 
+```
+$ grep --help | grep fix
+  -F, --fixed-strings       PATTERNS are strings
+```
+### 
+```
+$ cat Forest.txt | grep -oF 'user:['
+user:[
+```
+### 
+```
+
+```
+### 
+```
+
+```
+### 
+```
+
+```
+### 
+```
+
+```
+### 
+```
+
+```
+### 
+```
+
+```
