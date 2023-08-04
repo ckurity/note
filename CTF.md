@@ -60,9 +60,13 @@ dir /s /b *.txt
 ```
 ls -r *.txt
 ls -r .. *.txt
+ls -r c:\*.txt
+ls -r c:\*.txt 2> $null
 Get-ChildItem -Recurse *.txt
 Get-ChildItem -Path "c:\Users" -Recurse -Filter "flag.txt"
 ```
+
+[Redirecting output to $null in PowerShell, but ensuring the variable remains set](https://stackoverflow.com/questions/5881174/redirecting-output-to-null-in-powershell-but-ensuring-the-variable-remains-set]
 
 ```
 *Evil-WinRM* PS C:\Users> Get-ChildItem -Recurse *.txt
