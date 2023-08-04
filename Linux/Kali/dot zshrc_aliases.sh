@@ -7,6 +7,7 @@ alias a=alias
 alias b=bash
 alias c=clear
 alias d=docker
+alias da='date +%F'
 alias di='docker images'
 alias dp='docker ps'
 # alias docker=podman
