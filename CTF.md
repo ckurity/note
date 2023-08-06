@@ -62,11 +62,38 @@ ls -r *.txt
 ls -r .. *.txt
 ls -r c:\*.txt
 ls -r c:\*.txt 2> $null
+ls -r c:\*user.txt 2> $null
 Get-ChildItem -Recurse *.txt
 Get-ChildItem -Path "c:\Users" -Recurse -Filter "flag.txt"
+
+Get-Item "C:\**\user.txt", "C:\**\root.txt" -Force -ErrorAction SilentlyContinue
+gi "C:\**\user.txt", "C:\**\root.txt" -fo -e s
+```
+```
+gi: An alias for Get-Item.
+-fo: An alias for -Force.
+-e: An alias for -ErrorAction.
+s: An alias for SilentlyContinue.
+```
+### 
+```
+*Evil-WinRM* PS C:\Users\svc-alfresco\Documents> ls -r c:\*user.txt 2> $null
+
+
+    Directory: C:\Users\svc-alfresco\Desktop
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-ar---         8/3/2023  11:05 PM             34 user.txt
+
+*Evil-WinRM* PS C:\Users\svc-alfresco\Documents> cat C:\Users\svc-alfresco\Desktop\user.txt
+b73329a0d9eb69f14195cd8bfb1745ad
+*Evil-WinRM* PS C:\Users\svc-alfresco\Documents> 
 ```
 
-[Redirecting output to $null in PowerShell, but ensuring the variable remains set](https://stackoverflow.com/questions/5881174/redirecting-output-to-null-in-powershell-but-ensuring-the-variable-remains-set]
+
+(Redirecting output to null)[https://stackoverflow.com/questions/5881174/redirecting-output-to-null-in-powershell-but-ensuring-the-variable-remains-set]
 
 ```
 *Evil-WinRM* PS C:\Users> Get-ChildItem -Recurse *.txt
