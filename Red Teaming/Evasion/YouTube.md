@@ -12,3 +12,5 @@ Will Burgess is a security consultant with experience across both defensive and 
 Follow Wild West Hackin' Fest on Twitter here: https://twitter.com/wwhackinfest
 
 Website & Info: https://www.wildwesthackinfest.com/
+
+https://www.youtube.com/playlist?list=PLj05gPj8rk_pkb12mDe4PgYZ5qPxhGKGf
