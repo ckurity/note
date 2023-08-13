@@ -14,3 +14,6 @@ Follow Wild West Hackin' Fest on Twitter here: https://twitter.com/wwhackinfest
 Website & Info: https://www.wildwesthackinfest.com/
 
 https://www.youtube.com/playlist?list=PLj05gPj8rk_pkb12mDe4PgYZ5qPxhGKGf
+
+DEF CON 30 - Tomer Bar - OopsSec -The bad, the worst and the ugly of APT’s operations security
+https://www.youtube.com/watch?v=StSLxFbVz0M&t=1439s
