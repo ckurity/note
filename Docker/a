@@ -1,0 +1,56 @@
+### TLDR
+```
+
+```
+### docker group
+```
+grep -n docker /etc/group
+sudo usermod -aG docker $USER
+```
+### 
+```
+newgrp docker
+    # or
+su $USER
+    # then
+docker ps
+```
+### 127.0.0.1:80 = host ip & port
+### :80 = container port
+```
+docker run --name DVWA -it -p 127.0.0.1:80:80 vulnerables/web-dvwa
+```
+
+### 
+```
+$ docker ps
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json": dial unix /var/run/docker.sock: connect: permission denied
+```
+### 
+```
+
+```
+### 
+```
+
+```
+### 
+```
+
+```
+### 
+```
+
+```
+### 
+```
+
+```
+### 
+```
+
+```
+### 
+```
+
+```

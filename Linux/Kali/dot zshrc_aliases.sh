@@ -27,7 +27,6 @@ alias l='ls -lh'
 alias la='ls -lha'
 alias lo=locate
 alias m=more
-alias nuclei='~/go/bin/nuclei'
 alias p=ping
 alias p8='ping 8.8.8.8'
 alias pg='ping google.com'

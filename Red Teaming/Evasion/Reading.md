@@ -1,3 +1,6 @@
+
+https://book.hacktricks.xyz/windows-hardening/av-bypass
+
 A Beginner’s Guide to EDR Evasion
 Or, how to get past Crowdstrike/Defender ATP/Carbon Black on your next engagement | 
 Sep 26, 2021 | 
