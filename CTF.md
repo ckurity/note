@@ -1,3 +1,4 @@
+# CTF
 # find /path/to/directory -type f \( -name "file1.txt" -o -name "file2.txt" \)
 ```
 find / -name *root*.txt -o -name *flag*.txt -o -name *user*.txt 2>/dev/null
