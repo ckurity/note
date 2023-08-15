@@ -1,3 +1,5 @@
+# tmux
+
 #### Split the current window vertically
 
 Ctrl + b  %
