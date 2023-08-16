@@ -44,8 +44,8 @@ alias z=zsh
 
 # vi ~/.zshrc
 
-# if [ -f ~/.zshrc_aliases ]; then
-#     . ~/.zshrc_aliases
+# if [ -f ~/.zsh_aliases ]; then
+#     . ~/.zsh_aliases
 # fi
 
-# vi ~/.zshrc_aliases
+# vi ~/.zsh_aliases

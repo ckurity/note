@@ -7,9 +7,9 @@
 
 ```
 
-### 
+### Find out who is monopolizing or eating the CPUs
 ```
-
+ps -eo pcpu,pid,user,args | sort -r -k1 | head -3
 ```
 
 ### 
