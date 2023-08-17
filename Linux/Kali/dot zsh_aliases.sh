@@ -9,6 +9,7 @@ alias a=alias
 alias b=bash
 alias c=clear
 alias cme=crackmapexec
+alias code='/usr/share/code/code'
 alias d=docker
 alias da='date +%F'
 alias di='docker images'
