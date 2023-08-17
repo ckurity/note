@@ -2,6 +2,7 @@
 ```
 git config -l
 git config --list
+git config --get credential.helper
 ```
 ## One-liner
 ```
