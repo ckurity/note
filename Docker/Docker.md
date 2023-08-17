@@ -41,13 +41,18 @@ See 'docker --help'
 ### Solution
 ```
 DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-
 mkdir -p $DOCKER_CONFIG/cli-plugins
+```
 
-$ curl -sL https://github.com/docker/compose/releases/download/v2.20.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+### Check latest version from https://github.com/docker/compose/releases/latest
+```
+curl -sL https://github.com/docker/compose/releases/download/v2.20.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
 
 chmod u+x $DOCKER_CONFIG/cli-plugins/docker-compose
+```
 
+### Check Again
+```
 docker compose version
 ```
 ### 
