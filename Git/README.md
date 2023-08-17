@@ -1,22 +1,20 @@
-### 
-```
-git pull
-
-git add .; git status; git commit -m update; git push
-```
-### Check Git configuration
+## Check Git configuration
 ```
 git config -l
 git config --list
 ```
+## One-liner
+```
+git add . ; 
+```
 
-### git config
+## git config
 ```
 -l, --list            list all
 --get                 get value: name [value-pattern]
 ```
 
-### 14400 seconds / 4 hours
+## 14400 seconds / 4 hours
 ```
 $ git config -l | grep cred
 credential.helper=cache --timeout=14400
@@ -32,7 +30,7 @@ branch.master.remote=origin
 $ git config --get remote.origin.url 
 https://github.com/ckurity/git
 ```
-### Create a new repository on the command line
+## Create a new repository on the command line
 ```
 echo "# testnewrepo" >> README.md
 git init
@@ -42,7 +40,7 @@ git branch -M main
 git remote add origin git@github.com:ckurity/testnewrepo.git
 git push -u origin main
 ```
-### Remember Username & Password
+## Remember Username & Password
 ```
 $ git clone https://github.com/ckurity/git
 Cloning into 'git'...
