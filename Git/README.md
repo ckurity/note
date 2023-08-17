@@ -23,7 +23,7 @@ credential.helper=cache --timeout=14400
 $ git config --get credential.helper
 cache --timeout=14400
 
-$ git config -l | grep remote
+$ git config -l | remote
 remote.origin.url=https://github.com/ckurity/git
 remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
 branch.master.remote=origin
