@@ -5,8 +5,7 @@ git config --list
 ```
 ## One-liner
 ```
-git add . ; git status ; git commit -m newUpdate ; git pu│nothing to commit, working tree clean                         │nothing to commit, working tree clean
-sh
+git add . ; git status ; git commit -m newUpdate ; git push
 ```
 
 ## git config
