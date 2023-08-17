@@ -8,6 +8,7 @@ alias 9='cd ~/xyz/labs/htb/Sauna'
 alias a=alias
 alias b=bash
 alias c=clear
+alias cme=crackmapexec
 alias d=docker
 alias da='date +%F'
 alias di='docker images'
