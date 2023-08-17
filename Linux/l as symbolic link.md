@@ -20,7 +20,11 @@ ln -s <target> <link_name/shortcut-file>
 
 ### Examples in `/usr/bin` directory
 ```
+cd /usr/bin
+ls -lh Get*
+
 sudo ln -s ../share/impacket/script impacket-GetUserSPNs
+
 sudo ln -s ../share/impacket/script GetUserSPNs
 sudo ln -s ../share/impacket/script GetNPUsers
 ```
