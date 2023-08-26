@@ -1,3 +1,4 @@
+## Renaming multiple files in Linux
 ## Googled and found these
 
 [Remove a word from file names on Linux](https://superuser.com/questions/1514331/remove-a-word-from-file-names-on-linux)
