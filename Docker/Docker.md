@@ -11,7 +11,7 @@ sudo usermod -aG docker $USER
 ```
 ### 
 ```
-newgrp docker
+newgrp docker   # log in to a new group "docker"
     # or
 su $USER
     # then
