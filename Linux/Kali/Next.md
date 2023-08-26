@@ -1,6 +1,6 @@
 # Kali Next
 
-### TLDR
+### 
 
 ### Update and install new standard tools for pentest
 ```
@@ -13,6 +13,9 @@ sudo apt install docker.io nuclei bloodhound
 sudo ln -s ../share/impacket/script GetUserSPNs
 sudo ln -s ../share/impacket/script GetNPUsers
 ```
+
+Must have rustscan
+Update Path
 ### 
 ```
 
@@ -46,7 +49,7 @@ sudo ln -s ../share/impacket/script GetNPUsers
 ```
 
 ```
-### 
+### TLDR 
 ```
 
 ```
