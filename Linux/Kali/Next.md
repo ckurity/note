@@ -5,9 +5,10 @@
 ### Next 
 ```
 sudo apt update && sudo apt upgrade
+sudo apt install xxd
 ```
 
-### v2023-08-26
+### v2023-08-26; Done
 ```
 sudo apt install docker.io nuclei bloodhound
 ```

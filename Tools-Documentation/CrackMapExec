@@ -10,8 +10,15 @@ https://github.com/Porchetta-Industries/CrackMapExec/wiki/SMB-Command-Reference
 
 ### TL;DR
 ```
+cme smb $ip -u users.txt -p sT333ve2
+cme smb $ip -u users.txt -p sT333ve2 --continue-on-success
+```
 
 ```
+--continue-on-success
+                        continues authentication attempts even after successes
+```
+
 
 ## CrackMapexec v5.4.0 (2023.1-3) doesn't work well. Update latest version manually
 ```

@@ -11,9 +11,19 @@ $env:PROCESSOR_ARCHITECTURE
 AMD64
 ```
 
-### 
+## OSVersion
+### TL;DR
+```
+[environment]::OSVersion.Version
 ```
 
+### e.g.
+```
+*Evil-WinRM* PS C:\Users\s.smith\Documents> [environment]::OSVersion.Version
+
+Major  Minor  Build  Revision
+-----  -----  -----  --------
+6      1      7601   65536
 ```
 
 ### 
