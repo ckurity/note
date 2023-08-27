@@ -5,7 +5,7 @@
 ### Next 
 ```
 sudo apt update && sudo apt upgrade
-sudo apt install xxd
+sudo apt install xxd bloodhound-python
 ```
 
 ### v2023-08-26; Done
