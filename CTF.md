@@ -26,6 +26,8 @@ meterpreter >
 ### Search All starting from C:\
 ```
 dir /s /b c:\*.txt
+dir /s /b c:\Users\*.txt
+dir /s /b c:\Users\Administrator\*.txt
 dir /s /b c:\*shell.exe
 
 dir /s /b c:\*.txt c:\*shell.exe
