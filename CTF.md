@@ -1,4 +1,7 @@
 # CTF
+
+touch '1. No creds.md' '2. Users Found.md' '3. Cred 1.md'
+
 # find /path/to/directory -type f \( -name "file1.txt" -o -name "file2.txt" \)
 ```
 find / -name *root*.txt -o -name *flag*.txt -o -name *user*.txt 2>/dev/null
