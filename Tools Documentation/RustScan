@@ -7,6 +7,9 @@
 
 ### 
 ```
+$ which rustscan
+/home/kali/.cargo/bin/rustscan
+
 
 ```
 
