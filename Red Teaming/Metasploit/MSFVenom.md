@@ -3,9 +3,9 @@
 
 [MSFVenom Reverse Shell Payload Cheatsheet (with & without Meterpreter by infinitelogins)](https://infinitelogins.com/2020/01/25/msfvenom-reverse-shell-payload-cheatsheet/)
 
-### Syntax
+### Syntax (not case sensitive, variable can be used for LHOST)
 ```
-msfvenom -p <PAYLOAD> -e <ENCODER> -f <FORMAT> -i <ENCODE COUNT> LHOST=<IP>
+msfvenom -p <PAYLOAD> -e <ENCODER> -f <FORMAT> -i <ENCODE COUNT> LHOST=<IP> -o <OUTPUT>
 ```
 
 ### Common 32 bit
