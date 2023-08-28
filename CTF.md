@@ -1,6 +1,6 @@
 # CTF
 
-touch '1. No creds.md' '2. Users Found.md' '3. Cred 1.md'
+touch '1. No creds.md' '2. Users Found.md' '3. Cred 1 - .md'
 
 # find /path/to/directory -type f \( -name "file1.txt" -o -name "file2.txt" \)
 ```
