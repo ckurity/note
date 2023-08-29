@@ -13,6 +13,8 @@ myip=$(cat ~/myip.txt)
 CTF=htb
 BOX=Blackfield
 
+alias 9="cd ~/xyz/labs/$CTF/$BOX"
+
 tm(){
     tmux new-session -s "$CTF" \; set -g mouse on \; \
         new-window -n 'GIT' \; \
