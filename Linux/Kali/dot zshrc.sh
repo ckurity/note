@@ -14,6 +14,7 @@ CTF=htb
 BOX=Blackfield
 
 alias 6='cd ~/xyz/note/Sample/'
+# alias 7 see below for zsh, but bash can't use number as function's name
 alias 8='cd ~/xyz/note/Tools-Binary'
 alias 9="cd ~/xyz/labs/$CTF/$BOX"
 alias 90='cd ~/xyz/note/'
