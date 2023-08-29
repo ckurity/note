@@ -15,14 +15,15 @@ BOX=Blackfield
 
 alias 9="cd ~/xyz/labs/$CTF/$BOX"
 
-tm(){
+7(){
     tmux new-session -s "$CTF" \; set -g mouse on \; \
         new-window -n 'GIT' \; \
             split-window -h \; split-window -h \; select-layout even-horizontal \; \
             send-keys -t 0 'cd ~/xyz/l*' C-m \; \
             send-keys -t 1 'cd ~/xyz/n*' C-m \; \
             send-keys -t 2 'cd ~/xyz/t*' C-m \; \
-            setw synchronize-panes on \; send-keys 'clear' C-m \; send-keys 'git pull' \; \
+            setw synchronize-panes on \; send-keys 'clear' C-m \; \
+            send-keys 'git pull' \; \
         new-window -n 'IP/VPN' \; \
             split-window -h \; split-window -v \; \
             send-keys -t 0 'sudo ngrep' C-m \; \
@@ -42,5 +43,5 @@ tm(){
             send-keys 'ls' C-m \; \
         new-window -n "$BOX" \; \
             send-keys "cd ~/xyz/labs/$CTF/$BOX" C-m \; \
-        select-window -t "$CTF:IP/VPN"
+        select-window -t "$CTF:GIT"
 }
