@@ -1,4 +1,4 @@
-# 
+# ~/.zshrc
 ls -lh ~/ip.txt ~/port.txt ~/domain.txt ~/myip.txt
 touch ~/ip.txt ~/port.txt ~/domain.txt ~/myip.txt
 
@@ -13,20 +13,26 @@ myip=$(cat ~/myip.txt)
 CTF=htb
 BOX=Blackfield
 
+alias 6='cd ~/xyz/note/Sample/'
+alias 8='cd ~/xyz/note/Tools-Binary'
 alias 9="cd ~/xyz/labs/$CTF/$BOX"
+alias 90='cd ~/xyz/note/'
 
 7(){
     tmux new-session -s "$CTF" \; set -g mouse on \; \
-        new-window -n 'GIT' \; \
+        new-window -n 'git pull' \; \
+            send-keys 'clear;cd ~/xyz/labs/; git pull' C-m \; \
+        new-window -n 'git push' \; \
             split-window -h \; split-window -h \; select-layout even-horizontal \; \
             send-keys -t 0 'cd ~/xyz/l*' C-m \; \
             send-keys -t 1 'cd ~/xyz/n*' C-m \; \
             send-keys -t 2 'cd ~/xyz/t*' C-m \; \
             setw synchronize-panes on \; send-keys 'clear' C-m \; \
-            send-keys 'git pull' \; \
+            send-keys 'git add . ; git status ; git commit -m newUpdate ; git push' \; \
         new-window -n 'IP/VPN' \; \
             split-window -h \; split-window -v \; \
-            send-keys -t 0 'sudo ngrep' C-m \; \
+            send-keys -t 0 'x' C-m \; \
+            send-keys -t 0 'cd ~/vpn; sudo ngrep' C-m \; \
             send-keys -t 1 'watch ip -br a' C-m \; \
             send-keys -t 2 'clear' C-m \; \
             send-keys -t 2 'pu' C-m \; \
@@ -37,11 +43,25 @@ alias 9="cd ~/xyz/labs/$CTF/$BOX"
             send-keys -t 1 'bloodhound' \; \
             select-pane -t 0 \; \
         new-window -n 'Tools' \; \
-            send-keys 'cd ~/xyz/note/Tools-Binary' C-m \; \
+            send-keys 'clear;cd ~/xyz/note/Tools-Binary;ls' C-m \; \
+        new-window -n "$BOX" \; \
+            send-keys "clear;cd ~/xyz/labs/$CTF/$BOX;ls -lh" C-m \; \
         new-window -n "$BOX" \; \
             send-keys "cd ~/xyz/labs/$CTF/$BOX" C-m \; \
-            send-keys 'ls' C-m \; \
-        new-window -n "$BOX" \; \
-            send-keys "cd ~/xyz/labs/$CTF/$BOX" C-m \; \
-        select-window -t "$CTF:GIT"
+        select-window -t "$CTF:git pull"
+}
+
+7a(){
+    tmux new-session -s "${CTF}1" \; set -g mouse on \; \
+    new-window -n "$BOX" \; \
+            send-keys "clear;cd ~/xyz/labs/$CTF/$BOX;ls" C-m \; \
+    new-window -n "$BOX" \; \
+            send-keys "clear;cd ~/xyz/labs/$CTF/$BOX; ls -lh" C-m \; \
+    new-window -n "$BOX" \; \
+            send-keys "clear;cd ~/xyz/labs/$CTF/$BOX" C-m \; \
+    new-window -n "$BOX" \; \
+            send-keys "clear;cd ~/xyz/labs/$CTF/$BOX" C-m \; \
+    new-window -n "$BOX" \; \
+            send-keys "clear;cd ~/xyz/labs/$CTF/$BOX" C-m \; \
+    select-window -t 1
 }

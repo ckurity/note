@@ -1,3 +1,4 @@
+# ~/.zsh_aliases
 alias 0='cat ~/menu'
 alias 1='ping google.com'
 alias 2='ping 8.8.8.8'
