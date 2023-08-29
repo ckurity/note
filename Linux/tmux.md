@@ -41,6 +41,11 @@ bind-key C-o new-session -s 'htb' \; set -g mouse on \; \
     select-window -t 'htb:IP/VPN'
 ```
 
+### kill all session
+```
+tmux kill-session
+```
+
 ### kill all session except the one specified by -t (target session)
 ```
 tmux kill-session -a -t0
