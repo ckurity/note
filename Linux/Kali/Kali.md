@@ -19,7 +19,7 @@ sudo cp /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.bak
 # Check Backup Again
 ls -lh /etc/lightdm/lightdm.conf*
 
-# Compare Before
+# Compare Before Changes
 diff /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.bak
 
 # Check Before Changes
