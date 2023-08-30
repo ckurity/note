@@ -1,4 +1,5 @@
-# Symbolic Link / symlink / soft link
+# ln (1) - make links between files
+## Symbolic Link / symlink / soft link
 
 > A symbolic link, often referred to as a symlink or soft link, is a file that acts as a shortcut or reference to another file or directory. It allows you to create a link to a file or directory at a different location in the file system. 
 
@@ -13,9 +14,9 @@ ln -s <target> <link_name/shortcut-file>
 <link_name/shortcut-file> is the name of the symbolic link you want to create.
 ```
 
-### 
+### ln (1) - make links between files
 ```
-
+-s, --symbolic              make symbolic links instead of hard links
 ```
 
 ### Examples in `/usr/bin` directory
