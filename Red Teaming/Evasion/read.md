@@ -13,7 +13,6 @@ https://secnhack.in/create-fud-fully-undetectable-payload-for-windows-10/
 https://github.com/0xb11a1/yetAnotherObfuscator
 
 
-
 https://github.com/matterpreter/DefenderCheck
 
 https://medium.com/@aptbughunter/list/avedr-evasion-b66656751d63
@@ -33,3 +32,5 @@ Part 4
 https://medium.com/@0xHossam/av-edr-evasion-malware-development-p-4-162662bb630e
 
 https://infosecwriteups.com/red-teaming-evading-av-c948ec5d10e9
+
+https://github.com/BC-SECURITY/Beginners-Guide-to-Obfuscation
