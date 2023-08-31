@@ -20,9 +20,10 @@ alias 9="cd ~/xyz/labs/$CTF/$BOX"
 alias 90='cd ~/xyz/note/'
 
 7(){
-    tmux new-session -s "$CTF" \; set -g mouse on \; \
+    tmux new-session -s "s355" \; set -g mouse on \; \
         new-window -n 'git pull' \; \
-            send-keys 'clear;cd ~/xyz/labs/; git pull' C-m \; \
+            send-keys 'clear;cd ~/xyz/labs/; x; keepassxc &' C-m \; \
+            send-keys 'git pull' \; \
         new-window -n 'git push' \; \
             split-window -h \; split-window -h \; select-layout even-horizontal \; \
             send-keys -t 0 'cd ~/xyz/l*' C-m \; \
