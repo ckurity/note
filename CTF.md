@@ -1,6 +1,6 @@
 # CTF
 
-touch '1. No creds.md' '2. Users Found.md' '3. Cred 1 - .md'
+touch '1. No creds.md' '2. Users Found.md' '3. Cred 1 - .md' 'Exploit.md'
 
 # find /path/to/directory -type f \( -name "file1.txt" -o -name "file2.txt" \)
 ```
@@ -17,6 +17,7 @@ This command will search the / directory for files named *root*.txt and *flag*.t
 The -o option is used to specify an "or" condition. 
 This means that the command will find any file that matches the name *root*.txt or the name *flag*.txt.
 
+## meterpreter
 ```
 meterpreter > search -f *flag*.txt
 No files matching your search were found.
