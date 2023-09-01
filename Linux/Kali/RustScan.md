@@ -1,3 +1,9 @@
+### TL;DR
+```
+rustscan -a $ip -- -Pn -A -oN nmap-A_$(date +%y%m%d-%H%M)
+grep -P '^PORT|^\d+/' nmap* |sed 's/syn-ack//' |tee nmap-sV
+```
+
 ### RustScan Installation
 
 https://github.com/RustScan/RustScan/wiki/Installation-Guide
@@ -76,8 +82,4 @@ warning: be sure to add `/home/kali/.cargo/bin` to your PATH to be able to run t
 
 ```
 
-### 
-```
-
-```
 ### TL;DR

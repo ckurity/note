@@ -17,7 +17,11 @@ This command will search the / directory for files named *root*.txt and *flag*.t
 The -o option is used to specify an "or" condition. 
 This means that the command will find any file that matches the name *root*.txt or the name *flag*.txt.
 
-## meterpreter
+## meterpreter search command
+```
+search -f *flag*.txt
+```
+
 ```
 meterpreter > search -f *flag*.txt
 No files matching your search were found.
