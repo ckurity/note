@@ -1,6 +1,6 @@
 # CTF
 
-touch '1. Enum Anonymously.md' '2. Users Found.md' '3. Cred 1 - .md' '4. Exploit.md'
+touch '1. Enumeration.md' '2. Initial Access.md' '3. Cred 1 - .md' '4. Exploit.md'
 
 # find /path/to/directory -type f \( -name "file1.txt" -o -name "file2.txt" \)
 ```
@@ -20,6 +20,7 @@ This means that the command will find any file that matches the name *root*.txt 
 ## meterpreter search command
 ```
 search -f *flag*.txt
+search -f *user.txt
 ```
 
 ```
