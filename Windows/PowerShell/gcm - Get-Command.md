@@ -1,3 +1,6 @@
+
+gcm | sls invoke-b
+
 ```
 gcm | sls get-dom
 . .\PowerView.ps1

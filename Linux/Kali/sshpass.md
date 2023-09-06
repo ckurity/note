@@ -24,7 +24,7 @@ At most one of -f, -d, -p or -e should be used
 
 ### 
 ```
-
+sshpass -p '1ts-mag1c!!!' ssh tom@$ip
 ```
 
 ### 
