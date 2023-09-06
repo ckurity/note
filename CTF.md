@@ -1,6 +1,6 @@
 # CTF
 
-touch '1. Enumeration.md' '2. Initial Access.md' '3. Cred 1 - .md' '4. Exploit.md'
+touch '1. Enumeration.md' '2. Initial Access.md' '3. Cred 1 - .md' '4. Shell 1 - .md' '5. Exploit.md'
 
 # find /path/to/directory -type f \( -name "file1.txt" -o -name "file2.txt" \)
 ```
