@@ -43,6 +43,9 @@ dir /s /b c:\*.txt c:\*shell.exe
 dir /s /b c:\*user.txt c:\*root.txt
 ```
 
+### Search All starting from current path
+dir /s /b *.txt
+
 ```
 C:\Windows\system32>dir /s /b c:\*user.txt c:\*root.txt
 dir /s /b c:\*user.txt c:\*root.txt
