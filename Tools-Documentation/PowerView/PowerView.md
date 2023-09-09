@@ -16,6 +16,7 @@ gc .\PowerView.ps1 | sls ^func
 ### [Useful cheatsheet from HarmJ0y](https://gist.github.com/HarmJ0y/184f9822b195c52dd50c379ed3117993)
 
 
+
 ```
 
 ```
@@ -29,7 +30,7 @@ gc .\PowerView.ps1 | sls ^func
 
 ### Check specific function in PowerShell script
 ```
-PS C:\Users\Administrator\Downloads> gc .\PowerView.ps1 | sls ^func.*Get-NetUser
+PS C:\> gc .\PowerView.ps1 | sls ^func.*Get-NetUser
 
 function Get-NetUser {
 ```

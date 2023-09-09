@@ -23,6 +23,7 @@ ln -s <target> <link_name/shortcut-file>
 ```
 cd /usr/bin
 ls -lh Get*
+ls -lh impacket-smb*
 
 sudo ln -s ../share/impacket/script impacket-GetUserSPNs
 
