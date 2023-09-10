@@ -12,6 +12,8 @@ The driver could not establish a secure connection to SQL Server by using Secure
   The server selected protocol version TLS10 is not accepted by client preferences [TLS13, TLS12]
 
 ### [Login: mssqlclient 'admin:m$$ql_S@_P@ssW0rd!'@$ip](#login-mssqlclient-adminmql_s_pssw0rdip-1)
+admin
+m$$ql_S@_P@ssW0rd!
 
 # Common Enumeration
 
