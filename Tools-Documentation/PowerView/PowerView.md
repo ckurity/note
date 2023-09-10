@@ -1,4 +1,5 @@
 # PowerView
+powershell -ep bypass
 
 ### [103 functions in PowerView.ps1](#103-functions-in-powerviewps1-1)
 ```
@@ -10,21 +11,30 @@ gc .\PowerView.ps1 | sls ^func
 ## [Post-Exploitation Basics](https://tryhackme.com/room/postexploit)
 
 ### [Enumerate the domain users with "Get-NetUser | select cn"](#enumerate-the-domain-users-with-get-netuser--select-cn-1)
+Set-Alias Get-NetUser Get-DomainUser
 
 ### [Enumerate the domain groups with "Get-NetGroup *admin*"](#enumerate-the-domain-groups-with-get-netgroup-admin-1)
+Get-NetGroup | select cn
+Get-NetGroup *admin*
+Get-NetGroup *admin* | select cn
+
+### [Get-NetGroup -UserName Admin2 | select cn](#get-netgroup--username-admin2--select-cn-1)
+Get-NetUser | select cn
+Get-NetGroup -UserName <username> | select cn
 
 ### [Useful cheatsheet from HarmJ0y](https://gist.github.com/HarmJ0y/184f9822b195c52dd50c379ed3117993)
 
+### [Get-NetDomain](#get-netdomain-1)
 
+### Find all users with an SPN set (likely service accounts)
+Get-DomainUser -SPN
 
-```
-
-```
 
 ### 
 ```
 
 ```
+
 
 ### Examples
 
@@ -32,10 +42,11 @@ gc .\PowerView.ps1 | sls ^func
 ```
 PS C:\> gc .\PowerView.ps1 | sls ^func.*Get-NetUser
 
-function Get-NetUser {
+function Get-NetUser
 ```
 
 ### Enumerate the domain users with "Get-NetUser | select cn"
+"Get-NetUser" produces a lot of output. To only filter "cn", use "select" as follows:
 ```
 PS C:\> Get-NetUser | select cn
 
@@ -51,6 +62,71 @@ SQL Service
 POST{P0W3RV13W_FTW}
 ssh
 ```
+
+PS C:\a> Get-NetUser | select cn, lastlogon
+
+cn                  lastlogon             
+--                  ---------
+Administrator       9/9/2023 1:03:14 AM
+Guest               12/31/1600 4:00:00 PM
+krbtgt              12/31/1600 4:00:00 PM
+Machine-1           5/14/2020 12:29:48 PM
+Admin2              12/31/1600 4:00:00 PM
+Machine-2           5/14/2020 12:32:08 PM
+SQL Service         12/31/1600 4:00:00 PM
+POST{P0W3RV13W_FTW} 12/31/1600 4:00:00 PM
+sshd                12/31/1600 4:00:00 PM
+
+
+### Get-NetGroup -UserName Admin2 | select cn
+PS C:\a> Get-NetGroup -UserName Admin2 | select cn
+
+cn
+--
+Denied RODC Password Replication Group
+Enterprise Admins
+Schema Admins
+Domain Admins
+Group Policy Creator Owners
+Domain Users
+
+
+### Out of these 3 hosts, only 1 is responded to ping
+PS C:\a> Get-NetComputer | select cn, operatingsystem
+
+cn              operatingsystem                  
+--              ---------------
+DOMAIN-CONTROLL Windows Server 2019 Standard
+DESKTOP-2       Windows 10 Enterprise Evaluation
+DESKTOP-1       Windows 10 Enterprise Evaluation
+
+
+PS C:\a> Get-NetComputer -Ping | select cn
+
+cn              
+--
+DOMAIN-CONTROLL
+
+### Ping manually
+PS C:\a> ping DOMAIN-CONTROLL
+
+Pinging DOMAIN-CONTROLL [10.10.140.5] with 32 bytes of data:
+Reply from 10.10.140.5: bytes=32 time<1ms TTL=128
+Reply from 10.10.140.5: bytes=32 time<1ms TTL=128
+
+Ping statistics for 10.10.140.5:
+    Packets: Sent = 2, Received = 2, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+Control-C
+
+PS C:\a> ping DESKTOP-1
+Ping request could not find host DESKTOP-1. Please check the name and try again.
+PS C:\a>
+
+PS C:\a> ping DESKTOP-2
+Ping request could not find host DESKTOP-2. Please check the name and try again.
+PS C:\a>
 
 ### Enumerate the domain groups with "Get-NetGroup *admin*"
 Get-NetGroup -GroupName *admin*
@@ -72,6 +148,130 @@ PS C:\>
 ```
 
 ```
+
+### Get-NetDomain
+```
+PS C:\a> Get-NetDomain
+
+
+Forest                  : CONTROLLER.local
+DomainControllers       : {Domain-Controller.CONTROLLER.local}
+Children                : {}
+DomainMode              : Unknown
+DomainModeLevel         : 7
+Parent                  :
+PdcRoleOwner            : Domain-Controller.CONTROLLER.local
+RidRoleOwner            : Domain-Controller.CONTROLLER.local
+InfrastructureRoleOwner : Domain-Controller.CONTROLLER.local
+Name                    : CONTROLLER.local
+```
+
+PS C:\a> Get-NetDomainController
+
+Forest                     : CONTROLLER.local
+CurrentTime                : 9/9/2023 8:10:25 AM
+HighestCommittedUsn        : 57383
+OSVersion                  : Windows Server 2019 Standard
+Roles                      : {SchemaRole, NamingRole, PdcRole, RidRole...}
+Domain                     : CONTROLLER.local
+IPAddress                  : fe80::154e:df4d:8a15:1ecc%6
+SiteName                   : Default-First-Site-Name
+SyncFromAllServersCallback :
+InboundConnections         : {}
+OutboundConnections        : {}
+Name                       : Domain-Controller.CONTROLLER.local
+Partitions                 : {DC=CONTROLLER,DC=local, CN=Configuration,DC=CONTROLLER,DC=local,
+                             CN=Schema,CN=Configuration,DC=CONTROLLER,DC=local, DC=DomainDnsZones,DC=CONTROLLER,DC=local...}
+
+
+PS C:\a> Get-DomainSID
+S-1-5-21-849420856-2351964222-986696166
+PS C:\a>
+
+
+PS C:\a> Get-DomainPolicy               
+
+
+Unicode        : @{Unicode=yes}
+SystemAccess   : @{MinimumPasswordAge=1; MaximumPasswordAge=42; MinimumPasswordLength=7; PasswordComplexity=1;
+                 PasswordHistorySize=24; LockoutBadCount=0; RequireLogonToChangePassword=0; ForceLogoffWhenHourExpire=0;
+                 ClearTextPassword=0; LSAAnonymousNameLookup=0}
+KerberosPolicy : @{MaxTicketAge=10; MaxRenewAge=7; MaxServiceAge=600; MaxClockSkew=5; TicketValidateClient=1}
+RegistryValues : @{MACHINE\System\CurrentControlSet\Control\Lsa\NoLMHash=System.Object[]}
+Version        : @{signature="$CHICAGO$"; Revision=1}
+Path           : \\CONTROLLER.local\sysvol\CONTROLLER.local\Policies\{31B2F340-016D-11D2-945F-00C04FB984F9}\MACHINE\Microsoft\Window 
+                 s NT\SecEdit\GptTmpl.inf
+GPOName        : {31B2F340-016D-11D2-945F-00C04FB984F9}
+GPODisplayName : Default Domain Policy
+
+
+PS C:\a> (Get-DomainPolicy).SystemAccess
+
+
+MinimumPasswordAge           : 1
+MaximumPasswordAge           : 42
+MinimumPasswordLength        : 7
+PasswordComplexity           : 1
+PasswordHistorySize          : 24
+LockoutBadCount              : 0
+RequireLogonToChangePassword : 0
+ForceLogoffWhenHourExpire    : 0
+ClearTextPassword            : 0
+LSAAnonymousNameLookup       : 0
+
+
+PS C:\a> Get-DomainPolicy (Get-DomainPolicy).'System Access'
+
+
+Unicode        : @{Unicode=yes}
+SystemAccess   : @{MinimumPasswordAge=1; MaximumPasswordAge=42; MinimumPasswordLength=7; PasswordComplexity=1;
+                 PasswordHistorySize=24; LockoutBadCount=0; RequireLogonToChangePassword=0; ForceLogoffWhenHourExpire=0;
+                 ClearTextPassword=0; LSAAnonymousNameLookup=0}
+KerberosPolicy : @{MaxTicketAge=10; MaxRenewAge=7; MaxServiceAge=600; MaxClockSkew=5; TicketValidateClient=1}
+RegistryValues : @{MACHINE\System\CurrentControlSet\Control\Lsa\NoLMHash=System.Object[]}
+Version        : @{signature="$CHICAGO$"; Revision=1}
+Path           : \\CONTROLLER.local\sysvol\CONTROLLER.local\Policies\{31B2F340-016D-11D2-945F-00C04FB984F9}\MACHINE\Microsoft\Window 
+                 s NT\SecEdit\GptTmpl.inf
+GPOName        : {31B2F340-016D-11D2-945F-00C04FB984F9}
+GPODisplayName : Default Domain Policy
+
+Unicode         : @{Unicode=yes} 
+RegistryValues  : @{MACHINE\System\CurrentControlSet\Services\NTDS\Parameters\LDAPServerIntegrity=System.Object[];
+                  MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\RequireSignOrSeal=System.Object[];
+                  MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\RequireSecuritySignature=System.Object[];        
+                  MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\EnableSecuritySignature=System.Object[]}
+PrivilegeRights : @{SeAssignPrimaryTokenPrivilege=System.Object[]; SeAuditPrivilege=System.Object[];
+                  SeBackupPrivilege=System.Object[]; SeBatchLogonRight=System.Object[]; SeChangeNotifyPrivilege=System.Object[];     
+                  SeCreatePagefilePrivilege=*S-1-5-32-544; SeDebugPrivilege=*S-1-5-32-544;
+                  SeIncreaseBasePriorityPrivilege=System.Object[]; SeIncreaseQuotaPrivilege=System.Object[];
+                  SeInteractiveLogonRight=System.Object[]; SeLoadDriverPrivilege=System.Object[];
+                  SeMachineAccountPrivilege=*S-1-5-11; SeNetworkLogonRight=System.Object[];
+                  SeProfileSingleProcessPrivilege=*S-1-5-32-544; SeRemoteShutdownPrivilege=System.Object[];
+                  SeRestorePrivilege=System.Object[]; SeSecurityPrivilege=*S-1-5-32-544; SeShutdownPrivilege=System.Object[];        
+                  SeSystemEnvironmentPrivilege=*S-1-5-32-544; SeSystemProfilePrivilege=System.Object[];
+                  SeSystemTimePrivilege=System.Object[]; SeTakeOwnershipPrivilege=*S-1-5-32-544; SeUndockPrivilege=*S-1-5-32-544;    
+                  SeEnableDelegationPrivilege=*S-1-5-32-544}
+Version         : @{signature="$CHICAGO$"; Revision=1}
+Path            : \\CONTROLLER.local\sysvol\CONTROLLER.local\Policies\{6AC1786C-016F-11D2-945F-00C04fB984F9}\MACHINE\Microsoft\Windo 
+                  ws NT\SecEdit\GptTmpl.inf
+GPOName         : {6AC1786C-016F-11D2-945F-00C04fB984F9}
+GPODisplayName  : Default Domain Controllers Policy
+
+
+
+PS C:\a>
+
+
+### Find all users with an SPN set (likely service accounts)
+PS C:\a> Get-DomainUser -SPN | select cn
+
+cn
+--
+krbtgt
+SQL Service
+
+
+
 
 ### 103 functions in PowerView.ps1
 ### gc .\PowerView.ps1 | sls ^func
@@ -205,11 +405,5 @@ menu
 
 ### 
 ```
-PS C:\> Get-DomainUser
-Exception calling "FindAll" with "0" argument(s): "Unknown error (0x80005000)"
-At C:\PowerView.ps1:5253 char:20
-+             else { $Results = $UserSearcher.FindAll() }
-+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
-    + FullyQualifiedErrorId : COMException
+
 ```
