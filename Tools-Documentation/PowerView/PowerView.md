@@ -26,7 +26,7 @@ Get-NetGroup -UserName <username> | select cn
 
 ### [Get-NetDomain](#get-netdomain-1)
 
-### Find all users with an SPN set (likely service accounts)
+### [Find all users with an SPN set (likely service accounts)](#find-all-users-with-an-spn-set-likely-service-accounts-1)
 Get-DomainUser -SPN
 
 
