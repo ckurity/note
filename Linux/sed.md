@@ -5,9 +5,10 @@
 
 ```
 
-### 
+### Remove Empty/blank Lines
+"-i" will edit the file in-place.
 ```
-
+sed -i '/^$/d' file.txt
 ```
 
 ### 

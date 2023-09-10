@@ -31,6 +31,7 @@ sudo ln -s ../share/impacket/script GetUserSPNs
 sudo ln -s ../share/impacket/script GetNPUsers
 sudo ln -s ../share/impacket/script Get-GPPPassword
 sudo ln -s ../share/impacket/script smbserver
+sudo ln -s ../share/impacket/script mssqlclient
 ```
 
 This command will create a symbolic link named "impacket-GetUserSPNs" that points to the "../share/impacket/script" directory relative to the location where you run the command.
