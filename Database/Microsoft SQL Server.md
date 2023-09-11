@@ -1,7 +1,7 @@
 # Microsoft SQL Server
 
 ### Client
-sqsh
+sqsh -S $ip -U admin -P 'm$$ql_S@_P@ssW0rd!'
 impacket-mssqlclient
 dbeaver (GUI)
 
@@ -9,20 +9,25 @@ The server selected protocol version TLS10 is not accepted by client preferences
 
 The driver could not establish a secure connection to SQL Server by using Secure Sockets Layer (SSL) encryption. Error: "The server selected protocol version TLS10 is not accepted by client preferences [TLS13, TLS12]". ClientConnectionId:1b86e0ed-720e-4ca5-8c86-09e77ec79964
   The server selected protocol version TLS10 is not accepted by client preferences [TLS13, TLS12]
-  The server selected protocol version TLS10 is not accepted by client preferences [TLS13, TLS12]
 
 ### [Login: mssqlclient 'admin:m$$ql_S@_P@ssW0rd!'@$ip](#login-mssqlclient-adminmql_s_pssw0rdip-1)
 admin
 m$$ql_S@_P@ssW0rd!
 
-# Common Enumeration
+# [Common Enumeration](https://book.hacktricks.xyz/network-services-pentesting/pentesting-mssql-microsoft-sql-server)
 
 ### [select @@version;](#select-version-1)
 ### [select user_name();](#select-user_name-1)
 ### [Get Databases: SELECT name FROM master.dbo.sysdatabases;](#get-databases-select-name-from-masterdbosysdatabases-1)
 ### [Use Database: USE orcharddb](#use-database-use-orcharddb-1)
 
------------
+### Get columns from a table
+[SELECT COLUMN_NAME 'All_columns' FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='tablename'](#select-column_name-all_columns-from-information_schemacolumns-where-table_nametablename)
+
+### [Get records from a table](#get-records-from-a-table-1)
+SELECT UserName,Password FROM tablename
+
+----------------------
 
 ### Login: mssqlclient 'admin:m$$ql_S@_P@ssW0rd!'@$ip
 ```
@@ -58,6 +63,7 @@ admin
 ```
 
 ### Get Databases: SELECT name FROM master.dbo.sysdatabases;
+Motasem Hamdan HTB Mantis 13:34
 ```
 SQL (admin  admin@master)> SELECT name FROM master.dbo.sysdatabases;
 name        
@@ -80,6 +86,8 @@ SQL (admin  admin@orcharddb)>
 ```
 
 ### Get Table names: SELECT * FROM <databaseName>.INFORMATION_SCHEMA.TABLES;
+SELECT * FROM INFORMATION_SCHEMA.TABLES;
+SELECT * FROM orcharddb.INFORMATION_SCHEMA.TABLES;
 ```
 SQL (admin  admin@orcharddb)> SELECT * FROM INFORMATION_SCHEMA.TABLES;
 TABLE_CATALOG   TABLE_SCHEMA   TABLE_NAME                                             TABLE_TYPE   
@@ -94,14 +102,41 @@ orcharddb       dbo            blog_Orchard_Blogs_BlogPartArchiveRecord         
 SQL (admin  admin@orcharddb)> 
 ```
 
-### 
+### Get columns from a table
+### SELECT COLUMN_NAME 'All_columns' FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='tablename'
+SELECT COLUMN_NAME 'All_columns' FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='blog_Orchard_Users_UserPartRecord'
+```
+SQL (admin  admin@orcharddb)> SELECT COLUMN_NAME 'All_columns' FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='blog_Orchard_Users_UserPartRecord'
+All_columns       -------------------   
+Id
+UserName
+Email   
+NormalizedUserName
+Password
+PasswordFormat    
+HashAlgorithm     
+PasswordSalt      
+RegistrationStatus
+EmailStatus       
+EmailChallengeToken
+CreatedUtc        
+LastLoginUtc      
+LastLogoutUtc     
+SQL (admin  admin@orcharddb)>
 ```
 
+### Get records from a table
+SELECT UserName,Password FROM tablename
+SELECT UserName,Password FROM blog_Orchard_Users_UserPartRecord
 ```
+SQL (admin  admin@orcharddb)> SELECT UserName,Password FROM blog_Orchard_Users_UserPartRecord
+UserName   Password                                                               
+--------   --------------------------------------------------------------------   
+admin      AL1337E2D6YHm0iIysVzG8LA76OozgMSlyOJk1Ov5WCGK+lgKY6vrQuswfWHKZn2+A==   
 
-### 
-```
+James      J@m3s_P@ssW0rd!                                                        
 
+SQL (admin  admin@orcharddb)>
 ```
 
 ### 
