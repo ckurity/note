@@ -21,9 +21,11 @@ ln -s <target> <link_name/shortcut-file>
 
 ### Examples in `/usr/bin` directory
 ```
-cd /usr/bin
+cd /usr/bin/
 ls -lh Get*
+ls -lh gol*
 ls -lh impacket-smb*
+ls -lh impacket-g*
 
 sudo ln -s ../share/impacket/script impacket-GetUserSPNs
 
@@ -32,6 +34,7 @@ sudo ln -s ../share/impacket/script GetNPUsers
 sudo ln -s ../share/impacket/script Get-GPPPassword
 sudo ln -s ../share/impacket/script smbserver
 sudo ln -s ../share/impacket/script mssqlclient
+sudo ln -s ../share/impacket/script goldenPac
 ```
 
 This command will create a symbolic link named "impacket-GetUserSPNs" that points to the "../share/impacket/script" directory relative to the location where you run the command.

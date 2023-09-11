@@ -1,5 +1,7 @@
 # mount
 
+### [-o username=support,password='#00^BlackKnight'](#o-usernamesupportpassword00blackknight-1)
+
 ### TL;DR
 ```
 sudo mount -t cifs //$ip/profiles$ /mnt
@@ -25,7 +27,7 @@ mount error(13): Permission denied
 Refer to the mount.cifs(8) manual page (e.g. man mount.cifs) and kernel log messages (dmesg)
 ```
 
-### 
+### -o username=support,password='#00^BlackKnight'
 ```
 $ sudo mount -t cifs //$ip/sysvol /mnt -o username=support,password='#00^BlackKnight'
 $ l /mnt

