@@ -18,6 +18,8 @@ BloodHound should be up. Do not close it
 
 ### [python PlumHound.py -x tasks/default.tasks -p 1](#python-plumhoundpy--x-tasksdefaulttasks--p-1-1)
 
+### [ls reports](#ls-reports-1)
+
 ### Default
 ```
 $ python PlumHound.py                                                   
@@ -91,7 +93,7 @@ on 75:  Completed Reports Archive: reports//Reports.zip
         Completed 75 of 75 tasks.
 ```
 
-### 
+### ls reports
 ```
 ┌──(kali㉿kali)-[~/tools/PlumHound]
 └─$ ls reports
