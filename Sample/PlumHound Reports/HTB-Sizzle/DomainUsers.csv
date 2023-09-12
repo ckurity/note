@@ -1,0 +1,9 @@
+Name,DisplayName,Enabled,HighValue,Description,Title,PWDNeverExpires,PWDNotReqd,Sensitive,AdminCount,SPN,PWDLastSet,LastLogon
+SIZZLER@HTB.LOCAL,,True,False,,,False,False,False,True,[],2018-07-12T14:29:49Z,1970-01-01T00:00:00Z
+MRLKY@HTB.LOCAL,,True,False,,,False,False,False,False,['http/sizzle'],2018-07-10T18:08:09Z,2018-07-12T14:23:50Z
+KRBTGT@HTB.LOCAL,,False,False,Key Distribution Center Service Account,,False,False,False,True,['kadmin/changepw'],2018-07-02T18:58:36Z,1970-01-01T00:00:00Z
+GUEST@HTB.LOCAL,,True,False,Built-in account for guest access to the computer/domain,,True,True,False,False,[],2018-07-02T20:07:00Z,1970-01-01T00:00:00Z
+DEFAULTACCOUNT@HTB.LOCAL,,False,False,A user account managed by the system.,,True,True,False,False,[],1970-01-01T00:00:00Z,1970-01-01T00:00:00Z
+AMANDA@HTB.LOCAL,,True,False,,,False,False,False,False,[],2018-07-10T20:42:11Z,2023-09-11T08:37:07Z
+ADMINISTRATOR@HTB.LOCAL,,True,False,Built-in account for administering the computer/domain,,False,False,False,True,[],2018-07-12T17:32:41Z,2023-09-11T08:37:12Z
+NT AUTHORITY@HTB.LOCAL,,,False,,,,,,,,1970-01-01T00:00:00Z,1970-01-01T00:00:00Z

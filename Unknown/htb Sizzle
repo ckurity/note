@@ -1,0 +1,32 @@
+# Can't find writeable directories with "find" command
+
+$ mount | grep mnt
+//10.10.10.103/Department Shares on /mnt
+
+$ find /mnt -type d -perm /o+w
+$ find /mnt -type d -writable -exec ls -ld {} +
+$ 
+
+$ pwd               
+/mnt/Users/Public
+
+$ touch test 
+touch: cannot touch 'test': Permission denied
+
+$ smbclient -U abc%'' //$ip/'Department Shares' 
+Try "help" to get a list of possible commands.
+smb: \> cd Users/Public
+smb: \Users\Public\> ls
+  .                                   D        0  Mon Sep 11 21:57:35 2023
+  ..                                  D        0  Mon Sep 11 21:57:35 2023
+
+                7779839 blocks of size 4096. 4118608 blocks available
+smb: \Users\Public\> put test2
+putting file test2 as \Users\Public\test2 (0.0 kb/s) (average 0.0 kb/s)
+smb: \Users\Public\> ls
+  .                                   D        0  Mon Sep 11 21:57:53 2023
+  ..                                  D        0  Mon Sep 11 21:57:53 2023
+  test2                               A        0  Mon Sep 11 21:57:53 2023
+
+                7779839 blocks of size 4096. 4118608 blocks available
+smb: \Users\Public\> 

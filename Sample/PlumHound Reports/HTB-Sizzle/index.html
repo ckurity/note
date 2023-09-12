@@ -1,0 +1,493 @@
+<HTML><head><style>
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+th,
+td {
+	padding: 10px 15px;
+}
+
+thead {
+	background: #395870;
+	color: #fff;
+}
+
+tbody tr:nth-child(even) {
+	background: #f0f0f2;
+}
+
+td {
+	border-bottom: 1px solid #cecfd5;
+	border-right: 1px solid #cecfd5;
+}
+
+	td:first-child {
+		border-left: 1px solid #cecfd5;
+	}
+
+</style></head><Body>
+<script type="text/javascript">
+ /* 
+table-sort-js
+Author: Lee Wannacott
+Licence: MIT License Copyright (c) 2021 Lee Wannacott 
+GitHub Repository: https://github.com/LeeWannacott/table-sort-js
+
+*/ 
+
+
+function tableSortJs(testingTableSortJS = false, domDocumentWindow = document) {
+  function getHTMLTables() {
+    if (testingTableSortJS === true) {
+      const getTagTable = domDocumentWindow.getElementsByTagName("table");
+      return [getTagTable];
+    } else {
+      const getTagTable = document.getElementsByTagName("table");
+      return [getTagTable];
+    }
+  }
+
+  const [getTagTable] = getHTMLTables();
+  const columnIndexAndTableRow = {};
+  const fileSizeColumnTextAndRow = {};
+  for (let table of getTagTable) {
+    {
+      makeTableSortable(table);
+    }
+  }
+
+  function makeTableSortable(sortableTable) {
+    let createTableHead;
+    let tableBody;
+    if (sortableTable.getElementsByTagName("thead").length === 0) {
+      if (testingTableSortJS === true) {
+        createTableHead = domDocumentWindow.createElement("thead");
+      } else {
+        createTableHead = document.createElement("thead");
+      }
+      createTableHead.appendChild(sortableTable.rows[0]);
+      sortableTable.insertBefore(createTableHead, sortableTable.firstChild);
+      if (sortableTable.querySelectorAll("tbody").length > 1) {
+        tableBody = sortableTable.querySelectorAll("tbody")[1];
+      } else {
+        tableBody = sortableTable.querySelector("tbody");
+      }
+    } else {
+      tableBody = sortableTable.querySelector("tbody");
+    }
+
+    const tableHead = sortableTable.querySelector("thead");
+    const tableHeadHeaders = tableHead.querySelectorAll("th");
+
+    for (let [columnIndex, th] of tableHeadHeaders.entries()) {
+      if (!th.classList.contains("disable-sort")) {
+        th.style.cursor = "pointer";
+        makeEachColumnSortable(th, columnIndex, tableBody, sortableTable);
+      }
+    }
+  }
+
+  function makeEachColumnSortable(th, columnIndex, tableBody, sortableTable) {
+    let desc = th.classList.contains("order-by-desc");
+    let tableArrows = sortableTable.classList.contains("table-arrows");
+    const arrowUp = " ▲";
+    const arrowDown = " ▼";
+
+    if (desc) {
+      th.insertAdjacentText("beforeend", arrowDown);
+    } else {
+      th.insertAdjacentText("beforeend", arrowUp);
+    }
+
+    function sortDataAttributes(tableRows, columnData) {
+      for (let [i, tr] of tableRows.entries()) {
+        const dataAttributeTd = tr.querySelectorAll("td").item(columnIndex)
+          .dataset.sort;
+        columnData.push(`${dataAttributeTd}#${i}`);
+        columnIndexAndTableRow[columnData[i]] = tr.innerHTML;
+      }
+    }
+
+    function sortFileSize(tableRows, columnData) {
+      const numberWithUnitType =
+        /[.0-9]+(\s?B|\s?KB|\s?KiB|\s?MB|\s?MiB|\s?GB|\s?GiB|T\s?B|\s?TiB)/i;
+      const unitType =
+        /(\s?B|\s?KB|\s?KiB|\s?MB|\s?MiB|\s?GB|G\s?iB|\s?TB|\s?TiB)/i;
+      const fileSizes = {
+        Kibibyte: 1024,
+        Mebibyte: 1.049e6,
+        Gibibyte: 1.074e9,
+        Tebibyte: 1.1e12,
+        Pebibyte: 1.126e15,
+        Kilobyte: 1000,
+        Megabyte: 1e6,
+        Gigabyte: 1e9,
+        Terabyte: 1e12,
+      };
+      function removeUnitTypeConvertToBytes(fileSizeTd, _replace) {
+        fileSizeTd = fileSizeTd.replace(unitType, "");
+        fileSizeTd = fileSizeTd.replace(
+          fileSizeTd,
+          fileSizeTd * fileSizes[_replace]
+        );
+        return fileSizeTd;
+      }
+      for (let [i, tr] of tableRows.entries()) {
+        let fileSizeTd = tr
+          .querySelectorAll("td")
+          .item(columnIndex).textContent;
+        if (fileSizeTd.match(numberWithUnitType)) {
+          if (fileSizeTd.match(/\s?KB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Kilobyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?KiB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Kibibyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?MB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Megabyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?MiB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Mebibyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?GB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Gigabyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?GiB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Gibibyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?TB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Terabyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?TiB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Tebibyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?B/i)) {
+            fileSizeTd = fileSizeTd.replace(unitType, "");
+            columnData.push(`${fileSizeTd}#${i}`);
+          }
+        } else {
+          columnData.push(`!X!Y!Z!#${i}`);
+        }
+      }
+    }
+
+    let timesClickedColumn = 0;
+    let columnIndexesClicked = [];
+
+    function rememberSort(timesClickedColumn, columnIndexesClicked) {
+      columnIndexesClicked.push(columnIndex);
+      if (timesClickedColumn === 1 && columnIndexesClicked.length > 1) {
+        const lastColumnClicked =
+          columnIndexesClicked[columnIndexesClicked.length - 1];
+        const secondLastColumnClicked =
+          columnIndexesClicked[columnIndexesClicked.length - 2];
+        if (lastColumnClicked !== secondLastColumnClicked) {
+          timesClickedColumn = 0;
+          columnIndexesClicked.shift();
+        }
+      }
+    }
+
+    function getTableData(tableRows, columnData, isFileSize, isDataAttribute) {
+      for (let [i, tr] of tableRows.entries()) {
+        // inner text for column we click on
+        let tdTextContent = tr
+          .querySelectorAll("td")
+          .item(columnIndex).textContent;
+        if (tdTextContent.length === 0) {
+          tdTextContent = "";
+        }
+        if (tdTextContent.trim() !== "") {
+          if (isFileSize) {
+            fileSizeColumnTextAndRow[columnData[i]] = tr.innerHTML;
+          }
+          if (!isFileSize && !isDataAttribute) {
+            columnData.push(`${tdTextContent}#${i}`);
+            columnIndexAndTableRow[`${tdTextContent}#${i}`] = tr.innerHTML;
+          }
+        } else {
+          // Fill in blank table cells dict key with filler value.
+          columnData.push(`!X!Y!Z!#${i}`);
+          columnIndexAndTableRow[`!X!Y!Z!#${i}`] = tr.innerHTML;
+        }
+      }
+
+      function naturalSortAescending(a, b) {
+        if (a.includes("X!Y!Z!#")) {
+          return 1;
+        } else if (b.includes("X!Y!Z!#")) {
+          return -1;
+        } else {
+          return a.localeCompare(
+            b,
+            navigator.languages[0] || navigator.language,
+            { numeric: true, ignorePunctuation: true }
+          );
+        }
+      }
+
+      function naturalSortDescending(a, b) {
+        return naturalSortAescending(b, a);
+      }
+
+      function clearArrows(arrowUp = "▲", arrowDown = "▼") {
+        th.innerText = th.innerText.replace(arrowUp, "");
+        th.innerText = th.innerText.replace(arrowDown, "");
+      }
+
+      // Sort naturally; default aescending unless th contains 'order-by-desc'
+      // as className.
+      if (columnData[0] === undefined) {
+        return;
+      }
+
+      if (timesClickedColumn === 1) {
+        if (desc) {
+          if (tableArrows) {
+            clearArrows(arrowUp, arrowDown);
+            th.insertAdjacentText("beforeend", arrowDown);
+          }
+          columnData.sort(naturalSortDescending, {
+            numeric: true,
+            ignorePunctuation: true,
+          });
+        } else {
+          if (tableArrows) {
+            clearArrows(arrowUp, arrowDown);
+            th.insertAdjacentText("beforeend", arrowUp);
+          }
+          columnData.sort(naturalSortAescending);
+        }
+      } else if (timesClickedColumn === 2) {
+        timesClickedColumn = 0;
+        if (desc) {
+          if (tableArrows) {
+            clearArrows(arrowUp, arrowDown);
+            th.insertAdjacentText("beforeend", arrowUp);
+          }
+          columnData.sort(naturalSortAescending, {
+            numeric: true,
+            ignorePunctuation: true,
+          });
+        } else {
+          if (tableArrows) {
+            clearArrows(arrowUp, arrowDown);
+            th.insertAdjacentText("beforeend", arrowDown);
+          }
+          columnData.sort(naturalSortDescending);
+        }
+      }
+    }
+
+    function updateTable(tableRows, columnData, isFileSize) {
+      for (let [i, tr] of tableRows.entries()) {
+        if (isFileSize) {
+          tr.innerHTML = fileSizeColumnTextAndRow[columnData[i]];
+          let fileSizeInBytesHTML = tr
+            .querySelectorAll("td")
+            .item(columnIndex).innerHTML;
+          let fileSizeInBytesText = tr
+            .querySelectorAll("td")
+            .item(columnIndex).textContent;
+          const fileSizes = {
+            Kibibyte: 1024,
+            Mebibyte: 1.049e6,
+            Gibibyte: 1.074e9,
+            Tebibyte: 1.1e12,
+            Pebibyte: 1.126e15,
+          };
+          // Remove the unique identifyer for duplicate values(#number).
+          columnData[i] = columnData[i].replace(/#[0-9]*/, "");
+          if (columnData[i] < fileSizes.Kibibyte) {
+            fileSizeInBytesHTML = fileSizeInBytesHTML.replace(
+              fileSizeInBytesText,
+              `${parseFloat(columnData[i]).toFixed(2)} B`
+            );
+          } else if (
+            columnData[i] >= fileSizes.Kibibyte &&
+            columnData[i] < fileSizes.Mebibyte
+          ) {
+            fileSizeInBytesHTML = fileSizeInBytesHTML.replace(
+              fileSizeInBytesText,
+              `${(columnData[i] / fileSizes.Kibibyte).toFixed(2)} KiB`
+            );
+          } else if (
+            columnData[i] >= fileSizes.Mebibyte &&
+            columnData[i] < fileSizes.Gibibyte
+          ) {
+            fileSizeInBytesHTML = fileSizeInBytesHTML.replace(
+              fileSizeInBytesText,
+              `${(columnData[i] / fileSizes.Mebibyte).toFixed(2)} MiB`
+            );
+          } else if (
+            columnData[i] >= fileSizes.Gibibyte &&
+            columnData[i] < fileSizes.Tebibyte
+          ) {
+            fileSizeInBytesHTML = fileSizeInBytesHTML.replace(
+              fileSizeInBytesText,
+              `${(columnData[i] / fileSizes.Gibibyte).toFixed(2)} GiB`
+            );
+          } else if (
+            columnData[i] >= fileSizes.Tebibyte &&
+            columnData[i] < fileSizes.Pebibyte
+          ) {
+            fileSizeInBytesHTML = fileSizeInBytesHTML.replace(
+              fileSizeInBytesText,
+              `${(columnData[i] / fileSizes.Tebibyte).toFixed(2)} TiB`
+            );
+          } else {
+            fileSizeInBytesHTML = fileSizeInBytesHTML.replace(
+              fileSizeInBytesText,
+              "NaN"
+            );
+          }
+          tr.querySelectorAll("td").item(columnIndex).innerHTML =
+            fileSizeInBytesHTML;
+        } else if (!isFileSize) {
+          tr.innerHTML = columnIndexAndTableRow[columnData[i]];
+        }
+      }
+    }
+
+    th.addEventListener("click", function () {
+      const columnData = [];
+      // To make it work even if there is a tr with display: none; in the table, only the tr that is currently displayed is subject to sorting.
+      const visibleTableRows = Array.prototype.filter.call(
+        tableBody.querySelectorAll("tr"),
+        (tr) => {
+          return tr.style.display !== "none";
+        }
+      );
+
+      let isDataAttribute = th.classList.contains("data-sort");
+      // Check if using data-sort attribute; if so sort by value of data-sort
+      // attribute.
+      if (isDataAttribute) {
+        sortDataAttributes(visibleTableRows, columnData);
+      }
+
+      let isFileSize = th.classList.contains("file-size");
+      // Handle filesize sorting (e.g KB, MB, GB, TB) - Turns data into KiB.
+      if (isFileSize) {
+        sortFileSize(visibleTableRows, columnData);
+      }
+
+      // Checking if user has clicked different column from the first column if
+      // yes reset times clicked.
+      let isRememberSort = sortableTable.classList.contains("remember-sort");
+      if (!isRememberSort) {
+        rememberSort(timesClickedColumn, columnIndexesClicked);
+      }
+
+      timesClickedColumn += 1;
+
+      getTableData(visibleTableRows, columnData, isFileSize, isDataAttribute);
+      updateTable(visibleTableRows, columnData, isFileSize);
+    });
+  }
+}
+
+if (
+  document.readyState === "complete" ||
+  document.readyState === "interactive"
+) {
+  tableSortJs();
+} else if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", tableSortJs, false);
+}
+if (typeof module == "object") {
+  module.exports = tableSortJs;
+}
+            </script>
+<h1>Full Report Details</h1>
+<tt>Report Date: 2023-09-11</tt>
+<hr />
+<table>
+<thead>
+<tr><th>Title                                                       </th><th style="text-align: right;">  Count</th><th>Further Details                                                                                                                 </th></tr>
+</thead>
+<tbody>
+<tr><td>Domains                                                     </td><td style="text-align: right;">      1</td><td><a href="Domains.html">Details</a> - <a href="Domains.csv">CSV</a>                                                              </td></tr>
+<tr><td>Domain Trusts                                               </td><td style="text-align: right;">      0</td><td><a href="DomainTrusts.html">Details</a> - <a href="DomainTrusts.csv">CSV</a>                                                    </td></tr>
+<tr><td>Domain Controllers                                          </td><td style="text-align: right;">      1</td><td><a href="DomainControllers.html">Details</a> - <a href="DomainControllers.csv">CSV</a>                                          </td></tr>
+<tr><td>Enterprise Admins                                           </td><td style="text-align: right;">      1</td><td><a href="EnterpriseAdmins.html">Details</a>                                                                                     </td></tr>
+<tr><td>Schema Admins                                               </td><td style="text-align: right;">      1</td><td><a href="SchemaAdmins.html">Details</a>                                                                                         </td></tr>
+<tr><td>Domain Admins                                               </td><td style="text-align: right;">      2</td><td><a href="DomainAdmins.html">Details</a>                                                                                         </td></tr>
+<tr><td>Admin Groups                                                </td><td style="text-align: right;">      9</td><td><a href="AdminGroups.html">Details</a> - <a href="AdminGroups.csv">CSV</a>                                                      </td></tr>
+<tr><td>Domain Users                                                </td><td style="text-align: right;">      8</td><td><a href="DomainUsers.html">Details</a> - <a href="DomainUsers.csv">CSV</a>                                                      </td></tr>
+<tr><td>Domain Computers                                            </td><td style="text-align: right;">      1</td><td><a href="DomainComputers.html">Details</a> - <a href="DomainComputers.csv">CSV</a>                                              </td></tr>
+<tr><td>Domain Groups                                               </td><td style="text-align: right;">     53</td><td><a href="DomainGroups.html">Details</a> - <a href="DomainGroups.csv">CSV</a>                                                    </td></tr>
+<tr><td>OUs By Computer Member Count                                </td><td style="text-align: right;">      1</td><td><a href="OUs_Count.html">Details</a>                                                                                            </td></tr>
+<tr><td>Cert Publishers                                             </td><td style="text-align: right;">      1</td><td><a href="CertPublishers.html">Details</a>                                                                                       </td></tr>
+<tr><td>DA Sessions                                                 </td><td style="text-align: right;">      0</td><td><a href="DA_Sessions.html">Details</a>                                                                                          </td></tr>
+<tr><td>EA Sessions                                                 </td><td style="text-align: right;">      0</td><td><a href="EA_Sessions.html">Details</a>                                                                                          </td></tr>
+<tr><td>HighValue Group Members (Limited to 1000)                   </td><td style="text-align: right;">      8</td><td><a href="Groups-HighValue-members.html">Details</a> - <a href="Groups-HighValue-members.csv">CSV</a>                            </td></tr>
+<tr><td>Kerberoastable Users                                        </td><td style="text-align: right;">      2</td><td><a href="Kerberoastable_Users.html">Details</a>                                                                                 </td></tr>
+<tr><td>RDPable Servers                                             </td><td style="text-align: right;">      0</td><td><a href="Workstations_RDP.html">Details</a>                                                                                     </td></tr>
+<tr><td>Unconstrained Delegation Computers with SPN                 </td><td style="text-align: right;">      1</td><td><a href="Computers_UnconstrainedDelegation.html">Details</a> - <a href="Computers_UnconstrainedDelegation.csv">CSV</a>          </td></tr>
+<tr><td>Unconstrained Delegation Computers with SPN Non-DC          </td><td style="text-align: right;">      0</td><td><a href="Computers_UnconstrainedDelegationNonDC.html">Details</a> - <a href="Computers_UnconstrainedDelegationNonDC.csv">CSV</a></td></tr>
+<tr><td>Permissions for Everyone and Authenticated Users            </td><td style="text-align: right;">      0</td><td><a href="Permissions_Everyone.html">Details</a> - <a href="Permissions_Everyone.csv">CSV</a>                                    </td></tr>
+<tr><td>Direct Relationships - Everyone                             </td><td style="text-align: right;">      0</td><td><a href="Relationships-Everyone.html">Details</a>                                                                               </td></tr>
+<tr><td>Direct Relationships - Authenticated Users                  </td><td style="text-align: right;">      0</td><td><a href="Relationships-AuthenticatedUsers.html">Details</a>                                                                     </td></tr>
+<tr><td>Direct Relationships - Pre-Windows 2000 Compatibility Access</td><td style="text-align: right;">      0</td><td><a href="Relationships-PreW2KCA.html">Details</a>                                                                               </td></tr>
+<tr><td>Direct Relationships - Domain Users                         </td><td style="text-align: right;">      0</td><td><a href="Relationships-DomainUsers.html">Details</a>                                                                            </td></tr>
+<tr><td>Direct Relationships - Domain Computers                     </td><td style="text-align: right;">      0</td><td><a href="Relationships-DomainComputers.html">Details</a>                                                                        </td></tr>
+<tr><td>Direct Relationships - Users                                </td><td style="text-align: right;">      0</td><td><a href="Relationships-Users.html">Details</a>                                                                                  </td></tr>
+<tr><td>Direct Relationships - Guests                               </td><td style="text-align: right;">      0</td><td><a href="Relationships-Guests.html">Details</a>                                                                                 </td></tr>
+<tr><td>Cross Domain Relationships                                  </td><td style="text-align: right;">      0</td><td><a href="CrossDomainRelationships.html">Details</a>                                                                             </td></tr>
+<tr><td>PasswordResetter Groups Count                               </td><td style="text-align: right;">      0</td><td><a href="Groups_CanResetPasswordsCount.html">Details</a>                                                                        </td></tr>
+<tr><td>GPOs                                                        </td><td style="text-align: right;">      2</td><td><a href="GPOs.html">Details</a> - <a href="GPOs.csv">CSV</a>                                                                    </td></tr>
+<tr><td>GPO Creator Owners                                          </td><td style="text-align: right;">      1</td><td><a href="GPOCreatorOwners.html">Details</a>                                                                                     </td></tr>
+<tr><td>RDPable Groups                                              </td><td style="text-align: right;">      0</td><td><a href="RDPableGroups.html">Details</a>                                                                                        </td></tr>
+<tr><td>RDPable Groups Count                                        </td><td style="text-align: right;">      0</td><td><a href="RDPableGroupsCount.html">Details</a>                                                                                   </td></tr>
+<tr><td>Kerberoastable Most Priv                                    </td><td style="text-align: right;">      0</td><td><a href="Kerberoastable_Users_MostPriv.html">Details</a>                                                                        </td></tr>
+<tr><td>Most Admin Privileged Groups                                </td><td style="text-align: right;">      2</td><td><a href="Groups_MostAdminPrivileged.html">Details</a>                                                                           </td></tr>
+<tr><td>Local AdminGroups                                           </td><td style="text-align: right;">      2</td><td><a href="LocalAdmin_Groups.html">Details</a>                                                                                    </td></tr>
+<tr><td>Local AdminGroups Count                                     </td><td style="text-align: right;">      2</td><td><a href="LocalAdmin_Groups_Count.html">Details</a>                                                                              </td></tr>
+<tr><td>Local AdminUsers                                            </td><td style="text-align: right;">      1</td><td><a href="LocalAdmin_Users.html">Details</a>                                                                                     </td></tr>
+<tr><td>Local AdminUsers Count                                      </td><td style="text-align: right;">      1</td><td><a href="LocalAdmin_UsersCount.html">Details</a>                                                                                </td></tr>
+<tr><td>Servers in OUs                                              </td><td style="text-align: right;">      1</td><td><a href="ServersInOUs.html">Details</a>                                                                                         </td></tr>
+<tr><td>Computers with MSSQL SPN                                    </td><td style="text-align: right;">      0</td><td><a href="Computers_MSSQL.html">Details</a> - <a href="Computers_MSSQL.csv">CSV</a>                                              </td></tr>
+<tr><td>Computers Admin of Computers                                </td><td style="text-align: right;">      0</td><td><a href="Computers_admin_computers.html">Details</a> - <a href="Computers_admin_computers.csv">CSV</a>                          </td></tr>
+<tr><td>Computers Admin of Computers Count                          </td><td style="text-align: right;">      0</td><td><a href="Computers_admin_computers_count.html">Details</a>                                                                      </td></tr>
+<tr><td>Computers with Descriptions                                 </td><td style="text-align: right;">      0</td><td><a href="Computers_WithDescriptions.html">Details</a> - <a href="Computers_WithDescriptions.csv">CSV</a>                        </td></tr>
+<tr><td>Computers Vulnerable to Local Admin Enumeration             </td><td style="text-align: right;">      3</td><td><a href="Computers_With_More_Than1_Local_Admin.html">Details</a> - <a href="Computers_With_More_Than1_Local_Admin.csv">CSV</a>  </td></tr>
+<tr><td>Operating Systems Unsupported                               </td><td style="text-align: right;">      0</td><td><a href="OperatingSystemUnsupported.html">Details</a> - <a href="OperatingSystemUnsupported.csv">CSV</a>                        </td></tr>
+<tr><td>Operating Systems Count                                     </td><td style="text-align: right;">      1</td><td><a href="OperatingSystemCount.html">Details</a>                                                                                 </td></tr>
+<tr><td>LAPS Deployment Count                                       </td><td style="text-align: right;">      1</td><td><a href="LapsDeploymentCount.html">Details</a> - <a href="LapsDeploymentCount.csv">CSV</a>                                      </td></tr>
+<tr><td>LAPS Deployment OS Count                                    </td><td style="text-align: right;">      1</td><td><a href="LapsDeploymentCount-OS.html">Details</a> - <a href="LapsDeploymentCount-OS.csv">CSV</a>                                </td></tr>
+<tr><td>LAPS Not Enabled                                            </td><td style="text-align: right;">      1</td><td><a href="LAPSNotEnabled.html">Details</a>                                                                                       </td></tr>
+<tr><td>Users Sessions                                              </td><td style="text-align: right;">      0</td><td><a href="Users_Sessions.html">Details</a> - <a href="Users_Sessions.csv">CSV</a>                                                </td></tr>
+<tr><td>Users Sessions Count                                        </td><td style="text-align: right;">      0</td><td><a href="Users_Sessions_Count.html">Details</a>                                                                                 </td></tr>
+<tr><td>Users With 6 Month Old Passwords                            </td><td style="text-align: right;">      6</td><td><a href="Users_6MoOldPasswords.html">Details</a> - <a href="Users_6MoOldPasswords.csv">CSV</a>                                  </td></tr>
+<tr><td>Users With 5 Year Old Passwords                             </td><td style="text-align: right;">      6</td><td><a href="Users_5YrOldPasswords.html">Details</a> - <a href="Users_5YrOldPasswords.csv">CSV</a>                                  </td></tr>
+<tr><td>Users With 10 Year Old Passwords                            </td><td style="text-align: right;">      0</td><td><a href="Users_10YrOldPasswords.html">Details</a> - <a href="Users_10YrOldPasswords.csv">CSV</a>                                </td></tr>
+<tr><td>Users With Userpassword Attribute                           </td><td style="text-align: right;">      0</td><td><a href="Users_userpassword.html">Details</a> - <a href="Users_userpassword.csv">CSV</a>                                        </td></tr>
+<tr><td>User No Kerb Needed                                         </td><td style="text-align: right;">      0</td><td><a href="Users_NoKerbReq.html">Details</a> - <a href="Users_NoKerbReq.csv">CSV</a>                                              </td></tr>
+<tr><td>Users Computer Direct Admin Count                           </td><td style="text-align: right;">      1</td><td><a href="Users_Count_DirectAdminComputers.html">Details</a>                                                                     </td></tr>
+<tr><td>Users Computer InDirect Admin Count                         </td><td style="text-align: right;">      1</td><td><a href="Users_Count_InDirectAdminComputers.html">Details</a>                                                                   </td></tr>
+<tr><td>Users Not Active 6 Months                                   </td><td style="text-align: right;">      1</td><td><a href="UsersNotActive6mo.html">Details</a> - <a href="UsersNotActive6mo.csv">CSV</a>                                          </td></tr>
+<tr><td>Users Not Active 12 Months                                  </td><td style="text-align: right;">      1</td><td><a href="UsersNotActive12mo.html">Details</a> - <a href="UsersNotActive12mo.csv">CSV</a>                                        </td></tr>
+<tr><td>Users Never Active                                          </td><td style="text-align: right;">      1</td><td><a href="Users_NeverActive_Enabled.html">Details</a> - <a href="Users_NeverActive_Enabled.csv">CSV</a>                          </td></tr>
+<tr><td>Users Password Never Expires Exception                      </td><td style="text-align: right;">      2</td><td><a href="Users_NeverExpirePasswords.html">Details</a> - <a href="Users_NeverExpirePasswords.csv">CSV</a>                        </td></tr>
+<tr><td>Hunt - Users with Pass or PW in Description                 </td><td style="text-align: right;">      0</td><td><a href="HuntUsersWithPassInDescription.html">Details</a>                                                                       </td></tr>
+<tr><td>Hunt - Computers with Pass or PW in Description             </td><td style="text-align: right;">      0</td><td><a href="HuntComputersWithPassInDescription.html">Details</a>                                                                   </td></tr>
+<tr><td>Owned Groups                                                </td><td style="text-align: right;">      0</td><td><a href="Owned-Groups.html">Details</a>                                                                                         </td></tr>
+<tr><td>Owned Users                                                 </td><td style="text-align: right;">      1</td><td><a href="Owned-Users.html">Details</a>                                                                                          </td></tr>
+<tr><td>Owned Computers                                             </td><td style="text-align: right;">      0</td><td><a href="Owned-Computers.html">Details</a>                                                                                      </td></tr>
+<tr><td>Owned Users Groups                                          </td><td style="text-align: right;">      9</td><td><a href="Owned-Users-Groups.html">Details</a>                                                                                   </td></tr>
+<tr><td>Owned Computers Groups                                      </td><td style="text-align: right;">      0</td><td><a href="Owned-Computers-Groups.html">Details</a>                                                                               </td></tr>
+<tr><td>Owned Objects                                               </td><td style="text-align: right;">      1</td><td><a href="Owned-Objects.html">Details</a>                                                                                        </td></tr>
+<tr><td>Owned Objects Admin To                                      </td><td style="text-align: right;">      0</td><td><a href="Owned-Objects-AdminTo-Direct.html">Details</a>                                                                         </td></tr>
+<tr><td>Owned Objects Member Of                                     </td><td style="text-align: right;">      3</td><td><a href="Owned-Objects-MemberOf-Direct.html">Details</a>                                                                        </td></tr>
+</tbody>
+</table>
+<hr />
+<br /><tt>Report Title: Full Report Details</tt>
+<br /><tt>Report Date: 2023-09-11</tt>
+<br /><tt>Produced by <a href="https://github.com/PlumHound">PlumHound</a>
+<br /><tt>Special thanks to <a href="https://www.defensiveorigins.com">Defensive Origins</a> and <a href="https://www.blackhillsinfosec.com">Black Hills Information Security</a>
+<br />
+</body></html>

@@ -9,15 +9,11 @@ pip install ldapdomaindump
 
 ### [sudo ldapdomaindump ldaps://$ip -u username -p Passw0rd](#sudo-ldapdomaindump-ldapsip--u-username--p-passw0rd-1)
 
-### 
-```
+### [ldapdomaindump ldaps://$ip -u HTB\\amanda -p Ashare1972](#ldapdomaindump-ldapsip--u-htbamanda--p-ashare1972-1)
 
-```
+### [Common Mistake; "DOMAIN\\username"](#common-mistake-domainusername-1)
 
-### 
-```
-
-```
+-------------------------------------
 
 ### 
 ```
@@ -68,6 +64,40 @@ Misc options:
 
 ### sudo ldapdomaindump ldaps://$ip -u username -p Passw0rd
 But first, create a new directory to save all the output
+```
+
+```
+
+### ldapdomaindump ldaps://$ip -u HTB\\amanda -p Ashare1972
+```
+$ ldapdomaindump ldaps://$ip -u HTB\\amanda -p Ashare1972
+[*] Connecting to host...
+[*] Binding to host
+[+] Bind OK
+[*] Starting domain dump
+[+] Domain dump finished
+```
+
+### 
+```
+$ ls
+domain_computers_by_os.html  domain_computers.json  domain_groups.json  domain_policy.json  domain_trusts.json          domain_users.html
+domain_computers.grep        domain_groups.grep     domain_policy.grep  domain_trusts.grep  domain_users_by_group.html  domain_users.json
+domain_computers.html        domain_groups.html     domain_policy.html  domain_trusts.html  domain_users.grep
+```
+
+### Common Mistake; "DOMAIN\\username"
+Without domain
+Single /; should be double //
+```
+$ ldapdomaindump ldaps://$ip -u amanda -p Ashare1972  
+[!] Username must include a domain, use: DOMAIN\username
+
+$ ldapdomaindump ldaps://$ip -u HTB\amanda -p Ashare1972
+[!] Username must include a domain, use: DOMAIN\username
+```
+
+### 
 ```
 
 ```

@@ -1,0 +1,473 @@
+<HTML><head><style>
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+th,
+td {
+	padding: 10px 15px;
+}
+
+thead {
+	background: #395870;
+	color: #fff;
+}
+
+tbody tr:nth-child(even) {
+	background: #f0f0f2;
+}
+
+td {
+	border-bottom: 1px solid #cecfd5;
+	border-right: 1px solid #cecfd5;
+}
+
+	td:first-child {
+		border-left: 1px solid #cecfd5;
+	}
+
+</style></head><Body>
+<script type="text/javascript">
+ /* 
+table-sort-js
+Author: Lee Wannacott
+Licence: MIT License Copyright (c) 2021 Lee Wannacott 
+GitHub Repository: https://github.com/LeeWannacott/table-sort-js
+
+*/ 
+
+
+function tableSortJs(testingTableSortJS = false, domDocumentWindow = document) {
+  function getHTMLTables() {
+    if (testingTableSortJS === true) {
+      const getTagTable = domDocumentWindow.getElementsByTagName("table");
+      return [getTagTable];
+    } else {
+      const getTagTable = document.getElementsByTagName("table");
+      return [getTagTable];
+    }
+  }
+
+  const [getTagTable] = getHTMLTables();
+  const columnIndexAndTableRow = {};
+  const fileSizeColumnTextAndRow = {};
+  for (let table of getTagTable) {
+    {
+      makeTableSortable(table);
+    }
+  }
+
+  function makeTableSortable(sortableTable) {
+    let createTableHead;
+    let tableBody;
+    if (sortableTable.getElementsByTagName("thead").length === 0) {
+      if (testingTableSortJS === true) {
+        createTableHead = domDocumentWindow.createElement("thead");
+      } else {
+        createTableHead = document.createElement("thead");
+      }
+      createTableHead.appendChild(sortableTable.rows[0]);
+      sortableTable.insertBefore(createTableHead, sortableTable.firstChild);
+      if (sortableTable.querySelectorAll("tbody").length > 1) {
+        tableBody = sortableTable.querySelectorAll("tbody")[1];
+      } else {
+        tableBody = sortableTable.querySelector("tbody");
+      }
+    } else {
+      tableBody = sortableTable.querySelector("tbody");
+    }
+
+    const tableHead = sortableTable.querySelector("thead");
+    const tableHeadHeaders = tableHead.querySelectorAll("th");
+
+    for (let [columnIndex, th] of tableHeadHeaders.entries()) {
+      if (!th.classList.contains("disable-sort")) {
+        th.style.cursor = "pointer";
+        makeEachColumnSortable(th, columnIndex, tableBody, sortableTable);
+      }
+    }
+  }
+
+  function makeEachColumnSortable(th, columnIndex, tableBody, sortableTable) {
+    let desc = th.classList.contains("order-by-desc");
+    let tableArrows = sortableTable.classList.contains("table-arrows");
+    const arrowUp = " ▲";
+    const arrowDown = " ▼";
+
+    if (desc) {
+      th.insertAdjacentText("beforeend", arrowDown);
+    } else {
+      th.insertAdjacentText("beforeend", arrowUp);
+    }
+
+    function sortDataAttributes(tableRows, columnData) {
+      for (let [i, tr] of tableRows.entries()) {
+        const dataAttributeTd = tr.querySelectorAll("td").item(columnIndex)
+          .dataset.sort;
+        columnData.push(`${dataAttributeTd}#${i}`);
+        columnIndexAndTableRow[columnData[i]] = tr.innerHTML;
+      }
+    }
+
+    function sortFileSize(tableRows, columnData) {
+      const numberWithUnitType =
+        /[.0-9]+(\s?B|\s?KB|\s?KiB|\s?MB|\s?MiB|\s?GB|\s?GiB|T\s?B|\s?TiB)/i;
+      const unitType =
+        /(\s?B|\s?KB|\s?KiB|\s?MB|\s?MiB|\s?GB|G\s?iB|\s?TB|\s?TiB)/i;
+      const fileSizes = {
+        Kibibyte: 1024,
+        Mebibyte: 1.049e6,
+        Gibibyte: 1.074e9,
+        Tebibyte: 1.1e12,
+        Pebibyte: 1.126e15,
+        Kilobyte: 1000,
+        Megabyte: 1e6,
+        Gigabyte: 1e9,
+        Terabyte: 1e12,
+      };
+      function removeUnitTypeConvertToBytes(fileSizeTd, _replace) {
+        fileSizeTd = fileSizeTd.replace(unitType, "");
+        fileSizeTd = fileSizeTd.replace(
+          fileSizeTd,
+          fileSizeTd * fileSizes[_replace]
+        );
+        return fileSizeTd;
+      }
+      for (let [i, tr] of tableRows.entries()) {
+        let fileSizeTd = tr
+          .querySelectorAll("td")
+          .item(columnIndex).textContent;
+        if (fileSizeTd.match(numberWithUnitType)) {
+          if (fileSizeTd.match(/\s?KB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Kilobyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?KiB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Kibibyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?MB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Megabyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?MiB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Mebibyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?GB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Gigabyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?GiB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Gibibyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?TB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Terabyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?TiB/i)) {
+            fileSizeTd = removeUnitTypeConvertToBytes(fileSizeTd, "Tebibyte");
+            columnData.push(`${fileSizeTd}#${i}`);
+          } else if (fileSizeTd.match(/\s?B/i)) {
+            fileSizeTd = fileSizeTd.replace(unitType, "");
+            columnData.push(`${fileSizeTd}#${i}`);
+          }
+        } else {
+          columnData.push(`!X!Y!Z!#${i}`);
+        }
+      }
+    }
+
+    let timesClickedColumn = 0;
+    let columnIndexesClicked = [];
+
+    function rememberSort(timesClickedColumn, columnIndexesClicked) {
+      columnIndexesClicked.push(columnIndex);
+      if (timesClickedColumn === 1 && columnIndexesClicked.length > 1) {
+        const lastColumnClicked =
+          columnIndexesClicked[columnIndexesClicked.length - 1];
+        const secondLastColumnClicked =
+          columnIndexesClicked[columnIndexesClicked.length - 2];
+        if (lastColumnClicked !== secondLastColumnClicked) {
+          timesClickedColumn = 0;
+          columnIndexesClicked.shift();
+        }
+      }
+    }
+
+    function getTableData(tableRows, columnData, isFileSize, isDataAttribute) {
+      for (let [i, tr] of tableRows.entries()) {
+        // inner text for column we click on
+        let tdTextContent = tr
+          .querySelectorAll("td")
+          .item(columnIndex).textContent;
+        if (tdTextContent.length === 0) {
+          tdTextContent = "";
+        }
+        if (tdTextContent.trim() !== "") {
+          if (isFileSize) {
+            fileSizeColumnTextAndRow[columnData[i]] = tr.innerHTML;
+          }
+          if (!isFileSize && !isDataAttribute) {
+            columnData.push(`${tdTextContent}#${i}`);
+            columnIndexAndTableRow[`${tdTextContent}#${i}`] = tr.innerHTML;
+          }
+        } else {
+          // Fill in blank table cells dict key with filler value.
+          columnData.push(`!X!Y!Z!#${i}`);
+          columnIndexAndTableRow[`!X!Y!Z!#${i}`] = tr.innerHTML;
+        }
+      }
+
+      function naturalSortAescending(a, b) {
+        if (a.includes("X!Y!Z!#")) {
+          return 1;
+        } else if (b.includes("X!Y!Z!#")) {
+          return -1;
+        } else {
+          return a.localeCompare(
+            b,
+            navigator.languages[0] || navigator.language,
+            { numeric: true, ignorePunctuation: true }
+          );
+        }
+      }
+
+      function naturalSortDescending(a, b) {
+        return naturalSortAescending(b, a);
+      }
+
+      function clearArrows(arrowUp = "▲", arrowDown = "▼") {
+        th.innerText = th.innerText.replace(arrowUp, "");
+        th.innerText = th.innerText.replace(arrowDown, "");
+      }
+
+      // Sort naturally; default aescending unless th contains 'order-by-desc'
+      // as className.
+      if (columnData[0] === undefined) {
+        return;
+      }
+
+      if (timesClickedColumn === 1) {
+        if (desc) {
+          if (tableArrows) {
+            clearArrows(arrowUp, arrowDown);
+            th.insertAdjacentText("beforeend", arrowDown);
+          }
+          columnData.sort(naturalSortDescending, {
+            numeric: true,
+            ignorePunctuation: true,
+          });
+        } else {
+          if (tableArrows) {
+            clearArrows(arrowUp, arrowDown);
+            th.insertAdjacentText("beforeend", arrowUp);
+          }
+          columnData.sort(naturalSortAescending);
+        }
+      } else if (timesClickedColumn === 2) {
+        timesClickedColumn = 0;
+        if (desc) {
+          if (tableArrows) {
+            clearArrows(arrowUp, arrowDown);
+            th.insertAdjacentText("beforeend", arrowUp);
+          }
+          columnData.sort(naturalSortAescending, {
+            numeric: true,
+            ignorePunctuation: true,
+          });
+        } else {
+          if (tableArrows) {
+            clearArrows(arrowUp, arrowDown);
+            th.insertAdjacentText("beforeend", arrowDown);
+          }
+          columnData.sort(naturalSortDescending);
+        }
+      }
+    }
+
+    function updateTable(tableRows, columnData, isFileSize) {
+      for (let [i, tr] of tableRows.entries()) {
+        if (isFileSize) {
+          tr.innerHTML = fileSizeColumnTextAndRow[columnData[i]];
+          let fileSizeInBytesHTML = tr
+            .querySelectorAll("td")
+            .item(columnIndex).innerHTML;
+          let fileSizeInBytesText = tr
+            .querySelectorAll("td")
+            .item(columnIndex).textContent;
+          const fileSizes = {
+            Kibibyte: 1024,
+            Mebibyte: 1.049e6,
+            Gibibyte: 1.074e9,
+            Tebibyte: 1.1e12,
+            Pebibyte: 1.126e15,
+          };
+          // Remove the unique identifyer for duplicate values(#number).
+          columnData[i] = columnData[i].replace(/#[0-9]*/, "");
+          if (columnData[i] < fileSizes.Kibibyte) {
+            fileSizeInBytesHTML = fileSizeInBytesHTML.replace(
+              fileSizeInBytesText,
+              `${parseFloat(columnData[i]).toFixed(2)} B`
+            );
+          } else if (
+            columnData[i] >= fileSizes.Kibibyte &&
+            columnData[i] < fileSizes.Mebibyte
+          ) {
+            fileSizeInBytesHTML = fileSizeInBytesHTML.replace(
+              fileSizeInBytesText,
+              `${(columnData[i] / fileSizes.Kibibyte).toFixed(2)} KiB`
+            );
+          } else if (
+            columnData[i] >= fileSizes.Mebibyte &&
+            columnData[i] < fileSizes.Gibibyte
+          ) {
+            fileSizeInBytesHTML = fileSizeInBytesHTML.replace(
+              fileSizeInBytesText,
+              `${(columnData[i] / fileSizes.Mebibyte).toFixed(2)} MiB`
+            );
+          } else if (
+            columnData[i] >= fileSizes.Gibibyte &&
+            columnData[i] < fileSizes.Tebibyte
+          ) {
+            fileSizeInBytesHTML = fileSizeInBytesHTML.replace(
+              fileSizeInBytesText,
+              `${(columnData[i] / fileSizes.Gibibyte).toFixed(2)} GiB`
+            );
+          } else if (
+            columnData[i] >= fileSizes.Tebibyte &&
+            columnData[i] < fileSizes.Pebibyte
+          ) {
+            fileSizeInBytesHTML = fileSizeInBytesHTML.replace(
+              fileSizeInBytesText,
+              `${(columnData[i] / fileSizes.Tebibyte).toFixed(2)} TiB`
+            );
+          } else {
+            fileSizeInBytesHTML = fileSizeInBytesHTML.replace(
+              fileSizeInBytesText,
+              "NaN"
+            );
+          }
+          tr.querySelectorAll("td").item(columnIndex).innerHTML =
+            fileSizeInBytesHTML;
+        } else if (!isFileSize) {
+          tr.innerHTML = columnIndexAndTableRow[columnData[i]];
+        }
+      }
+    }
+
+    th.addEventListener("click", function () {
+      const columnData = [];
+      // To make it work even if there is a tr with display: none; in the table, only the tr that is currently displayed is subject to sorting.
+      const visibleTableRows = Array.prototype.filter.call(
+        tableBody.querySelectorAll("tr"),
+        (tr) => {
+          return tr.style.display !== "none";
+        }
+      );
+
+      let isDataAttribute = th.classList.contains("data-sort");
+      // Check if using data-sort attribute; if so sort by value of data-sort
+      // attribute.
+      if (isDataAttribute) {
+        sortDataAttributes(visibleTableRows, columnData);
+      }
+
+      let isFileSize = th.classList.contains("file-size");
+      // Handle filesize sorting (e.g KB, MB, GB, TB) - Turns data into KiB.
+      if (isFileSize) {
+        sortFileSize(visibleTableRows, columnData);
+      }
+
+      // Checking if user has clicked different column from the first column if
+      // yes reset times clicked.
+      let isRememberSort = sortableTable.classList.contains("remember-sort");
+      if (!isRememberSort) {
+        rememberSort(timesClickedColumn, columnIndexesClicked);
+      }
+
+      timesClickedColumn += 1;
+
+      getTableData(visibleTableRows, columnData, isFileSize, isDataAttribute);
+      updateTable(visibleTableRows, columnData, isFileSize);
+    });
+  }
+}
+
+if (
+  document.readyState === "complete" ||
+  document.readyState === "interactive"
+) {
+  tableSortJs();
+} else if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", tableSortJs, false);
+}
+if (typeof module == "object") {
+  module.exports = tableSortJs;
+}
+            </script>
+<h1>Domain Groups</h1>
+<tt>Report Date: 2023-09-11 23:36:53</tt>
+<hr />
+<table>
+<thead>
+<tr><th>Name                                             </th><th>HighValue  </th><th>Description                                                                                                                                                                                                                                                                                                                                                                       </th><th>AdminCount  </th></tr>
+</thead>
+<tbody>
+<tr><td>DOMAIN ADMINS@HTB.LOCAL                          </td><td>True       </td><td>Designated administrators of the domain                                                                                                                                                                                                                                                                                                                                           </td><td>True        </td></tr>
+<tr><td>ADMINISTRATORS@HTB.LOCAL                         </td><td>True       </td><td>Administrators have complete and unrestricted access to the computer/domain                                                                                                                                                                                                                                                                                                       </td><td>True        </td></tr>
+<tr><td>ENTERPRISE ADMINS@HTB.LOCAL                      </td><td>True       </td><td>Designated administrators of the enterprise                                                                                                                                                                                                                                                                                                                                       </td><td>True        </td></tr>
+<tr><td>RAS AND IAS SERVERS@HTB.LOCAL                    </td><td>False      </td><td>Servers in this group can access remote access properties of users                                                                                                                                                                                                                                                                                                                </td><td>False       </td></tr>
+<tr><td>SCHEMA ADMINS@HTB.LOCAL                          </td><td>False      </td><td>Designated administrators of the schema                                                                                                                                                                                                                                                                                                                                           </td><td>True        </td></tr>
+<tr><td>READ-ONLY DOMAIN CONTROLLERS@HTB.LOCAL           </td><td>False      </td><td>Members of this group are Read-Only Domain Controllers in the domain                                                                                                                                                                                                                                                                                                              </td><td>True        </td></tr>
+<tr><td>PROTECTED USERS@HTB.LOCAL                        </td><td>False      </td><td>Members of this group are afforded additional protections against authentication security threats. See http://go.microsoft.com/fwlink/?LinkId=298939 for more information.                                                                                                                                                                                                        </td><td>False       </td></tr>
+<tr><td>KEY ADMINS@HTB.LOCAL                             </td><td>False      </td><td>Members of this group can perform administrative actions on key objects within the domain.                                                                                                                                                                                                                                                                                        </td><td>False       </td></tr>
+<tr><td>GROUP POLICY CREATOR OWNERS@HTB.LOCAL            </td><td>True       </td><td>Members in this group can modify group policy for the domain                                                                                                                                                                                                                                                                                                                      </td><td>False       </td></tr>
+<tr><td>ENTERPRISE READ-ONLY DOMAIN CONTROLLERS@HTB.LOCAL</td><td>False      </td><td>Members of this group are Read-Only Domain Controllers in the enterprise                                                                                                                                                                                                                                                                                                          </td><td>False       </td></tr>
+<tr><td>ENTERPRISE KEY ADMINS@HTB.LOCAL                  </td><td>False      </td><td>Members of this group can perform administrative actions on key objects within the forest.                                                                                                                                                                                                                                                                                        </td><td>False       </td></tr>
+<tr><td>DOMAIN USERS@HTB.LOCAL                           </td><td>False      </td><td>All domain users                                                                                                                                                                                                                                                                                                                                                                  </td><td>False       </td></tr>
+<tr><td>DOMAIN GUESTS@HTB.LOCAL                          </td><td>False      </td><td>All domain guests                                                                                                                                                                                                                                                                                                                                                                 </td><td>False       </td></tr>
+<tr><td>DOMAIN CONTROLLERS@HTB.LOCAL                     </td><td>True       </td><td>All domain controllers in the domain                                                                                                                                                                                                                                                                                                                                              </td><td>True        </td></tr>
+<tr><td>DOMAIN COMPUTERS@HTB.LOCAL                       </td><td>False      </td><td>All workstations and servers joined to the domain                                                                                                                                                                                                                                                                                                                                 </td><td>False       </td></tr>
+<tr><td>DNSUPDATEPROXY@HTB.LOCAL                         </td><td>False      </td><td>DNS clients who are permitted to perform dynamic updates on behalf of some other clients (such as DHCP servers).                                                                                                                                                                                                                                                                  </td><td>False       </td></tr>
+<tr><td>DNSADMINS@HTB.LOCAL                              </td><td>False      </td><td>DNS Administrators Group                                                                                                                                                                                                                                                                                                                                                          </td><td>False       </td></tr>
+<tr><td>DENIED RODC PASSWORD REPLICATION GROUP@HTB.LOCAL </td><td>False      </td><td>Members in this group cannot have their passwords replicated to any read-only domain controllers in the domain                                                                                                                                                                                                                                                                    </td><td>False       </td></tr>
+<tr><td>CLONEABLE DOMAIN CONTROLLERS@HTB.LOCAL           </td><td>False      </td><td>Members of this group that are domain controllers may be cloned.                                                                                                                                                                                                                                                                                                                  </td><td>False       </td></tr>
+<tr><td>CERT PUBLISHERS@HTB.LOCAL                        </td><td>False      </td><td>Members of this group are permitted to publish certificates to the directory                                                                                                                                                                                                                                                                                                      </td><td>False       </td></tr>
+<tr><td>ALLOWED RODC PASSWORD REPLICATION GROUP@HTB.LOCAL</td><td>False      </td><td>Members in this group can have their passwords replicated to all read-only domain controllers in the domain                                                                                                                                                                                                                                                                       </td><td>False       </td></tr>
+<tr><td>ENTERPRISE DOMAIN CONTROLLERS@HTB.LOCAL          </td><td>False      </td><td>                                                                                                                                                                                                                                                                                                                                                                                  </td><td>            </td></tr>
+<tr><td>ACCOUNT OPERATORS@HTB.LOCAL                      </td><td>True       </td><td>Members can administer domain user and group accounts                                                                                                                                                                                                                                                                                                                             </td><td>True        </td></tr>
+<tr><td>TERMINAL SERVER LICENSE SERVERS@HTB.LOCAL        </td><td>False      </td><td>Members of this group can update user accounts in Active Directory with information about license issuance, for the purpose of tracking and reporting TS Per User CAL usage                                                                                                                                                                                                       </td><td>False       </td></tr>
+<tr><td>INCOMING FOREST TRUST BUILDERS@HTB.LOCAL         </td><td>False      </td><td>Members of this group can create incoming, one-way trusts to this forest                                                                                                                                                                                                                                                                                                          </td><td>False       </td></tr>
+<tr><td>WINDOWS AUTHORIZATION ACCESS GROUP@HTB.LOCAL     </td><td>False      </td><td>Members of this group have access to the computed tokenGroupsGlobalAndUniversal attribute on User objects                                                                                                                                                                                                                                                                         </td><td>False       </td></tr>
+<tr><td>PRE-WINDOWS 2000 COMPATIBLE ACCESS@HTB.LOCAL     </td><td>False      </td><td>A backward compatibility group which allows read access on all users and groups in the domain                                                                                                                                                                                                                                                                                     </td><td>False       </td></tr>
+<tr><td>SERVER OPERATORS@HTB.LOCAL                       </td><td>True       </td><td>Members can administer domain servers                                                                                                                                                                                                                                                                                                                                             </td><td>True        </td></tr>
+<tr><td>EVERYONE@HTB.LOCAL                               </td><td>False      </td><td>                                                                                                                                                                                                                                                                                                                                                                                  </td><td>            </td></tr>
+<tr><td>AUTHENTICATED USERS@HTB.LOCAL                    </td><td>False      </td><td>                                                                                                                                                                                                                                                                                                                                                                                  </td><td>            </td></tr>
+<tr><td>INTERACTIVE@HTB.LOCAL                            </td><td>False      </td><td>                                                                                                                                                                                                                                                                                                                                                                                  </td><td>            </td></tr>
+<tr><td>SYSTEM MANAGED ACCOUNTS GROUP@HTB.LOCAL          </td><td>False      </td><td>Members of this group are managed by the system.                                                                                                                                                                                                                                                                                                                                  </td><td>False       </td></tr>
+<tr><td>STORAGE REPLICA ADMINISTRATORS@HTB.LOCAL         </td><td>False      </td><td>Members of this group have complete and unrestricted access to all features of Storage Replica.                                                                                                                                                                                                                                                                                   </td><td>False       </td></tr>
+<tr><td>ACCESS CONTROL ASSISTANCE OPERATORS@HTB.LOCAL    </td><td>False      </td><td>Members of this group can remotely query authorization attributes and permissions for resources on this computer.                                                                                                                                                                                                                                                                 </td><td>False       </td></tr>
+<tr><td>REMOTE MANAGEMENT USERS@HTB.LOCAL                </td><td>False      </td><td>Members of this group can access WMI resources over management protocols (such as WS-Management via the Windows Remote Management service). This applies only to WMI namespaces that grant access to the user.                                                                                                                                                                    </td><td>False       </td></tr>
+<tr><td>HYPER-V ADMINISTRATORS@HTB.LOCAL                 </td><td>False      </td><td>Members of this group have complete and unrestricted access to all features of Hyper-V.                                                                                                                                                                                                                                                                                           </td><td>False       </td></tr>
+<tr><td>RDS MANAGEMENT SERVERS@HTB.LOCAL                 </td><td>False      </td><td>Servers in this group can perform routine administrative actions on servers running Remote Desktop Services. This group needs to be populated on all servers in a Remote Desktop Services deployment. The servers running the RDS Central Management service must be included in this group.                                                                                      </td><td>False       </td></tr>
+<tr><td>RDS ENDPOINT SERVERS@HTB.LOCAL                   </td><td>False      </td><td>Servers in this group run virtual machines and host sessions where users RemoteApp programs and personal virtual desktops run. This group needs to be populated on servers running RD Connection Broker. RD Session Host servers and RD Virtualization Host servers used in the deployment need to be in this group.                                                              </td><td>False       </td></tr>
+<tr><td>RDS REMOTE ACCESS SERVERS@HTB.LOCAL              </td><td>False      </td><td>Servers in this group enable users of RemoteApp programs and personal virtual desktops access to these resources. In Internet-facing deployments, these servers are typically deployed in an edge network. This group needs to be populated on servers running RD Connection Broker. RD Gateway servers and RD Web Access servers used in the deployment need to be in this group.</td><td>False       </td></tr>
+<tr><td>CERTIFICATE SERVICE DCOM ACCESS@HTB.LOCAL        </td><td>False      </td><td>Members of this group are allowed to connect to Certification Authorities in the enterprise                                                                                                                                                                                                                                                                                       </td><td>False       </td></tr>
+<tr><td>CRYPTOGRAPHIC OPERATORS@HTB.LOCAL                </td><td>False      </td><td>Members are authorized to perform cryptographic operations.                                                                                                                                                                                                                                                                                                                       </td><td>False       </td></tr>
+<tr><td>EVENT LOG READERS@HTB.LOCAL                      </td><td>False      </td><td>Members of this group can read event logs from local machine                                                                                                                                                                                                                                                                                                                      </td><td>False       </td></tr>
+<tr><td>IIS_IUSRS@HTB.LOCAL                              </td><td>False      </td><td>Built-in group used by Internet Information Services.                                                                                                                                                                                                                                                                                                                             </td><td>False       </td></tr>
+<tr><td>PERFORMANCE LOG USERS@HTB.LOCAL                  </td><td>False      </td><td>Members of this group may schedule logging of performance counters, enable trace providers, and collect event traces both locally and via remote access to this computer                                                                                                                                                                                                          </td><td>False       </td></tr>
+<tr><td>DISTRIBUTED COM USERS@HTB.LOCAL                  </td><td>False      </td><td>Members are allowed to launch, activate and use Distributed COM objects on this machine.                                                                                                                                                                                                                                                                                          </td><td>False       </td></tr>
+<tr><td>PERFORMANCE MONITOR USERS@HTB.LOCAL              </td><td>False      </td><td>Members of this group can access performance counter data locally and remotely                                                                                                                                                                                                                                                                                                    </td><td>False       </td></tr>
+<tr><td>REMOTE DESKTOP USERS@HTB.LOCAL                   </td><td>False      </td><td>Members in this group are granted the right to logon remotely                                                                                                                                                                                                                                                                                                                     </td><td>False       </td></tr>
+<tr><td>NETWORK CONFIGURATION OPERATORS@HTB.LOCAL        </td><td>False      </td><td>Members in this group can have some administrative privileges to manage configuration of networking features                                                                                                                                                                                                                                                                      </td><td>False       </td></tr>
+<tr><td>REPLICATOR@HTB.LOCAL                             </td><td>False      </td><td>Supports file replication in a domain                                                                                                                                                                                                                                                                                                                                             </td><td>True        </td></tr>
+<tr><td>BACKUP OPERATORS@HTB.LOCAL                       </td><td>True       </td><td>Backup Operators can override security restrictions for the sole purpose of backing up or restoring files                                                                                                                                                                                                                                                                         </td><td>True        </td></tr>
+<tr><td>PRINT OPERATORS@HTB.LOCAL                        </td><td>True       </td><td>Members can administer printers installed on domain controllers                                                                                                                                                                                                                                                                                                                   </td><td>True        </td></tr>
+<tr><td>USERS@HTB.LOCAL                                  </td><td>False      </td><td>Users are prevented from making accidental or intentional system-wide changes and can run most applications                                                                                                                                                                                                                                                                       </td><td>False       </td></tr>
+<tr><td>GUESTS@HTB.LOCAL                                 </td><td>False      </td><td>Guests have the same access as members of the Users group by default, except for the Guest account which is further restricted                                                                                                                                                                                                                                                    </td><td>False       </td></tr>
+</tbody>
+</table><br><table width=50%><thead><tr><th>Cypher Query</th></tr></thead><tr><td><tt>Match (n:Group) return n.name as Name, n.highvalue as HighValue, n.description as Description, n.admincount as AdminCount</tt></td></tr></table>
+<hr />
+<br /><tt>Report Title: Domain Groups</tt>
+<br /><tt>Report Date: 2023-09-11 23:36:53</tt>
+<br /><tt>Produced by <a href="https://github.com/PlumHound">PlumHound</a>
+<br /><tt>Special thanks to <a href="https://www.defensiveorigins.com">Defensive Origins</a> and <a href="https://www.blackhillsinfosec.com">Black Hills Information Security</a>
+<br />
+</body></html>

@@ -1,17 +1,28 @@
 # 
 
 ### TLDR
+"--example-hashes" is Alias of "--hash-info"
 ```
+hashcat --hash-info --mach | grep NTLMv2
 hashcat --example-hashes | grep krb5asrep
 hashcat --example-hashes --mach | grep krb5asrep
 ```
-### 
+
+### [hashcat --hash-info --mach | grep NTLMv2](#hashcat---hash-info---mach--grep-ntlmv2-1)
+### [hashcat --example-hashes --mach | grep NTLMv2](#hashcat---example-hashes---mach--grep-ntlmv2-1)
+
+### hashcat --hash-info --mach | grep NTLMv2
+```
+$ hashcat --hash-info --mach | grep NTLMv2
+ }, "5600": { "name": "NetNTLMv2", "category": "Network Protocol", "slow_hash": false, "password_len_min": 0, "password_len_max": 256, "is_salted": true, "salt_type": "embedded", "salt_len_min": 0, "salt_len_max": 256, "kernel_type": [ "pure", "optimized" ], "example_hash_format": "plain", "example_hash": "0UL5G37JOI0SX::6VB1IS0KA74:ebe1afa18b7fbfa6:aab8bf8675658dd2a939458a1077ba08:010100000000000031c8aa092510945398b9f7b7dde1a9fb00000000f7876f2b04b700", "example_pass": "hashcat", "benchmark_mask": "?b?b?b?b?b?b?b", "benchmark_charset1": "N/A", "autodetect_enabled": true, "self_test_enabled": true, "potfile_enabled": true, "custom_plugin": false, "plaintext_encoding": [ "ASCII", "HEX" ]
+ }, "27100": { "name": "NetNTLMv2 (NT)", "category": "Network Protocol", "slow_hash": true, "password_len_min": 32, "password_len_max": 32, "is_salted": true, "salt_type": "embedded", "salt_len_min": 0, "salt_len_max": 256, "kernel_type": [ "pure" ], "example_hash_format": "plain", "example_hash": "0UL5G37JOI0SX::6VB1IS0KA74:ebe1afa18b7fbfa6:aab8bf8675658dd2a939458a1077ba08:010100000000000031c8aa092510945398b9f7b7dde1a9fb00000000f7876f2b04b700", "example_pass": "b4b9b02e6f09a9bd760f388b67351e2b", "benchmark_mask": "?a?a?a?a?a?a?a?axxxxxxxxxxxxxxxx", "benchmark_charset1": "N/A", "autodetect_enabled": false, "self_test_enabled": true, "potfile_enabled": true, "custom_plugin": false, "plaintext_encoding": [ "ASCII", "HEX" ]
 ```
 
+### hashcat --example-hashes --mach | grep NTLMv2
 ```
-### 
-```
-
+$ hashcat --example-hashes --mach | grep NTLMv2
+ }, "5600": { "name": "NetNTLMv2", "category": "Network Protocol", "slow_hash": false, "password_len_min": 0, "password_len_max": 256, "is_salted": true, "salt_type": "embedded", "salt_len_min": 0, "salt_len_max": 256, "kernel_type": [ "pure", "optimized" ], "example_hash_format": "plain", "example_hash": "0UL5G37JOI0SX::6VB1IS0KA74:ebe1afa18b7fbfa6:aab8bf8675658dd2a939458a1077ba08:010100000000000031c8aa092510945398b9f7b7dde1a9fb00000000f7876f2b04b700", "example_pass": "hashcat", "benchmark_mask": "?b?b?b?b?b?b?b", "benchmark_charset1": "N/A", "autodetect_enabled": true, "self_test_enabled": true, "potfile_enabled": true, "custom_plugin": false, "plaintext_encoding": [ "ASCII", "HEX" ]
+ }, "27100": { "name": "NetNTLMv2 (NT)", "category": "Network Protocol", "slow_hash": true, "password_len_min": 32, "password_len_max": 32, "is_salted": true, "salt_type": "embedded", "salt_len_min": 0, "salt_len_max": 256, "kernel_type": [ "pure" ], "example_hash_format": "plain", "example_hash": "0UL5G37JOI0SX::6VB1IS0KA74:ebe1afa18b7fbfa6:aab8bf8675658dd2a939458a1077ba08:010100000000000031c8aa092510945398b9f7b7dde1a9fb00000000f7876f2b04b700", "example_pass": "b4b9b02e6f09a9bd760f388b67351e2b", "benchmark_mask": "?a?a?a?a?a?a?a?axxxxxxxxxxxxxxxx", "benchmark_charset1": "N/A", "autodetect_enabled": false, "self_test_enabled": true, "potfile_enabled": true, "custom_plugin": false, "plaintext_encoding": [ "ASCII", "HEX" ]
 ```
 ### 
 ```

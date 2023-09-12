@@ -1,0 +1,10 @@
+Name,HighValue,Description,AdminCount
+DOMAIN ADMINS@HTB.LOCAL,True,Designated administrators of the domain,True
+ADMINISTRATORS@HTB.LOCAL,True,Administrators have complete and unrestricted access to the computer/domain,True
+ENTERPRISE ADMINS@HTB.LOCAL,True,Designated administrators of the enterprise,True
+SCHEMA ADMINS@HTB.LOCAL,False,Designated administrators of the schema,True
+KEY ADMINS@HTB.LOCAL,False,Members of this group can perform administrative actions on key objects within the domain.,False
+ENTERPRISE KEY ADMINS@HTB.LOCAL,False,Members of this group can perform administrative actions on key objects within the forest.,False
+DNSADMINS@HTB.LOCAL,False,DNS Administrators Group,False
+STORAGE REPLICA ADMINISTRATORS@HTB.LOCAL,False,Members of this group have complete and unrestricted access to all features of Storage Replica.,False
+HYPER-V ADMINISTRATORS@HTB.LOCAL,False,Members of this group have complete and unrestricted access to all features of Hyper-V.,False

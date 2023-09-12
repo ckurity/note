@@ -1,0 +1,2 @@
+Hostname,OS,Description,Created,LAPS,Enabled,DN
+SIZZLE.HTB.LOCAL,Windows Server 2016 Standard,,2018-07-02T18:58:36Z,False,True,"CN=SIZZLE,OU=DOMAIN CONTROLLERS,DC=HTB,DC=LOCAL"
