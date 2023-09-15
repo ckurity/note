@@ -1,13 +1,12 @@
 # CTF
 
-touch \
-'2.1 Enumeration without users.md' \
-'2.2 Users found.md' \
-'2.3 Enumeration with users.md' \
-'3. Initial Access.md' \
-'4. Cred 1 - .md' \
-'5. Shell 1 - .md' \
-'6. Exploit.md'
+cp ~/template '2.1 Enumeration without users.md'
+cp ~/template '2.2 Users found.md'
+cp ~/template '2.3 Enumeration with users.md'
+cp ~/template '3. Initial Access.md'
+cp ~/template '4. Cred 1 - .md'
+cp ~/template '5. Shell 1 - .md'
+cp ~/template '6. Exploit.md'
 
 # find /path/to/directory -type f \( -name "file1.txt" -o -name "file2.txt" \)
 ```
