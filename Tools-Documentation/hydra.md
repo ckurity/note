@@ -2,6 +2,9 @@
 [Hydra Common Options](#hydra-common-options)
 [Username:Password](#usernamepassword)
 [Supported Services](#supported-services)
+
+### HTTP
+
 [hydra -U http-get](#hydra--u-http-get) arrangement doesn't matter
 [hydra http-post-form -U](#hydra-http-post-form--u)
 [HYDRA_PROXY_HTTP or HYDRA_PROXY environment variables](#use-hydra_proxy_http-or-hydra_proxy-environment-variables-for-a-proxy-setup)
