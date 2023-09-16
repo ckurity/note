@@ -163,9 +163,8 @@ $ hydra -C creds.txt http-get://10.10.10.95:8080/manager/html:F='Access Denied'
 ```
 
 ### Common Mistakes; variables argument needed for http-post-form
-Syntax: <url>:<form parameters>[:<optional>[:<optional>]:<condition string>
 ```
-$ hydra http-post-form://$ip                                                   
+$ hydra http-post-form://$ip
 Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
 
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-09-15 17:46:05
@@ -174,6 +173,7 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-09-15 17:46:
 ```
 
 ### 
+Syntax: <url>:<form parameters>[:<optional>[:<optional>]:<condition string>
 ```
 
 ```
