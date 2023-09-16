@@ -1,4 +1,4 @@
-[Basic](#basic)
+`[Basic](#basic)
 [Hydra Common Options](#hydra-common-options)
 [Username:Password](#usernamepassword)
 [Supported Services](#supported-services)
@@ -31,6 +31,12 @@ hydra -C creds.txt http-get://10.10.10.95:8080/manager/html:F='Access Denied'
 -C FILE   colon separated "login:pass" format, instead of -L/-P options
 
 -U        service module usage details
+
+-v   verbose mode
+-V   show login+pass for each attempt
+-d   debug mode
+
+-f / -F   exit when a login/pass pair is found (-M: -f per host, -F global)
 ```
 
 ### Username:Password
