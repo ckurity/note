@@ -15,6 +15,13 @@ git add . ; git status ; git commit -m newUpdate ; git push
 --get                 get value: name [value-pattern]
 ```
 
+### Initial Config
+```
+git config --global user.email 'ckurity'
+git config --global user.name 'ckurity'
+git add . ; git status ; git commit -m newUpdate ; git push
+```
+
 ## 14400 seconds / 4 hours
 ```
 $ git config -l | grep cred
@@ -53,6 +60,8 @@ git config --global credential.helper cache
 ```
 git config --global credential.helper 'cache --timeout=<seconds>'
 ```
+
+### 14400 seconds = 240 minutes = 4 hours
 ```
 git config --global credential.helper 'cache --timeout=14400'
 ```
