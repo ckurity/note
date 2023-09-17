@@ -11,13 +11,19 @@ d=$(cat ~/domain.txt)
 myip=$(cat ~/myip.txt)
 
 CTF=htb
-BOX=Blackfield
+TRACK=_ActiveDirectory101
+BOX=Active
 
 alias 6='cd ~/xyz/note/Sample/'
 # alias 7 see below for zsh, but bash can't use number as function's name
 alias 8='cd ~/xyz/note/Tools-Binary'
-alias 9="cd ~/xyz/labs/$CTF/$BOX"
+alias 9="cd ~/xyz/labs/$CTF/$TRACK/$BOX"
 alias 90='cd ~/xyz/note/'
+
+0(){
+    echo ... MENU ...
+    9   cd CTF Box
+}
 
 7(){
     tmux new-session -s "$CTF" \; set -g mouse on \; \
