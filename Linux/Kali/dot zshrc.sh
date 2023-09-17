@@ -1,4 +1,4 @@
-# ~/.zshrc
+# code ~/.zshrc
 ls -lh ~/ip.txt ~/port.txt ~/domain.txt ~/myip.txt
 touch ~/ip.txt ~/port.txt ~/domain.txt ~/myip.txt
 
@@ -25,10 +25,9 @@ alias 90='cd ~/xyz/note/'
             send-keys 'clear;cd ~/xyz/labs/; x; keepassxc &' C-m \; \
             send-keys 'git pull' \; \
         new-window -n 'git push' \; \
-            split-window -h \; split-window -h \; select-layout even-horizontal \; \
+            split-window -h \; select-layout even-horizontal \; \
             send-keys -t 0 'cd ~/xyz/l*' C-m \; \
             send-keys -t 1 'cd ~/xyz/n*' C-m \; \
-            send-keys -t 2 'cd ~/xyz/t*' C-m \; \
             setw synchronize-panes on \; send-keys 'clear' C-m \; \
             send-keys 'git add . ; git status ; git commit -m newUpdate ; git push' \; \
         new-window -n 'IP/VPN' \; \
