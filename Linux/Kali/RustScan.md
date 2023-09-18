@@ -1,7 +1,7 @@
 ### TL;DR
 ```
-rustscan -a $ip -- -Pn -A -oN nmap-A_$(date +%y%m%d-%H%M)
-grep -P '^PORT|^\d+/' nmap* |sed 's/syn-ack//' |tee nmap-sV
+rustscan -a $ip -- -Pn -A -oN 1_nmap-A_$(date +%y%m%d-%H%M)
+grep -P '^PORT|^\d+/' *nmap* |sed 's/syn-ack//' |tee 1_nmap-sV
 
 rustscan -a $ip -- -Pn -A -oN nmap-A_$(date +%y%m%d-%H%M)
 ```
