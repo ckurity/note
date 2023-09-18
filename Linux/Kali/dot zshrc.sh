@@ -14,8 +14,10 @@ CTF=htb
 TRACK=_ActiveDirectory101
 BOX=Active
 
-alias 6='cd ~/xyz/note/Sample/'
-# alias 7 see below for zsh, but bash can't use number as function's name
+alias 00='code ~/.zshrc'
+alias 01='code ~/.zsh_aliases'
+# alias 6 see below for zsh, but bash can't use number as function's name
+alias 7='cd ~/xyz/note/Sample/'
 alias 8='cd ~/xyz/note/Tools-Binary'
 alias 9="cd ~/xyz/labs/$CTF/$TRACK/$BOX"
 alias 90='cd ~/xyz/note/'
@@ -23,6 +25,10 @@ alias 90='cd ~/xyz/note/'
 0(){
     echo ... MENU ...
     9   cd CTF Box
+}
+
+1(){
+    ip route | awk '/eth0 p/ {print $NF}'; curl ifconfig.me
 }
 
 7(){
@@ -71,4 +77,13 @@ alias 90='cd ~/xyz/note/'
     new-window -n "$BOX" \; \
             send-keys "clear;cd ~/xyz/labs/$CTF/$BOX" C-m \; \
     select-window -t 1
+}
+
+te(){
+    cp ~/xyz/note/Template '2.1 Enumeration without users.md'
+    cp ~/xyz/note/Template '2.2 Users found.md'
+    cp ~/xyz/note/Template '2.3 Enumeration with users.md'
+    cp ~/xyz/note/Template '3. Initial Access.md'
+    cp ~/xyz/note/Template '4. Cred 1 - .md'
+    cp ~/xyz/note/Template '5. Shell 1 - .md'
 }
