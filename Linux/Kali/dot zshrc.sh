@@ -23,12 +23,18 @@ alias 9="cd ~/xyz/labs/$CTF/$TRACK/$BOX"
 alias 90='cd ~/xyz/note/'
 
 0(){
-    echo ... MENU ...
-    9   cd CTF Box
+    echo -n '\n... MENU ...\n'
+    echo -n '------------\n'
+    echo -n '00   code ~/.zshrc\n'
+    echo -n '01   code ~/.zsh_aliases\n'
+    echo -n ' 6   tmux\n'
+    echo -n ' 7   cd Sample\n'
+    echo -n ' 8   cd Tools-Binary\n'
+    echo -n ' 9   cd CTF Box\n'
 }
 
 1(){
-    ip route | awk '/eth0 p/ {print $NF}'; curl ifconfig.me
+    hostname -I | awk '{print $1}'; curl ifconfig.me
 }
 
 7(){
