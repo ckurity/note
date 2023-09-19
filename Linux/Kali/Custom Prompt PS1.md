@@ -4,10 +4,19 @@
 ```
 
 ```
+[Example `ckurity@box:~$`](#example-ps1bfblueckurityboxbfgreen)
+
+### Default; 2 layers
+```
+┌──(kali㉿kali)-[~]
+└─$ echo $PS1
+%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}(%B%F{%(#.red.blue)}%n㉿%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset}
+```
 
 ### 
 ```
-kali@kali:~$ echo $PS1  
+kali@kali:~$ echo $PS1
 ${debian_chroot:+($debian_chroot)}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))}%B%F{%(#.red.blue)}%n@%m%b%F{reset}:%B%F{%(#.blue.green)}%~%b%F{reset}%(#.#.$)
 ```
 
@@ -35,13 +44,6 @@ So, your prompt will show something like this:
 
 The color of the text will change based on whether the previous command was successful (red for failure, blue or green for success), and the text might be bold in some parts. The active Python virtual environment (if any) will also be displayed.
 
-### 
-```
-$ echo $PS1
-%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}(%B%F{%(#.red.blue)}%n㉿%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
-└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset}
-```
-
 ### PS1='%B%F{blue}%n@%m%b:%F{green}%~$ '
 ```
 Here's what each part does:
@@ -60,7 +62,8 @@ $: Displays the "$" symbol, which is a common indicator for regular users in the
 This prompt will be simple and clear for regular users without any root or sudo indicators.
 ```
 
-### Example
+### Example `PS1='%B%F{blue}ckurity@box%b:%F{green}%~$ '`
+PS1='%B%F{blue}ckurity@box%b:%F{green}%~$ '
 ```
 kali@kali:~$ PS1='%B%F{blue}ckurity@box%b:%F{green}%~$ '
 ckurity@box:~$
