@@ -6,7 +6,7 @@ https://ptestmethod.readthedocs.io/en/latest/cme.html
 
 https://github.com/Porchetta-Industries/CrackMapExec/wiki/SMB-Command-Reference
 
-# Template
+# 
 
 ### TL;DR
 ```
