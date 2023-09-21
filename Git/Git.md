@@ -21,6 +21,9 @@ git config --global user.email 'ckurity'
 git config --global user.name 'ckurity'
 git add . ; git status ; git commit -m newUpdate ; git push
 ```
+-----------------------------------------
+
+# EXAMPLES
 
 ## 14400 seconds / 4 hours
 ```
