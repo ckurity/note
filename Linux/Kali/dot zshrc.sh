@@ -85,6 +85,10 @@ alias 90='cd ~/xyz/note/'
     select-window -t 1
 }
 
+ba(){
+    cp ~/xyz/note/Template .
+}
+
 te(){
     cp ~/xyz/note/Template '2.1 Enumeration without users.md'
     cp ~/xyz/note/Template '2.2 Users found.md'
