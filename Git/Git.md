@@ -1,10 +1,28 @@
-## Check Git configuration
+# GitHub
+
+## Summary
+
+- [GitHub](#github)
+    - [Summary](#summary)
+        - [Check Git Configuration](#check-git-configuration)
+        - [One-liner Push](#one-liner-push)
+        - [git config](#git-config)
+        - [Initial Config](#initial-config)
+        - [divergent branches](#divergent-branches)
+    - [EXAMPLES](#examples)
+        - [14400 seconds / 4 hours](#14400-seconds--240-minutes--4-hours)
+        - [Example](#example)
+        - [Creating a personal access token](#creating-a-personal-access-token)
+    - [Problems](#problems)
+        - [divergent branches](#divergent-branches)
+
+### Check Git Configuration
 ```
 git config -l
 git config --list
 git config --get credential.helper
 ```
-## One-liner
+### One-liner Push
 ```
 git add . ; git status ; git commit -m newUpdate ; git push
 ```
@@ -21,6 +39,10 @@ git config --global user.email 'ckurity'
 git config --global user.name 'ckurity'
 git add . ; git status ; git commit -m newUpdate ; git push
 ```
+
+
+
+[Creating a personal access token](#creating-a-personal-access-token-1)
 -----------------------------------------
 
 # EXAMPLES
@@ -74,7 +96,7 @@ git config --global credential.helper 'cache --timeout=1800'
 ```
 Once you've configured credential caching, Git will remember your username and password for the specified duration. During that time, you won't need to re-enter them when performing Git push operations.
 
-# Example
+### Example
 14400 seconds = 4 hours
 ```
 $ git config --global credential.helper 'cache --timeout=14400
@@ -84,6 +106,18 @@ $ git config --get credential.helper
 cache --timeout=14400
 ```
 
+### [Creating a personal access token](https://docs.github.com/en/enterprise-server@3.6/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+
+1. In the upper-right corner of any page, click your profile photo, then click Settings.
+1. In the left sidebar, click  Developer settings.
+1. In the left sidebar, click Personal access tokens.
+1. Click Generate new token.
+1. In the "Note" field, give your token a descriptive name.
+1. To give your token an expiration, select Expiration, then choose a default option or click Custom to enter a date.
+
+## Problems
+
+### divergent branches
 ```
 $ git pull                                             
 hint: You have divergent branches and need to specify how to reconcile them.
