@@ -37,7 +37,7 @@ alias 90='cd ~/xyz/note/'
     hostname -I | awk '{print $1}'; curl ifconfig.me
 }
 
-7(){
+6(){
     tmux new-session -s "$CTF" \; set -g mouse on \; \
         new-window -n 'git pull' \; \
             send-keys 'clear;cd ~/xyz/labs/; x; keepassxc &' C-m \; \
@@ -70,7 +70,7 @@ alias 90='cd ~/xyz/note/'
         select-window -t "$CTF:git pull"
 }
 
-7a(){
+6a(){
     tmux new-session -s "${CTF}1" \; set -g mouse on \; \
     new-window -n "$BOX" \; \
             send-keys "clear;cd ~/xyz/labs/$CTF/$BOX;ls" C-m \; \

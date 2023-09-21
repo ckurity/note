@@ -1,7 +1,8 @@
 # ~/.zsh_aliases
 alias 0='cat ~/menu'
-alias 1='ping google.com'
-alias 2='ping 8.8.8.8'
+# alias 1='ping google.com'
+alias 2='ping google.com'
+alias 21='ping 8.8.8.8'
 alias 3='echo $ip'
 alias 4='ping $ip'
 alias 5='echo > ~/ip.txt $1'
