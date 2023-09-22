@@ -1,9 +1,9 @@
 # CTF
 
 te(){
-    cp ~/template '2.1 Enumeration without users.md'
-    cp ~/template '2.2 Users found.md'
-    cp ~/template '2.3 Enumeration with users.md'
+    cp ~/template '2.1 Enumeration without Users.md'
+    cp ~/template '2.2 Users Found.md'
+    cp ~/template '2.3 Enumeration with Users.md'
     cp ~/template '3. Initial Access.md'
     cp ~/template '4. Cred 1 - .md'
     cp ~/template '5. Shell 1 - .md'
