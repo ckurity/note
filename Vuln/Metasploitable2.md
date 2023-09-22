@@ -6,17 +6,17 @@
 ### :80 = container port
 ```
 docker run --name Metasploitable2 -it tleemcjr/metasploitable2
-docker start 
+```
+
+### -i, --interactive          Attach container's STDIN
+```
+docker start Metasploitable2 -i
+docker start Metasploitable2        # basic
 ```
 
 ### 
 ```
-
-```
-
-### 
-```
-
+docker stop Metasploitable2
 ```
 
 ### 
