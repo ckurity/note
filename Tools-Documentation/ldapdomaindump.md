@@ -1,17 +1,22 @@
 # [LDAPDomainDump](https://github.com/dirkjanm/ldapdomaindump)
 Active Directory information dumper via LDAP
 
+- [LDAPDomainDump](#ldapdomaindump)
+  - [Installation](#installation)
+  - [-h / help](#ldapdomaindump--h)
+  - [Basic Syntax](#sudo-ldapdomaindump-ldapsip--u-username--p-passw0rd)
+    - [Example 1](#ldapdomaindump-ldapsip--u-htbamanda--p-ashare1972)
+    - [Example 2](#ldapdomaindump--u-searchhtbhopesharp--p-isolationiskey-ip)
+    - [Sample Output](#sample-output)
+  - [Common Mistake; "DOMAIN\\username"](#common-mistake-domainusername)
+
 ### Installation
 ```
 pip install ldapdomaindump
 ```
-### [ldapdomaindump -h](#ldapdomaindump--h-1)
 
-### [sudo ldapdomaindump ldaps://$ip -u username -p Passw0rd](#sudo-ldapdomaindump-ldapsip--u-username--p-passw0rd-1)
 
-### [ldapdomaindump ldaps://$ip -u HTB\\amanda -p Ashare1972](#ldapdomaindump-ldapsip--u-htbamanda--p-ashare1972-1)
 
-### [Common Mistake; "DOMAIN\\username"](#common-mistake-domainusername-1)
 
 -------------------------------------
 
@@ -78,7 +83,22 @@ $ ldapdomaindump ldaps://$ip -u HTB\\amanda -p Ashare1972
 [+] Domain dump finished
 ```
 
-### 
+### ldapdomaindump -u 'search.htb\hope.sharp' -p IsolationIsKey? $ip
+```
+$ $ ldapdomaindump -u 'search.htb\hope.sharp' -p IsolationIsKey? $ip
+[*] Connecting to host...
+[*] Binding to host
+[+] Bind OK
+[*] Starting domain dump
+[+] Domain dump finishedldapdomaindump -u 'search.htb\hope.sharp' -p IsolationIsKey? $ip
+[*] Connecting to host...
+[*] Binding to host
+[+] Bind OK
+[*] Starting domain dump
+[+] Domain dump finished
+```
+
+### Sample Output
 ```
 $ ls
 domain_computers_by_os.html  domain_computers.json  domain_groups.json  domain_policy.json  domain_trusts.json          domain_users.html
@@ -88,7 +108,7 @@ domain_computers.html        domain_groups.html     domain_policy.html  domain_t
 
 ### Common Mistake; "DOMAIN\\username"
 Without domain
-Single /; should be double //
+Single /; should be double //; or within quote
 ```
 $ ldapdomaindump ldaps://$ip -u amanda -p Ashare1972  
 [!] Username must include a domain, use: DOMAIN\username
