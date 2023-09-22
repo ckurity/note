@@ -10,7 +10,7 @@ p=$(cat ~/port.txt)
 d=$(cat ~/domain.txt)
 myip=$(cat ~/myip.txt)
 
-CTF=htb
+CTF=HTB
 TRACK=_ActiveDirectory101
 BOX=Active
 
