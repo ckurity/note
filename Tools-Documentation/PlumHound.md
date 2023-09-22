@@ -1,24 +1,21 @@
 # [PlumHound](https://github.com/PlumHound/PlumHound)
 Bloodhound for Blue and Purple Teams
 
+- [PlumHound](#plumhound)
+ - [Installation](#installation)
+ - [Default](#default)
+ - [Test PlumHound (--easy)](#python-plumhoundpy---easy--p-1)     # BloodHound should be up. Do not close it
+ - [Default Tasks](#python-plumhoundpy--x-tasksdefaulttasks--p-1)
+ - [View Reports](#ls-reports)
+
+-------------------------
+
 ### Installation
 ```
 git clone https://github.com/PlumHound/PlumHound
 cd PlumHound
 pip install -r requirements.txt
 ```
-
-### [Default](#default-1)
-
-### [python PlumHound --easy -p <neo4j-password>](#python-plumhound---easy--p-1)
-BloodHound should be up. Do not close it
-
-### [python PlumHound.py --easy -p 1](#python-plumhoundpy---easy--p-1-1)
-"1" is the password in this case
-
-### [python PlumHound.py -x tasks/default.tasks -p 1](#python-plumhoundpy--x-tasksdefaulttasks--p-1-1)
-
-### [ls reports](#ls-reports-1)
 
 ### Default
 ```
@@ -32,6 +29,7 @@ PlumHound.py: error: one of the arguments --easy -x/--TaskFile -q/--QuerySingle 
 
 ### python PlumHound --easy -p <neo4j-password>
 ### python PlumHound.py --easy -p 1
+"1" is the password in this case
 ```
 $ python PlumHound.py --easy -p 1
 
