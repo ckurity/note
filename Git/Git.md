@@ -1,15 +1,15 @@
 # GitHub
 
-## Summary
+## TLDR
 
 - [GitHub](#github)
-    - [Summary](#summary)
+    - [TLDR](#tldr)
         - [Check Git Configuration](#check-git-configuration)
         - [One-liner Push](#one-liner-push)
         - [git config](#git-config)
         - [Initial Config](#initial-config)
         - [divergent branches](#divergent-branches)
-    - [EXAMPLES](#examples)
+    - [With EXAMPLES](#examples)
         - [14400 seconds / 4 hours](#14400-seconds--240-minutes--4-hours)
         - [Example](#example)
         - [Creating a personal access token](#creating-a-personal-access-token)
@@ -40,9 +40,8 @@ git config --global user.name 'ckurity'
 git add . ; git status ; git commit -m newUpdate ; git push
 ```
 
+[Creating a personal access token](#creating-a-personal-access-token)
 
-
-[Creating a personal access token](#creating-a-personal-access-token-1)
 -----------------------------------------
 
 # EXAMPLES
