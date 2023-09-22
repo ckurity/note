@@ -12,7 +12,7 @@ myip=$(cat ~/myip.txt)
 
 CTF=HTB
 TRACK=_ActiveDirectory101
-BOX=Active
+BOX=Search
 
 alias 00='code ~/.zshrc'
 alias 01='code ~/.zsh_aliases'
