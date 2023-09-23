@@ -1,14 +1,19 @@
 # jq
 
 - [jq](#jq)
-    - [Show all Keys](#show-all-keys)
+    - [Show all Keys](#show-all-keys)                               # jq keys
+    - [View files inside](#view-files-inside)                         # jq .NETLOGON
+    - [View files only](#view-files-only)
     - [Show all Shares](#cat-101011129json--jq-map_valueskeys-nl)
-
+- [BEST tips from ChatGPT](#best-tips-from-chatgpt)
+  - [Shares & File](#shares--file)
+  - [Shares, File & Size](#size)
 -------------------------------------------
 
 ### 
 ```
-cat 10.10.11.129.json | jq '.|keys'     # Show all Keys / Open Shares in HTB Search
+cat 10.10.10.182.json | jq keys         # Show all Keys / Open Shares in HTB Cascade # Simple way
+cat 10.10.11.129.json | jq '.|keys'     # Show all Keys / Open Shares in HTB Search # ippsec way
 cat 10.10.11.129.json | jq '.[]|keys'   # up one, but we don't get the share name
 cat 10.10.11.129.json | jq '.|map_values(keys)'
 ```
@@ -16,6 +21,13 @@ cat 10.10.11.129.json | jq '.|map_values(keys)'
 ### Show all Keys
 Open Shares in HTB Search
 ```
+$ cat 10.10.10.182.json | jq keys
+[
+  "Data",
+  "NETLOGON",
+  "SYSVOL"
+]
+
 $ cat 10.10.11.129.json | jq '.|keys'
 [
   "CertEnroll",
@@ -24,6 +36,34 @@ $ cat 10.10.11.129.json | jq '.|keys'
   "SYSVOL",
   "helpdesk"
 ]
+```
+
+### View files inside
+```
+$ cat 10.10.10.182.json | jq .NETLOGON
+{
+  "MapAuditDrive.vbs": {
+    "atime_epoch": "2020-01-15 16:45:08",
+    "ctime_epoch": "2020-01-15 16:45:08",
+    "mtime_epoch": "2020-01-15 16:50:14",
+    "size": "258 B"
+  },
+  "MapDataDrive.vbs": {
+    "atime_epoch": "2020-01-15 16:50:28",
+    "ctime_epoch": "2020-01-15 16:49:19",
+    "mtime_epoch": "2020-01-15 16:51:03",
+    "size": "255 B"
+  }
+}
+```
+
+### View files only
+```
+$ cat 10.10.10.182.json | jq '.Data | keys[]'
+"IT/Email Archives/Meeting_Notes_June_2018.html"
+"IT/Logs/Ark AD Recycle Bin/ArkAdRecycleBin.log"
+"IT/Logs/DCs/dcdiag.log"
+"IT/Temp/s.smith/VNC Install.reg"
 ```
 
 ### cat 10.10.11.129.json | jq '.|map_values(keys)' |nl
@@ -77,14 +117,33 @@ $ cat 10.10.11.129.json | jq '.|map_values(keys)' |nl
     46  }
 ```
 
-### 
+## BEST tips from ChatGPT
+### Shares & File
+```
+$ cat 10.10.10.182.json | jq 'to_entries[] | .key as $section | .value | keys[] | "\($section): \(.)"'
+"Data: IT/Email Archives/Meeting_Notes_June_2018.html"
+"Data: IT/Logs/Ark AD Recycle Bin/ArkAdRecycleBin.log"
+"Data: IT/Logs/DCs/dcdiag.log"
+"Data: IT/Temp/s.smith/VNC Install.reg"
+"NETLOGON: MapAuditDrive.vbs"
+"NETLOGON: MapDataDrive.vbs"
+"SYSVOL: cascade.local/Policies/{2906D621-7B58-40F1-AA47-4ED2AEF29484}/GPT.INI"
+"SYSVOL: cascade.local/Policies/{31B2F340-016D-11D2-945F-00C04FB984F9}/GPT.INI"
+"SYSVOL: cascade.local/Policies/{31B2F340-016D-11D2-945F-00C04FB984F9}/MACHINE/Microsoft/Windows NT/SecEdit/GptTmpl.inf"
 ```
 
+### + Size
 ```
-
-### 
-```
-
+$ cat 10.10.10.182.json | jq 'to_entries[] | .key as $section | .value | to_entries[] | "\($section): \(.key) (\(.value.size))"'
+"Data: IT/Email Archives/Meeting_Notes_June_2018.html (2.46 KB)"
+"Data: IT/Logs/Ark AD Recycle Bin/ArkAdRecycleBin.log (1.27 KB)"
+"Data: IT/Logs/DCs/dcdiag.log (5.83 KB)"
+"Data: IT/Temp/s.smith/VNC Install.reg (2.62 KB)"
+"NETLOGON: MapAuditDrive.vbs (258 B)"
+"NETLOGON: MapDataDrive.vbs (255 B)"
+"SYSVOL: cascade.local/Policies/{2906D621-7B58-40F1-AA47-4ED2AEF29484}/GPT.INI (59 B)"
+"SYSVOL: cascade.local/Policies/{31B2F340-016D-11D2-945F-00C04FB984F9}/GPT.INI (23 B)"
+"SYSVOL: cascade.local/Policies/{31B2F340-016D-11D2-945F-00C04FB984F9}/MACHINE/Microsoft/Windows NT/SecEdit/GptTmpl.inf (1.22 KB)"
 ```
 
 ### 

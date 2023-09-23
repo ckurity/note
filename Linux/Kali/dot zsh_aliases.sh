@@ -23,6 +23,7 @@ alias en='echo -n'
 alias eg=egrep
 alias egi='egrep -i'
 alias egn='egrep -n'
+alias egv='egrep -v'
 alias f=file
 alias g=grep
 alias gi='grep -i'

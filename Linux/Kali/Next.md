@@ -2,7 +2,7 @@
 
 ### Update and install new standard tools for pentest
 
-### Next 
+### Next Build
 ```
 sudo apt update && sudo apt upgrade
 sudo apt install xxd bloodhound-python
@@ -13,7 +13,7 @@ sudo apt install xxd bloodhound-python
 sudo apt install docker.io nuclei bloodhound
 ```
 
-### Create a symbolic link (shortcut) for impacket scripts
+### Create a symbolic link (shortcut) for impacket scripts (not required, just use .py)
 ```
 sudo ln -s ../share/impacket/script GetUserSPNs
 sudo ln -s ../share/impacket/script GetNPUsers
