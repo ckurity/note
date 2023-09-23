@@ -1,5 +1,15 @@
 # CTF
 
+- [CTF](#ctf)
+    - [template](#template)
+    - [Flags](#flags)
+        - [Linux find](#linux-find)
+        - [Meterpreter search command](#meterpreter-search-command)
+        - [Windows CMD](#windows-cmd)
+        - [Windows PowerShell](#windows-powershell)
+
+
+## template
 te(){
     cp ~/template '2.1 Enumeration without Users.md'
     cp ~/template '2.2 Users Found.md'
@@ -11,6 +21,9 @@ te(){
     cp ~/template '6. Exploit.md'
 }
 
+## Flags
+
+### Linux find
 # find /path/to/directory -type f \( -name "file1.txt" -o -name "file2.txt" \)
 ```
 find / -name *root*.txt -o -name *flag*.txt -o -name *user*.txt 2>/dev/null
@@ -26,7 +39,7 @@ This command will search the / directory for files named *root*.txt and *flag*.t
 The -o option is used to specify an "or" condition. 
 This means that the command will find any file that matches the name *root*.txt or the name *flag*.txt.
 
-## meterpreter search command
+### Meterpreter search command
 ```
 search -f *flag*.txt
 search -f *user.txt
@@ -39,7 +52,7 @@ meterpreter >
 ```
 
 
-## Windows CMD
+### Windows CMD
 
 ### Search All starting from C:\
 ```
@@ -82,12 +95,13 @@ dir /s /b *.txt
 
 /b: This option displays only the bare format (file names) without any additional information like file size or date.
 
-## Windows PowerShell
+### Windows PowerShell
 ```
 ls -r *.txt
 ls -r .. *.txt
 ls -r c:\*.txt
 ls -r c:\*.txt 2> $null
+ls -r C:\Users\ *.txt
 ls -r c:\*user.txt 2> $null
 Get-ChildItem -Recurse *.txt
 Get-ChildItem -Path "c:\Users" -Recurse -Filter "flag.txt"
