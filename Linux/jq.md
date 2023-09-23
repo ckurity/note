@@ -8,6 +8,7 @@
 - [BEST tips from ChatGPT](#best-tips-from-chatgpt)
   - [Shares & File](#shares--file)
   - [Shares, File & Size](#size)
+  - [Certain data only](#certain-data-only)
 -------------------------------------------
 
 ### 
@@ -133,7 +134,7 @@ $ cat 10.10.10.182.json | jq 'to_entries[] | .key as $section | .value | keys[] 
 ```
 
 ### + Size
-```
+```json
 $ cat 10.10.10.182.json | jq 'to_entries[] | .key as $section | .value | to_entries[] | "\($section): \(.key) (\(.value.size))"'
 "Data: IT/Email Archives/Meeting_Notes_June_2018.html (2.46 KB)"
 "Data: IT/Logs/Ark AD Recycle Bin/ArkAdRecycleBin.log (1.27 KB)"
@@ -146,9 +147,18 @@ $ cat 10.10.10.182.json | jq 'to_entries[] | .key as $section | .value | to_entr
 "SYSVOL: cascade.local/Policies/{31B2F340-016D-11D2-945F-00C04FB984F9}/MACHINE/Microsoft/Windows NT/SecEdit/GptTmpl.inf (1.22 KB)"
 ```
 
-### 
+### Certain data only
 ```
+$ cat file.json | jq 'to_entries[] | select(.key == "Audit$") | .key as $section | .value | to_entries[] | "\($section): \(.key) (\(.value.size))"'
 
+"Audit$: CascAudit.exe (13 KB)"
+"Audit$: CascCrypto.dll (12 KB)"
+"Audit$: DB/Audit.db (24 KB)"
+"Audit$: RunAudit.bat (45 B)"
+"Audit$: System.Data.SQLite.EF6.dll (182.5 KB)"
+"Audit$: System.Data.SQLite.dll (355 KB)"
+"Audit$: x64/SQLite.Interop.dll (1.56 MB)"
+"Audit$: x86/SQLite.Interop.dll (1.19 MB)"
 ```
 
 ### 
