@@ -10,8 +10,10 @@
         - [Initial Config](#initial-config)
         - [divergent branches](#divergent-branches)
     - [With EXAMPLES](#examples)
-        - [14400 seconds / 4 hours](#14400-seconds--240-minutes--4-hours)
-        - [Example](#example)
+        - [Remember Username & Password](#remember-username--password)
+            - [Default Config is Empty](#default-config-is-empty)
+            - [14400 seconds / 4 hours](#14400-seconds--240-minutes--4-hours)
+            - [Example](#example)
         - [Creating a personal access token](#creating-a-personal-access-token)
     - [Problems](#problems)
         - [divergent branches](#divergent-branches)
@@ -37,7 +39,7 @@ git add . ; git status ; git commit -m newUpdate ; git push
 ```
 git config --global user.email 'ckurity'
 git config --global user.name 'ckurity'
-git add . ; git status ; git commit -m newUpdate ; git push
+git add . ; git status ; git commit -m Update ; git push
 ```
 
 [Creating a personal access token](#creating-a-personal-access-token)
@@ -72,15 +74,20 @@ git branch -M main
 git remote add origin git@github.com:ckurity/testnewrepo.git
 git push -u origin main
 ```
+
 ## Remember Username & Password
 ```
 $ git clone https://github.com/ckurity/git
 Cloning into 'git'...
 Username for 'https://github.com':
 ```
+
+### Default Config is Empty
 ```
 git config --global credential.helper cache
 ```
+
+### Change it to 4 hours
 ```
 git config --global credential.helper 'cache --timeout=<seconds>'
 ```
