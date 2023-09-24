@@ -64,9 +64,9 @@ alias 90='cd ~/xyz/note/'
         new-window -n 'Tools' \; \
             send-keys 'clear;cd ~/xyz/note/Tools-Binary;ls' C-m \; \
         new-window -n "$BOX" \; \
-            send-keys "clear;cd ~/xyz/labs/$CTF/$BOX;ls -lh" C-m \; \
+            send-keys "clear;cd ~/xyz/labs/$CTF/$TRACK/$BOX;ls -lh" C-m \; \
         new-window -n "$BOX" \; \
-            send-keys "cd ~/xyz/labs/$CTF/$BOX" C-m \; \
+            send-keys "cd ~/xyz/labs/$CTF/$TRACK/$BOX" C-m \; \
         select-window -t "$CTF:git pull"
 }
 
