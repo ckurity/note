@@ -133,6 +133,7 @@ $ cat 10.10.10.182.json | jq 'to_entries[] | .key as $section | .value | keys[] 
 "SYSVOL: cascade.local/Policies/{31B2F340-016D-11D2-945F-00C04FB984F9}/MACHINE/Microsoft/Windows NT/SecEdit/GptTmpl.inf"
 ```
 
+<!-- Use This -->
 ### + Size
 ```json
 $ cat 10.10.10.182.json | jq 'to_entries[] | .key as $section | .value | to_entries[] | "\($section): \(.key) (\(.value.size))"'
