@@ -11,14 +11,12 @@
 - [Root](#root)
 
 ## Scanning
-
 ## Enumeration
 ### Enumeration without Users/Sessions
 ### Users/Sessions Found
 ### Valid Users
 ### Enumeration with Users/Sessions
 ### Credentials Found
-
 ## Initial Access
 ## Shell 1
 ## PrivEsc

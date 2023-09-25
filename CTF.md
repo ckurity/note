@@ -24,11 +24,12 @@ te(){
 ## Flags
 
 ### Linux find
-# find /path/to/directory -type f \( -name "file1.txt" -o -name "file2.txt" \)
-```
+### find /path/to/directory -type f \( -name "file1.txt" -o -name "file2.txt" \)
+```sh
 find / -name *root*.txt -o -name *flag*.txt -o -name *user*.txt 2>/dev/null
 ```
-```
+
+```sh
 root@agent-sudo:/home# find / -name *root*.txt -o -name *flag*.txt 2>/dev/null
 /home/james/user_flag.txt
 /root/root.txt
@@ -40,12 +41,12 @@ The -o option is used to specify an "or" condition.
 This means that the command will find any file that matches the name *root*.txt or the name *flag*.txt.
 
 ### Meterpreter search command
-```
+```sh
 search -f *flag*.txt
 search -f *user.txt
 ```
 
-```
+```sh
 meterpreter > search -f *flag*.txt
 No files matching your search were found.
 meterpreter >
@@ -55,7 +56,7 @@ meterpreter >
 ### Windows CMD
 
 ### Search All starting from C:\
-```
+```sh
 dir /s /b c:\*.txt
 dir /s /b c:\Users\*.txt
 dir /s /b c:\Users\Administrator\*.txt
@@ -70,7 +71,7 @@ type c:\Users\Administrator\Desktop\root.txt
 ### Search All starting from current path
 dir /s /b *.txt
 
-```
+```sh
 C:\Windows\system32>dir /s /b c:\*user.txt c:\*root.txt
 dir /s /b c:\*user.txt c:\*root.txt
 c:\Users\Administrator\Desktop\root.txt
@@ -80,7 +81,7 @@ c:\Users\babis\Desktop\user.txt
 ### "xargs" in Windows?
 
 In Windows, there is no direct equivalent to the xargs command found in Unix-like systems. However, you can achieve the same result using a combination of dir and a for loop in the Windows Command Prompt (cmd.exe).
-```
+```sh
 C:\Windows\system32>for /f "delims=" %i in ('dir /s /b c:\*user.txt c:\*root.txt') do @type "%i"
 for /f "delims=" %i in ('dir /s /b c:\*user.txt c:\*root.txt') do @type "%i"
 9f3ac3c9240b5d303b1c8b0c6786145a
@@ -88,7 +89,7 @@ a0de5a083364094dea4f92259981529b
 ```
 
 ### Current Directory Only
-```
+```sh
 dir /s /b *.txt
 ```
 /s: This option tells the "dir" command to search recursively through all subdirectories.
@@ -96,7 +97,7 @@ dir /s /b *.txt
 /b: This option displays only the bare format (file names) without any additional information like file size or date.
 
 ### Windows PowerShell
-```
+```PowerShell
 ls -r *.txt
 ls -r .. *.txt
 ls -r c:\*.txt
@@ -116,7 +117,7 @@ gi: An alias for Get-Item.
 s: An alias for SilentlyContinue.
 ```
 ### 
-```
+```PowerShell
 *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> ls -r c:\*user.txt 2> $null
 
 
@@ -187,7 +188,7 @@ TryHackMe{B4ckM3UpSc0tty!}
 TryHackMe{K3rb3r0s_Pr3_4uth}
 ```
 
-```
+```PowerShell
 [10.10.10.161]: PS C:\Users\svc-alfresco\Documents> whoami
 htb\svc-alfresco
 [10.10.10.161]: PS C:\Users\svc-alfresco\Documents> ls -r *.txt
