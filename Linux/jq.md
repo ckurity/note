@@ -9,10 +9,17 @@
   - [Shares & File](#shares--file)
   - [Shares, File & Size](#size)
   - [Certain data only](#certain-data-only)
+- [BloodHound json data](#bloodhound-json-data)
+  - [samaccountname](#samaccountname)
+  - [serviceprincipalnames](#serviceprincipalnames)
+    - [Remove empty array ([]) as a result](#remove-empty-array--as-a-result)
+    - [-c / Compact Version](#c--compact-version)
+    - [remove the square brackets [] from the output](#remove-the-square-brackets--from-the-output)
+
 -------------------------------------------
 
 ### 
-```
+```sh
 cat 10.10.10.182.json | jq keys         # Show all Keys / Open Shares in HTB Cascade # Simple way
 cat 10.10.11.129.json | jq '.|keys'     # Show all Keys / Open Shares in HTB Search # ippsec way
 cat 10.10.11.129.json | jq '.[]|keys'   # up one, but we don't get the share name
@@ -40,7 +47,7 @@ $ cat 10.10.11.129.json | jq '.|keys'
 ```
 
 ### View files inside
-```
+```sh
 $ cat 10.10.10.182.json | jq .NETLOGON
 {
   "MapAuditDrive.vbs": {
@@ -59,7 +66,7 @@ $ cat 10.10.10.182.json | jq .NETLOGON
 ```
 
 ### View files only
-```
+```sh
 $ cat 10.10.10.182.json | jq '.Data | keys[]'
 "IT/Email Archives/Meeting_Notes_June_2018.html"
 "IT/Logs/Ark AD Recycle Bin/ArkAdRecycleBin.log"
@@ -120,7 +127,7 @@ $ cat 10.10.11.129.json | jq '.|map_values(keys)' |nl
 
 ## BEST tips from ChatGPT
 ### Shares & File
-```
+```sh
 $ cat 10.10.10.182.json | jq 'to_entries[] | .key as $section | .value | keys[] | "\($section): \(.)"'
 "Data: IT/Email Archives/Meeting_Notes_June_2018.html"
 "Data: IT/Logs/Ark AD Recycle Bin/ArkAdRecycleBin.log"
@@ -162,22 +169,66 @@ $ cat file.json | jq 'to_entries[] | select(.key == "Audit$") | .key as $section
 "Audit$: x86/SQLite.Interop.dll (1.19 MB)"
 ```
 
+# BloodHound json data
+## samaccountname
+```sh
+$ cat HTB-Forest_20230817070527_users.json | jq .data[].Properties.samaccountname
+"Administrator"
+"DefaultAccount"
+"krbtgt"
+```
+
+## serviceprincipalnames
+```sh
+# Same Output
+# cat HTB-Forest_20230817070527_users.json | jq .data[].Properties.serviceprincipalnames
+# cat HTB-Forest_20230817070527_users.json | jq '.data[].Properties.serviceprincipalnames | select(. != null)'
+
+# E.g.
+$ cat HTB-Forest_20230817070527_users.json | jq .data[].Properties.serviceprincipalnames
+[]
+[]
+[
+  "kadmin/changepw"
+]
+[]
+[]
+null
+```
+
+### Remove empty array ([]) as a result
+```sh
+$ cat HTB-Forest_20230817070527_users.json | jq '.data[].Properties.serviceprincipalnames | select(length > 0)'
+[
+  "kadmin/changepw"
+]
+```
+
+### -c / Compact Version
+```sh
+$ cat HTB-Forest_20230817070527_users.json | jq -c '.data[].Properties.serviceprincipalnames | select(length > 0)'
+["kadmin/changepw"]
+```
+
+
+### remove the square brackets [] from the output
+```sh
+$ cat HTB-Forest_20230817070527_users.json | jq -r '.data[].Properties.serviceprincipalnames | select(length > 0) | join(", ")'
+kadmin/changepw
+```
+
 ### 
+```sh
+
 ```
+
+
+### 
+```sh
 
 ```
 
 ### 
-```
-
-```
-
-### 
-```
-
-```
-
-### 
-```
+```sh
 
 ```
