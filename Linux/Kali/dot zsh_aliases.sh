@@ -3,9 +3,9 @@
 # alias 1='ping google.com'
 alias 2='ping google.com'
 alias 21='ping 8.8.8.8'
-alias 3='echo $ip'
-alias 4='ping $ip'
-alias 5='echo > ~/ip.txt $1'
+alias 3='echo $t'
+alias 4='ping $t'
+alias 5='echo > ~/target.txt $1'
 alias 9='cd ~/xyz/labs/htb/Sauna'
 # alias 5='if [ -z $1 ]; then echo "Usage: 5 <Target IP Addr>"; else echo > ~/ip.txt $1; fi'
 alias a=alias
