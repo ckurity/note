@@ -34,7 +34,8 @@ alias 90='cd ~/xyz/note/'
 }
 
 1(){
-    hostname -I | awk '{print $1}'; curl ifconfig.me
+    # hostname -I | awk '{print $1}'; curl -4 ifconfig.co
+    echo "$(hostname -I | awk '{print $1}') - $(date) \n$(curl -s4 ifconfig.co) - $(date)";
 }
 
 6(){
