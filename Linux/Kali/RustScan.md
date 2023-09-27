@@ -1,18 +1,19 @@
-### TL;DR
-```
-rustscan -a $ip -- -Pn -A -oN 1_nmap-A_$(date +%y%m%d-%H%M)
+- [TL;DR](#tldr)
+- [RustScan Installation](#rustscan-installation)
+
+# TL;DR
+```sh
+rustscan -a $t -- -Pn -A -oN 1_nmap-A_$(date +%y%m%d-%H%M)
 grep -P '^PORT|^\d+/' *nmap* |sed 's/syn-ack//' |tee 1_nmap-sV
-
-rustscan -a $ip -- -Pn -A -oN nmap-A_$(date +%y%m%d-%H%M)
 ```
 
-### RustScan Installation
+# RustScan Installation
 
 https://github.com/RustScan/RustScan/wiki/Installation-Guide
 
 Docker is the recommended way of installing RustScan. (however little bit slow and error to output with -oA)
 
-```
+```sh
 git clone https://github.com/RustScan/RustScan.git
 cd RustScan
 
@@ -21,7 +22,7 @@ docker build -t rustscan .
 ```
 
 ### Problem with Docker version
-```
+```sh
 $ rustscan -a localhost -- -Pn -A -oA nmap-A                     
 .----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
 | {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
@@ -52,7 +53,7 @@ cargo install rustscan
 ```
 
 ### 
-```
+```sh
 ...
   Installing /home/kali/.cargo/bin/rustscan
    Installed package `rustscan v2.1.1` (executable `rustscan`)
@@ -65,22 +66,22 @@ warning: be sure to add `/home/kali/.cargo/bin` to your PATH to be able to run t
 ```
 
 ### 
-```
+```sh
 
 ```
 
 ### 
-```
+```sh
 
 ```
 
 ### 
-```
+```sh
 
 ```
 
 ### 
-```
+```sh
 
 ```
 
