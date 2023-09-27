@@ -1,6 +1,6 @@
 # Sublime
 ## Remove Empty Lines
-```
+```sh
 ^[\s]*?[\n\r]+
 ```
 > The regular expression `^[\s]*?[\n\r]+` matches any leading whitespace characters followed by one or more newline characters (either \n or \r). 

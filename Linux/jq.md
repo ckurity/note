@@ -1,10 +1,20 @@
 # jq
 
 - [jq](#jq)
-    - [Show all Keys](#show-all-keys)                               # jq keys
-    - [View files inside](#view-files-inside)                         # jq .NETLOGON
-    - [View files only](#view-files-only)
-    - [Show all Shares](#cat-101011129json--jq-map_valueskeys-nl)
+- [TL;DR](#tldr)
+- [View Data](#view-data)
+  - [Show All JSON Data with jq](#show-all-json-data-with-jq)
+  - [Show Array 0 Only](#show-array-0-only)
+  - [Show Array 0,1,2 Only](#show-array-012-only)
+  - [Extract the property names from the objects within the JSON array](#extract-the-property-names-from-the-objects-within-the-json-array)
+    - [jq '.[0] | keys[]'](#jq-0--keys)
+      - [raw data](#raw-data)
+  - [Extract email](#extract-email)
+- [CME -M spider_plus](#cme--m-spider_plus)
+  - [Show all Keys](#show-all-keys)                                 # jq keys
+  - [View files inside](#view-files-inside)                         # jq .NETLOGON
+  - [View files only](#view-files-only)
+  - [Show all Shares](#cat-101011129json--jq-map_valueskeys-nl)
 - [BEST tips from ChatGPT](#best-tips-from-chatgpt)
   - [Shares & File](#shares--file)
   - [Shares, File & Size](#size)
@@ -16,19 +26,102 @@
     - [-c / Compact Version](#c--compact-version)
     - [remove the square brackets [] from the output](#remove-the-square-brackets--from-the-output)
 
+
 -------------------------------------------
 
-### 
+# TL;DR
 ```sh
-cat 10.10.10.182.json | jq keys         # Show all Keys / Open Shares in HTB Cascade # Simple way
-cat 10.10.11.129.json | jq '.|keys'     # Show all Keys / Open Shares in HTB Search # ippsec way
-cat 10.10.11.129.json | jq '.[]|keys'   # up one, but we don't get the share name
+cat getColleagues | jq                            # Show All JSON Data with jq
+cat getColleagues | jq .[0]                       # Show Array 0 Only
+cat getColleagues | jq .[0,1,2]                   # Show Array 0,1,2 Only
+cat getColleagues | jq '.[0] | keys[]'            # Extract the property names from the objects within the JSON array
+cat getColleagues | jq '.[0] | keys[]' -r         # raw data
+cat 10.10.10.182.json | jq keys                   # Show all Keys / Open Shares in HTB Cascade # Simple way
+cat 10.10.11.129.json | jq '.|keys'               # Show all Keys / Open Shares in HTB Search # ippsec way
+cat 10.10.11.129.json | jq '.[]|keys'             # up one, but we don't get the share name
 cat 10.10.11.129.json | jq '.|map_values(keys)'
 ```
 
+# View Data
+## Show All JSON Data with jq
+```sh
+cat getColleagues | jq
+```
+
+## Show Array 0 Only
+```sh
+$ cat getColleagues | jq .[0]
+{
+  "id": 1,
+  "name": "Sarina Bauer",
+  "position": "Junior Developer",
+  "email": "sbauer@megacorp.htb",
+  "src": "sbauer.jpg"
+}
+```
+
+## Show Array 0,1,2 Only
+```sh
+$ cat getColleagues | jq .[0,1,2]
+{
+  "id": 1,
+  "name": "Sarina Bauer",
+  "position": "Junior Developer",
+  "email": "sbauer@megacorp.htb",
+  "src": "sbauer.jpg"
+}
+{
+  "id": 2,
+  "name": "Octavia Kent",
+  "position": "Senior Consultant",
+  "email": "okent@megacorp.htb",
+  "src": "okent.jpg"
+}
+{
+  "id": 3,
+  "name": "Christian Kane",
+  "position": "Assistant Manager",
+  "email": "ckane@megacorp.htb",
+  "src": "ckane.jpg"
+}
+```
+
+## Extract the property names from the objects within the JSON array
+
+### jq '.[0] | keys[]'
+```sh
+$ cat getColleagues | jq '.[0] | keys[]'
+"email"
+"id"
+"name"
+"position"
+"src"
+```
+
+#### raw data
+```sh
+$ cat getColleagues | jq '.[0] | keys[]' -r
+email
+id
+name
+position
+src
+```
+
+## Extract email
+```sh
+$ cat getColleagues | jq .[].email -r
+sbauer@megacorp.htb
+okent@megacorp.htb
+ckane@megacorp.htb
+[snip]
+```
+
+# CME -M spider_plus
+
 ### Show all Keys
 Open Shares in HTB Search
-```
+```sh
 $ cat 10.10.10.182.json | jq keys
 [
   "Data",
@@ -156,7 +249,7 @@ $ cat 10.10.10.182.json | jq 'to_entries[] | .key as $section | .value | to_entr
 ```
 
 ### Certain data only
-```
+```sh
 $ cat file.json | jq 'to_entries[] | select(.key == "Audit$") | .key as $section | .value | to_entries[] | "\($section): \(.key) (\(.value.size))"'
 
 "Audit$: CascAudit.exe (13 KB)"
@@ -217,18 +310,3 @@ $ cat HTB-Forest_20230817070527_users.json | jq -r '.data[].Properties.servicepr
 kadmin/changepw
 ```
 
-### 
-```sh
-
-```
-
-
-### 
-```sh
-
-```
-
-### 
-```sh
-
-```
