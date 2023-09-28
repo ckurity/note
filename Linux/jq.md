@@ -9,7 +9,10 @@
   - [Extract the property names from the objects within the JSON array](#extract-the-property-names-from-the-objects-within-the-json-array)
     - [jq '.[0] | keys[]'](#jq-0--keys)
       - [raw data](#raw-data)
-  - [Extract email](#extract-email)
+  - [Extract "email"](#extract-email)
+    - [Extract all data from "email" "okent@megacorp.htb"](#extract-all-data-from-email-okentmegacorphtb)
+  - [Extract "position"](#extract-position)
+    - [Extract all data from "position" "Assistant Manager"](#extract-all-data-from-position-assistant-manager)
 - [CME -M spider_plus](#cme--m-spider_plus)
   - [Show all Keys](#show-all-keys)                                 # jq keys
   - [View files inside](#view-files-inside)                         # jq .NETLOGON
@@ -45,6 +48,7 @@ cat 10.10.11.129.json | jq '.|map_values(keys)'
 # View Data
 ## Show All JSON Data with jq
 ```sh
+cd ~/xyz/labs/HTB/_ActiveDirectory101/Multimaster/
 cat getColleagues | jq
 ```
 
@@ -89,7 +93,7 @@ $ cat getColleagues | jq .[0,1,2]
 ## Extract the property names from the objects within the JSON array
 
 ### jq '.[0] | keys[]'
-```sh
+```json
 $ cat getColleagues | jq '.[0] | keys[]'
 "email"
 "id"
@@ -99,7 +103,7 @@ $ cat getColleagues | jq '.[0] | keys[]'
 ```
 
 #### raw data
-```sh
+```json
 $ cat getColleagues | jq '.[0] | keys[]' -r
 email
 id
@@ -108,8 +112,8 @@ position
 src
 ```
 
-## Extract email
-```sh
+## Extract "email"
+```json
 $ cat getColleagues | jq .[].email -r
 sbauer@megacorp.htb
 okent@megacorp.htb
@@ -117,11 +121,44 @@ ckane@megacorp.htb
 [snip]
 ```
 
+### Extract all data from "email" "okent@megacorp.htb"
+```json
+$ cat getColleagues | jq '.[] | select(.email=="okent@megacorp.htb")'
+{
+  "id": 2,
+  "name": "Octavia Kent",
+  "position": "Senior Consultant",
+  "email": "okent@megacorp.htb",
+  "src": "okent.jpg"
+}
+```
+
+## Extract "position"
+```json
+$ cat getColleagues | jq '.[].position'                              
+"Junior Developer"
+"Senior Consultant"
+"Assistant Manager"
+[snip]
+```
+
+### Extract all data from "position" "Assistant Manager"
+```json
+$ cat getColleagues | jq '.[] | select (.position=="Assistant Manager")'
+{
+  "id": 3,
+  "name": "Christian Kane",
+  "position": "Assistant Manager",
+  "email": "ckane@megacorp.htb",
+  "src": "ckane.jpg"
+}
+```
+
 # CME -M spider_plus
 
 ### Show all Keys
 Open Shares in HTB Search
-```sh
+```json
 $ cat 10.10.10.182.json | jq keys
 [
   "Data",
