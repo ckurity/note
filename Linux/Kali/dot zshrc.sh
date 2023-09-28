@@ -71,6 +71,15 @@ alias 90='cd ~/xyz/note/'
         select-window -t "$CTF:git pull"
 }
 
+62(){
+    tmux new-session -s "GIT" \; set -g mouse on \; \
+    split-window -h \; select-layout even-horizontal \; \
+            send-keys -t 0 'cd ~/xyz/l*' C-m \; \
+            send-keys -t 1 'cd ~/xyz/n*' C-m \; \
+            setw synchronize-panes on \; send-keys 'clear' C-m \; \
+            send-keys 'git add . ; git status ; git commit -m Update ; git push' \; \
+}
+
 6a(){
     tmux new-session -s "${CTF}1" \; set -g mouse on \; \
     new-window -n "$BOX" \; \

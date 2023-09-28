@@ -1,0 +1,59 @@
+# OWASP Juice Shop
+
+https://github.com/juice-shop/juice-shop#docker-container
+
+-------------------------------------------
+
+# Setup
+
+## Docker Container
+```sh
+docker run --name JUICE -itp 127.0.0.1:3000:3000 bkimminich/juice-shop
+docker start -i JUICE
+docker stop JUICE
+```
+
+### 
+```sh
+
+```
+
+### 
+```sh
+
+```
+
+### 
+```sh
+
+```
+
+### 
+```sh
+
+```
+
+### 
+```sh
+
+```
+
+### 
+```sh
+
+```
+
+### 
+```sh
+
+```
+
+### 
+```sh
+
+```
+
+### 
+```sh
+
+```

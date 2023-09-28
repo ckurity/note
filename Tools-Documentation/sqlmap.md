@@ -46,6 +46,9 @@ $ ll /usr/share/sqlmap/tamper/char*
 --risk=RISK         Risk of tests to perform (1-3, default 1)
 
 --delay=DELAY       Delay in seconds between each HTTP request
+
+-r REQUESTFILE      Load HTTP request from a file
+--random-agent      Use randomly selected HTTP User-Agent header value
 ```
 
 ### 

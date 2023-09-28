@@ -1,0 +1,100 @@
+# DVWA
+
+https://github.com/digininja/DVWA
+https://hub.docker.com/r/vulnerables/web-dvwa
+
+- [TL;DR](#tldr)
+- [docker run](#docker-run---name-dvwa--itp-1270018080-vulnerablesweb-dvwa)
+- [docker ps](#docker-ps)
+- [docker stop DVWA](#docker-stop-dvwa)
+- [docker start -i DVWA](#docker-start--i-dvwa)
+- [docker exec -it DVWA bash](#docker-exec--it-dvwa-bash)
+
+-------------------------------------------
+
+# TL;DR
+```sh
+docker run --name DVWA -itp 127.0.0.1:80:80 vulnerables/web-dvwa
+docker ps
+docker stop DVWA
+docker start -i DVWA
+```
+
+## docker run --name DVWA -itp 127.0.0.1:80:80 vulnerables/web-dvwa
+```sh
+docker run --name DVWA -itp 127.0.0.1:80:80 vulnerables/web-dvwa
+```
+
+## docker ps
+```sh
+$ docker ps
+CONTAINER ID   IMAGE                  COMMAND      CREATED          STATUS          PORTS                  NAMES
+ea54f238afc1   vulnerables/web-dvwa   "/main.sh"   42 seconds ago   Up 41 seconds   127.0.0.1:80->80/tcp   DVWA
+```
+
+## docker stop DVWA
+```sh
+$ docker stop DVWA 
+DVWA
+```
+
+## docker start -i DVWA
+```sh
+$ docker start -i DVWA
+[+] Starting mysql...
+[ ok ] Starting MariaDB database server: mysqld.
+[+] Starting apache
+[....] Starting Apache httpd web server: apache2AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+. ok 
+==> /var/log/apache2/access.log <==
+
+==> /var/log/apache2/error.log <==
+[Thu Sep 28 10:17:39.449950 2023] [core:notice] [pid 306] AH00094: Command line: '/usr/sbin/apache2'
+[Thu Sep 28 10:20:49.534916 2023] [core:warn] [pid 305] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Thu Sep 28 10:20:49.539647 2023] [mpm_prefork:notice] [pid 305] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
+[Thu Sep 28 10:20:49.539681 2023] [core:notice] [pid 305] AH00094: Command line: '/usr/sbin/apache2'
+[Thu Sep 28 10:21:39.938430 2023] [core:warn] [pid 310] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Thu Sep 28 10:21:39.961315 2023] [mpm_prefork:notice] [pid 310] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
+[Thu Sep 28 10:21:39.961341 2023] [core:notice] [pid 310] AH00094: Command line: '/usr/sbin/apache2'
+[Thu Sep 28 10:22:04.955044 2023] [core:warn] [pid 306] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Thu Sep 28 10:22:04.961021 2023] [mpm_prefork:notice] [pid 306] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
+[Thu Sep 28 10:22:04.961057 2023] [core:notice] [pid 306] AH00094: Command line: '/usr/sbin/apache2'
+
+==> /var/log/apache2/other_vhosts_access.log <==
+```
+
+## docker exec -it DVWA bash
+```sh
+$ docker exec -it DVWA bash
+root@ea54f238afc1:/# echo $SHELL
+/bin/bash
+root@ea54f238afc1:/# whoami
+root
+root@ea54f238afc1:/# hostname
+ea54f238afc1
+```
+
+### 
+```sh
+
+```
+
+### 
+```sh
+
+```
+
+### 
+```sh
+
+```
+
+### 
+```sh
+
+```
+
+### 
+```sh
+
+```
