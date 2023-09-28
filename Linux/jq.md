@@ -4,7 +4,10 @@
 - [TL;DR](#tldr)
 - [View Data](#view-data)
   - [Show All JSON Data with jq](#show-all-json-data-with-jq)
-  - [Show Array 0 Only](#show-array-0-only)
+    - [jq | wc -l](#jq--wc--l)
+    - [jq | head](#jq--head)
+    - ["jq .[0]" Shows Data in Array 0 Only](#jq-0-shows-data-in-array-0-only)
+
   - [Show Array 0,1,2 Only](#show-array-012-only)
   - [Extract the property names from the objects within the JSON array](#extract-the-property-names-from-the-objects-within-the-json-array)
     - [jq '.[0] | keys[]'](#jq-0--keys)
@@ -57,9 +60,34 @@ cat 10.10.11.129.json | jq '.|map_values(keys)'
 ```sh
 cd ~/xyz/labs/HTB/_ActiveDirectory101/Multimaster/
 cat getColleagues | jq
+cat getColleagues | jq | nl
+cat getColleagues | jq | wc -l
+cat getColleagues | jq | head
+cat getColleagues | jq .[0]
 ```
 
-## Show Array 0 Only
+### jq | wc -l
+```sh
+$ cat getColleagues | jq | wc -l
+121
+```
+
+### jq | head
+```sh
+$ cat getColleagues | jq | head
+[
+  {
+    "id": 1,
+    "name": "Sarina Bauer",
+    "position": "Junior Developer",
+    "email": "sbauer@megacorp.htb",
+    "src": "sbauer.jpg"
+  },
+  {
+    "id": 2,
+```
+
+### "jq .[0]" Shows Data in Array 0 Only
 ```sh
 $ cat getColleagues | jq .[0]
 {
