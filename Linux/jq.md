@@ -24,7 +24,14 @@
   - [Certain data only](#certain-data-only)
 - [BloodHound json data](#bloodhound-json-data)
   - [samaccountname](#samaccountname)
+    - [jq keys](#jq-keys)
+    - [jq '.data | keys'](#jq-data--keys)
+    - [jq '.data[0] | keys'](#jq-data0--keys)
+    - [jq '.data[0].Properties'](#jq-data0properties)
+    - [jq '.data[0].Properties.samaccountname'](#jq-data0propertiessamaccountname)
+    - [jq .data[].Properties.samaccountname](#jq-datapropertiessamaccountname)
   - [serviceprincipalnames](#serviceprincipalnames)
+    - [TL;DR](#tldr-1)
     - [Remove empty array ([]) as a result](#remove-empty-array--as-a-result)
     - [-c / Compact Version](#c--compact-version)
     - [remove the square brackets [] from the output](#remove-the-square-brackets--from-the-output)
@@ -301,15 +308,92 @@ $ cat file.json | jq 'to_entries[] | select(.key == "Audit$") | .key as $section
 
 # BloodHound json data
 ## samaccountname
+### jq keys
 ```sh
+$ cd ~/xyz/note/Sample/SharpHound\ Collector/HTB-Forest/
+$ cat HTB-Forest_20230817070527_users.json | jq keys
+[
+  "data",
+  "meta"
+]
+```
+
+### jq '.data | keys'
+```json
+$ cat HTB-Forest_20230817070527_users.json | jq '.data | keys'
+[
+  0,
+  1,
+  2,
+  3,
+  [snip]
+```
+
+### jq '.data[0] | keys'
+```json
+$ cat HTB-Forest_20230817070527_users.json | jq '.data[0] | keys'
+[
+  "Aces",
+  "AllowedToDelegate",
+  "HasSIDHistory",
+  "IsACLProtected",
+  "IsDeleted",
+  "ObjectIdentifier",
+  "PrimaryGroupSID",
+  "Properties",
+  "SPNTargets"
+]
+```
+
+### jq '.data[0].Properties'
+```json
+$ cat HTB-Forest_20230817070527_users.json | jq '.data[0].Properties'
+{
+  "domain": "HTB.LOCAL",
+  "name": "ADMINISTRATOR@HTB.LOCAL",
+  "distinguishedname": "CN=ADMINISTRATOR,CN=USERS,DC=HTB,DC=LOCAL",
+  "domainsid": "S-1-5-21-3072663084-364016917-1341370565",
+  "highvalue": false,
+  "samaccountname": "Administrator",
+  "description": "Built-in account for administering the computer/domain",
+  "whencreated": 1568803557,
+  [snip]
+}
+```
+
+### jq '.data[0].Properties.samaccountname'
+```json
+$ cat HTB-Forest_20230817070527_users.json | jq '.data[0].Properties.samaccountname'
+"Administrator"
+```
+
+### jq .data[].Properties.samaccountname
+```json
 $ cat HTB-Forest_20230817070527_users.json | jq .data[].Properties.samaccountname
 "Administrator"
 "DefaultAccount"
 "krbtgt"
+[snip]
 ```
 
 ## serviceprincipalnames
+### TL;DR
 ```sh
+cat HTB-Forest_20230817070527_users.json | jq keys
+cat HTB-Forest_20230817070527_users.json | jq .data
+cat HTB-Forest_20230817070527_users.json | jq .data | nl
+cat HTB-Forest_20230817070527_users.json | jq .data | head
+cat HTB-Forest_20230817070527_users.json | jq .data[0] |nl
+cat HTB-Forest_20230817070527_users.json | jq .data[0] | head
+cat HTB-Forest_20230817070527_users.json | jq .data[0].Properties
+cat HTB-Forest_20230817070527_users.json | jq .data[0].Properties.serviceprincipalnames
+cat HTB-Forest_20230817070527_users.json | jq .data[].Properties.serviceprincipalnames
+cat HTB-Forest_20230817070527_users.json | jq '.data[].Properties.serviceprincipalnames'
+cat HTB-Forest_20230817070527_users.json | jq '.data[].Properties.serviceprincipalnames | select(length > 0)'
+```
+
+### 
+```json
 # Same Output
 # cat HTB-Forest_20230817070527_users.json | jq .data[].Properties.serviceprincipalnames
 # cat HTB-Forest_20230817070527_users.json | jq '.data[].Properties.serviceprincipalnames | select(. != null)'
@@ -327,7 +411,7 @@ null
 ```
 
 ### Remove empty array ([]) as a result
-```sh
+```json
 $ cat HTB-Forest_20230817070527_users.json | jq '.data[].Properties.serviceprincipalnames | select(length > 0)'
 [
   "kadmin/changepw"
@@ -335,7 +419,7 @@ $ cat HTB-Forest_20230817070527_users.json | jq '.data[].Properties.serviceprinc
 ```
 
 ### -c / Compact Version
-```sh
+```json
 $ cat HTB-Forest_20230817070527_users.json | jq -c '.data[].Properties.serviceprincipalnames | select(length > 0)'
 ["kadmin/changepw"]
 ```
