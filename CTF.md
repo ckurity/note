@@ -10,15 +10,11 @@
 
 
 ## template
-te(){
-    cp ~/template '2.1 Enumeration without Users.md'
-    cp ~/template '2.2 Users Found.md'
-    cp ~/template '2.3 Validate User.md'
-    cp ~/template '2.4 ReEnumeration with Users.md'
-    cp ~/template '3. Initial Access.md'
-    cp ~/template '4. Cred 1 - .md'
-    cp ~/template '5. Shell 1 - .md'
-    cp ~/template '6. Exploit.md'
+te(){ # CTF template
+    # 1. Scan
+    cp ~/xyz/note/Template '2. Unauthenticated Enumeration.md'
+    cp ~/xyz/note/Template '3. Cred 1 - .md'
+    cp ~/xyz/note/Template '4. Shell 1 - .md'
 }
 
 ## Flags
