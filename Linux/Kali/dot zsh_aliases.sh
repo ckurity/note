@@ -53,6 +53,8 @@ alias v='cat -n'
 alias waybackurls='~/go/bin/waybackurls'
 alias z=zsh
 alias z1="PS1='[%*] %B%F{blue}ckurity@box%b:%F{green}%~$ '"
+alias z2="PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{yellow}%*%f%F{%(#.red.blue)}) ~ ckurity@box%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '"
 
 # vi ~/.zshrc
 
