@@ -52,6 +52,7 @@ alias u='sudo apt update -y && sudo apt upgrade -y'
 alias v='cat -n'
 alias waybackurls='~/go/bin/waybackurls'
 alias z=zsh
+alias z1="PS1='[%*] %B%F{blue}ckurity@box%b:%F{green}%~$ '"
 
 # vi ~/.zshrc
 

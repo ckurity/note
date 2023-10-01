@@ -1,25 +1,31 @@
-# Custom Prompt PS1
+- [Default; 2 lines](#default-2-lines)
+- [1 Line](#1-line)
+- [Custom Prompt](#custom-prompt)
+    - [Simple](#simple)
+    - [24-hour WITH Seconds](#24-hour-with-seconds)
+- [References](#references)
 
-### [How to Change / Set up bash custom prompt (PS1) in Linux](https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html)
-```
 
-```
+
 [Example `ckurity@box:~$`](#example-ps1bfblueckurityboxbfgreen)
 
-### Default; 2 layers
-```
+### Default; 2 Lines
+```sh
 ┌──(kali㉿kali)-[~]
 └─$ echo $PS1
 %F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}(%B%F{%(#.red.blue)}%n㉿%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset}
 ```
 
-### 
-```
+### 1 Line
+> Ctrl + P
+```sh
 kali@kali:~$ echo $PS1
 ${debian_chroot:+($debian_chroot)}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))}%B%F{%(#.red.blue)}%n@%m%b%F{reset}:%B%F{%(#.blue.green)}%~%b%F{reset}%(#.#.$)
 ```
 
+#### Breakdown
+```sh
 Here's a breakdown of each part:
 
 1.	${debian_chroot:+($debian_chroot)}: This part is used to display the Debian chroot environment if it's set.
@@ -43,9 +49,10 @@ So, your prompt will show something like this:
 •	If you are using sudo as a regular user: user@hostname:/current/directory$
 
 The color of the text will change based on whether the previous command was successful (red for failure, blue or green for success), and the text might be bold in some parts. The active Python virtual environment (if any) will also be displayed.
+```
 
 ### PS1='%B%F{blue}%n@%m%b:%F{green}%~$ '
-```
+```sh
 Here's what each part does:
 
 %B: Sets the text to bold.
@@ -62,19 +69,31 @@ $: Displays the "$" symbol, which is a common indicator for regular users in the
 This prompt will be simple and clear for regular users without any root or sudo indicators.
 ```
 
-### Example `PS1='%B%F{blue}ckurity@box%b:%F{green}%~$ '`
+# Custom Prompt
+## Simple
+### `PS1='%B%F{blue}ckurity@box%b:%F{green}%~$ '`
 PS1='%B%F{blue}ckurity@box%b:%F{green}%~$ '
-```
+```sh
 kali@kali:~$ PS1='%B%F{blue}ckurity@box%b:%F{green}%~$ '
 ckurity@box:~$
 ```
 
+#### 24-hour WITH Seconds
+PS1='[%*] %B%F{blue}ckurity@box%b:%F{green}%~$ '
+```sh
+ckurity@box:~$ PS1='[%*] %B%F{blue}ckurity@box%b:%F{green}%~$ 
+[10:02:23] ckurity@box:~$
+```
+
 ### 
-```
+```sh
 
 ```
 
-### 
-```
+# References
 
-```
+**How to Change / Set up bash custom prompt (PS1) in Linux**
+
+https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
+
+https://zsh-prompt-generator.site/
