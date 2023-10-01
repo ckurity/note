@@ -1,12 +1,15 @@
 # sshpass
 
+- [Usage](#usage)
+- [StrictHostKeyChecking=no](#stricthostkeycheckingno)
+
 ### 
 ```
 
 ```
 
-### 
-```
+### Usage
+```sh
 $ sshpass
 Usage: sshpass [-f|-d|-p|-e] [-hV] command parameters
    -f filename   Take password to use from file
@@ -23,15 +26,17 @@ At most one of -f, -d, -p or -e should be used
 ```
 
 ### SSH username is not case sensitive
-```
-sshpass -p '1ts-mag1c!!!' ssh tom@$ip
+```sh
+sshpass -p '1ts-mag1c!!!' ssh tom@$t
 ```
 
-### First time
-```
+### StrictHostKeyChecking=no
+First Time
+```sh
 -o StrictHostKeyChecking=no
 
-sshpass -p 'P@$$W0rd' ssh Administrator@$ip ssh -o StrictHostKeyChecking=no
+sshpass -p 'P@$$W0rd' ssh Administrator@$t ssh -o StrictHostKeyChecking=no
+sshpass -p msfadmin ssh msfadmin@$t ssh -o StrictHostKeyChecking=no
 ```
 
 ### 
