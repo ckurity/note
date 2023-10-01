@@ -1,1 +1,0 @@
-# Hydra v9.4 run at 2023-10-01 09:13:10 on 10.1.1.1 ssh (hydra -L users.txt -P passwords.txt -o HostKeyAlgorithms=ssh-rsa ssh://10.1.1.1)
