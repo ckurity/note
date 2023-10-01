@@ -1,0 +1,22 @@
+{
+    "tmp": {
+        ".X0-lock": {
+            "atime_epoch": "2023-10-01 08:49:36",
+            "ctime_epoch": "2023-10-01 08:49:36",
+            "mtime_epoch": "2023-10-01 08:49:36",
+            "size": "11 Bytes"
+        },
+        ".X11-unix/X0": {
+            "atime_epoch": "2023-10-01 08:49:37",
+            "ctime_epoch": "2023-10-01 08:49:36",
+            "mtime_epoch": "2023-10-01 08:49:36",
+            "size": "0 Bytes"
+        },
+        "4668.jsvc_up": {
+            "atime_epoch": "2023-10-01 08:49:39",
+            "ctime_epoch": "2023-10-01 08:49:39",
+            "mtime_epoch": "2023-10-01 08:49:39",
+            "size": "0 Bytes"
+        }
+    }
+}
