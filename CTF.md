@@ -10,12 +10,14 @@
 
 
 ## template
+```sh
 te(){ # CTF template
     # 1. Scan
     cp ~/xyz/note/Template '2. Unauthenticated Enumeration.md'
     cp ~/xyz/note/Template '3. Cred 1 - .md'
     cp ~/xyz/note/Template '4. Shell 1 - .md'
 }
+```
 
 ## Flags
 
