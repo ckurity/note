@@ -1,5 +1,11 @@
 - [Default; 2 lines](#default-2-lines)
+    - [Simplify Version](#simplify-version)
+    - [Custom Name](#custom-name)
+    - [Custom Time](#custom-time)
+    - [Custom Time & Color](#custom-time--color)
+    - [Breakdown](#breakdown)
 - [1 Line](#1-line)
+    
 - [Custom Prompt](#custom-prompt)
     - [Simple](#simple)
     - [24-hour WITH Seconds](#24-hour-with-seconds)
@@ -7,21 +13,47 @@
 
 
 
-[Example `ckurity@box:~$`](#example-ps1bfblueckurityboxbfgreen)
-
 ### Default; 2 Lines
 ```sh
 ┌──(kali㉿kali)-[~]
 └─$ echo $PS1
 %F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}(%B%F{%(#.red.blue)}%n㉿%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset}
+
+PS1='%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}(%B%F{%(#.red.blue)}%n㉿%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
 ```
 
-### 1 Line
-> Ctrl + P
+#### Simplify Version
 ```sh
-kali@kali:~$ echo $PS1
-${debian_chroot:+($debian_chroot)}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))}%B%F{%(#.red.blue)}%n@%m%b%F{reset}:%B%F{%(#.blue.green)}%~%b%F{reset}%(#.#.$)
+PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%n㉿%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+```
+
+#### Custom Name
+```sh
+PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}CKURITY㉿BOX%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+```
+
+#### Custom Time
+[%*] 
+```sh
+PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%* ~ CKURITY㉿BOX%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+```
+
+#### Custom Time & Color
+```sh
+PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{yellow}%*%f%F{%(#.red.blue)}) ~ CKURITY㉿BOX%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+
+┌──(kali㉿kali)-[~]
+└─$ PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{yellow}%*%f%F{%(#.red.blue)}) ~ CKURITY㉿BOX%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+
+┌──(10:41:34) ~ CKURITY㉿BOX)-[~]
+└─$ 
 ```
 
 #### Breakdown
@@ -43,12 +75,20 @@ Here's a breakdown of each part:
 9.	%F{reset}: This resets the text color to the default.
 10.	:%B%F{%(#.blue.green)}%~%b: This part displays the current working directory in blue (if the previous command was successful) or green (if it was unsuccessful), with the text in bold.
 11.	%(#.#.$): This displays "#" if you are the root user, "." if you are not the root user but are using the sudo command, and "$" if you are a regular user.
+
 So, your prompt will show something like this:
 •	If you are the root user: root@hostname:/current/directory#
 •	If you are a regular user: user@hostname:/current/directory$
 •	If you are using sudo as a regular user: user@hostname:/current/directory$
 
 The color of the text will change based on whether the previous command was successful (red for failure, blue or green for success), and the text might be bold in some parts. The active Python virtual environment (if any) will also be displayed.
+```
+
+### 1 Line
+> Ctrl + P
+```sh
+kali@kali:~$ echo $PS1
+${debian_chroot:+($debian_chroot)}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))}%B%F{%(#.red.blue)}%n@%m%b%F{reset}:%B%F{%(#.blue.green)}%~%b%F{reset}%(#.#.$)
 ```
 
 ### PS1='%B%F{blue}%n@%m%b:%F{green}%~$ '
