@@ -11,6 +11,8 @@
      - [Now you got it right](#now-you-got-it-right)
      - [Common Mistakes; variables argument needed for http-post-form](#common-mistakes-variables-argument-needed-for-http-post-form)
 - [SSH](#ssh)
+     - [hydra -L users.txt -P passwords.txt ssh://$t](#hydra--l-userstxt--p-passwordstxt-ssht)
+          - [Metasploitable2](#metasploitable2-kex-error--no-match-for-method-server-host-key-algo)
 
 
 # [Basic](#basic-1)
@@ -187,7 +189,8 @@ Syntax: <url>:<form parameters>[:<optional>[:<optional>]:<condition string>
 
 # [SSH](#ssh-1)
 
-### 
+## hydra -L users.txt -P passwords.txt ssh://$t
+### Metasploitable2: kex error : no match for method server host key algo
 ```sh
 head /usr/share/seclists/Usernames/top-usernames-shortlist.txt > users.txt
 echo msfadmin >> users.txt
@@ -203,9 +206,21 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-10-01 09:15:
 [ERROR] could not connect to ssh://10.1.1.1:22 - kex error : no match for method server host key algo: server [ssh-rsa,ssh-dss], client [rsa-sha2-512,rsa-sha2-256,ssh-ed25519,ecdsa-sha2-nistp521,ecdsa-sha2-nistp384,ecdsa-sha2-nistp256,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com]
 ```
 
-### 
+#### Solution: kali-tweaks
+Hardening > SSH Client > Apply > OK > Quit
 ```sh
+$ kali-tweaks 
+>>> Configuring SSH
+> Enabling wide compatibility
+> $ sudo cp -f /usr/share/kali-defaults/etc/ssh/ssh_config.d/kali-wide-compat.conf /etc/ssh/ssh_config.d/kali-wide-compat.conf
+[sudo] password for kali: 
 
+┏━(Message from Kali developers)
+┃ For more information about SSH configuration, please refer to:
+┃ https://www.kali.org/docs/general-use/ssh-configuration/
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+> Press Enter to continue...
 ```
 
 ### 
