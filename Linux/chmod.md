@@ -24,7 +24,7 @@ o= sets no permissions for others (all other users).
 
 ### 
 ```sh
-
+sudo chmod -R ug=rwx /opt
 ```
 
 ### 

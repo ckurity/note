@@ -31,6 +31,7 @@ egrep -n "$NEWUSER|sudo" /etc/group
 
 ### Activate the changes to groups
 ```sh
+sudo usermod -aG sudo $NEWUSER
 newgrp sudo
 ```
 
