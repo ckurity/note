@@ -17,12 +17,12 @@ BOX=Search
 alias 00='code ~/.zshrc'
 alias 01='code ~/.zsh_aliases'
 # alias 6 see below for zsh, but bash can't use number as function's name
-alias 7='cd /opt/xyz/note/Sample/'
-alias 8='cd /opt/xyz/note/Tools-Binary'
-alias 9="cd /opt/xyz/labs/$CTF/$TRACK/$BOX"
-alias 90='cd /opt/xyz/note/'
+alias 7='cd /xyz/note/Sample/'
+alias 8='cd /xyz/note/Tools-Binary'
+alias 9="cd /xyz/labs/$CTF/$TRACK/$BOX"
+alias 90='cd /xyz/note/'
 
-0(){
+0(){ # menu
     echo -n '\n... MENU ...\n'
     echo -n '------------\n'
     echo -n '00   code ~/.zshrc\n'
@@ -33,20 +33,20 @@ alias 90='cd /opt/xyz/note/'
     echo -n ' 9   cd CTF Box\n'
 }
 
-1(){
+1(){ # alias private & public IP
     # hostname -I | awk '{print $1}'; curl -4 ifconfig.co
     echo "$(hostname -I | awk '{print $1}')\t\t$(date)\n$(curl -s4 ifconfig.co)\t\t$(date)"
 }
 
-6(){
+6(){ # tmux main
     tmux new-session -s "$CTF" \; set -g mouse on \; \
         new-window -n 'git pull' \; \
-            send-keys 'clear;cd /opt/xyz/labs/; x; keepassxc &' C-m \; \
+            send-keys 'clear;cd /xyz/labs/; x; keepassxc &' C-m \; \
             send-keys 'git pull' \; \
         new-window -n 'git push' \; \
             split-window -h \; select-layout even-horizontal \; \
-            send-keys -t 0 'cd /opt/xyz/l*' C-m \; \
-            send-keys -t 1 'cd /opt/xyz/n*' C-m \; \
+            send-keys -t 0 'cd /xyz/l*' C-m \; \
+            send-keys -t 1 'cd /xyz/n*' C-m \; \
             setw synchronize-panes on \; send-keys 'clear' C-m \; \
             send-keys 'git add . ; git status ; git commit -m newUpdate ; git push' \; \
         new-window -n 'IP/VPN' \; \
@@ -63,47 +63,47 @@ alias 90='cd /opt/xyz/note/'
             send-keys -t 1 'bloodhound' \; \
             select-pane -t 0 \; \
         new-window -n 'Tools' \; \
-            send-keys 'clear;cd /opt/xyz/note/Tools-Binary;ls' C-m \; \
+            send-keys 'clear;cd /xyz/note/Tools-Binary;ls' C-m \; \
         new-window -n "$BOX" \; \
-            send-keys "clear;cd /opt/xyz/labs/$CTF/$TRACK/$BOX;ls -lh" C-m \; \
+            send-keys "clear;cd /xyz/labs/$CTF/$TRACK/$BOX;ls -lh" C-m \; \
         new-window -n "$BOX" \; \
-            send-keys "cd /opt/xyz/labs/$CTF/$TRACK/$BOX" C-m \; \
+            send-keys "cd /xyz/labs/$CTF/$TRACK/$BOX" C-m \; \
         select-window -t "$CTF:git pull"
 }
 
-62(){
+62(){ # tmux GIT
     tmux new-session -s "GIT" \; set -g mouse on \; \
     split-window -h \; select-layout even-horizontal \; \
-            send-keys -t 0 'cd /opt/xyz/l*' C-m \; \
-            send-keys -t 1 'cd /opt/xyz/n*' C-m \; \
+            send-keys -t 0 'cd /xyz/l*' C-m \; \
+            send-keys -t 1 'cd /xyz/n*' C-m \; \
             setw synchronize-panes on \; send-keys 'clear' C-m \; \
             send-keys 'git add . ; git status ; git commit -m Update ; git push' \; \
 }
 
-6a(){
+6a(){ # tmux CTF
     tmux new-session -s "${CTF}1" \; set -g mouse on \; \
     new-window -n "$BOX" \; \
-            send-keys "clear;cd /opt/xyz/labs/$CTF/$BOX;ls" C-m \; \
+            send-keys "clear;cd /xyz/labs/$CTF/$BOX;ls" C-m \; \
     new-window -n "$BOX" \; \
-            send-keys "clear;cd /opt/xyz/labs/$CTF/$BOX; ls -lh" C-m \; \
+            send-keys "clear;cd /xyz/labs/$CTF/$BOX; ls -lh" C-m \; \
     new-window -n "$BOX" \; \
-            send-keys "clear;cd /opt/xyz/labs/$CTF/$BOX" C-m \; \
+            send-keys "clear;cd /xyz/labs/$CTF/$BOX" C-m \; \
     new-window -n "$BOX" \; \
-            send-keys "clear;cd /opt/xyz/labs/$CTF/$BOX" C-m \; \
+            send-keys "clear;cd /xyz/labs/$CTF/$BOX" C-m \; \
     new-window -n "$BOX" \; \
-            send-keys "clear;cd /opt/xyz/labs/$CTF/$BOX" C-m \; \
+            send-keys "clear;cd /xyz/labs/$CTF/$BOX" C-m \; \
     select-window -t 1
 }
 
 ba(){
-    cp /opt/xyz/note/Template .
+    cp /xyz/note/Template .
 }
 
-te(){
-    cp /opt/xyz/note/Template '2.1 Enumeration without users.md'
-    cp /opt/xyz/note/Template '2.2 Users found.md'
-    cp /opt/xyz/note/Template '2.3 Enumeration with users.md'
-    cp /opt/xyz/note/Template '3. Initial Access.md'
-    cp /opt/xyz/note/Template '4. Cred 1 - .md'
-    cp /opt/xyz/note/Template '5. Shell 1 - .md'
+te(){ # CTF template
+    cp /xyz/note/Template '2.1 Enumeration without users.md'
+    cp /xyz/note/Template '2.2 Users found.md'
+    cp /xyz/note/Template '2.3 Enumeration with users.md'
+    cp /xyz/note/Template '3. Initial Access.md'
+    cp /xyz/note/Template '4. Cred 1 - .md'
+    cp /xyz/note/Template '5. Shell 1 - .md'
 }
