@@ -1,0 +1,1 @@
+rustscan -a $t -- -Pn -A -oN 1_nmap-A_$(date +%y%m%d-%H%M)
