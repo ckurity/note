@@ -1,6 +1,7 @@
 - [Numeric Permissions (Octal)](#numeric-permissions-octal)
 - [Octal Permissions](#octal-permissions)
 - [Symbolic Permissions](#symbolic-permissions)
+- [Remove Permissions for Others](#remove-permissions-for-others)
 
 ### Numeric Permissions (Octal)
 ```sh
@@ -27,9 +28,20 @@ o= sets no permissions for others (all other users).
 sudo chmod -R ug=rwx /opt
 ```
 
-### 
+### Remove Permissions for Others
 ```sh
+$ ls -dl /xyz
+drwxr-xr-x 4 kali sharedgroup 4096 Oct  2 00:16 /xyz
 
+$ sudo chmod -R o= /xyz
+
+$ ls -dl /xyz
+drwxr-x--- 4 kali sharedgroup 4096 Oct  2 00:16 /xyz
+
+$ sudo chmod -R ug=rwx,o= /xyz
+
+$ ls -dl /xyz
+drwxrwx--- 4 kali sharedgroup 4096 Oct  2 00:16 /xyz
 ```
 
 ### 

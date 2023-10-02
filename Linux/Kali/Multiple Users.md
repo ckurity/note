@@ -1,6 +1,8 @@
 - [Create a shared group](#create-a-shared-group-if-it-doesnt-already-exist)
 - [Add the users](#add-the-users)
-- [Change the group ownership](#change-the-group-ownership-of-the-opt-directory-to-the-newly-created-shared-group)
+    - [Before](#before)
+    - [Change the group ownership](#change-the-group-ownership-of-the-opt-directory-to-the-newly-created-shared-group)
+    - [After](#after)
 
 
 # Create a shared group (if it doesn't already exist)
@@ -27,7 +29,7 @@ drwxrwxr-x 3 kali kali 4.0K May 14 04:39 Postman
 drwxr-xr-x 4 root root 4.0K Sep 24 11:53 Xmind
 ```
 
-# Change the group ownership of the /opt directory to the newly created shared group
+## Change the group ownership of the /opt directory to the newly created shared group
 ```sh
 sudo chown -R :sharedgroup /opt
 ```
