@@ -1,6 +1,8 @@
 # Docker 101
 
-- [docker exec](#docker-exec)
+- [docker start](#docker-start-container)
+- [docker exec](#docker-exec-container)
+- [docker stop](#docker-stop-container)
 
 ### TLDR
 ```
@@ -36,19 +38,19 @@ permission denied while trying to connect to the Docker daemon socket at unix://
 
 ```
 ### [Problem: How to install docker and docker compose](https://askubuntu.com/questions/1424118/how-to-install-docker-and-docker-compose-on-ubutntu-22-04)
-```
+```sh
 $ docker compose up
 docker: 'compose' is not a docker command.
 See 'docker --help'
 ```
 ### Solution
-```
+```sh
 DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
 mkdir -p $DOCKER_CONFIG/cli-plugins
 ```
 
 ### Check latest version from https://github.com/docker/compose/releases/latest
-```
+```sh
 curl -sL https://github.com/docker/compose/releases/download/v2.20.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
 
 chmod u+x $DOCKER_CONFIG/cli-plugins/docker-compose
@@ -59,7 +61,12 @@ chmod u+x $DOCKER_CONFIG/cli-plugins/docker-compose
 docker compose version
 ```
 
-# docker exec
+# docker start CONTAINER
+```sh
+docker start DVWA
+```
+
+# docker exec CONTAINER
 ```sh
 Usage:  docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
 ```
@@ -74,10 +81,10 @@ root
 root@ea54f238afc1:/# hostname
 ea54f238afc1
 ```
-### 
-```sh
 
-```
+
+# docker stop CONTAINER
+
 ### 
 ```sh
 

@@ -1,9 +1,21 @@
 # curl
 
-- [curl](#curl)
-    - [Check the availability of files without downloading it](#check-the-availability-of-files-without-downloading-it)
+- [Basic](#basic)
+- [Check files without downloading it](#check-the-availability-of-files-without-downloading-it)
 
-### Check the availability of files without downloading it
+# Basic
+
+### 
+```sh
+
+```
+
+### 
+```sh
+
+```
+
+## Check the availability of files without downloading it
 ```bash
 #!/bin/bash
 
