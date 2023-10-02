@@ -1,5 +1,5 @@
 # code ~/.zshrc
-ls -lh ~/ip.txt ~/port.txt ~/domain.txt ~/myip.txt
+ls -lh ~/target.txt ~/port.txt ~/domain.txt ~/myip.txt
 touch ~/target.txt ~/port.txt ~/domain.txt ~/myip.txt
 
 # Update ~/.zshrc
