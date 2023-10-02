@@ -27,6 +27,7 @@ alias egv='egrep -v'
 alias f=file
 alias g=grep
 alias gi='grep -i'
+alias gin='grep -in'
 alias gn='grep -n'
 alias gv='grep -v'
 alias h=head
