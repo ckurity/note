@@ -2,7 +2,8 @@
     - [Simplify Version](#simplify-version)
     - [Custom Name](#custom-name)
     - [Custom Time](#custom-time)
-    - [Custom Time & Color](#custom-time--color)
+    - [Custom Time & Color - %n㉿%m](#custom-time--color---n㉿m)
+    - [Custom Time & Color - CKURITY㉿BOX](#custom-time--color---ckurity㉿box)
     - [Breakdown](#breakdown)
 - [1 Line](#1-line)
     
@@ -43,7 +44,13 @@ PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%* ~ CKURITY㉿BOX%b%F{%(#.
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
 ```
 
-#### Custom Time & Color
+#### Custom Time & Color - %n㉿%m
+```sh
+PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%*%f%F{%(#.red.blue)} ♨ %n㉿%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+```
+
+#### Custom Time & Color - CKURITY㉿BOX
 ```sh
 PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{yellow}%*%f%F{%(#.red.blue)}) ~ CKURITY㉿BOX%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
