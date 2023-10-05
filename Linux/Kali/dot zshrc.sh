@@ -13,12 +13,13 @@ myip=$(cat ~/myip.txt)
 CTF=HTB
 TRACK=_ActiveDirectory101
 BOX=Search
+xyz='/xyz'
 
 alias 00='code ~/.zshrc'
 alias 01='code ~/.zsh_aliases'
 # alias 6 see below for zsh, but bash can't use number as function's name
-alias 7='cd /xyz/note/Sample/'
-alias 8='cd /xyz/note/Tools-Binary'
+alias 7="cd $xyz/note/Sample/"
+alias 8="cd $xyz/note/Tools-Binary"
 alias 9="cd /xyz/labs/$CTF/$TRACK/$BOX"
 alias 90='cd /xyz/note/'
 
@@ -45,14 +46,14 @@ alias 90='cd /xyz/note/'
             send-keys 'git pull' \; \
         new-window -n 'git push' \; \
             split-window -h \; select-layout even-horizontal \; \
-            send-keys -t 0 'cd /xyz/l*' C-m \; \
-            send-keys -t 1 'cd /xyz/n*' C-m \; \
+            send-keys -t 0 "cd $xyz/l*" C-m \; \
+            send-keys -t 1 "cd $xyz/n*" C-m \; \
             setw synchronize-panes on \; send-keys 'clear' C-m \; \
             send-keys 'git add . ; git status ; git commit -m newUpdate ; git push' \; \
         new-window -n 'IP/VPN' \; \
             split-window -h \; split-window -v \; \
             send-keys -t 0 'x' C-m \; \
-            send-keys -t 0 'cd ~/vpn; sudo ngrep' C-m \; \
+            send-keys -t 0 "cd $xyz/vpn; sudo ngrep" C-m \; \
             send-keys -t 1 'watch ip -br a' C-m \; \
             send-keys -t 2 'clear' C-m \; \
             send-keys -t 2 'pu' C-m \; \
@@ -63,49 +64,45 @@ alias 90='cd /xyz/note/'
             send-keys -t 1 'bloodhound' \; \
             select-pane -t 0 \; \
         new-window -n 'Tools' \; \
-            send-keys 'clear;cd /xyz/note/Tools-Binary;ls' C-m \; \
+            send-keys "clear;cd $xyz/note/Tools-Binary;ls" C-m \; \
         new-window -n "$BOX" \; \
-            send-keys "clear;cd /xyz/labs/$CTF/$TRACK/$BOX;ls -lh" C-m \; \
+            send-keys "clear;cd $xyz/labs/$CTF/$TRACK/$BOX;ls -lh" C-m \; \
         new-window -n "$BOX" \; \
-            send-keys "cd /xyz/labs/$CTF/$TRACK/$BOX" C-m \; \
+            send-keys "cd $xyz/labs/$CTF/$TRACK/$BOX" C-m \; \
         select-window -t "$CTF:git pull"
 }
 
 62(){ # tmux GIT
     tmux new-session -s "GIT" \; set -g mouse on \; \
     split-window -h \; select-layout even-horizontal \; \
-            send-keys -t 0 'cd /xyz/l*' C-m \; \
-            send-keys -t 1 'cd /xyz/n*' C-m \; \
+            send-keys -t 0 "cd $xyz/l*" C-m \; \
+            send-keys -t 1 "cd $xyz/n*" C-m \; \
             setw synchronize-panes on \; send-keys 'clear' C-m \; \
             send-keys 'git add . ; git status ; git commit -m Update ; git push' \; \
 }
 
 6a(){ # tmux CTF
     tmux new-session -s "${CTF}1" \; set -g mouse on \; \
+            send-keys "clear;cd $xyz/labs/$CTF/$BOX;ls" C-m \; \
     new-window -n "$BOX" \; \
-            send-keys "clear;cd /xyz/labs/$CTF/$BOX;ls" C-m \; \
+            send-keys "clear;cd $xyz/labs/$CTF/$BOX; ls -lh" C-m \; \
     new-window -n "$BOX" \; \
-            send-keys "clear;cd /xyz/labs/$CTF/$BOX; ls -lh" C-m \; \
+            send-keys "clear;cd $xyz/labs/$CTF/$BOX" C-m \; \
     new-window -n "$BOX" \; \
-            send-keys "clear;cd /xyz/labs/$CTF/$BOX" C-m \; \
+            send-keys "clear;cd $xyz/labs/$CTF/$BOX" C-m \; \
     new-window -n "$BOX" \; \
-            send-keys "clear;cd /xyz/labs/$CTF/$BOX" C-m \; \
-    new-window -n "$BOX" \; \
-            send-keys "clear;cd /xyz/labs/$CTF/$BOX" C-m \; \
+            send-keys "clear;cd $xyz/labs/$CTF/$BOX" C-m \; \
     select-window -t 1
 }
 
 ba(){
-    cp /xyz/note/Template .
+    cp $xyz/note/Template .
 }
 
 te(){ # CTF template
-    cp /xyz/note/Template '2.1 Enumeration without users.md'
-    cp /xyz/note/Template '2.2 Users found.md'
-    cp /xyz/note/Template '2.3 Enumeration with users.md'
-    cp /xyz/note/Template '3. Initial Access.md'
-    cp /xyz/note/Template '4. Cred 1 - .md'
-    cp /xyz/note/Template '5. Shell 1 - .md'
+    cp $xyz/note/Template '2. Unauthenticated Enumeration.md'
+    cp $xyz/note/Template '3. Cred 1 - .md'
+    cp $xyz/note/Template '4. Shell 1 - .md'
 }
 
 PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%D{%d-%m-%Y %H:%M:%S}%f%F{%(#.red.blue)} ♨ %n㉿%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
