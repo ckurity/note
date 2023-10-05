@@ -10,9 +10,19 @@
 - [Custom Prompt](#custom-prompt)
     - [Simple](#simple)
     - [24-hour WITH Seconds](#24-hour-with-seconds)
+- [Tab Name](#set-the-tab-name-in-a-qt-terminal-emulator)
 - [References](#references)
 
 
+
+# TLDR
+```sh
+%n㉿%m	username㉿hostname
+
+%n		This displays the username of the current user
+@/㉿	This is just a literal "@" / "㉿" symbol
+%m		This displays the hostname of the system
+```
 
 ### Default; 2 Lines
 ```sh
@@ -132,9 +142,43 @@ ckurity@box:~$ PS1='[%*] %B%F{blue}ckurity@box%b:%F{green}%~$
 [10:02:23] ckurity@box:~$
 ```
 
-### 
-```sh
+# Set the tab name in a Qt terminal emulator
+Use the precmd hook provided by Zsh to dynamically change the tab name
 
+## 
+```zsh
+# Define a function to update the tab title
+update_tab_title() {
+    # Set the tab title to "username@hostname:current_directory"
+    # printf "\033]0;%s@%s:%s\007" "$USER" "$HOST" "$PWD"
+	printf "\033]0;♨TEST♨\007"
+}
+
+# Set the precmd hook to call our function before each command
+precmd_functions+=(update_tab_title)
+```
+
+## 
+```sh
+The line \033]0;%s@%s:%s\007 in the update_tab_title function uses ANSI escape codes to set the title of the terminal tab to a specific format. Let's break down this line:
+
+\033: This is the escape character, which is represented as ^[ in the form of octal notation. In ASCII, it signals the beginning of an escape code.
+
+]0;: This part of the escape code tells the terminal emulator that we are setting the window or tab title.
+
+%s@%s:%s: These are format placeholders that will be replaced by actual values when the code is executed.
+
+%s is a placeholder for a string, and we're using it three times here.
+
+%s@%s:%s represents a format string where %s will be replaced by the values we provide in the printf function.
+
+\007: This is the ASCII Bell character (BEL), represented as \a in C-style escape sequences. It signals the end of the escape code and notifies the terminal emulator to apply the title change.
+
+When this line of code is executed within the update_tab_title function, the placeholders %s are replaced with the following values:
+
+The first %s is replaced with the value of $USER, which is your username.
+The second %s is replaced with the value of $HOST, which is your hostname.
+The third %s is replaced with the value of $PWD, which is the current working directory.
 ```
 
 # References
