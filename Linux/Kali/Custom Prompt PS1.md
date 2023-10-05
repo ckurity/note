@@ -22,6 +22,19 @@
 %n		This displays the username of the current user
 @/㉿	This is just a literal "@" / "㉿" symbol
 %m		This displays the hostname of the system
+%*      Inserts the current time in 12-hour format
+
+%D{%d-%m-%Y %H:%M:%S}       Inserts the current date and time in the format "dd-mm-yyyy HH:MM:SS," where:
+
+%d: Day of the month (01-31)
+%m: Month (01-12)
+%Y: Year with century as a decimal number (e.g., 2023)
+%H: Hour (00-23)
+%M: Minute (00-59)
+%S: Second (00-59)
+
+%F{reset}   This resets the text color to the default.
+%B%F{%(#.blue.green)}%~%b   This part displays the current working directory in blue (if the previous command was successful) or green (if it was unsuccessful), with the text in bold.
 ```
 
 ### Default; 2 Lines
