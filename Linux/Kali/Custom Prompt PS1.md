@@ -24,10 +24,11 @@
 %m		This displays the hostname of the system
 %*      Inserts the current time in 12-hour format
 
-%D{%d-%m-%Y %H:%M:%S}       Inserts the current date and time in the format "dd-mm-yyyy HH:MM:SS," where:
+%D{%d-%b-%Y %H:%M:%S}       Inserts the current date and time in the format "dd-mm-yyyy HH:MM:SS," where:
 
 %d: Day of the month (01-31)
 %m: Month (01-12)
+%b: Abbreviated month name (e.g., Oct for October)
 %Y: Year with century as a decimal number (e.g., 2023)
 %H: Hour (00-23)
 %M: Minute (00-59)
