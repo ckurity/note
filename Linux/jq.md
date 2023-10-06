@@ -170,7 +170,7 @@ $ cat getColleagues | jq '.[] | select(.email=="okent@megacorp.htb")'
 
 ## Extract "position"
 ```json
-$ cat getColleagues | jq '.[].position'                              
+$ cat getColleagues | jq '.[].position'
 "Junior Developer"
 "Senior Consultant"
 "Assistant Manager"

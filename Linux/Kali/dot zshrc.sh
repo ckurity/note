@@ -42,7 +42,7 @@ alias 90='cd /xyz/note/'
 6(){ # tmux main
     tmux new-session -s "$CTF" \; set -g mouse on \; \
         new-window -n 'git pull' \; \
-            send-keys 'clear;cd /xyz/labs/; x; keepassxc &' C-m \; \
+            send-keys "clear;cd $xyz/labs/; x; keepassxc &; code &; brave-browser &" C-m \; \
             send-keys 'git pull' \; \
         new-window -n 'git push' \; \
             split-window -h \; select-layout even-horizontal \; \
