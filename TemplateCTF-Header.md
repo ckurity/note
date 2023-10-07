@@ -1,29 +1,41 @@
 - [445 SMB](#445-smb)
-    - [smbclient -NL $t](#smbclient--nl-t)
-    - [cme smb $t](#cme-smb-t)
+	- [smbclient -NL $t](#smbclient--nl-t)
+	- [cme smb $t](#cme-smb-t)
 - [389,636,3268,3269 LDAP](#38963632683269-ldap)
-- [88 Kerberos]()
+- [88 Kerberos](#88-kerberos)
+	- [AS-REP Roasting with GetNPUsers](#as-rep-roasting-with-getnpusers)
+	- [Kerberoasting with GetUserSPNs](#kerberoasting-with-getuserspns)
 - [80 HTTP](#80-http)
-    - [nuclei](#nuclei)
-        - [HTTP](#http)
-        - [HTTPS](#https)
-        - [Custom Port](#custom-port)
-    - [feroxbuster](#feroxbuster)
-    - [curl](#curl)
-    - [lynx](#lynx)
-    - [nikto](#nikto)
-    - [whatweb](#whatweb)
+	- [nuclei](#nuclei)
+		- [HTTP](#http)
+		- [HTTPS](#https)
+		- [Custom Port](#custom-port)
+	- [feroxbuster](#feroxbuster)
+	- [curl](#curl)
+	- [lynx](#lynx)
+	- [nikto](#nikto)
+	- [whatweb](#whatweb)
 
 
 # [445 SMB](#445-smb-1)
 ## [smbclient -NL $t](#smbclient--nl-t-1)
 ## [cme smb $t](#cme-smb-t-1)
 
-# 389,636,3268,3269 LDAP
+# [389,636,3268,3269 LDAP](#38963632683269-ldap-1)
+# [88 Kerberos](#88-kerberos-1)
+## [AS-REP Roasting with GetNPUsers](#as-rep-roasting-with-getnpusers-1)
+## [Kerberoasting with GetUserSPNs](#kerberoasting-with-getuserspns-1)
 
-# 80 HTTP
-## nuclei
-### HTTP
+# [80 HTTP](#80-http-1)
+## [nuclei](#nuclei-1)
+### [HTTP](#http-1)
+### [HTTPS](#https-1)
+### [Custom Port](#custom-port-1)
+## [feroxbuster](#feroxbuster-1)
+## [curl](#curl-1)
+## [lynx](#lynx-1)
+## [nikto](#nikto-1)
+## [whatweb](#whatweb-1)
 
 ---------------------------------------
 

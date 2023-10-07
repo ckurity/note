@@ -7,7 +7,6 @@
     - [jq | wc -l](#jq--wc--l)
     - [jq | head](#jq--head)
     - ["jq .[0]" Shows Data in Array 0 Only](#jq-0-shows-data-in-array-0-only)
-
   - [Show Array 0,1,2 Only](#show-array-012-only)
   - [Extract the property names from the objects within the JSON array](#extract-the-property-names-from-the-objects-within-the-json-array)
     - [jq '.[0] | keys[]'](#jq-0--keys)
