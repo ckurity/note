@@ -4,6 +4,7 @@
     - [Custom Time](#custom-time)
     - [Custom Time & Color - %n㉿%m](#custom-time--color---n㉿m)
     - [Custom Time & Color - CKURITY㉿BOX](#custom-time--color---ckurity㉿box)
+    - [Custom: Day, Date & Time](#custom-day-date--time)
     - [Breakdown](#breakdown)
 - [1 Line](#1-line)
     
@@ -12,7 +13,6 @@
     - [24-hour WITH Seconds](#24-hour-with-seconds)
 - [Tab Name](#set-the-tab-name-in-a-qt-terminal-emulator)
 - [References](#references)
-
 
 
 # TLDR
@@ -24,8 +24,11 @@
 %m		This displays the hostname of the system
 %*      Inserts the current time in 12-hour format
 
-%D{%d-%b-%Y %H:%M:%S}       Inserts the current date and time in the format "dd-mm-yyyy HH:MM:SS," where:
+%D{%a %d-%b-%Y %H:%M:%S}    Inserts the current day, date and time in the format "dd-mm-yyyy HH:MM:SS," where:
 
+%D{}: format specifier for date and time formatting
+%A: This format specifier displays the full name of the day of the week. For example, if you use %A, it will display "Monday" for a date that falls on a Monday.
+%a: This format specifier displays the abbreviated name of the day of the week. It typically uses the first three letters of the day of the week. For example, if you use %a, it will display "Mon" for a date that falls on a Monday.
 %d: Day of the month (01-31)
 %m: Month (01-12)
 %b: Abbreviated month name (e.g., Oct for October)
@@ -53,12 +56,18 @@ PS1='%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_
 ```sh
 PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%n㉿%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+
+┌──(kali㉿kali)-[~]
+└─$
 ```
 
 #### Custom Name
 ```sh
 PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}CKURITY㉿BOX%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+
+┌──(CKURITY㉿BOX)-[~]
+└─$
 ```
 
 #### Custom Time
@@ -66,12 +75,18 @@ PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}CKURITY㉿BOX%b%F{%(#.blue.
 ```sh
 PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%* ~ CKURITY㉿BOX%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+
+┌──(20:48:04 ~ CKURITY㉿BOX)-[~]
+└─$
 ```
 
 #### Custom Time & Color - %n㉿%m
 ```sh
 PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%*%f%F{%(#.red.blue)} ♨ %n㉿%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+
+┌──(20:48:16 ♨ kali㉿kali)-[~]
+└─$
 ```
 
 #### Custom Time & Color - CKURITY㉿BOX
@@ -79,15 +94,24 @@ PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%*%f%F{%(#.red.blu
 PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{yellow}%*%f%F{%(#.red.blue)}) ~ CKURITY㉿BOX%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
 
-┌──(kali㉿kali)-[~]
-└─$ PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{yellow}%*%f%F{%(#.red.blue)}) ~ CKURITY㉿BOX%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
-└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
-
-┌──(10:41:34) ~ CKURITY㉿BOX)-[~]
+┌──(20:48:45) ~ CKURITY㉿BOX)-[~]
 └─$ 
 ```
 
-#### Breakdown
+#### Custom: Date & Time
+```sh
+PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%D{%d-%b-%Y %H:%M:%S}%f%F{%(#.red.blue)} ♨ CKURITY㉿BOX%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+```
+
+#### Custom: Day, Date & Time
+%D{%a %d-%b-%Y %H:%M:%S}
+```sh
+PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%D{%a %d-%b-%Y %H:%M:%S}%f%F{%(#.red.blue)} ♨ CKURITY㉿BOX%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+```
+
+#### [Breakdown](#breakdown-1)
 ```sh
 Here's a breakdown of each part:
 
