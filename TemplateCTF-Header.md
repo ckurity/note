@@ -1,7 +1,10 @@
 - [445 SMB](#445-smb)
 	- [smbclient -NL $t](#smbclient--nl-t)
 	- [cme smb $t](#cme-smb-t)
+	- [rpcclient $t -NU '' -c enumdomusers](#rpcclient-t--nu---c-enumdomusers)
 - [389,636,3268,3269 LDAP](#38963632683269-ldap)
+	- [ldapsearch -xH ldap://$t -s base namingcontexts](#ldapsearch--xh-ldapt--s-base-namingcontexts)
+	- [ldapsearch -xH ldap://$t -b 'DC=XYZ,DC=local'](#ldapsearch--xh-ldapt--b-dcxyzdclocal)
 - [88 Kerberos](#88-kerberos)
 	- [AS-REP Roasting with GetNPUsers](#as-rep-roasting-with-getnpusers)
 	- [Kerberoasting with GetUserSPNs](#kerberoasting-with-getuserspns)
@@ -20,8 +23,12 @@
 # [445 SMB](#445-smb-1)
 ## [smbclient -NL $t](#smbclient--nl-t-1)
 ## [cme smb $t](#cme-smb-t-1)
+## [rpcclient $t -NU '' -c enumdomusers](#rpcclient-t--nu---c-enumdomusers-1)
 
 # [389,636,3268,3269 LDAP](#38963632683269-ldap-1)
+## [ldapsearch -xH ldap://$t -s base namingcontexts](#ldapsearch--xh-ldapt--s-base-namingcontexts-1)
+## [ldapsearch -xH ldap://$t -b 'DC=XYZ,DC=local'](#ldapsearch--xh-ldapt--b-dcxyzdclocal-1)
+
 # [88 Kerberos](#88-kerberos-1)
 ## [AS-REP Roasting with GetNPUsers](#as-rep-roasting-with-getnpusers-1)
 ## [Kerberoasting with GetUserSPNs](#kerberoasting-with-getuserspns-1)

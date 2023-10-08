@@ -1,18 +1,11 @@
-[Validate Users with `kerbrute userenum`](#kerbrute-userenum-userstxt--d-searchhtb---dc-ip)
-
-[Another example](#another-example)
+- [Validate Users with `kerbrute userenum`](#kerbrute-userenum-userstxt--d-searchhtb---dc-ip)
+- [Another example](#another-example)
 
 -----------------------------
 
 ### kerbrute userenum users.txt -d search.htb --dc $ip
-```
+```sh
 $ kerbrute userenum users.txt -d search.htb --dc $ip
-
-    __             __               __     
-   / /_____  _____/ /_  _______  __/ /____ 
-  / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \
- / ,< /  __/ /  / /_/ / /  / /_/ / /_/  __/
-/_/|_|\___/_/  /_.___/_/   \__,_/\__/\___/                                        
 
 Version: v1.0.3 (9dad6e1) - 09/19/23 - Ronnie Flathers @ropnop
 
@@ -26,14 +19,8 @@ Version: v1.0.3 (9dad6e1) - 09/19/23 - Ronnie Flathers @ropnop
 ```
 
 ### Another example
-```
+```sh
 $ kerbrute userenum users.txt --dc $ip -d htb.local
-
-    __             __               __     
-   / /_____  _____/ /_  _______  __/ /____ 
-  / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \
- / ,< /  __/ /  / /_/ / /  / /_/ / /_/  __/
-/_/|_|\___/_/  /_.___/_/   \__,_/\__/\___/
 
 Version: v1.0.3 (9dad6e1) - 09/11/23 - Ronnie Flathers @ropnop
 

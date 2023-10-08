@@ -24,6 +24,10 @@ find /mnt -type f -name '*.txt' 2>/dev/null -exec ls -lh {} +
 
 ## Examples
 
+### find the files equal to or greater than 2 MB
+```sh
+find . -type f -size +2M
+```
 ### find active.htb -type f -exec file {} +
 ```
 $ find active.htb -type f -exec file {} +
