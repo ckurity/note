@@ -13,12 +13,13 @@ d=active.htb
 
 # Verify Variable
 ```sh
-echo $ip $d
+echo $t $d
 ```
 
 # Implement
 ```sh
-echo $ip $d | sudo tee -a /etc/hosts
+tail -3 /etc/hosts
+echo $t $d | sudo tee -a /etc/hosts
 sudo bash -c ' echo "10.10.11.217 latex.topology.htb topology.htb" >> /etc/hosts'
 ```
 
