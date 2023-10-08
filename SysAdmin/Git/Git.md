@@ -76,30 +76,29 @@ git push -u origin main
 ```
 
 ## Remember Username & Password
-```
+```sh
 $ git clone https://github.com/ckurity/git
 Cloning into 'git'...
 Username for 'https://github.com':
 ```
 
 ### Default Config is Empty
-```
+```sh
 git config --global credential.helper cache
 ```
 
 ### Change it to 4 hours
-```
-git config --global credential.helper 'cache --timeout=<seconds>'
-```
-
 ### 14400 seconds = 240 minutes = 4 hours
-```
+```sh
+# git config --global credential.helper 'cache --timeout=<seconds>'
 git config --global credential.helper 'cache --timeout=14400'
 ```
+
 Replace <seconds> with the desired number of seconds for the cache timeout. For example, to set it to 30 minutes, you can use:
-```
+```sh
 git config --global credential.helper 'cache --timeout=1800'
 ```
+
 Once you've configured credential caching, Git will remember your username and password for the specified duration. During that time, you won't need to re-enter them when performing Git push operations.
 
 ### Example
