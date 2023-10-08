@@ -20,8 +20,8 @@ alias 01='code ~/.zsh_aliases'
 # alias 6 see below for zsh, but bash can't use number as function's name
 alias 7="cd $xyz/note/Sample/"
 alias 8="cd $xyz/note/Tools-Binary"
-alias 9="cd /xyz/labs/$CTF/$TRACK/$BOX"
-alias 90='cd /xyz/note/'
+alias 9="cd $xyz/labs/$CTF/$TRACK/$BOX"
+alias 90="cd $xyz/note/"
 
 0(){ # menu
     echo -n '\n... MENU ...\n'
