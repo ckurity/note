@@ -5,6 +5,7 @@
     - [Custom Time & Color - %n㉿%m](#custom-time--color---n㉿m)
     - [Custom Time & Color - CKURITY㉿BOX](#custom-time--color---ckurity㉿box)
     - [Custom: Day, Date & Time](#custom-day-date--time)
+    - [Custom: Day & Date](#custom-day--date)
     - [Breakdown](#breakdown)
 - [1 Line](#1-line)
     
@@ -108,6 +109,13 @@ PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%D{%d-%b-%Y %H:%M:
 %D{%a %d-%b-%Y %H:%M:%S}
 ```sh
 PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%D{%a %d-%b-%Y %H:%M:%S}%f%F{%(#.red.blue)} ♨ CKURITY㉿BOX%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+```
+
+#### [Custom: Day & Date]()
+Path always set to ~
+```sh
+PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%D{%a %d-%b-%Y}%f%F{%(#.red.blue)} ♨ CKURITY㉿BOX%b%F{%(#.blue.green)})-[~]
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
 ```
 
