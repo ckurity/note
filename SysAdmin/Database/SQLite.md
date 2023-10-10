@@ -8,19 +8,19 @@
 -------------------------------------------
 
 ### ls -lh Audit.db
-```
+```sh
 $ ls -lh Cascade/Shares/Audit/DB/Audit.db
 -rw-r--r-- 1 kali kali 24K Sep 21 21:47 Cascade/Shares/Audit/DB/Audit.db
 ```
 
 ### file Audit.db
-```
+```sh
 $ file Cascade/Shares/Audit/DB/Audit.db
 Cascade/Shares/Audit/DB/Audit.db: SQLite 3.x database, last written using SQLite version 3027002, file counter 60, database pages 6, 1st free page 6, free pages 1, cookie 0x4b, schema 4, UTF-8, version-valid-for 60
 ```
 
 ### sqlite3 Audit.db
-```
+```sh
 $ sqlite3 Cascade/Shares/Audit/DB/Audit.db
 SQLite version 3.42.0 2023-05-16 12:36:15
 Enter ".help" for usage hints.
@@ -61,7 +61,7 @@ COMMIT;
 ```
 
 ### 
-```
+```sh
 $ base64 -d <<< 'BQO5l5Kj9MdErXx6Q6AGOw=='
 ������D�|zC�;
 ```

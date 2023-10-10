@@ -27,12 +27,14 @@ alias 90="cd $xyz/note/"
 0(){ # menu
     echo -n '\n... MENU ...\n'
     echo -n '------------\n'
-    echo -n '00   code ~/.zshrc\n'
-    echo -n '01   code ~/.zsh_aliases\n'
-    echo -n ' 6   tmux\n'
-    echo -n ' 7   cd Sample\n'
-    echo -n ' 8   cd Tools-Binary\n'
-    echo -n ' 9   cd CTF Box\n'
+    echo -n '00     code ~/.zshrc\n'
+    echo -n '01     code ~/.zsh_aliases\n'
+    echo -n ' 6     tmux\n'
+    echo -n ' 7     cd Sample\n'
+    echo -n ' 8     cd Tools-Binary\n'
+    echo -n ' 9     cd CTF Box\n'
+    echo -n ' ba    copy 1 file template\n'
+    echo -n ' te    mkdir CTF template\n'
 }
 
 1(){ # alias private & public IP
@@ -96,11 +98,11 @@ alias 90="cd $xyz/note/"
     select-window -t 1
 }
 
-ba(){
+ba(){ # copy 1 file template
     cp $xyz/note/Template .
 }
 
-te(){ # CTF template
+te(){ # mkdir CTF template
     cp $xyz/note/Template '2. Unauthenticated Enumeration.md'
     cp $xyz/note/Template '3. Cred 1 - .md'
     cp $xyz/note/Template '4. Shell 1 - .md'
