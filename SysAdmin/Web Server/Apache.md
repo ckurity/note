@@ -54,10 +54,7 @@ $ curl $t
 curl: (52) Empty reply from server
 ```
 
-### 
-```sh
 
-```
 
 ### 
 ```sh
