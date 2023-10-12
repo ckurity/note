@@ -104,7 +104,7 @@ ncat --ssl -nvlp 443
 
 ## Connecting to listening host
 ```sh
-ncat --ssl -nv $ip 443
+ncat --ssl -nv $t 443
 ```
 
 # 
