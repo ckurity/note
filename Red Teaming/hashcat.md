@@ -1,51 +1,55 @@
-# 
+[TLDR](#tldr)
+[hashcat --hash-info --mach | grep NTLMv2](#hashcat---hash-info---mach--grep-ntlmv2)
+[hashcat --example-hashes --mach | grep NTLMv2](#hashcat---example-hashes---mach--grep-ntlmv2)
+[hashcat -m 18200 hash.txt rockyou.txt](#hashcat--m-18200-hashtxt-rockyoutxt)
 
-### TLDR
+## [TLDR](#tldr-1)
 "--example-hashes" is Alias of "--hash-info"
-```
+```sh
 hashcat --hash-info --mach | grep NTLMv2
-hashcat --example-hashes | grep krb5asrep
-hashcat --example-hashes --mach | grep krb5asrep
+hashcat --example-hashes --mach | grep NTLMv2
+hashcat --hash-info --mach | grep krb5asrep
 ```
 
-### [hashcat --hash-info --mach | grep NTLMv2](#hashcat---hash-info---mach--grep-ntlmv2-1)
-### [hashcat --example-hashes --mach | grep NTLMv2](#hashcat---example-hashes---mach--grep-ntlmv2-1)
-
-### hashcat --hash-info --mach | grep NTLMv2
-```
+## [hashcat --hash-info --mach | grep NTLMv2](#hashcat---hash-info---mach--grep-ntlmv2-1)
+```sh
 $ hashcat --hash-info --mach | grep NTLMv2
  }, "5600": { "name": "NetNTLMv2", "category": "Network Protocol", "slow_hash": false, "password_len_min": 0, "password_len_max": 256, "is_salted": true, "salt_type": "embedded", "salt_len_min": 0, "salt_len_max": 256, "kernel_type": [ "pure", "optimized" ], "example_hash_format": "plain", "example_hash": "0UL5G37JOI0SX::6VB1IS0KA74:ebe1afa18b7fbfa6:aab8bf8675658dd2a939458a1077ba08:010100000000000031c8aa092510945398b9f7b7dde1a9fb00000000f7876f2b04b700", "example_pass": "hashcat", "benchmark_mask": "?b?b?b?b?b?b?b", "benchmark_charset1": "N/A", "autodetect_enabled": true, "self_test_enabled": true, "potfile_enabled": true, "custom_plugin": false, "plaintext_encoding": [ "ASCII", "HEX" ]
  }, "27100": { "name": "NetNTLMv2 (NT)", "category": "Network Protocol", "slow_hash": true, "password_len_min": 32, "password_len_max": 32, "is_salted": true, "salt_type": "embedded", "salt_len_min": 0, "salt_len_max": 256, "kernel_type": [ "pure" ], "example_hash_format": "plain", "example_hash": "0UL5G37JOI0SX::6VB1IS0KA74:ebe1afa18b7fbfa6:aab8bf8675658dd2a939458a1077ba08:010100000000000031c8aa092510945398b9f7b7dde1a9fb00000000f7876f2b04b700", "example_pass": "b4b9b02e6f09a9bd760f388b67351e2b", "benchmark_mask": "?a?a?a?a?a?a?a?axxxxxxxxxxxxxxxx", "benchmark_charset1": "N/A", "autodetect_enabled": false, "self_test_enabled": true, "potfile_enabled": true, "custom_plugin": false, "plaintext_encoding": [ "ASCII", "HEX" ]
 ```
 
-### hashcat --example-hashes --mach | grep NTLMv2
-```
+## [hashcat --example-hashes --mach | grep NTLMv2](#hashcat---example-hashes---mach--grep-ntlmv2-1)
+```sh
 $ hashcat --example-hashes --mach | grep NTLMv2
  }, "5600": { "name": "NetNTLMv2", "category": "Network Protocol", "slow_hash": false, "password_len_min": 0, "password_len_max": 256, "is_salted": true, "salt_type": "embedded", "salt_len_min": 0, "salt_len_max": 256, "kernel_type": [ "pure", "optimized" ], "example_hash_format": "plain", "example_hash": "0UL5G37JOI0SX::6VB1IS0KA74:ebe1afa18b7fbfa6:aab8bf8675658dd2a939458a1077ba08:010100000000000031c8aa092510945398b9f7b7dde1a9fb00000000f7876f2b04b700", "example_pass": "hashcat", "benchmark_mask": "?b?b?b?b?b?b?b", "benchmark_charset1": "N/A", "autodetect_enabled": true, "self_test_enabled": true, "potfile_enabled": true, "custom_plugin": false, "plaintext_encoding": [ "ASCII", "HEX" ]
  }, "27100": { "name": "NetNTLMv2 (NT)", "category": "Network Protocol", "slow_hash": true, "password_len_min": 32, "password_len_max": 32, "is_salted": true, "salt_type": "embedded", "salt_len_min": 0, "salt_len_max": 256, "kernel_type": [ "pure" ], "example_hash_format": "plain", "example_hash": "0UL5G37JOI0SX::6VB1IS0KA74:ebe1afa18b7fbfa6:aab8bf8675658dd2a939458a1077ba08:010100000000000031c8aa092510945398b9f7b7dde1a9fb00000000f7876f2b04b700", "example_pass": "b4b9b02e6f09a9bd760f388b67351e2b", "benchmark_mask": "?a?a?a?a?a?a?a?axxxxxxxxxxxxxxxx", "benchmark_charset1": "N/A", "autodetect_enabled": false, "self_test_enabled": true, "potfile_enabled": true, "custom_plugin": false, "plaintext_encoding": [ "ASCII", "HEX" ]
 ```
-### 
-```
+
+## 
+```sh
 
 ```
 
-### 
-```
+## 
+```sh
 
 ```
-### Examples 
-```
+
+## 
+```sh
 $ hashcat --example-hashes | grep krb5asrep
   Example.Hash........: $krb5asrep$23$user@domain.com:3e156ada591263b8a...102ac [Truncated, use --mach for full length]
 ```
-### 
-```
+
+## 
+```sh
 $ hashcat --example-hashes --mach | grep krb5asrep
  }, "18200": { "name": "Kerberos 5, etype 23, AS-REP", "category": "Network Protocol", "slow_hash": false, "password_len_min": 0, "password_len_max": 256, "is_salted": true, "salt_type": "embedded", "salt_len_min": 0, "salt_len_max": 256, "kernel_type": [ "pure", "optimized" ], "example_hash_format": "plain", "example_hash": "$krb5asrep$23$user@domain.com:3e156ada591263b8aab0965f5aebd837$007497cb51b6c8116d6407a782ea0e1c5402b17db7afa6b05a6d30ed164a9933c754d720e279c6c573679bd27128fe77e5fea1f72334c1193c8ff0b370fadc6368bf2d49bbfdba4c5dccab95e8c8ebfdc75f438a0797dbfb2f8a1a5f4c423f9bfc1fea483342a11bd56a216f4d5158ccc4b224b52894fadfba3957dfe4b6b8f5f9f9fe422811a314768673e0c924340b8ccb84775ce9defaa3baa0910b676ad0036d13032b0dd94e3b13903cc738a7b6d00b0b3c210d1f972a6c7cae9bd3c959acf7565be528fc179118f28c679f6deeee1456f0781eb8154e18e49cb27b64bf74cd7112a0ebae2102ac", "example_pass": "hashcat", "benchmark_mask": "?b?b?b?b?b?b?b", "benchmark_charset1": "N/A", "autodetect_enabled": true, "self_test_enabled": true, "potfile_enabled": true, "custom_plugin": false, "plaintext_encoding": [ "ASCII", "HEX" ]
 ```
-### 
-```
-$ hashcat -m 18200 hash.txt /usr/share/wordlists/rockyou.txt 
+
+## [hashcat -m 18200 hash.txt rockyou.txt](#hashcat--m-18200-hashtxt-rockyoutxt-1)
+```sh
+$ hashcat -m 18200 hash.txt /usr/share/wordlists/rockyou.txt
 hashcat (v6.2.6) starting
 
 ... snip ...
@@ -82,19 +86,23 @@ Hardware.Mon.#1..: Util: 87%
 Started: Tue Aug 15 15:23:29 2023
 Stopped: Tue Aug 15 15:23:43 2023
 ```
-### 
-```
+
+## 
+```sh
 
 ```
-### 
-```
+
+## 
+```sh
 
 ```
-### 
-```
+
+## 
+```sh
 
 ```
-### 
-```
+
+## 
+```sh
 
 ```
