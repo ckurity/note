@@ -1,58 +1,61 @@
 # sed   
 
+- [Print A Particular Line Number](#print-a-particular-line-number)
+- [Print A Range Of Lines](#print-a-range-of-lines)
+- [Replace The First Occurrence In Particular Line Number](#replace-the-first-occurrence-in-particular-line-number)
+
 ### TL;DR
+```sh
+-n tells sed to suppress automatic printing.
 ```
 
-```
-
-### Remove Empty/blank Lines
+## Remove Empty/blank Lines
 "-i" will edit the file in-place.
-```
+```sh
 sed -i '/^$/d' file.txt
 ```
 
-### 
+## [Print A Particular Line Number](#print-a-particular-line-number-1)
+```sh
+# grep -n 'display_errors = ' php.ini
+462:display_errors = Off
+
+# sed -n '462p' php.ini
+display_errors = Off
 ```
+
+## [Print A Range Of Lines](#print-a-range-of-lines-1)
+e.g. from line 460 to 462
+```sh
+# sed -n '460,462p' php.ini
+; Production Value: Off
+; http://php.net/display-errors
+display_errors = Off
+```
+
+
+## [Replace The First Occurrence In Particular Line Number](#replace-the-first-occurrence-in-particular-line-number-1)
+```sh
+sed '462s/Off/On/g' php.ini
+```
+
+If you want to replace all occurrences of "Off" in that line, you can add the g flag:
+```sh
+sed '462s/Off/On/g' php.ini
+```
+
+## 
+```sh
 
 ```
 
-### 
-```
+## 
+```sh
 
 ```
 
-### Examples
-```
 
-```
-
-### Print certain line with sed, e.g. from 6 to 11
-```
-$ curl -s http://10.10.10.175/about.html | g '<p class="mt-2"' | nl | sed -n 6,11p
-     6                                  <p class="mt-2">Fergus Smith </p>
-     7                                  <p class="mt-2">Hugo Bear </p>
-     8                                  <p class="mt-2">Steven Kerb </p>
-     9                                  <p class="mt-2">Shaun Coins </p>
-    10                                  <p class="mt-2">Bowie Taylor </p>
-    11                                  <p class="mt-2">Sophie Driver </p>
-```
-
-### 
-```
-
-```
-
-### 
-```
-
-```
-
-### 
-```
-
-```
-
-### 
-```
+## 
+```sh
 
 ```
