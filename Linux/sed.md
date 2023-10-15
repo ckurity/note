@@ -16,6 +16,7 @@ sed -i '/^$/d' file.txt
 ```
 
 ## [Print A Particular Line Number](#print-a-particular-line-number-1)
+/etc/php/7.0/apache2/php.ini
 ```sh
 # grep -n 'display_errors = ' php.ini
 462:display_errors = Off

@@ -1,3 +1,4 @@
+- [TL;DR](#tldr)
 - [Login](#login)
 	- [Default root User](#default-root-user)
 	- [Different User with Password](#different-user-with-password)
@@ -14,8 +15,31 @@
     - [USE db](#use-db)
     - [SHOW TABLES in the current database](#show-tables-in-the-current-database)
     - [CREATE DATABASE](#create-database)
+    - [Delete Database](#delete-database)
 - [SELECT * FROM table_name;](#select--from-table_name)
 - [Table](#table)
+    - [Delete All The Records In The "Users" Table](#delete-all-the-records-in-the-users-table)
+- [Log](#log)
+    - [Make Changes](#make-changes)
+
+# [TL;DR](#tldr-1)
+```sh
+SELECT user();
+SELECT database();
+SHOW DATABASES;
+
+USE dvwa
+USE newDB
+
+DESC users;
+SHOW TABLES;
+
+SELECT * FROM users;
+SELECT * FROM dvwa.users;
+
+SELECT user,password FROM users;
+SELECT user,password FROM dvwa.users;
+```
 
 # [Login](#login-1)
 
@@ -264,6 +288,12 @@ MariaDB [(none)]> SHOW DATABASES;
 5 rows in set (0.00 sec)
 ```
 
+# [Delete Database](#delete-database-1)
+```sh
+MariaDB [newDB]> DROP DATABASE newDB;
+Query OK, 1 row affected (0.07 sec)
+```
+
 # [Table](#table-1)
 ## 
 ```sh
@@ -305,28 +335,91 @@ MariaDB [newDB]> DESC users;
 5 rows in set (0.00 sec)
 ```
 
+## [Delete All The Records In The "Users" Table](#delete-all-the-records-in-the-users-table-1)
+```sh
+MariaDB [newDB]> DELETE FROM users;
+Query OK, 5 rows affected (0.05 sec)
+
+MariaDB [newDB]> SELECT * FROM users;
+Empty set (0.00 sec)
+```
+
+# [Log](#log-1)
 ## 
 ```sh
+# find / -name my.cnf 2>/dev/null 
+/etc/alternatives/my.cnf
+/etc/mysql/my.cnf
+/var/lib/dpkg/alternatives/my.cnf
 
+# find / -name my.cnf 2>/dev/null | xargs ls -lh
+lrwxrwxrwx 1 root root 22 Oct 12  2018 /etc/alternatives/my.cnf -> /etc/mysql/mariadb.cnf
+lrwxrwxrwx 1 root root 24 Oct 12  2018 /etc/mysql/my.cnf -> /etc/alternatives/my.cnf
+-rw-r--r-- 1 root root 83 Oct 12  2018 /var/lib/dpkg/alternatives/my.cnf
+
+[~] # cd /etc/mysql/
+[/etc/mysql] # ls -lh
+total 24K
+drwxr-xr-x 2 root root 4.0K Oct 12  2018 conf.d
+-rwxr-xr-x 1 root root 1.5K Aug 10  2017 debian-start
+-rw------- 1 root root  277 Oct 12  2018 debian.cnf
+-rw-r--r-- 1 root root  869 Aug 10  2017 mariadb.cnf
+drwxr-xr-x 2 root root 4.0K Oct 12  2018 mariadb.conf.d
+lrwxrwxrwx 1 root root   24 Oct 12  2018 my.cnf -> /etc/alternatives/my.cnf
+-rw-r--r-- 1 root root  839 Jul  9  2016 my.cnf.fallback
+[/etc/mysql] #
+
+[/etc/mysql] # cp mariadb.cnf mariadb.cnf.bak
+[/etc/mysql] # 
 ```
 
 ## 
 ```sh
+[/etc/mysql] # nl mariadb.cnf
+     1  # The MariaDB configuration file
+     2  #
+     3  # The MariaDB/MySQL tools read configuration files in the following order:
+     4  # 1. "/etc/mysql/mariadb.cnf" (this file) to set global defaults,
+     5  # 2. "/etc/mysql/conf.d/*.cnf" to set global options.
+     6  # 3. "/etc/mysql/mariadb.conf.d/*.cnf" to set MariaDB-only options.
+     7  # 4. "~/.my.cnf" to set user-specific options.
+     8  #
+     9  # If the same option is defined multiple times, the last one will apply.
+    10  #
+    11  # One can use all long options that the program supports.
+    12  # Run program with --help to get a list of available options and with
+    13  # --print-defaults to see which it would actually understand and use.
+       
+    14  #
+    15  # This group is read both both by the client and the server
+    16  # use it for options that affect everything
+    17  #
+    18  [client-server]
+       
+    19  # Import all .cnf files from configuration directory
+    20  !includedir /etc/mysql/conf.d/
+    21  !includedir /etc/mysql/mariadb.conf.d/
+[/etc/mysql] # 
+```
 
+## [Make Changes](#make-changes-1)
+```sh
+# tail /etc/mysql/my.cnf -n 3
+[mysqld]
+general_log = 1
+general_log_file = /var/log/mysql/general.log
 ```
 
 ## 
 ```sh
-
-```
-## 
-```sh
-
-```
-
-## 
-```sh
-
+# service mysql restart
+[ ok ] Stopping MariaDB database server: mysqld.
+[ ok ] Starting MariaDB database server: mysqld.
+# 
+# ls -lh /var/log/mysql/
+total 16K
+-rw-rw---- 1 mysql adm 7.1K Oct 12  2018 error.log
+-rw-rw---- 1 mysql adm 5.5K Oct 15 13:26 general.log    # <== new file
 ```
 
 # References
