@@ -24,6 +24,10 @@
 
 # [TL;DR](#tldr-1)
 ```sh
+mysql
+SELECT user, host FROM mysql.user;
+SELECT user();
+
 SELECT user();
 SELECT database();
 SHOW DATABASES;
@@ -31,8 +35,8 @@ SHOW DATABASES;
 USE dvwa
 USE newDB
 
-DESC users;
 SHOW TABLES;
+DESC users;
 
 SELECT * FROM users;
 SELECT * FROM dvwa.users;
@@ -420,6 +424,10 @@ general_log_file = /var/log/mysql/general.log
 total 16K
 -rw-rw---- 1 mysql adm 7.1K Oct 12  2018 error.log
 -rw-rw---- 1 mysql adm 5.5K Oct 15 13:26 general.log    # <== new file
+```
+
+```sh
+tail -f /var/log/mysql/general.log
 ```
 
 # References
