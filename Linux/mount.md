@@ -3,12 +3,12 @@
 ### [-o username=support,password='#00^BlackKnight'](#o-usernamesupportpassword00blackknight-1)
 
 ### TL;DR
-```
+```sh
 sudo mount -t cifs //$ip/profiles$ /mnt
 ```
 
 ### 
-```
+```sh
 $ sudo mount -t cifs //$ip/profiles$ /mnt
 Password for root@//10.10.10.192/profiles$: 
 
@@ -20,7 +20,7 @@ drwxr-xr-x 2 root root 0 Jun  4  2020 ABekesz
 ```
 
 ### Password Protected
-```
+```sh
 $ sudo mount -t cifs //$ip/sysvol /mnt
 Password for root@//10.10.10.192/sysvol: 
 mount error(13): Permission denied

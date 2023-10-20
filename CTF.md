@@ -7,6 +7,7 @@
         - [Meterpreter search command](#meterpreter-search-command)
         - [Windows CMD](#windows-cmd)
         - [Windows PowerShell](#windows-powershell)
+    - [HTB](#htb)
 
 
 ## template
@@ -42,6 +43,8 @@ This means that the command will find any file that matches the name *root*.txt 
 ```sh
 search -f *flag*.txt
 search -f *user.txt
+search -f Root.txt
+search -f *.txt
 ```
 
 ```sh
@@ -230,4 +233,14 @@ Mode                LastWriteTime         Length Name
 
 
 [10.10.10.161]: PS C:\Users\svc-alfresco\Documents>
+```
+
+## [HTB](#htb-1)
+```sh
+dir C:\Users\
+dir C:\Users\{USER}\Desktop\user.txt
+type C:\Users\{USER}\Desktop\user.txt
+
+type C:\Users\Administrator\Desktop\root.txt
+cd C:\Users\Administrator\Desktop
 ```

