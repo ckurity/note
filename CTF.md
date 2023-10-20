@@ -94,7 +94,7 @@ dir /s /b *.txt
 
 /b: This option displays only the bare format (file names) without any additional information like file size or date.
 
-### Windows PowerShell
+### [Windows PowerShell](#windows-powershell-1)
 ```PowerShell
 ls -r *.txt
 ls -r .. *.txt

