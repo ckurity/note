@@ -21,6 +21,11 @@
     - [Delete All The Records In The "Users" Table](#delete-all-the-records-in-the-users-table)
 - [Log](#log)
     - [Make Changes](#make-changes)
+    - [service mysql restart](#service-mysql-restart)
+- [OneLiner](#oneliner)
+    - [No database selected](#no-database-selected)
+- [Backup](#backup)
+- [Restore](#restore)
 
 # [TL;DR](#tldr-1)
 ```sh
@@ -28,7 +33,6 @@ mysql
 SELECT user, host FROM mysql.user;
 SELECT user();
 
-SELECT user();
 SELECT database();
 SHOW DATABASES;
 
@@ -54,7 +58,7 @@ without password
 # mysql -u root
 # mysql -u root -p
 
-root@27624a0fe48a:~# mysql   
+root@27624a0fe48a:~# mysql
 MariaDB [(none)]> SELECT user();
 +----------------+
 | user()         |
@@ -393,13 +397,11 @@ lrwxrwxrwx 1 root root   24 Oct 12  2018 my.cnf -> /etc/alternatives/my.cnf
     11  # One can use all long options that the program supports.
     12  # Run program with --help to get a list of available options and with
     13  # --print-defaults to see which it would actually understand and use.
-       
     14  #
     15  # This group is read both both by the client and the server
     16  # use it for options that affect everything
     17  #
     18  [client-server]
-       
     19  # Import all .cnf files from configuration directory
     20  !includedir /etc/mysql/conf.d/
     21  !includedir /etc/mysql/mariadb.conf.d/
@@ -414,7 +416,7 @@ general_log = 1
 general_log_file = /var/log/mysql/general.log
 ```
 
-## 
+## [service mysql restart](#service-mysql-restart-1)
 ```sh
 # service mysql restart
 [ ok ] Stopping MariaDB database server: mysqld.
@@ -428,6 +430,72 @@ total 16K
 
 ```sh
 tail -f /var/log/mysql/general.log
+```
+
+# [OneLiner](#oneliner-1)
+```sh
+$ docker exec -it DVWAv1 mysql -u newUser -p123 -e "SELECT database();"
++------------+
+| database() |
++------------+
+| NULL       |
++------------+
+```
+
+## [No database selected](#no-database-selected-1)
+```sh
+docker exec -it DVWAv1 mysql -u newUser -p123 newDB -e "SELECT * FROM users"
+docker exec -it DVWAv1 mysql -u newUser -p123 -e "SELECT * FROM newDB.users"
+```
+
+```sh
+$ docker exec -it DVWAv1 mysql -u newUser -p123 -e "SELECT * FROM users"
+ERROR 1046 (3D000) at line 1: No database selected
+
+$ docker exec -it DVWAv1 mysql -u newUser -p123 newDB -e "SELECT * FROM users"
++----+---------+----------+----------+----------+
+| id | name    | username | password | country  |
++----+---------+----------+----------+----------+
+|  1 | Admin   | admin    | 123      | Country1 |
+|  2 | Alice   | alice    | Alice1   | Country1 |
++----+---------+----------+----------+----------+
+
+$ docker exec -it DVWAv1 mysql -u newUser -p123 -e "SELECT * FROM newDB.users"
++----+---------+----------+----------+----------+
+| id | name    | username | password | country  |
++----+---------+----------+----------+----------+
+|  1 | Admin   | admin    | 123      | Country1 |
+|  2 | Alice   | alice    | Alice1   | Country1 |
++----+---------+----------+----------+----------+
+```
+
+# [Backup](#backup-1)
+```sh
+mysqldump -u [username] -p [database_name] > [output_file].sql
+mysqldump -u newUser -p123 newDB > newDB.sql
+docker exec -it DVWAv1 mysql -e 'mysqldump -u newUser -p123 newDB > newDB.sql'
+
+# to export all databases
+mysqldump -u [username] -p --all-databases > [output_file].sql
+
+# export specific tables from a database
+mysqldump -u root -p my_database --tables users products > my_database.sql
+```
+
+```sh
+$ l n*
+ls: cannot access 'n*': No such file or directory
+
+$ docker exec -it DVWAv1 mysqldump -u newUser -p123 newDB > newDB.sql
+
+$ l n*
+-rw-r--r-- 1 kali kali 2.2K Oct 24 22:42 newDB.sql
+```
+
+# [Restore](#restore-1)
+```sh
+mysql -u [username] -p [database_name] < [input_file].sql
+mysql -u myuser -p mydatabase < backup.sql
 ```
 
 # References
