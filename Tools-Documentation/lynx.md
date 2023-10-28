@@ -5,17 +5,7 @@ lynx
 
 ### 
 ```sh
-
-```
-
-### 
-```sh
-
-```
-
-### 
-```sh
-
+lynx -dump -listonly -nonumbers $t:$port
 ```
 
 ### 

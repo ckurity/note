@@ -1,7 +1,9 @@
 - [grep before (?<=) and after (?=)](#grep-before--and-after)
+    - [grep HTML form](#grep-html-form)
 - [grep can't read UTF-16](#grep-cant-read-utf-16)
 
 # [grep before (?<=) and after (?=)](#grep-before--and-after-1)
+
 ```sh
 $ cat text 
 BEFOREXYZAFTER
@@ -13,6 +15,45 @@ $ cat text | grep -oP '(?<=BEFORE).*(?=AFTER)'
 XYZ
 $ 
 ```
+
+## [grep HTML form](#grep-html-form-1)
+```sh
+$ curl -s $t:$port | grep -n form
+19:                <form action="" method="get">
+21:                 <div class="form-group">
+34:                    <input type="text" name="mooing" class="form-control" id="commandString"
+40:                </form>
+
+$ curl -s $t:$port | grep -Pzo '<form[\s\S]*?</form>'
+<form action="" method="get">
+                    <h4 class="display-4">Cowsay Online</h4>
+                    <div class="form-group">
+                    <label>Choose your cow: </label>
+                    <select name=cow>
+                       <option value=default>default</option>
+                       <option value=small>small</option>
+                       <option value=tux>tux</option>
+                       <option value=dragon>dragon</option>
+                       <option value=kitty>kitty</option>
+                       <option value=moose>moose</option>
+                       <option value=squirrel>squirrel</option>
+                       <option value=vader>vader</option>
+                       <option value=moofasa>moofasa</option>
+                    </select>
+                    <input type="text" name="mooing" class="form-control" id="commandString"
+                            placeholder="Enter your inner cow's mooing">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+
+                    <pre>                    </pre>
+                </form>
+```
+
+-P enables Perl-compatible regular expressions, which allows you to use [\s\S] to match any character (including newline characters).
+
+-z treats the input as null-terminated, allowing us to match across multiple lines.
+
+'<form[\s\S]*?</form>' is the regular expression that matches the text starting with <form and ending with </form.
 
 ```sh
 $ echo $f
@@ -86,7 +127,7 @@ $ iconv -f UTF-16LE -t UTF-8 winpeas.txt| grep Win32_
 
 ```
 
-### 
+## 
 ```sh
 $ cat Forest.txt 
 user:[Administrator] rid:[0x1f4]
@@ -94,13 +135,13 @@ user:[Guest] rid:[0x1f5]
 user:[krbtgt] rid:[0x1f6]
 ```
 
-### 
+## 
 ```sh
 $ cat Forest.txt | grep -o user:
 user:
 ```
 
-### 
+## 
 ```sh
 $ cat Forest.txt | grep -o user:[
 zsh: bad pattern: user:[
@@ -110,44 +151,44 @@ grep: Invalid regular expression
 ```
 
 
-### 
+## 
 ```sh
 $ grep --help | grep fix
   -F, --fixed-strings       PATTERNS are strings
 ```
 
-### 
+## 
 ```sh
 $ cat Forest.txt | grep -oF 'user:['
 user:[
 ```
 
-### 
+## 
 ```sh
 
 ```
 
-### 
+## 
 ```sh
 
 ```
 
-### 
+## 
 ```sh
 
 ```
 
-### 
+## 
 ```sh
 
 ```
 
-### 
+## 
 ```sh
 
 ```
 
-### 
+## 
 ```sh
 
 ```

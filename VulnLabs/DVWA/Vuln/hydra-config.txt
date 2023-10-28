@@ -1,0 +1,4 @@
+http-get-form
+URL: http://localhost/vulnerabilities/brute/
+TARGET: username=^USER^&password=^PASS^&Login=Login#
+COOKIE: PHPSESSID=26gh97rtmqv33ggsv4e1o64cl1; security=low
