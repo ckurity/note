@@ -12,6 +12,7 @@
 - [Custom Prompt](#custom-prompt)
     - [Simple](#simple)
     - [24-hour WITH Seconds](#24-hour-with-seconds)
+
 - [Tab Name](#set-the-tab-name-in-a-qt-terminal-emulator)
 - [References](#references)
 
@@ -64,7 +65,8 @@ PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%n㉿%m%b%F{%(#.blue.green)
 
 #### Custom Name
 ```sh
-PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}CKURITY㉿BOX%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+tajukPrompt='CKURITY㉿BOX'
+PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}$tajukPrompt%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
 
 ┌──(CKURITY㉿BOX)-[~]
@@ -108,7 +110,8 @@ PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%D{%d-%b-%Y %H:%M:
 #### Custom: Day, Date & Time
 %D{%a %d-%b-%Y %H:%M:%S}
 ```sh
-PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%D{%a %d-%b-%Y %H:%M:%S}%f%F{%(#.red.blue)} ♨ CKURITY㉿BOX%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+tajukPrompt='CKURITY㉿BOX'
+PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%D{%a %d-%b-%Y %H:%M:%S}%f%F{%(#.red.blue)} ♨ $tajukPrompt%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
 ```
 
@@ -193,11 +196,13 @@ Use the precmd hook provided by Zsh to dynamically change the tab name
 
 ## 
 ```zsh
+tajukTab='♨TEST♨'
+
 # Define a function to update the tab title
 update_tab_title() {
     # Set the tab title to "username@hostname:current_directory"
     # printf "\033]0;%s@%s:%s\007" "$USER" "$HOST" "$PWD"
-	printf "\033]0;♨TEST♨\007"
+	printf "\033]0;$tajukTab\007"
 }
 
 # Set the precmd hook to call our function before each command

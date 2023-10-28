@@ -15,6 +15,7 @@
     - [USE db](#use-db)
     - [SHOW TABLES in the current database](#show-tables-in-the-current-database)
     - [CREATE DATABASE](#create-database)
+    - [GRANT PRIVILEGES](#grant-privileges)
     - [Delete Database](#delete-database)
 - [SELECT * FROM table_name;](#select--from-table_name)
 - [Table](#table)
@@ -159,8 +160,9 @@ MariaDB [(none)]> SELECT user, host FROM mysql.user;
 ```
 
 ## New User
+CREATE USER 'newUser'@'localhost' IDENTIFIED BY '123';
 ```sh
-# GRANT ALL PRIVILEGES ON *.* TO 'db_user'@'localhost' IDENTIFIED BY '123';
+# GRANT ALL PRIVILEGES ON *.* TO 'newUser'@'localhost' IDENTIFIED BY '123';
 
 MariaDB [(none)]> CREATE USER 'newUser'@'localhost' IDENTIFIED BY 'newUserPassword';
 Query OK, 0 rows affected (0.01 sec)
@@ -177,6 +179,7 @@ MariaDB [(none)]> SELECT user,host FROM mysql.user;
 ```
 
 ## [Change Mysql User's Password](#change-mysql-users-password-1)
+ALTER USER 'newUser'@'localhost' IDENTIFIED BY '123';
 ```sh
 ALTER USER 'newUser'@'localhost' IDENTIFIED BY '123';
 ```
@@ -294,6 +297,12 @@ MariaDB [(none)]> SHOW DATABASES;
 | performance_schema |
 +--------------------+
 5 rows in set (0.00 sec)
+```
+
+# [GRANT PRIVILEGES](#grant-privileges-1)
+```sh
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON *.* TO 'newUser'@'localhost' IDENTIFIED BY '123';
+Query OK, 0 rows affected (0.00 sec)
 ```
 
 # [Delete Database](#delete-database-1)
@@ -434,7 +443,11 @@ tail -f /var/log/mysql/general.log
 
 # [OneLiner](#oneliner-1)
 ```sh
-$ docker exec -it DVWAv1 mysql -u newUser -p123 -e "SELECT database();"
+
+```
+
+```sh
+$ docker exec -it VulnLab mysql -u newUser -p123 -e "SELECT database();"
 +------------+
 | database() |
 +------------+
@@ -444,15 +457,15 @@ $ docker exec -it DVWAv1 mysql -u newUser -p123 -e "SELECT database();"
 
 ## [No database selected](#no-database-selected-1)
 ```sh
-docker exec -it DVWAv1 mysql -u newUser -p123 newDB -e "SELECT * FROM users"
-docker exec -it DVWAv1 mysql -u newUser -p123 -e "SELECT * FROM newDB.users"
+docker exec -it VulnLab mysql -u newUser -p123 newDB -e 'SELECT * FROM users'
+docker exec -it VulnLab mysql -u newUser -p123 -e 'SELECT * FROM newDB.users'
 ```
 
 ```sh
-$ docker exec -it DVWAv1 mysql -u newUser -p123 -e "SELECT * FROM users"
+$ docker exec -it VulnLab mysql -u newUser -p123 -e "SELECT * FROM users"
 ERROR 1046 (3D000) at line 1: No database selected
 
-$ docker exec -it DVWAv1 mysql -u newUser -p123 newDB -e "SELECT * FROM users"
+$ docker exec -it VulnLab mysql -u newUser -p123 newDB -e "SELECT * FROM users"
 +----+---------+----------+----------+----------+
 | id | name    | username | password | country  |
 +----+---------+----------+----------+----------+
@@ -460,7 +473,7 @@ $ docker exec -it DVWAv1 mysql -u newUser -p123 newDB -e "SELECT * FROM users"
 |  2 | Alice   | alice    | Alice1   | Country1 |
 +----+---------+----------+----------+----------+
 
-$ docker exec -it DVWAv1 mysql -u newUser -p123 -e "SELECT * FROM newDB.users"
+$ docker exec -it VulnLab mysql -u newUser -p123 -e "SELECT * FROM newDB.users"
 +----+---------+----------+----------+----------+
 | id | name    | username | password | country  |
 +----+---------+----------+----------+----------+
@@ -473,7 +486,7 @@ $ docker exec -it DVWAv1 mysql -u newUser -p123 -e "SELECT * FROM newDB.users"
 ```sh
 mysqldump -u [username] -p [database_name] > [output_file].sql
 mysqldump -u newUser -p123 newDB > newDB.sql
-docker exec -it DVWAv1 mysql -e 'mysqldump -u newUser -p123 newDB > newDB.sql'
+docker exec -it VulnLab mysql -e 'mysqldump -u newUser -p123 newDB > newDB.sql'
 
 # to export all databases
 mysqldump -u [username] -p --all-databases > [output_file].sql
@@ -486,7 +499,7 @@ mysqldump -u root -p my_database --tables users products > my_database.sql
 $ l n*
 ls: cannot access 'n*': No such file or directory
 
-$ docker exec -it DVWAv1 mysqldump -u newUser -p123 newDB > newDB.sql
+$ docker exec -it VulnLab mysqldump -u newUser -p123 newDB > newDB.sql
 
 $ l n*
 -rw-r--r-- 1 kali kali 2.2K Oct 24 22:42 newDB.sql
@@ -495,7 +508,7 @@ $ l n*
 # [Restore](#restore-1)
 ```sh
 mysql -u [username] -p [database_name] < [input_file].sql
-mysql -u myuser -p mydatabase < backup.sql
+mysql -u newUser -p newDB < newDB.sql
 ```
 
 # References
