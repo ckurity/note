@@ -507,8 +507,8 @@ $ l n*
 
 # [Restore](#restore-1)
 ```sh
-mysql -u [username] -p [database_name] < [input_file].sql
-mysql -u newUser -p newDB < newDB.sql
+mysql -u [username] -p[password] [database_name] < [input_file].sql
+mysql -u newUser -p123 newDB < newDB.sql
 ```
 
 # References
