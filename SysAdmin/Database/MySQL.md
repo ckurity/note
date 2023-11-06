@@ -146,10 +146,10 @@ MariaDB [(none)]> SELECT user();
 
 ## [List all users in MySQL](#list-all-users-in-mysql-1)
 ```sh
-# SELECT user, host FROM mysql.user;
+# SELECT user,host FROM mysql.user;
 # SELECT * FROM mysql.user;
 
-MariaDB [(none)]> SELECT user, host FROM mysql.user;
+MariaDB [(none)]> SELECT user,host FROM mysql.user;
 +------+-----------+
 | user | host      |
 +------+-----------+
