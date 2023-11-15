@@ -18,7 +18,7 @@ pip install -r requirements.txt
 ```
 
 ### Default
-```
+```sh
 $ python PlumHound.py                                                   
 usage: PlumHound.py [-h] [-s SERVER] [-u USERNAME] [-p PASSWORD] [--UseEnc] [--timeout TIMEOUT]
                     (--easy | -x TASKFILE | -q QUERYSINGLE | -bp BUSIESTPATH [BUSIESTPATH ...] | -ap ANALYZEPATH [ANALYZEPATH ...])
