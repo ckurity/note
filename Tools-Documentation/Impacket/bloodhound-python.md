@@ -1,9 +1,16 @@
-# bloodhound-python
-
-- [bloodhound-python](#bloodhound-python)
-    - [Default](#default)
+- [TL;DR](#tldr)
+- [Default](#default)
 
 -------------------------------------------
+
+## [TL;DR](#tldr-1)
+```sh
+mkdir bloodhound-python && cd $_
+user=svc-alfresco
+pass=s3rvice
+domain=htb.local
+bloodhound-python -c all -u $user -p $pass -d $domain -ns $t --zip
+```
 
 ## Default
 ```sh
@@ -62,16 +69,6 @@ collection options:
                         File containing computer FQDNs to use as allowlist for any computer based methods
   --cachefile CACHEFILE
                         Cache file (experimental)
-```
-
-## 
-```sh
-mkdir bloodhound-python
-cd bloodhound-python
-user=svc-alfresco
-pass=s3rvice
-domain=htb.local
-bloodhound-python -c all -u $user -p $pass -d $domain -ns $t --zip
 ```
 
 ## 

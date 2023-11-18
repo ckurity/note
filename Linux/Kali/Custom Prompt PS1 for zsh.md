@@ -185,10 +185,12 @@ ckurity@box:~$
 ```
 
 #### 24-hour WITH Seconds
-PS1='[%*] %B%F{blue}ckurity@box%b:%F{green}%~$ '
+NAME=ckurity@box
+PS1='[%*] %B%F{blue}$NAME%b:%F{green}%~$ '
 ```sh
-ckurity@box:~$ PS1='[%*] %B%F{blue}ckurity@box%b:%F{green}%~$ 
-[10:02:23] ckurity@box:~$
+$ NAME=ckurity@box
+$ PS1='[%*] %B%F{blue}$NAME%b:%F{green}%~$ '
+[10:35:15] ckurity@box:~$
 ```
 
 # Set the tab name in a Qt terminal emulator

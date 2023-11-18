@@ -108,8 +108,9 @@ te(){ # mkdir CTF template
     cp $xyz/note/Template '4. Shell 1 - .md'
 }
 
-PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%D{%d-%m-%Y %H:%M:%S}%f%F{%(#.red.blue)} ♨ %n㉿%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
-└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
-
-# PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%D{%d-%m-%Y %H:%M:%S}%f%F{%(#.red.blue)} ♨ CUSTOM%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+# PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%D{%d-%m-%Y %H:%M:%S}%f%F{%(#.red.blue)} ♨ %n㉿%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
 # └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+
+NAMA='♨ ckurity'
+PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%D{%d-%m-%Y %H:%M:%S}%f%F{%(#.red.blue)} $NAMA%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
+└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '

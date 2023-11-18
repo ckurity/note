@@ -45,6 +45,7 @@ alias pu="date; hostname -I | cut -d\  -f1; curl -4 ifconfig.co"
 alias r=reboot
 alias s='ss -antu | nl -v0'
 alias sa='cd /xyz/note/Sample/'
+alias si='sudo id'
 alias smap='~/tools/smap_0.1.12_linux_amd64/smap'
 alias sp='ss -antup | nl -v0'
 alias t=tail
