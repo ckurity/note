@@ -35,13 +35,20 @@ First Time
 ```sh
 -o StrictHostKeyChecking=no
 
-sshpass -p 'P@$$W0rd' ssh Administrator@$t ssh -o StrictHostKeyChecking=no
-sshpass -p msfadmin ssh msfadmin@$t ssh -o StrictHostKeyChecking=no
+sshpass -p 'P@$$W0rd' ssh Administrator@$t -o StrictHostKeyChecking=no
+sshpass -p msfadmin ssh msfadmin@$t -o StrictHostKeyChecking=no
 ```
 
 ### 
-```
+sshpass -p Password1@ ssh thm@$t -o StrictHostKeyChecking=no
+```sh
+$ sshpass -p Password1@ ssh thm@$t
+$ sshpass -p Password1@ ssh thm@$t -o StrictHostKeyChecking=no
+Warning: Permanently added '10.10.132.133' (ED25519) to the list of known hosts.
+Microsoft Windows [Version 10.0.17763.1098] 
+(c) 2018 Microsoft Corporation. All rights reserved. 
 
+lunar\thm@LUNDC C:\Users\thm>
 ```
 
 ### 
