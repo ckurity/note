@@ -1,6 +1,7 @@
 - [grep before (?<=) and after (?=)](#grep-before--and-after)
     - [grep HTML form](#grep-html-form)
 - [grep can't read UTF-16](#grep-cant-read-utf-16)
+- [-F, --fixed-strings](#f---fixed-strings)
 
 # [grep before (?<=) and after (?=)](#grep-before--and-after-1)
 
@@ -151,7 +152,7 @@ grep: Invalid regular expression
 ```
 
 
-## 
+## [-F, --fixed-strings](#f---fixed-strings-1)
 ```sh
 $ grep --help | grep fix
   -F, --fixed-strings       PATTERNS are strings

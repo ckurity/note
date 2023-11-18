@@ -1,6 +1,9 @@
 # sshpass
 
+- [Example](#example)
 - [Usage](#usage)
+- [StrictHostKeyChecking=no](#stricthostkeycheckingno)
+- [SSH Username is Not Case Sensitive](#ssh-username-is-not-case-sensitive)
 - [StrictHostKeyChecking=no](#stricthostkeycheckingno)
 
 ### 
@@ -8,7 +11,19 @@
 
 ```
 
-### Usage
+# [Example](#example-1)
+sshpass -p Password1@ ssh thm@$t -o StrictHostKeyChecking=no
+```sh
+$ sshpass -p Password1@ ssh thm@$t
+$ sshpass -p Password1@ ssh thm@$t -o StrictHostKeyChecking=no
+Warning: Permanently added '10.10.132.133' (ED25519) to the list of known hosts.
+Microsoft Windows [Version 10.0.17763.1098] 
+(c) 2018 Microsoft Corporation. All rights reserved. 
+
+lunar\thm@LUNDC C:\Users\thm>
+```
+
+### [Usage](#usage-1)
 ```sh
 $ sshpass
 Usage: sshpass [-f|-d|-p|-e] [-hV] command parameters
@@ -25,12 +40,12 @@ Usage: sshpass [-f|-d|-p|-e] [-hV] command parameters
 At most one of -f, -d, -p or -e should be used
 ```
 
-### SSH username is not case sensitive
+### [SSH Username is Not Case Sensitive](#ssh-username-is-not-case-sensitive-1)
 ```sh
 sshpass -p '1ts-mag1c!!!' ssh tom@$t
 ```
 
-### StrictHostKeyChecking=no
+### [StrictHostKeyChecking=no](#stricthostkeycheckingno-1)
 First Time
 ```sh
 -o StrictHostKeyChecking=no
@@ -39,17 +54,6 @@ sshpass -p 'P@$$W0rd' ssh Administrator@$t -o StrictHostKeyChecking=no
 sshpass -p msfadmin ssh msfadmin@$t -o StrictHostKeyChecking=no
 ```
 
-### 
-sshpass -p Password1@ ssh thm@$t -o StrictHostKeyChecking=no
-```sh
-$ sshpass -p Password1@ ssh thm@$t
-$ sshpass -p Password1@ ssh thm@$t -o StrictHostKeyChecking=no
-Warning: Permanently added '10.10.132.133' (ED25519) to the list of known hosts.
-Microsoft Windows [Version 10.0.17763.1098] 
-(c) 2018 Microsoft Corporation. All rights reserved. 
-
-lunar\thm@LUNDC C:\Users\thm>
-```
 
 ### 
 ```
