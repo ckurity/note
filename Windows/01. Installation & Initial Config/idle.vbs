@@ -1,3 +1,5 @@
+' cscript idle.vbs
+
 set wsc = CreateObject("WScript.Shell")
 Do
     '5 minutes

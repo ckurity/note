@@ -14,6 +14,12 @@ https://github.com/RustScan/RustScan/wiki/Installation-Guide
 Docker is the recommended way of installing RustScan. (however little bit slow and error to output with -oA)
 
 ```sh
+docker pull rustscan/rustscan:2.1.1
+docker run -it --rm --name rustscan rustscan/rustscan:2.1.1 <rustscan arguments here> <ip address to scan>
+docker run -it --rm --name rustscan rustscan/rustscan:2.1.1 -a $t -- -Pn -A -oN 1_nmap-A_$(date +%y%m%d-%H%M)
+```
+
+```sh
 git clone https://github.com/RustScan/RustScan.git
 cd RustScan
 
