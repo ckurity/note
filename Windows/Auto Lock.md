@@ -2,23 +2,19 @@
 
 # ScreenSaverIsSecure
 0 = disable password protection for the screen saver
-```
+```sh
 reg query 'hkcu\Control Panel\Desktop' /v ScreenSaverIsSecure
-```
-```
 reg add 'hkcu\Control Panel\Desktop' /v ScreenSaverIsSecure /f /d 0
 ```
 
 # ScreenSaveTimeout
-```
+```sh
 reg query 'hkcu\Control Panel\Desktop' /v ScreenSaveTimeout
-```
-```
 reg add 'hkcu\Control Panel\Desktop' /v ScreenSaveTimeout /f /d 0
 ```
 # Example
 
-```
+```sh
 PS C:\Users\Administrator> reg query 'hkcu\Control Panel\Desktop' /v ScreenSaverIsSecure
 
 ERROR: The system was unable to find the specified registry key or value.
@@ -34,7 +30,7 @@ HKEY_CURRENT_USER\Control Panel\Desktop
 ```
 
 # ScreenSaveTimeout
-```
+```sh
 PS C:\Users\Administrator> reg query 'hkcu\Control Panel\Desktop' /v ScreenSaveTimeout
 
 ERROR: The system was unable to find the specified registry key or value.

@@ -13,7 +13,7 @@
 
 ### 
 ```sh
-$ feroxbuster -u http://$ip -C 404-w /usr/share/dirb/wordlists/common.txt
+$ feroxbuster -u http://$t -C 404-w /usr/share/dirb/wordlists/common.txt
 by Ben "epi" Risher 🤓                 ver: 2.10.0
 ───────────────────────────┬──────────────────────
  🎯  Target Url            │ http://10.10.11.129

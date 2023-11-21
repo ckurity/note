@@ -49,7 +49,7 @@ mkdir -p $DOCKER_CONFIG/cli-plugins
 
 ### Check latest version from https://github.com/docker/compose/releases/latest
 ```sh
-curl -sL https://github.com/docker/compose/releases/download/v2.20.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+curl -sL https://github.com/docker/compose/releases/download/v2.23.0/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
 
 chmod u+x $DOCKER_CONFIG/cli-plugins/docker-compose
 ```
@@ -66,6 +66,7 @@ docker compose version
 :80 = container port
 ```sh
 docker run --name DVWA -it -p 127.0.0.1:80:80 vulnerables/web-dvwa
+docker run --name NGINX -it -p 127.0.0.1:80:80 nginx
 ```
 
 ## [docker ps](#docker-ps-1)

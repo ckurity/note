@@ -1,5 +1,4 @@
 - 
-- [References](#references)
 
 -------------------------------------------
 
@@ -53,5 +52,5 @@
 
 ```
 
-# [References](#references-1)
+# References
 

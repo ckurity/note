@@ -11,9 +11,14 @@ port=$p
 d=$(cat ~/domain.txt)
 myip=$(cat ~/myip.txt)
 
-CTF=HTB
+# CTF=HTB
+CTF=THM
+
 TRACK=_ActiveDirectory101
-BOX=Search
+
+# BOX=Search
+BOX=adcertificatetemplates
+
 xyz='/xyz'
 
 alias 00='code ~/.zshrc'
