@@ -1,9 +1,11 @@
 # Sublime
 
 - [Installation](#installation)
-	- [Examples](#examples)
+		
+- [Common Usage](#common-usage)
+	- [Multiple Selections](#multiple-selections)
 	- [Remove Empty Lines](#remove-empty-lines)
-- [Nmap get SERVICE only](#nmap-get-service-only)
+	- [Nmap get SERVICE only](#nmap-get-service-only)
 
 # [Installation](#installation-1)
 
@@ -19,25 +21,14 @@ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sou
 sudo apt update && sudo apt install sublime-text
 ```
 
-## 
-```sh
+# [Common Usage](#common-usage-1)
 
+## [Multiple Selections](#multiple-selections-1)
+```sh
+Ctrl+Shift+L
 ```
 
-## 
-```sh
-
-```
-
-## 
-```sh
-
-```
-
-
-# [Examples](#examples-1)
-
-## Remove Empty Lines
+## [Remove Empty Lines](#remove-empty-lines-1)
 ```sh
 ^[\s]*?[\n\r]+
 ```
@@ -51,7 +42,7 @@ Let's break it down:
 > 
 > [\n\r]+ matches one or more newline characters (\n or \r).
 
-## Nmap get SERVICE only
+## [Nmap get SERVICE only](#nmap-get-service-only-1)
 ```sh
 ^\s*(\S+).*
 ```
@@ -67,6 +58,19 @@ Here's what the regular expression does:
 > .* matches the rest of the line (to be removed).
 
 ```
+
+## 
+```sh
+
+```
+
+## 
+```sh
+
+```
+
+
+
 
 ```
 ```
