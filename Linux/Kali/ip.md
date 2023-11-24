@@ -59,6 +59,7 @@ source /etc/network/interfaces.d/*
 auto lo
 iface lo inet loopback
 
+auto eth1
 iface eth1 inet static
     address 10.1.1.10/24
 ```
