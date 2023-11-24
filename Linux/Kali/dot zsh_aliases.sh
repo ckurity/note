@@ -30,6 +30,7 @@ alias gi='grep -i'
 alias gin='grep -in'
 alias gn='grep -n'
 alias gv='grep -v'
+alias gp='git pull'
 alias h=head
 alias i='ip -br -c a'
 alias kerbrute='/xyz/note/Tools-Binary/kerbrute_linux_amd64'
