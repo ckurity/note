@@ -1,12 +1,12 @@
-[CrackMapexec | SMB & AD Enumeration Simplified !](https://systemweakness.com/crackmapexec-smb-ad-enumeration-simplified-21e603927f44)
+- [Installation](#installation)
 
-https://wiki.porchetta.industries/
-
-https://ptestmethod.readthedocs.io/en/latest/cme.html
-
-https://github.com/Porchetta-Industries/CrackMapExec/wiki/SMB-Command-Reference
-
-# 
+## [Installation](#installation-1)
+```sh
+python3 -m pip install pipx
+git clone https://github.com/mpgn/CrackMapExec
+cd CrackMapExec
+pipx install .
+```
 
 ### TL;DR
 ```sh
@@ -145,3 +145,14 @@ SeIncreaseWorkingSetPrivilege Increase a process working set Enabled
 ```
 
 ```
+
+https://pypi.org/project/crackmapexec/
+
+# CrackMapexec | SMB & AD Enumeration Simplified !]
+https://systemweakness.com/crackmapexec-smb-ad-enumeration-simplified-21e603927f44
+
+https://wiki.porchetta.industries/
+
+https://ptestmethod.readthedocs.io/en/latest/cme.html
+
+https://github.com/Porchetta-Industries/CrackMapExec/wiki/SMB-Command-Reference

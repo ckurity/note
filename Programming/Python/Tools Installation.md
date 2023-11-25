@@ -13,6 +13,13 @@ cd impacket/
 python setup.py install
 ```
 
+```sh
+python3 -m pip install pipx
+git clone https://github.com/mpgn/CrackMapExec
+cd CrackMapExec
+pipx install .
+```
+
 ## [pipx](#pipx-1)
 pipx is recommended over pip for system-wide installations
 ```sh
