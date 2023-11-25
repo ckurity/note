@@ -1,3 +1,22 @@
+# [List All Available Commands That Match a Particular Pattern]
+# [List All Commands Starting With 'get-ld']
+```sh
+Get-Command -Name 'Get-LD*'
+gcm -Name 'Get-LD*'
+gcm get-ld*
+```
+
+```sh
+PS C:\> gcm get-ld*
+PS C:\> gcm get-l*
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Alias           Get-Language                                       1.0        LanguagePackManagement
+Function        Get-LapsAADPassword                                1.0.0.0    LAPS
+Function        Get-LapsDiagnostics                                1.0.0.0    LAPS
+Function        Get-LogProperties                                  1.0.0.0    PSDiagnostics
+```
 
 gcm | sls invoke-b
 
