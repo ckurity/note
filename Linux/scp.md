@@ -7,6 +7,7 @@
 ```sh
 scp [file_name] remoteuser@remotehost:/remote/directory
 scp test.txt ckurity@$t:/home/ckurity
+scp Certify.exe thm@$t:C:/Users/thm
 ```
 
 ## [From a Remote Machine to a Local Machine](#from-a-remote-machine-to-a-local-machine-1)
