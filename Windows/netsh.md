@@ -1,6 +1,7 @@
 - [TLDR Initial Config](#tldr-initial-config)
     - [Without Default Gateway](#without-default-gateway)
     - [With Default Gateway](#with-default-gateway)
+    - [change the default gateway IP](#change-the-default-gateway-ip)
 - [Show Configuration](#show-configuration)
     - [Show Interface Configuration (including DNS)](#show-interface-configuration-including-dns)
     - [Show only IP Addresses of all LAN adapters](#show-only-ip-addresses-of-all-lan-adapters)
@@ -18,7 +19,7 @@ netsh i i se d "Ethernet" s 10.1.1.1
 netsh i i sh con "Ethernet"
 ```
 
-## [With Default Gateway](#with-default-gateway)
+## [With Default Gateway](#with-default-gateway-1)
 netsh interface ipv4 set address name="YOUR INTERFACE NAME" static IP_ADDRESS SUBNET_MASK GATEWAY
 ```sh
 net sess
@@ -27,9 +28,7 @@ netsh i i se a "Ethernet" s 10.1.1.1 255.255.255.0
 ```
 ## []
 ```sh
-netsh interface ip set address name="YOUR_INTERFACE_NAME" gateway="NEW_GATEWAY_IP" gwmetric=0
-
-netsh interface ip set address name="Ethernet" gateway="10.0.2.1" gwmetric=0
+netsh interface ipv4 set gateway name="Local Area Connection" address="192.168.1.1"
 ```
 
 # [Show Configuration](#show-configuration-1)
