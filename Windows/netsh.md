@@ -27,7 +27,7 @@ netsh i i sh con "Ethernet"
 netsh i i se a "Ethernet" s 10.1.1.1 255.255.255.0
 ```
 
-## [change the default gateway IP](#change-the-default-gateway-ip-1)
+## [Change the default gateway IP](#change-the-default-gateway-ip-1)
 ```sh
 netsh interface ipv4 set gateway name="Local Area Connection" address="192.168.1.1"
 ```
