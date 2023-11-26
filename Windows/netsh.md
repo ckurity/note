@@ -24,6 +24,13 @@ netsh interface ipv4 set address name="YOUR INTERFACE NAME" static IP_ADDRESS SU
 net sess
 netsh i i sh con "Ethernet"
 netsh i i se a "Ethernet" s 10.1.1.1 255.255.255.0
+```
+## []
+```sh
+netsh interface ip set address name="YOUR_INTERFACE_NAME" gateway="NEW_GATEWAY_IP" gwmetric=0
+
+netsh interface ip set address name="Ethernet" gateway="192.168.1.1" gwmetric=0
+```
 
 # [Show Configuration](#show-configuration-1)
 
