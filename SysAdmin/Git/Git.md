@@ -19,24 +19,25 @@
         - [divergent branches](#divergent-branches)
 
 ### Check Git Configuration
-```
+```sh
 git config -l
 git config --list
 git config --get credential.helper
 ```
+
 ### One-liner Push
-```
+```sh
 git add . ; git status ; git commit -m newUpdate ; git push
 ```
 
 ## git config
-```
+```sh
 -l, --list            list all
 --get                 get value: name [value-pattern]
 ```
 
 ### Initial Config
-```
+```sh
 git config --global user.email 'ckurity'
 git config --global user.name 'ckurity'
 git add . ; git status ; git commit -m Update ; git push
@@ -49,7 +50,7 @@ git add . ; git status ; git commit -m Update ; git push
 # EXAMPLES
 
 ## 14400 seconds / 4 hours
-```
+```sh
 $ git config -l | grep cred
 credential.helper=cache --timeout=14400
 
@@ -64,8 +65,9 @@ branch.master.remote=origin
 $ git config --get remote.origin.url 
 https://github.com/ckurity/git
 ```
+
 ## Create a new repository on the command line
-```
+```sh
 echo "# testnewrepo" >> README.md
 git init
 git add README.md
@@ -103,10 +105,11 @@ Once you've configured credential caching, Git will remember your username and p
 
 ### Example
 14400 seconds = 4 hours
-```
+```sh
 $ git config --global credential.helper 'cache --timeout=14400
 ```
-```
+
+```sh
 $ git config --get credential.helper
 cache --timeout=14400
 ```
@@ -114,16 +117,16 @@ cache --timeout=14400
 ### [Creating a personal access token](https://docs.github.com/en/enterprise-server@3.6/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
 
 1. In the upper-right corner of any page, click your profile photo, then click Settings.
-1. In the left sidebar, click  Developer settings.
-1. In the left sidebar, click Personal access tokens.
-1. Click Generate new token.
-1. In the "Note" field, give your token a descriptive name.
-1. To give your token an expiration, select Expiration, then choose a default option or click Custom to enter a date.
+2. In the left sidebar, click  Developer settings.
+3. In the left sidebar, click Personal access tokens.
+4. Click Generate new token.
+5. In the "Note" field, give your token a descriptive name.
+6. To give your token an expiration, select Expiration, then choose a default option or click Custom to enter a date.
 
 ## Problems
 
 ### divergent branches
-```
+```sh
 $ git pull                                             
 hint: You have divergent branches and need to specify how to reconcile them.
 hint: You can do so by running one of the following commands sometime before                                                         
