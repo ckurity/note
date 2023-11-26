@@ -1,4 +1,6 @@
 - [TLDR Initial Config](#tldr-initial-config)
+    - [Without Default Gateway](#without-default-gateway)
+    - [With Default Gateway](#with-default-gateway)
 - [Show Configuration](#show-configuration)
     - [Show Interface Configuration (including DNS)](#show-interface-configuration-including-dns)
     - [Show only IP Addresses of all LAN adapters](#show-only-ip-addresses-of-all-lan-adapters)
@@ -6,6 +8,8 @@
 - [References](#references)
 
 # [TLDR Initial Config](#tldr-initial-config-1)
+## [Without Default Gateway](#without-default-gateway-1)
+netsh interface ipv4 set address name="YOUR INTERFACE NAME" static IP_ADDRESS SUBNET_MASK
 ```sh
 net sess
 netsh i i sh con "Ethernet"
@@ -13,6 +17,13 @@ netsh i i se a "Ethernet" s 10.1.1.1 255.255.255.0
 netsh i i se d "Ethernet" s 10.1.1.1
 netsh i i sh con "Ethernet"
 ```
+
+## [With Default Gateway](#with-default-gateway)
+netsh interface ipv4 set address name="YOUR INTERFACE NAME" static IP_ADDRESS SUBNET_MASK GATEWAY
+```sh
+net sess
+netsh i i sh con "Ethernet"
+netsh i i se a "Ethernet" s 10.1.1.1 255.255.255.0
 
 # [Show Configuration](#show-configuration-1)
 
