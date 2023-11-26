@@ -1,48 +1,200 @@
-- 
+- [TLDR Initial Config](#tldr-initial-config)
+- [Show Configuration](#show-configuration)
+    - [Show Interface Configuration (including DNS)](#show-interface-configuration-including-dns)
+    - [Show only IP Addresses of all LAN adapters](#show-only-ip-addresses-of-all-lan-adapters)
+- [Make Changes](#make-changes)
 - [References](#references)
 
--------------------------------------------
-
-## 
+# [TLDR Initial Config](#tldr-initial-config-1)
 ```sh
-netsh interface ipv4 set address name="YOUR INTERFACE NAME" static IP_ADDRESS SUBNET_MASK GATEWAY
-
-netsh interface ipv4 set address name="Ethernet" static 10.1.1.221 255.255.255.0
+net sess
+netsh i i sh con "Ethernet"
+netsh i i se a "Ethernet" s 10.1.1.1 255.255.255.0
+netsh i i se d "Ethernet" s 10.1.1.1
+netsh i i sh con "Ethernet"
 ```
 
-## 
-```sh
+# [Show Configuration](#show-configuration-1)
 
+## [Show Interface Configuration (including DNS)](#show-interface-configuration-including-dns-1)
+```sh
+netsh i i sh con
+netsh i i sh con "Ethernet"
+netsh interface ipv4 show config
+netsh interface ipv4 show config "Ethernet"
 ```
 
-## 
+## [Show only IP Addresses of all LAN adapters](#show-only-ip-addresses-of-all-lan-adapters-1)
 ```sh
-
+netsh i i sh a
+netsh i i sh a "Ethernet"
+netsh interface ipv4 show address
+netsh interface ipv4 show address "Ethernet"
 ```
 
-## 
+# [Make Changes](#make-changes-1)
+## [Set Static IP]
 ```sh
-
+netsh interface ipv4 set address "Ethernet" static 10.1.1.1 255.255.255.0
+netsh i i se a "Ethernet" s 10.1.1.1 255.255.255.0
 ```
 
-## 
+## [Set DNS](https://stackoverflow.com/questions/18620173/how-can-i-set-change-dns-using-the-command-prompt-at-windows-8)
 ```sh
-
+netsh interface ipv4 set dnsservers "Ethernet" static 10.1.1.1
+netsh i i se d "Ethernet" s 10.1.1.1
 ```
 
-## 
+Just ignore "The configured DNS server is incorrect or does not exist." error
 ```sh
-
+netsh interface ipv4 set dnsservers "Ethernet" dhcp
+netsh i i se d "Ethernet" d
 ```
 
-## 
+## Show global TCP/IP Parameters
 ```sh
-
+netsh i i sh g
+netsh interface ipv4 show global
 ```
 
-## 
+## Disable and enable a Interface
 ```sh
+netsh int set int name="ethernet" admin=disabled
+netsh int set int name="ethernet" admin=enabled
+```
 
+## Show all network  interfaces and its link state
+```sh
+netsh interface ipv4 show interfaces
+```
+# Examples
+## No IP (show address)
+```sh
+C:\Users\user>netsh i i sh a "Ethernet"
+
+Configuration for interface "Ethernet"
+    DHCP enabled:                         Yes
+    InterfaceMetric:                      5
+```
+
+## No IP (show config)
+```sh
+C:\Users\user>netsh i i sh con "Ethernet"
+
+Configuration for interface "Ethernet"
+    DHCP enabled:                         Yes
+    InterfaceMetric:                      5
+    DNS servers configured through DHCP:  8.8.8.8
+                                          8.8.4.4
+    Register with which suffix:           Primary only
+    WINS servers configured through DHCP: None
+```
+
+## How to
+```sh
+set address name="Wired Ethernet Connection" source=dhcp
+set address "Wired Ethernet Connection" static 10.0.0.9 255.0.0.0 10.0.0.1 1
+```
+
+## Without admin
+```sh
+C:\Users\user>netsh i i se a "Ethernet" s 10.1.1.20 255.255.255.0
+The requested operation requires elevation (Run as administrator).
+
+C:\Users\user>net sess
+System error 5 has occurred.
+
+Access is denied.
+```
+
+## Run CMD as admin
+```sh
+C:\>net sess
+There are no entries in the list.
+
+C:\>netsh i i se a "Ethernet" s 10.1.1.20 255.255.255.0
+C:\>
+```
+
+```sh
+C:\>netsh i i sh a "Ethernet"
+
+Configuration for interface "Ethernet"
+    DHCP enabled:                         No
+    IP Address:                           10.1.1.20
+    Subnet Prefix:                        10.1.1.0/24 (mask 255.255.255.0)
+    InterfaceMetric:
+```
+
+
+```sh
+PS C:\Users\Administrator> netsh i i sh con "Ethernet"
+
+Configuration for interface "Ethernet"
+    DHCP enabled:                         No
+    IP Address:                           10.1.1.2
+    Subnet Prefix:                        10.1.1.0/24 (mask 255.255.255.0)
+    InterfaceMetric:                      10
+    Statically Configured DNS Servers:    None
+    Register with which suffix:           Primary only
+    Statically Configured WINS Servers:   None
+
+PS C:\Users\Administrator>
+```
+## View DNS Config
+```sh
+PS C:\Users\Administrator> netsh i i sh dns "Ethernet"
+
+Configuration for interface "Ethernet"
+    Statically Configured DNS Servers:    None
+    Register with which suffix:           Primary only
+```
+
+## Set DNS
+```sh
+PS C:\Users\Administrator> netsh i i se dns "Ethernet" s 10.1.1.1
+
+The configured DNS server is incorrect or does not exist.
+```
+
+## Verify
+```sh
+PS C:\Users\Administrator> netsh i i sh dns "Ethernet"
+
+Configuration for interface "Ethernet"
+    Statically Configured DNS Servers:    10.1.1.1
+    Register with which suffix:           Primary only
+
+PS C:\Users\Administrator>
+```
+
+## DNS can only be seen with show config
+```sh
+PS C:\Users\Administrator> netsh i i sh con "Ethernet"
+
+Configuration for interface "Ethernet"
+    DHCP enabled:                         No
+    IP Address:                           10.1.1.2
+    Subnet Prefix:                        10.1.1.0/24 (mask 255.255.255.0)
+    InterfaceMetric:                      10
+    Statically Configured DNS Servers:    10.1.1.1
+    Register with which suffix:           Primary only
+    Statically Configured WINS Servers:   None
+
+PS C:\Users\Administrator>
+```
+
+## Show Address doesn't display DNS config
+```sh
+PS C:\Users\Administrator> netsh i i sh a "Ethernet"
+
+Configuration for interface "Ethernet"
+    DHCP enabled:                         No
+    IP Address:                           10.1.1.2
+    Subnet Prefix:                        10.1.1.0/24 (mask 255.255.255.0)
+    InterfaceMetric:                      10
+
+PS C:\Users\Administrator>
 ```
 
 ## 
@@ -56,5 +208,9 @@ netsh interface ipv4 set address name="Ethernet" static 10.1.1.221 255.255.255.0
 ```
 
 # [References](#references-1)
+
+https://michlstechblog.info/blog/windows-show-and-configure-network-settings-using-netsh/
+
+https://www.csie.ntu.edu.tw/~b90047/ebook/winXPhack/0596005113_winxphks-chp-5-sect-13.html
 
 https://www.howtogeek.com/103190/change-your-ip-address-from-the-command-prompt/
