@@ -77,16 +77,11 @@ git remote add origin git@github.com:ckurity/testnewrepo.git
 git push -u origin main
 ```
 
-## Remember Username & Password
+## [Remember Username & Password](#remember-username--password-1)
 ```sh
 $ git clone https://github.com/ckurity/git
 Cloning into 'git'...
 Username for 'https://github.com':
-```
-
-### Default Config is Empty
-```sh
-git config --global credential.helper cache
 ```
 
 ### Change it to 4 hours
@@ -112,6 +107,11 @@ $ git config --global credential.helper 'cache --timeout=14400
 ```sh
 $ git config --get credential.helper
 cache --timeout=14400
+```
+
+### Default Config is Empty
+```sh
+git config --global credential.helper cache
 ```
 
 ### [Creating a personal access token](https://docs.github.com/en/enterprise-server@3.6/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)

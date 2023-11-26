@@ -1,4 +1,6 @@
-- 
+- [Default](#default)
+- [Syntax](#syntax)
+    - [Eg: eth0 dhcp, eth1 static](#eg-eth0-dhcp-eth1-static)
 - [References](#references)
 
 -------------------------------------------
@@ -8,7 +10,7 @@
 nl /etc/network/interfaces
 ```
 
-## Default
+## [Default](#default-1)
 ```sh
 $ cat /etc/network/interfaces
 # This file describes the network interfaces available on your system
@@ -21,7 +23,7 @@ auto lo
 iface lo inet loopback
 ```
 
-## Syntax
+## [Syntax](#syntax-1)
 ```sh
 #The primary network interface
 allow-hotplug  eth0
@@ -33,8 +35,12 @@ iface eth0 inet static
         Gateway [your gateway]
 ```
 
-## Eg
+## [Eg: eth0 dhcp, eth1 static](#eg-eth0-dhcp-eth1-static)
 ```sh
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
 iface eth1 inet static
     address 10.1.1.10/24
 ```
