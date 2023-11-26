@@ -1,9 +1,11 @@
+- [/t and /d flags](#t-and-d-flags)
+
 # registry / regedit
 
 ### TL;DR
 
 ### PowerShell
-```
+```sh
 ls 'HKLM:\software\microsoft\windows nt\currentversion\winlogon'
 
 Get-ItemProperty -Path 'HKLM:\software\microsoft\windows nt\currentversion\winlogon'
@@ -11,18 +13,79 @@ gp -pa 'HKLM:\software\microsoft\windows nt\currentversion\winlogon'
 ```
 
 ### CMD
-```
+```sh
 reg query 'HKLM\software\microsoft\windows nt\currentversion\winlogon'
 ```
 
-### 
+## 
+```sh
+reg query 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp'
+
+reg query 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' /v PortNumber
+
+reg add 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' /v PortNumber /t REG_DWORD /d 1337 /f
 ```
 
+## 
+Hex = 0xd3d
+Dec = 3389
+```sh
+PS C:\> reg query 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' /v PortNumber
+
+HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp
+    PortNumber    REG_DWORD    0xd3d
 ```
 
-### 
+```sh
+C:\>sc query TermService
+
+SERVICE_NAME: TermService
+        TYPE               : 30  WIN32
+        STATE              : 4  RUNNING
+                                (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+C:\>sc qc TermService
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: TermService
+        TYPE               : 20  WIN32_SHARE_PROCESS
+        START_TYPE         : 3   DEMAND_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : C:\Windows\System32\svchost.exe -k NetworkService
+        LOAD_ORDER_GROUP   :
+        TAG                : 0
+        DISPLAY_NAME       : Remote Desktop Services
+        DEPENDENCIES       : RPCSS
+        SERVICE_START_NAME : NT Authority\NetworkService
 ```
 
+```sh
+C:\>net sess
+System error 5 has occurred.
+
+Access is denied.
+
+
+C:\>
+C:\>sc stop TermService && sc start TermService
+[SC] OpenService FAILED 5:
+
+Access is denied.
+```
+
+```sh
+C:\>net sess
+There are no entries in the list.
+
+
+C:\>sc stop TermService && sc start TermService
+[SC] ControlService FAILED 1051:
+
+A stop control has been sent to a service that other running services are dependent on.
 ```
 
 ### Examples
@@ -30,8 +93,8 @@ reg query 'HKLM\software\microsoft\windows nt\currentversion\winlogon'
 
 ```
 
-### 
-```
+## 
+```sh
 *Evil-WinRM* PS C:\Users\svc_loanmgr\Documents> ls 'HKLM:\software\microsoft\windows nt\currentversion\winlogon'
 
 
@@ -47,8 +110,8 @@ AutoLogonChecked
 VolatileUserMgrKey
 ```
 
-### 
-```
+## 
+```sh
 *Evil-WinRM* PS C:\Users\svc_loanmgr\Documents> Get-ItemProperty -Path 'HKLM:\software\microsoft\windows nt\currentversion\winlogon'
 
 
@@ -94,8 +157,8 @@ PSProvider                   : Microsoft.PowerShell.Core\Registry
 *Evil-WinRM* PS C:\Users\svc_loanmgr\Documents>
 ```
 
-### 
-```
+## 
+```sh
 *Evil-WinRM* PS C:\Users\svc_loanmgr\Documents> reg query 'HKLM\software\microsoft\windows nt\currentversion\winlogon'
 
 HKEY_LOCAL_MACHINE\software\microsoft\windows nt\currentversion\winlogon
@@ -139,12 +202,19 @@ HKEY_LOCAL_MACHINE\software\microsoft\windows nt\currentversion\winlogon\Volatil
 *Evil-WinRM* PS C:\Users\svc_loanmgr\Documents> 
 ```
 
-### 
+## [/t and /d flags](#t-and-d-flags-1)
+```sh
+The /t and /d flags are used with the reg command to specify the type and data of a registry entry.
+
+The /t flag specifies the type of the registry entry. The following are the valid types of registry entries:
+REG_SZ: A string value.
+REG_DWORD: A 32-bit integer value.
+REG_BINARY: A binary value.
+REG_EXPAND_SZ: An expandable string value. This type of value can contain environment variables that will be expanded when the value is read.
+REG_MULTI_SZ: A multiple-string value. This type of value can contain multiple strings, separated by null characters.
 ```
 
-```
-
-### 
-```
+## 
+```sh
 
 ```

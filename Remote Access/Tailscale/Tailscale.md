@@ -21,7 +21,8 @@ To authenticate, visit:
 
 ## 
 ```sh
-
+sudo tailscale status
+sudo tailscale up
 ```
 
 ## 

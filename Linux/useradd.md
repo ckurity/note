@@ -12,7 +12,7 @@ nl /etc/passwd | tail -5
 
 # Create a New User
 ```sh
-NEWUSER=ckurity                         # Replace "ckurity" with a new user
+NEWUSER=ckurity                         # Replace "ckurity" with a new 
 sudo useradd -ms /usr/bin/zsh $NEWUSER
 
 -m, --create-home             create the user's home directory
