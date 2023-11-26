@@ -26,10 +26,26 @@ pipx is recommended over pip for system-wide installations
 python3 -m pipx install .
 ```
 
+```sh
+apt install pipx git
+pipx ensurepath
+pipx install git+https://github.com/Pennyw0rth/NetExec
+```
+
 ### [pip](#pip-1)
 pipx is recommended over pip for system-wide installations
 ```sh
 pip install impacket
+```
+
+```sh
+apt install python3 python3-pip
+git clone https://github.com/Pennyw0rth/NetExec
+cd NetExec
+python3 -m venv .
+source bin/activate
+pip install .
+NetExec
 ```
 
 ## [Docker](#docker-1)
