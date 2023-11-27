@@ -44,6 +44,7 @@ alias pg='ping google.com'
 alias po=poweroff
 alias pu="date; hostname -I | cut -d\  -f1; curl -4 ifconfig.co"
 alias r=reboot
+alias rustscan='docker run -it --rm --name rustscan rustscan/rustscan:2.1.1'
 alias s='ss -antu | nl -v0'
 alias sa='cd /xyz/note/Sample/'
 alias si='xclip -se c -i ~/.sys;sudo id'

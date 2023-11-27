@@ -21,11 +21,9 @@
 ```
 
 # [Docker Installation](#docker-installation-1)
-
-
-
-
-
+```sh
+sudo apt install docker.io
+```
 
 ### 
 ```sh
@@ -49,7 +47,7 @@ mkdir -p $DOCKER_CONFIG/cli-plugins
 
 ### Check latest version from https://github.com/docker/compose/releases/latest
 ```sh
-curl -sL https://github.com/docker/compose/releases/download/v2.23.0/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+curl -sL https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
 
 chmod u+x $DOCKER_CONFIG/cli-plugins/docker-compose
 ```

@@ -13,6 +13,8 @@ https://github.com/RustScan/RustScan/wiki/Installation-Guide
 
 Docker is the recommended way of installing RustScan. (however little bit slow and error to output with -oA)
 
+We strongly recommend using the 2.1.1 tag, as this is the latest major - stable - release of RustScan as of `27 Nov 2023`
+
 ```sh
 docker pull rustscan/rustscan:2.1.1
 docker run -it --rm --name rustscan rustscan/rustscan:2.1.1 <rustscan arguments here> <ip address to scan>
@@ -25,15 +27,7 @@ cd RustScan
 
 # docker build -t <yourimagename> .
 docker build -t rustscan .
-```
-
-### Problem with Docker version
-```sh
-$ rustscan -a localhost -- -Pn -A -oA nmap-A                     
-.----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
-| {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
-| .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
-`-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+```docker pull rustscan/rustscan:2.1.1
 The Modern Day Port Scanner.
 ________________________________________
 : http://discord.skerritt.blog           :
