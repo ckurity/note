@@ -23,6 +23,8 @@ To authenticate, visit:
 ```sh
 sudo tailscale status
 sudo tailscale up
+sudo tailscale down
+sudo tailscale logout
 ```
 
 ## 
