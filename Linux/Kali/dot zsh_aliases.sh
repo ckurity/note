@@ -35,6 +35,7 @@ alias i='ip -br -c a'
 alias kerbrute='/xyz/note/Tools-Binary/kerbrute_linux_amd64'
 alias l='ls -lh'
 alias la='ls -lha'
+alias lt='ls -lh --full-time'
 alias lo=locate
 alias m=more
 alias p=ping
