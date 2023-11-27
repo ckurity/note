@@ -1,4 +1,5 @@
 - [Auto Login](#auto-login)
+- [Logout](#logout)
 
 # [Increase Icon/Text Size in Kali Linux](https://unix.stackexchange.com/questions/196576/increase-icon-text-size-in-kali-linux)
 
@@ -32,4 +33,10 @@ sudo sed -i 's/#autologin-user=/autologin-user=kali/' /etc/lightdm/lightdm.conf
 # Check After Changes
 grep -n autologin-user= /etc/lightdm/lightdm.conf
 diff /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.bak
+```
+
+# [Logout](#logout-1)
+```sh
+xfce4-session-logout --logout
+gnome-session-quit --logout
 ```
