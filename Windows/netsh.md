@@ -15,6 +15,7 @@ netsh interface ipv4 set address name="YOUR INTERFACE NAME" static IP_ADDRESS SU
 net sess
 netsh i i sh con "Ethernet"
 netsh i i se a "Ethernet" s 10.1.1.1 255.255.255.0
+netsh i i se a "Ethernet 3" s 10.1.1.6 255.255.255.0
 netsh i i se d "Ethernet" s 10.1.1.1
 netsh i i sh con "Ethernet"
 ```
@@ -24,12 +25,12 @@ netsh interface ipv4 set address name="YOUR INTERFACE NAME" static IP_ADDRESS SU
 ```sh
 net sess
 netsh i i sh con "Ethernet"
-netsh i i se a "Ethernet" s 10.1.1.1 255.255.255.0
+netsh i i se a "Ethernet" s 10.0.2.6 255.255.255.0 10.0.2.1
 ```
 
 ## [Change the default gateway IP](#change-the-default-gateway-ip-1)
 ```sh
-netsh interface ipv4 set gateway name="Local Area Connection" address="192.168.1.1"
+netsh interface ipv4 set gateway name="Ethernet" address="10.0.2.1"
 ```
 
 # [Show Configuration](#show-configuration-1)
