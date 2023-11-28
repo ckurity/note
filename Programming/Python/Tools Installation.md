@@ -1,6 +1,7 @@
 - [github](#github)
 - [pipx](#pipx)     ==> pipx is recommended over pip for system-wide installations
-    - [pip](#pip) 
+    - [pip](#pip)
+    - [requirements.txt](#requirementstxt)
 - [Docker](#docker)
 - [References](#references)
 
@@ -46,6 +47,11 @@ python3 -m venv .
 source bin/activate
 pip install .
 NetExec
+```
+
+### [requirements.txt](#requirementstxt)
+```sh
+
 ```
 
 ## [Docker](#docker-1)
