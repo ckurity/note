@@ -1,9 +1,10 @@
-- [Find users currently logged in](#find-users-currently-logged-in)
+- [Find current logged in users](#find-current-logged-in-users)
+- [Logout Current Session](#logout-current-session)
 - [References](#references)
 
 -------------------------------------------
 
-## [Find users currently logged in](#find-users-currently-logged-in)
+## [Find current logged in users](#find-current-logged-in-users)
 ```sh
 w
 who
@@ -34,9 +35,10 @@ skill -KILL -u ckurity
 skill -KILL -v /dev/pts/* 
 ```
 
-## 
+## [Logout Current Session](#logout-current-session)
 ```sh
-
+xfce4-session-logout --logout
+gnome-session-quit --logout
 ```
 
 ## 
