@@ -46,9 +46,11 @@ total 224K
 -rw-r--r-- 1 kali kali 2.6K Nov 29 13:30 template.cpp
 ```
 
-## 
+## Execute DLL
+Function `HelloWorld` case sensitive
 ```sh
-
+# rundll32.exe <fileName> <exportedFunction>
+rundll32.exe helloworld.dll, HelloWorld
 ```
 
 ## 
