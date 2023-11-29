@@ -25,10 +25,13 @@ $ l .local/share/keyrings/
 ls: cannot access '.local/share/keyrings/': No such file or directory
 ```
 https://devicetests.com/reset-keyring-ubuntu-guide
-## 
-```sh
 
+## [Remove Current Keyrings]
+```sh
+rm -f .local/share/keyrings/*
 ```
+
+Reboot/logout to set a new password
 
 ## 
 ```sh

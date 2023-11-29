@@ -4,7 +4,9 @@ pip install pyinstaller
 
 cd followed by the location where your Python script is stored
 
+```sh
 pyinstaller --onefile pythonScriptName.py
+```
 
 PS C:\Tools\impacket-master\examples> pyinstaller --onefile .\GetNPUsers.py
 4593 INFO: PyInstaller: 5.13.0

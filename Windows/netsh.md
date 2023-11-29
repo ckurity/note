@@ -14,10 +14,14 @@ netsh interface ipv4 set address name="YOUR INTERFACE NAME" static IP_ADDRESS SU
 ```sh
 net sess
 netsh i i sh con "Ethernet"
-netsh i i se a "Ethernet" s 10.1.1.1 255.255.255.0
-netsh i i se a "Ethernet 3" s 10.1.1.6 255.255.255.0
+netsh i i se a "Ethernet" s 10.1.1.1/24
+# netsh i i se a "Ethernet" s 10.1.1.1 255.255.255.0
 netsh i i se d "Ethernet" s 10.1.1.1
 netsh i i sh con "Ethernet"
+```
+
+```sh
+netsh i i se a "Ethernet 3" s 10.1.1.6 255.255.255.0
 ```
 
 ## [With Default Gateway](#with-default-gateway-1)

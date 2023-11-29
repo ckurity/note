@@ -20,6 +20,10 @@ cd CrackMapExec
 pipx install .
 ```
 
+```sh
+pip install -r requirements.txt
+```
+
 ## [pipx](#pipx-1)
 pipx is recommended over pip for system-wide installations
 ```sh
