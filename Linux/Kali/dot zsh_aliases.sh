@@ -36,6 +36,7 @@ alias kerbrute='/xyz/note/Tools-Binary/kerbrute_linux_amd64'
 alias l='ls -lh'
 alias la='ls -lha'
 alias lt='ls -lh --full-time'
+alias ltt='ls -lht --full-time'
 alias lo=locate
 alias m=more
 alias p=ping

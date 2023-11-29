@@ -1,14 +1,24 @@
-- 
+- [TL;DR](#tldr)
+- [Install the RDP server](#install-the-rdp-server)
+   - [Example](#example)
+- [Change the XRDP port](#change-the-xrdp-port)
 - [References](#references)
 
 -------------------------------------------
+
+## [TL;DR](#tldr)
+```sh
+sudo systemctl start xrdp
+systemctl status xrdp
+sudo systemctl start xrdp
+```
 
 ## [Install the RDP server](#install-the-rdp-server)
 ```sh
 sudo apt install xrdp
 ```
 
-## 
+### [Example](#example)
 ```sh
 $ systemctl status xrdp
 ○ xrdp.service - xrdp daemon
@@ -45,24 +55,28 @@ Nov 26 23:44:00 tp xrdp[112187]: [INFO ] listening to port 3389 on 0.0.0.0
 Nov 26 23:44:00 tp xrdp[112187]: [INFO ] xrdp_listen_pp done
 ```
 
-## 
+## [Change the XRDP port](#change-the-xrdp-port)
 ```sh
-
+ls -lht /etc/xrdp/xrdp.ini*
+sudo cp /etc/xrdp/xrdp.ini /etc/xrdp/xrdp.ini.bak
 ```
 
 ## 
 ```sh
-
+sudo sed -i 's/port=3389/port=1337/' /etc/xrdp/xrdp.ini
 ```
 
 ## 
 ```sh
-
+$ egrep -n 'port=(3389|1337)' /etc/xrdp/xrdp.ini
+14:;   port=1337
+23:port=1337
 ```
 
 ## 
 ```sh
-
+sudo service xrdp restart
+sudo service xrdp status
 ```
 
 ## 

@@ -3,8 +3,20 @@
 - [grep can't read UTF-16](#grep-cant-read-utf-16)
 - [-F, --fixed-strings](#f---fixed-strings)
 
-# [grep before (?<=) and after (?=)](#grep-before--and-after-1)
+## [Combine Grep](#combine-grep)
+from
+```sh
+grep 'port=3389'
+grep 'port=1337'
+```
 
+to
+
+```sh
+egrep 'port=(3389|1337)'
+```
+
+## [grep before (?<=) and after (?=)](#grep-before--and-after-1)
 ```sh
 $ cat text 
 BEFOREXYZAFTER
@@ -17,7 +29,7 @@ XYZ
 $ 
 ```
 
-## [grep HTML form](#grep-html-form-1)
+### [grep HTML form](#grep-html-form-1)
 ```sh
 $ curl -s $t:$port | grep -n form
 19:                <form action="" method="get">
@@ -112,7 +124,7 @@ edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/
 active.htb\SVC_TGS
 ```
 
-# [grep can't read UTF-16](#grep-cant-read-utf-16-1)
+## [grep can't read UTF-16](#grep-cant-read-utf-16-1)
 Solution: Convert UTF-16 to UTF-8 using iconv
 ```sh
 $ file winpeas.txt 
