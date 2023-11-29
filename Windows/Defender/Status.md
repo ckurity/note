@@ -1,5 +1,5 @@
 # CMD
-```
+```sh
 sc query WinDefend
 ```
 This command queries the Service Control Manager (SCM) for information about the Windows Defender service.
@@ -7,7 +7,7 @@ This command queries the Service Control Manager (SCM) for information about the
 Look for the line that starts with "STATE" in the output. It will indicate the current status of Windows Defender, such as "RUNNING" or "STOPPED."
 
 For example, if Windows Defender is enabled and running, the output of the command will be:
-```
+```sh
 SERVICE_NAME: WinDefend
         TYPE : 20 WIN32_OWN_PROCESS
         STATE : 4 RUNNING
@@ -15,7 +15,7 @@ SERVICE_NAME: WinDefend
         ...
 ```
 # PowerShell
-```
+```PowerShell
 Get-MpPreference
 ```
 This command retrieves the Windows Defender preferences and settings.

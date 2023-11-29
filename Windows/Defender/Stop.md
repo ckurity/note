@@ -22,12 +22,3 @@ Set-MpPreference -DisableRealtimeMonitoring $true
 Set-MpPreference -DisableRealtimeMonitoring $false
 ```
 
-## [Update]
-```sh
-"C:\Program Files\Windows Defender\MpCmdRun.exe" -SignatureUpdate
-```
-
-```sh
-C:\>"C:\Program Files\Windows Defender\MpCmdRun.exe" -SignatureUpdate
-Signature update started . . .
-```
