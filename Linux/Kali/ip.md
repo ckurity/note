@@ -53,7 +53,7 @@ ip -br -c a s eth1
 ip a
 ```
 
-## Final
+## [Final v1]
 ```sh
 $ cat /etc/network/interfaces
 # This file describes the network interfaces available on your system
@@ -70,9 +70,24 @@ iface eth1 inet static
     address 10.1.1.10/24
 ```
 
-## 
+## [Final v2]
 ```sh
+$ cat /etc/network/interfaces
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
 
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet static
+    address 10.1.1.10/24
 ```
 
 ## 
