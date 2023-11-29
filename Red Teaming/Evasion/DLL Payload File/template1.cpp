@@ -17,7 +17,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,  DWORD  ul_reason_for_call, LPVOID lpRese
 extern "C" {
 __declspec(dllexport) BOOL WINAPI HelloWorld(void) {
 
-	MessageBox( NULL, "Welcome!", "Gemini Security", MB_OK );
+	MessageBox( NULL, "Welcome!", "ckurity", MB_OK );
 	return TRUE;
 	}
 }

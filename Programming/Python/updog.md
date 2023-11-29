@@ -17,6 +17,13 @@ $ python -m updog
  * Running on http://10.1.1.1:9090/ (Press CTRL+C to quit)
 ```
 
+## [HTTP](#http-1)
+```sh
+python -m http.server
+python -m http.server 80
+python -m http.server 80 -b 10.1.1.10
+```
+
 ## 
 ```sh
 
