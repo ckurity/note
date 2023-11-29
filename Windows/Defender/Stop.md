@@ -4,17 +4,30 @@
 
 [Flagged by Defender as Trojan:Win32/MpTamperSrvDisableAV.D](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Trojan:Win32/MpTamperSrvDisableAV.D&ThreatID=2147752484)
 
+```sh
 sc config windefend start= disabled
 sc stop windefend
 
 sc config WinDefend start= auto
 sc start windefend
-
+```
 (not case sensitive)
 
-
+```PowerShell
 Set-MpPreference -DisableRealtimeMonitoring $true
+```
 
-Enable it:
-
+## Enable it:
+```PowerShell
 Set-MpPreference -DisableRealtimeMonitoring $false
+```
+
+## [Update]
+```sh
+"C:\Program Files\Windows Defender\MpCmdRun.exe" -SignatureUpdate
+```
+
+```sh
+C:\>"C:\Program Files\Windows Defender\MpCmdRun.exe" -SignatureUpdate
+Signature update started . . .
+```
