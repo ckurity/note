@@ -1,19 +1,22 @@
+
 - 
 - [References](#references)
 
 -------------------------------------------
 
-## ModuleNotFoundError: No module named 'Crypto'
+## update the pip package itself
 ```sh
-pip install pycryptodome
+pip --version
+pip install --upgrade pip
+python -m pip install --upgrade pip
 ```
 
-## ModuleNotFoundError: No module named 'setuptools'
+## 
 ```sh
-pip install setuptools
+
 ```
 
-## ModuleNotFoundError: No module named 'pkg_resources'
+## 
 ```sh
 
 ```

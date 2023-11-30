@@ -4,6 +4,7 @@
 	- [Docker Compose Installation](#compose-installation)
 - [Operation](#operation)
 	- [docker run](#docker-run)
+	- [permission denied](#permission-denied)
 	- [docker ps](#docker-ps)
 		- [docker group](#docker-group)
     	- [newgrp docker](#newgrp-docker)
@@ -46,6 +47,7 @@ mkdir -p $DOCKER_CONFIG/cli-plugins
 ```
 
 ### Check latest version from https://github.com/docker/compose/releases/latest
+https://github.com/docker/compose/releases
 ```sh
 curl -sL https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
 
@@ -65,6 +67,15 @@ docker compose version
 ```sh
 docker run --name DVWA -it -p 127.0.0.1:80:80 vulnerables/web-dvwa
 docker run --name NGINX -it -p 127.0.0.1:80:80 nginx
+```
+
+## [permission denied](#permission-denied)
+```sh
+$ docker ps                          
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json": dial unix /var/run/docker.sock: connect: permission denied
+
+$ sudo docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 ```
 
 ## [docker ps](#docker-ps-1)

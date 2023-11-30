@@ -79,7 +79,8 @@ sudo service xrdp restart
 sudo service xrdp status
 ```
 
-## 
+## Alternative
+https://remmina.org/
 ```sh
 
 ```

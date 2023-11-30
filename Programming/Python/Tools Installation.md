@@ -12,6 +12,7 @@
 git clone https://github.com/CoreSecurity/impacket.git
 cd impacket/
 python setup.py install
+python .\setup.py install #PowerShell
 ```
 
 ```sh
