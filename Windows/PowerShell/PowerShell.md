@@ -16,7 +16,12 @@ PS C:\Users\Administrator>
 
 ## Hello World
 ```PowerShell
+function hi() {
+  Write-Host "Hello, World by Host!"
+  Write-Output "Hello, world by Output!"
+}
 
+hi
 ```
 
 ## 
