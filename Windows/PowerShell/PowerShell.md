@@ -1,5 +1,4 @@
 # PowerShell
-
 PowerShell for Pentesters
 https://www.pentesteracademy.com/course?id=21
 
@@ -26,7 +25,9 @@ hi
 
 ## 
 ```PowerShell
-
+gmo
+Get-Module
+Get-Module -ListAvailable
 ```
 
 ## 
