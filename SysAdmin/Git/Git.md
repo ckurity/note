@@ -27,11 +27,7 @@ git config --get credential.helper
 
 ### One-liner Push
 ```sh
-<<<<<<< HEAD
 git add . ; git status ; git commit -m newUpdate ; git push
-=======
-git add . ; git status ; git commit -m Update ; git push
->>>>>>> ae475a4 (Update)
 ```
 
 ## git config
