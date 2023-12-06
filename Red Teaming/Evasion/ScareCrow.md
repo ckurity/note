@@ -1,9 +1,10 @@
-- 
+- [Installation](#installation)
+- [Help](#help)
 - [References](#references)
 
 -------------------------------------------
 
-## 
+## [Installation](#installation-1)
 ```sh
 sudo apt install golang
 
@@ -22,7 +23,7 @@ go build ScareCrow.go
 
 https://www.grahamhelton.com/blog/scarecrow/
 
-## 
+## [Help](#help-1)
 ```sh
 $ ./ScareCrow -h
  
@@ -159,8 +160,12 @@ cmd
 
 ## 
 ```sh
-
+./ScareCrow -I /path/to/your/payload.bin -etw -domain www.microsoft.com
 ```
+
+I’m using the -etw argument to enable ETW patching to prevent ETW events from being generated. Try it out, its free :)
+
+https://adamsvoboda.net/evading-edr-with-scarecrow/
 
 ## 
 ```sh
