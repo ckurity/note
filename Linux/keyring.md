@@ -1,4 +1,4 @@
-- 
+- [TL;DR](#tldr)
 
 -------------------------------------------
 
@@ -11,6 +11,12 @@ Most desktop environments like GNOME, KDE, Xfce etc use an implementation of gno
 This keyring keeps your ssh keys, GPG keys and keys from applications that use this feature, like Chromium browser. By default, the keyring is locked with a master password which is often the login password of the account.
 
 https://itsfoss.com/ubuntu-keyring/
+
+## [TL;DR](#tldr-1)
+```sh
+l .local/share/keyrings/
+rm .local/share/keyrings/*
+```
 
 ## 
 ```sh
