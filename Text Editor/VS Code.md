@@ -40,6 +40,8 @@ To highlight a few lines and then automatically number them at the beginning of 
 This method allows you to quickly and easily number highlighted lines in Visual Studio Code.
 ```
 
+Download Extension (Manually)
+https://marketplace.visualstudio.com/items?itemName=neptunedesign.vs-sequential-number
 
 ### [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette)
 ```sh
