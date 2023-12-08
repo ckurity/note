@@ -63,6 +63,7 @@ sudo cp /etc/xrdp/xrdp.ini /etc/xrdp/xrdp.ini.bak
 
 ## 
 ```sh
+egrep -n 'port=(3389|1337)' /etc/xrdp/xrdp.ini
 sudo sed -i 's/port=3389/port=1337/' /etc/xrdp/xrdp.ini
 ```
 
