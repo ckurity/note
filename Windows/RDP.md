@@ -28,19 +28,19 @@ PS C:\>
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v PortNumber /t REG_DWORD /d 5000 /f
 ```
 
-## 
-```sh
+## Restart Remote Desktop Services
+```cmd
+net stop TermService && net start TermService
+```
 
+## PowerShell
+```sh
+Restart-Service -Name TermService -Force
 ```
 
 ## 
 ```sh
-
-```
-
-## 
-```sh
-
+sc query TermService
 ```
 
 ## 
