@@ -1,28 +1,20 @@
-- [Change SSH Port](#change-ssh-port)
-    - [Auto with sed](#auto-with-sed)
-- [Passwordless SSH]
-- [References](#references)
+- [Passwordless SSH](#passwordless-ssh)
 
--------------------------------------------
 
-## [Change SSH Port](#change-ssh-port-1)
+### no matching host key type found. Their offer: ssh-rsa,ssh-dss
 ```sh
-ls -lh /etc/ssh/sshd_config*
-sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
-diff /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
-sudo vi /etc/ssh/sshd_config
+$ ssh user@10.1.1.2
+Unable to negotiate with 10.1.1.2 port 22: no matching host key type found. Their offer: ssh-rsa,ssh-dss
+
+$ ssh user@10.1.1.2 -o HostKeyAlgorithms=ssh-rsa
 ```
 
-### [Auto with sed](#auto-with-sed-1)
+### [](https://askubuntu.com/questions/123072/ssh-automatically-accept-keys)
 ```sh
-grep 'Port 22' /etc/ssh/sshd_config
-sudo sed -i 's/#Port 22/Port 2222/' /etc/ssh/sshd_config
-grep 'Port 22' /etc/ssh/sshd_config
-sudo systemctl restart ssh
-systemctl status ssh
+ssh -o StrictHostKeyChecking=no
 ```
 
-## [Passwordless SSH]
+## [Passwordless SSH](#passwordless-ssh-1)
 Passwordless SSH Authentication Using Public Key Cryptography
 
 ### Generate an SSH key pair on Client
@@ -90,5 +82,27 @@ $ diff /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 > #PasswordAuthentication yes
 ```
 
-# [References](#references-1)
+### 
+```
 
+```
+
+### 
+```
+
+```
+
+### 
+```
+
+```
+
+### 
+```
+
+```
+
+### 
+```
+
+```

@@ -5,7 +5,11 @@
 
 ## 
 ```sh
-
+git clone https://github.com/tpoechtrager/wclang
+cd wclang
+cmake -DCMAKE_INSTALL_PREFIX=_prefix_ .
+make
+make install
 ```
 
 ## 
@@ -55,9 +59,6 @@
 
 # [References](#references-1)
 
-https://matro7sh.github.io/BypassAV/
-https://github.com/matro7sh/BypassAV/blob/main/Bypass-AV.md
+Cross compile source code easily for Windows with clang on Linux/Unix
 
-https://github.com/phra/PEzor
-
-https://iwantmore.pizza/posts/PEzor.html
+https://github.com/tpoechtrager/wclang

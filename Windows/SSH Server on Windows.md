@@ -63,12 +63,17 @@ Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 
 ## 
 ```sh
-
+Get-Service sshd
+Get-Service -Name sshd
 ```
 
 ## 
 ```sh
+PS C:\ProgramData\ssh> Get-Service sshd        
 
+Status   Name               DisplayName
+------   ----               -----------
+Running  sshd               OpenSSH SSH Server
 ```
 
 ## 
