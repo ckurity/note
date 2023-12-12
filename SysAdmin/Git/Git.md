@@ -86,14 +86,10 @@ Username for 'https://github.com':
 
 ### Change it to 4 hours
 ### 14400 seconds = 240 minutes = 4 hours
+Replace <seconds> with the desired number of seconds for the cache timeout. For example, to set it to 240 minutes (4 hours), you can use:
 ```sh
 # git config --global credential.helper 'cache --timeout=<seconds>'
 git config --global credential.helper 'cache --timeout=14400'
-```
-
-Replace <seconds> with the desired number of seconds for the cache timeout. For example, to set it to 30 minutes, you can use:
-```sh
-git config --global credential.helper 'cache --timeout=1800'
 ```
 
 Once you've configured credential caching, Git will remember your username and password for the specified duration. During that time, you won't need to re-enter them when performing Git push operations.

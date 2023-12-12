@@ -57,7 +57,7 @@ alias 90="cd $xyz/note/"
             send-keys -t 0 "cd $xyz/l*" C-m \; \
             send-keys -t 1 "cd $xyz/n*" C-m \; \
             setw synchronize-panes on \; send-keys 'clear' C-m \; \
-            send-keys 'git add . ; git status ; git commit -m newUpdate ; git push' \; \
+            send-keys 'git add . ; git status ; git commit -m Update ; git push' \; \
         new-window -n 'IP/VPN' \; \
             split-window -h \; split-window -v \; \
             send-keys -t 0 'x' C-m \; \
