@@ -1,10 +1,14 @@
-## Change a Windows user password
+- [Change a Windows User Password](#change-a-windows-user-password)
+- [Add a New Windows User](#add-a-new-windows-user)
+- [Alternative](#alternative)
+
+## [Change a Windows User Password](#change-a-windows-user-password-1)
 ```sh
 net user <username> <new_password>
 net user John N3wPassw0rd!
 ```
 
-
+## [Add a New Windows User](#add-a-new-windows-user-1)
 ```sh
 net user secaudit P@55w0rd123! /ADD
 net user secaudit /active:yes
@@ -26,4 +30,9 @@ https://www.pwndefend.com/2021/09/04/windows-admin-101-adding-a-local-administra
 
 ```sh
 net localgroup Administrators
+```
+
+## [Alternative](#alternative-1)
+```PowerShell
+Get-LocalUser
 ```
