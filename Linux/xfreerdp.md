@@ -1,7 +1,7 @@
 - [Basic RDP Connection](#basic-rdp-connection)
 - [Alternative](#alternative)
 
-# [Basic RDP Connection](#basic-rdp-connection-1)
+## [Basic RDP Connection](#basic-rdp-connection-1)
 ```sh
 /v:<server>[:port]                Server hostname
 /u:[[<domain>\]<user>|<user>[@<domain>]]    Username
@@ -26,7 +26,7 @@ $ xfreerdp /v:$t /d:$d /u:$u /p:$p
         
 ```
 
-# [Alternative](#alternative-1)
+## [Alternative](#alternative-1)
 
 ```sh
 sudo apt install remmina
