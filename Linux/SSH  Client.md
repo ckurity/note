@@ -1,4 +1,8 @@
 - [Passwordless SSH](#passwordless-ssh)
+    - [Generate an SSH key pair on Client](#generate-an-ssh-key-pair-on-client)
+    - [Copy the Public Key to the Remote Server](#copy-the-public-key-to-the-remote-server)
+    - [Verify Passwordless SSH](#verify-passwordless-ssh)
+    - [Optional: Disable Password Authentication (Recommended for Security)](#optional-disable-password-authentication-recommended-for-security)
 
 
 ### no matching host key type found. Their offer: ssh-rsa,ssh-dss
@@ -17,18 +21,17 @@ ssh -o StrictHostKeyChecking=no
 ## [Passwordless SSH](#passwordless-ssh-1)
 Passwordless SSH Authentication Using Public Key Cryptography
 
-### Generate an SSH key pair on Client
+### [Generate an SSH key pair on Client](#generate-an-ssh-key-pair-on-client-1)
 ```sh
 ssh-keygen
 ```
 
-## 
 ```sh
 $ ssh-keygen
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/kali/.ssh/id_rsa): 
 Created directory '/home/kali/.ssh'.                                                                                                 
-Enter passphrase (empty for no passphrase):                                                                                                         
+Enter passphrase (empty for no passphrase): 
 Enter same passphrase again: 
 Your identification has been saved in /home/kali/.ssh/id_rsa
 Your public key has been saved in /home/kali/.ssh/id_rsa.pub
@@ -42,7 +45,7 @@ total 8.0K
 -rw-r--r-- 1 kali kali  561 2023-12-07 22:39:20.671000000 -0500 id_rsa.pub
 ```
 
-## [Copy the Public Key to the Remote Server]
+### [Copy the Public Key to the Remote Server](#copy-the-public-key-to-the-remote-server-1)
 Copy the Public Key to the Remote Server
 ```sh
 ssh-copy-id user@hostname
@@ -50,13 +53,13 @@ ssh-copy-id user@hostname
 cat ~/.ssh/id_rsa.pub | ssh user@hostname 'cat >> ~/.ssh/authorized_keys'
 ```
 
-## [Verify Passwordless SSH]
+### [Verify Passwordless SSH](#verify-passwordless-ssh-1)
 Try connecting to the remote server using SSH. You should be able to log in without being prompted for a password:
 ```sh
 ssh user@hostname
 ```
 
-## [Optional: Disable Password Authentication (Recommended for Security)]
+### [Optional: Disable Password Authentication (Recommended for Security)](#optional-disable-password-authentication-recommended-for-security)
 ```sh
 $ grep PasswordAuthentication /etc/ssh/sshd_config
 #PasswordAuthentication yes
