@@ -3,6 +3,7 @@
 - [gsv sshd | fl *](#gsv-sshd--fl-1)
 - [(gsv sshd).StartType](#gsv-sshdstarttype)
 - [gsv sshd | Select-Object StartType](#gsv-sshd--select-object-starttype)
+- 
 - [References](#references)
 
 -------------------------------------------
@@ -75,14 +76,33 @@ StartType
 Automatic
 ```
 
-## 
+## [gsv sshd | fl DisplayName, StartType, Status](#gsv-sshd--fl-displayname-starttype-status)
 ```sh
+PS C:\> gsv sshd | fl DisplayName, StartType, Status
 
+DisplayName : OpenSSH SSH Server
+StartType   : Automatic
+Status      : Running
+
+PS C:\> Get-Service sshd | Format-List DisplayName, StartType, Status
+
+DisplayName : OpenSSH SSH Server
+StartType   : Automatic
+Status      : Running
 ```
 
-## 
 ```sh
+PS C:\> (gsv sshd) | select DisplayName, StartType, Status
 
+DisplayName        StartType  Status
+-----------        ---------  ------
+OpenSSH SSH Server Automatic Running
+
+PS C:\> (gsv sshd) | select DisplayName, StartType, Status | fl
+
+DisplayName : OpenSSH SSH Server
+StartType   : Automatic
+Status      : Running
 ```
 
 ## 
