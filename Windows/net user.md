@@ -2,6 +2,17 @@
 - [Add a New Windows User](#add-a-new-windows-user)
 - [Alternative](#alternative)
 
+## [View Current Users]
+```sh
+net user
+Get-LocalUser
+wmic useraccount where Disabled="FALSE" get Name,Disabled
+
+wmic useraccount where Disabled="FALSE" get Domain,Name,LocalAccount,Lockout,PasswordChangeable,PasswordExpires,PasswordRequired
+
+wmic useraccount where Disabled="FALSE" get Domain,Name,LocalAccount,Lockout,PasswordChangeable,PasswordExpires,PasswordRequired,sid
+```
+
 ## [Change a Windows User Password](#change-a-windows-user-password-1)
 ```sh
 net user <username> <new_password>
@@ -35,4 +46,23 @@ net localgroup Administrators
 ## [Alternative](#alternative-1)
 ```PowerShell
 Get-LocalUser
+```
+
+```sh
+C:\Users\user\a>wmic useraccount where Disabled="FALSE" get Name,Disabled
+
+Disabled  Name   
+FALSE     admin  
+FALSE     user
+
+C:\Users\user\a>wmic useraccount where Disabled="FALSE" get Domain,Name,LocalAccount,Lockout,PasswordChangeable,PasswordExpires,PasswordRequired
+
+Domain           LocalAccount  Lockout  Name   PasswordChangeable  PasswordExpires  PasswordRequired  
+WIN-QBA94KB3IOF  TRUE          FALSE    admin  TRUE                TRUE             TRUE              
+WIN-QBA94KB3IOF  TRUE          FALSE    user   TRUE                TRUE             TRUE
+
+C:\Users\user\a>wmic useraccount where Disabled="FALSE" get Domain,Name,LocalAccount,Lockout,PasswordChangeable,PasswordExpires,PasswordRequired,sid
+Domain           LocalAccount  Lockout  Name   PasswordChangeable  PasswordExpires  PasswordRequired  SID                                             
+WIN-QBA94KB3IOF  TRUE          FALSE    admin  TRUE                TRUE             TRUE              S-1-5-21-3025105784-3259396213-1915610826-1001  
+WIN-QBA94KB3IOF  TRUE          FALSE    user   TRUE                TRUE             TRUE              S-1-5-21-3025105784-3259396213-1915610826-1000
 ```

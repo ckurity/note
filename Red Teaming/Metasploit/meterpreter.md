@@ -3,6 +3,7 @@
 - [Offensive PowerShell with Metasploit Meterpreter](#offensive-powershell-with-metasploit-meterpreter)
 - [TL;DR](#tldr)
 - [One Liner Start Meterpreter](#one-liner-start-meterpreter)
+- [Load the PowerShell Extension](#load-the-powershell-extension)
 
 # [TL;DR](#tldr-1)
 ```sh
@@ -162,7 +163,7 @@ Active sessions
 
 # [Offensive PowerShell with Metasploit Meterpreter](https://www.sans.org/blog/offensive-powershell-metasploit-meterpreter/)
 
-## load the PowerShell extension
+## [Load the PowerShell Extension](#load-the-powershell-extension-1)
 ```sh
 meterpreter > load powershell
 Loading extension powershell...Success.

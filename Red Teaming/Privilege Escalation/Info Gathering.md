@@ -4,19 +4,21 @@
     - [Hostname](#hostname)
     - [OS Version & Architecture](#os-version--architecture)
     - [Running Processes & Services](#running-processes--services)
+    - [Networking Info](#networking-info)
+    - [Firewall Status & Rules](#firewall-status--rules)
 - [References](#references)
 
 -------------------------------------------
 
 ## Info Gathering
 ```sh
-
+Get-WmiObject win32_service | Select-Object name, state, pathname | Where-Object {$_.state -like 'running'}
 ```
 
 # [Manual Enumeration](#manual-enumeration-1)
 ## [Current User](#current-user-1)
 ```sh
-Windows CMD : whoami
+Windows     : whoami
 Windows CMD : net user %user%
 PowerShell  : [Security.Principal.WindowsIdentity]::GetCurrent()
 PowerShell  : $env:USERNAME
@@ -26,8 +28,9 @@ Linux       : id
 
 ## [List Users](#list-users-1)
 ```sh
-Windows CMD : net user
+Windows     : net user
 PowerShell  : Get-LocalUser
+Windows     : wmic useraccount where Disabled="FALSE" get Name,Disabled
 Linux       : nl /etc/passwd
 ```
 
@@ -149,6 +152,18 @@ csrss.exe                      476 N/A
 ```
 
 ```sh
+PS C:\Users\user\a> Get-WmiObject win32_service | Select-Object name, state, pathname | Where-Object {$_.state -like 'running'}
+
+name                   state   pathname                                                             
+----                   -----   --------                                                             
+AmazonSSMAgent         Running "C:\Program Files\Amazon\SSM\amazon-ssm-agent.exe"                   
+AWSLiteAgent           Running C:\Program Files\Amazon\XenTools\LiteAgent.exe                       
+BFE                    Running C:\Windows\system32\svchost.exe -k LocalServiceNoNetworkFirewall -p  
+BrokerInfrastructure   Running C:\Windows\system32\svchost.exe -k DcomLaunch -p                     
+Browser                Running C:\Windows\System32\svchost.exe -k netsvcs -p
+```
+
+```sh
 $ ps aux | more    
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root           1  0.0  0.2  22300 13440 ?        Ss   14:54   0:03 /lib/systemd/systemd --system --deserialize=40 splash
@@ -156,46 +171,54 @@ root           2  0.0  0.0      0     0 ?        S    14:54   0:00 [kthreadd]
 root           3  0.0  0.0      0     0 ?        I<   14:54   0:00 [rcu_gp]
 ```
 
-## 
+# [Networking Info](#networking-info-1)
+PWK 2.0 page 517
 ```sh
-Windows CMD : 
+Windows     : ipconfig /all
 PowerShell  : 
-Linux       : 
+Linux       : ip a
+Linux       : ifconfig
 ```
 
 ## 
 ```sh
-Windows CMD : 
+Windows     : route print
+Windows     : netstat -rn
 PowerShell  : 
-Linux       : 
-```
-
-
-## 
-```sh
-Windows CMD : 
-PowerShell  : 
-Linux       : 
-```
-
-## 
-```sh
-Windows CMD : 
-PowerShell  : 
-Linux       : 
+Linux       : route
 ```
 
 
 ## 
 ```sh
+Windows     : netstat -ano
 Windows CMD : 
 PowerShell  : 
-Linux       : 
+Linux       : ss -anp
 ```
 
-## 
+# [Firewall Status & Rules](#firewall-status--rules)
+PWK 2.0 page 522
 ```sh
-Windows CMD : 
+Windows     : netsh advfirewall firewall show rule name=all
+PowerShell  : 
+Linux       : sudo iptables -L
+Linux       : sudo iptables -vL --line-number
+```
+
+## Scheduled Tasks
+PWK 2.0 page 524
+```sh
+Windows     : schtasks /query /fo list /v
+PowerShell  : 
+Linux       : ls -lh /etc/cron*
+Linux       : crontab -l
+```
+
+## [Installed Applications & Patch Levels](#installed-applications--patch-levels)
+PWK 2.0 page 526
+```sh
+Windows     : wmic product get name, version, vendor
 PowerShell  : 
 Linux       : 
 ```

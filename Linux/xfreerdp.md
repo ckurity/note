@@ -30,6 +30,7 @@ $ xfreerdp /v:$t /d:$d /u:$u /p:$p
 
 ```sh
 sudo apt install remmina
+rdesktop $t
 ```
 
 https://remmina.org/

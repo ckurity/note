@@ -36,6 +36,7 @@ Asia/Kuala_Lumpur
 
 ## set-timezone
 After
+sudo timedatectl set-timezone Asia/Kuala_Lumpur
 ```sh
 $ sudo timedatectl set-timezone Asia/Kuala_Lumpur
 $
