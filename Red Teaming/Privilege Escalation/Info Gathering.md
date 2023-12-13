@@ -215,6 +215,11 @@ Linux       : ls -lh /etc/cron*
 Linux       : crontab -l
 ```
 
+schtasks: This is the command itself used to manage tasks.
+/query: This parameter instructs schtasks to query the Task Scheduler.
+/fo list: This parameter specifies that the output should be formatted as a list, making it easier to read.
+/v: This parameter requests a detailed (verbose) display, showing additional information about each task.
+
 ## [Installed Applications & Patch Levels](#installed-applications--patch-levels)
 PWK 2.0 page 526
 ```sh
