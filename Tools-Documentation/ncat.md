@@ -7,6 +7,16 @@
 	
 -------------------------------------------
 
+## Bind and listen for incoming connections
+```sh
+ncat --ssl -nvlp 443
+```
+
+## Connecting to listening host
+```sh
+ncat --ssl -nv $t 443
+```
+
 ## ncat
 ```sh
 $ ncat
@@ -96,16 +106,6 @@ $ tldr ncat
 ```
 
 # Example
-
-## Bind and listen for incoming connections
-```sh
-ncat --ssl -nvlp 443
-```
-
-## Connecting to listening host
-```sh
-ncat --ssl -nv $t 443
-```
 
 # 
 
