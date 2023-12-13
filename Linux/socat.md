@@ -73,3 +73,8 @@ The fork option allows it to handle multiple connections by creating a new proce
 
 # [References](#references-1)
 
+Task 16  Token Impersonation - Rogue Potato
+Windows PrivEsc by Tib3rius
+https://tryhackme.com/room/windows10privesc
+
+PWK 2.0 page 82
