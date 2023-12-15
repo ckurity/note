@@ -1,4 +1,7 @@
-- 
+- [Check OpenSSH Installation Status](#check-openssh-installation-status)
+- [Installation](#installation)
+- [Start the sshd Service](#start-the-sshd-service)
+- [Get-Service sshd](#get-service-sshd)
 - [References](#references)
 
 -------------------------------------------
@@ -13,20 +16,22 @@
 6. Click on Install.
 ```
 
-## 
+## [Check OpenSSH Installation Status](#check-openssh-installation-status)
 ```sh
 Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
 ```
 
 ```sh
+PS C:\Users\fcastle> Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
+
 Name  : OpenSSH.Client~~~~0.0.1.0
-State : NotPresent
+State : Installed
 
 Name  : OpenSSH.Server~~~~0.0.1.0
 State : NotPresent
 ```
 
-## 
+## [Installation](#installation)
 ```sh
 # Install the OpenSSH Client
 Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
@@ -35,7 +40,7 @@ Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 ```
 
-## 
+## [Start the sshd Service](#start-the-sshd-service)
 ```sh
 # Start the sshd service
 Start-Service sshd
@@ -61,34 +66,54 @@ Remove-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
 Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 ```
 
-## 
+## [Get-Service sshd](#get-service-sshd)
 ```sh
 Get-Service sshd
 Get-Service -Name sshd
 ```
 
-## 
 ```sh
-PS C:\ProgramData\ssh> Get-Service sshd        
+PS C:\ProgramData\ssh> Get-Service sshd
 
 Status   Name               DisplayName
 ------   ----               -----------
 Running  sshd               OpenSSH SSH Server
 ```
 
-## 
 ```sh
-
+PS C:\> (Get-Service sshd).StartType
+Automatic
+PS C:\>
 ```
 
 ## 
 ```sh
+PS C:\> Get-Service sshd | Format-List *
 
+Name                : sshd
+RequiredServices    : {}
+CanPauseAndContinue : False
+CanShutdown         : False
+CanStop             : True
+DisplayName         : OpenSSH SSH Server
+DependentServices   : {}
+MachineName         : .
+ServiceName         : sshd
+ServicesDependedOn  : {}
+ServiceHandle       : SafeServiceHandle
+Status              : Running
+ServiceType         : Win32OwnProcess
+StartType           : Automatic
+Site                :
+Container           :
 ```
 
 ## 
 ```sh
-
+Get-Service sshd | fl
+Get-Service sshd | fl *
+Get-Service sshd | Format-List *
+(Get-Service sshd).StartType
 ```
 
 # [References](#references-1)

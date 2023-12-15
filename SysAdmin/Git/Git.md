@@ -122,6 +122,7 @@ git config --global credential.helper cache
 ## Problems
 
 ### divergent branches
+This is latest config
 ```sh
 $ git pull                                             
 hint: You have divergent branches and need to specify how to reconcile them.
@@ -138,3 +139,32 @@ hint: or --ff-only on the command line to override the configured default per
 hint: invocation.
 fatal: Need to specify how to reconcile divergent branches.
 ```
+
+If the remote repository has been incorrectly updated by others, and you have the correct copy on your local machine, you need to force push your changes to overwrite the remote branch. However, please be cautious when force pushing, as it rewrites the commit history, and it can cause issues for others collaborating on the same branch.
+
+Here are the steps to force push:
+
+### Fetch Changes (optional)
+Before force pushing, you might want to fetch the latest changes from the remote repository to ensure you are aware of any updates.
+```sh
+git fetch origin master
+```
+
+### Force Push
+Use the --force or -f option to push forcefully.
+```sh
+git push -f origin master
+```
+
+This will replace the remote branch with the local branch. However, be aware that this can cause problems for collaborators who have pulled the previous state of the branch. It's generally recommended to communicate with your team and make sure everyone is aware of the force push.
+
+### Notify Collaborators:
+Inform your collaborators about the force push so they can update their local repositories accordingly. They might need to reset their local branches to the new remote state.
+```sh
+git fetch --all
+git reset --hard origin/master
+```
+
+This will forcefully reset their local branch to match the remote state.
+
+Remember, force pushing should be done with caution and only when necessary. Always communicate with your team to avoid disrupting their work.
