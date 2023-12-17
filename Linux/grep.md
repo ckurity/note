@@ -1,9 +1,11 @@
+- [Combine Grep](#combine-grep)
+- [--color=](#color)
 - [grep before (?<=) and after (?=)](#grep-before--and-after)
     - [grep HTML form](#grep-html-form)
 - [grep can't read UTF-16](#grep-cant-read-utf-16)
 - [-F, --fixed-strings](#f---fixed-strings)
 
-## [Combine Grep](#combine-grep)
+## [Combine Grep](#combine-grep-1)
 from
 ```sh
 grep 'port=3389'
@@ -15,6 +17,22 @@ to
 ```sh
 egrep 'port=(3389|1337)'
 ```
+
+## [--color=](#color-1)
+There are 3 color options available to you:
+```sh
+--color=auto
+--color=always
+--color=never
+```
+
+https://linuxcommando.blogspot.com/2007/10/grep-with-color-output.html
+
+## 
+```sh
+
+```
+
 
 ## [grep before (?<=) and after (?=)](#grep-before--and-after-1)
 ```sh
