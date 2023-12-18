@@ -18,7 +18,6 @@ Active Directory information dumper via LDAP
 pip install ldapdomaindump
 ```
 
-
 # 
 ```sh
 $ ldapdomaindump
@@ -69,8 +68,8 @@ Misc options:
 # ldapdomaindump ldaps://$t -u username -p Passw0rd
 But first, create a new directory to save all the output
 ```sh
-mkdir ldapdomaindump
-cd ldapdomaindump
+mkdir ldapdomaindump-1_unauth && cd $_
+# mkdir ldapdomaindump && cd ldapdomaindump # old way, use cd $_
 ```
 
 ## [anonymous user - ldapdomaindump $t](#anonymous-user---ldapdomaindump-t-1)
