@@ -13,6 +13,41 @@ wmic useraccount where Disabled="FALSE" get Domain,Name,LocalAccount,Lockout,Pas
 wmic useraccount where Disabled="FALSE" get Domain,Name,LocalAccount,Lockout,PasswordChangeable,PasswordExpires,PasswordRequired,sid
 ```
 
+```sh
+lunar\thm@LUNDC C:\Users\thm>set u
+USER=lunar\thm
+USERDOMAIN=LUNAR
+USERNAME=thm
+USERPROFILE=C:\Users\thm
+
+lunar\thm@LUNDC C:\Users\thm>net user %USERNAME%
+User name                    thm 
+Full Name                    Try THM. Hack Me
+Comment
+User's comment
+Country/region code          000 (System Default)
+Account active               Yes
+Account expires              Never
+
+Password last set            1/14/2022 11:54:49 AM
+Password expires             Never
+Password changeable          1/14/2022 11:54:49 AM
+Password required            Yes
+User may change password     Yes
+
+Workstations allowed         All
+Logon script
+User profile
+Home directory
+Last logon                   12/20/2023 2:23:04 PM
+
+Logon hours allowed          All
+
+Local Group Memberships      *Backup Operators     *Remote Desktop Users
+Global Group memberships     *Domain Users
+The command completed successfully.
+```
+
 ## [Change a Windows User Password](#change-a-windows-user-password-1)
 ```sh
 net user <username> <new_password>

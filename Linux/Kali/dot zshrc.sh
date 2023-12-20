@@ -119,3 +119,15 @@ te(){ # mkdir CTF template
 NAMA='♨ ckurity'
 PS1='%F{%(#.blue.green)}┌──(%B%F{%(#.red.blue)}%F{green}%D{%d-%m-%Y %H:%M:%S}%f%F{%(#.red.blue)} $NAMA%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]
 └─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+
+TabTitle='♨ckurity♨'
+
+# Define a function to update the tab title
+update_tab_title() {
+    # Set the tab title to "username@hostname:current_directory"
+    # printf "\033]0;%s@%s:%s\007" "$USER" "$HOST" "$PWD"
+	printf "\033]0;$TabTitle\007"
+}
+
+# Set the precmd hook to call our function before each command
+precmd_functions+=(update_tab_title)

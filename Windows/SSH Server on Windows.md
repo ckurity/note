@@ -86,6 +86,13 @@ Automatic
 PS C:\>
 ```
 
+```sh
+Set-Service sshd -StartupType Manual
+Set-Service sshd -StartupType Automatic
+Set-Service sshd -Status Running
+Set-Service sshd -Status Stopped
+```
+
 ## 
 ```sh
 PS C:\> Get-Service sshd | Format-List *
