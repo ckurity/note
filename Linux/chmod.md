@@ -45,8 +45,9 @@ drwxrwx--- 4 kali sharedgroup 4096 Oct  2 00:16 /xyz
 ```
 
 ### 
+Sets the setuid (SUID) and setgid (SGID) bits. The SUID and SGID bits allow a program to execute with the privileges of the file owner or group owner, respectively.
 ```sh
-
+chmod +s
 ```
 
 ### 
