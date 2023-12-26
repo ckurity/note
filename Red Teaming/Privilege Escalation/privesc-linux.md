@@ -70,9 +70,9 @@ user@debian:~$ ls -lh /etc/*e
 user@debian:~$ 
 ```
 
-## 
+## [Find SUID Files](#find-suid-files)
 ```sh
-
+find / -perm -u=s -type f 2>/dev/null
 ```
 
 ## 
