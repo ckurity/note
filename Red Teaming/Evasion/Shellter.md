@@ -1,14 +1,15 @@
+- [Installation](#installation)
 - 
 - [References](#references)
 
 -------------------------------------------
 
-## 
+## [Installation](#installation-1)
 ```sh
 sudo apt install shellter
+sudo dpkg --add-architecture i386 && sudo apt update && sudo apt -y install wine32
 ```
 
-## 
 ```sh
 sudo dpkg --add-architecture i386
 sudo apt update

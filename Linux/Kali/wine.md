@@ -4,7 +4,8 @@
 
 ### 
 ```
-
+$ wine --version
+wine-8.0.1 (Debian 8.0.1~repack-3)
 ```
 
 ### 
