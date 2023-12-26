@@ -165,7 +165,19 @@ $ nl /home/kali/.cme/logs/UserDesc-10.10.100.145-20231218_210750.log
 
 ## [whoami](#whoami-1)
 ```sh
-
+$ cme ldap $t -d lunar.eruca.com -u thm -p Password1@ -M whoami     
+SMB         10.10.100.145   445    LUNDC            [*] Windows 10.0 Build 17763 x64 (name:LUNDC) (domain:lunar.eruca.com) (signing:True) (SMBv1:False)
+LDAP        10.10.100.145   389    LUNDC            [+] lunar.eruca.com\thm:Password1@ (Pwn3d!)
+WHOAMI      10.10.100.145   389    LUNDC            distinguishedName: CN=Try THM. Hack Me,CN=Users,DC=lunar,DC=eruca,DC=com
+WHOAMI      10.10.100.145   389    LUNDC            Member of: CN=Remote Desktop Users,CN=Builtin,DC=lunar,DC=eruca,DC=com
+WHOAMI      10.10.100.145   389    LUNDC            Member of: CN=Backup Operators,CN=Builtin,DC=lunar,DC=eruca,DC=com
+WHOAMI      10.10.100.145   389    LUNDC            name: Try THM. Hack Me
+WHOAMI      10.10.100.145   389    LUNDC            Enabled: Yes
+WHOAMI      10.10.100.145   389    LUNDC            Password Never Expires: No
+WHOAMI      10.10.100.145   389    LUNDC            Last logon: 132871665341409916
+WHOAMI      10.10.100.145   389    LUNDC            pwdLastSet: 132866348890218768
+WHOAMI      10.10.100.145   389    LUNDC            logonCount: 8
+WHOAMI      10.10.100.145   389    LUNDC            sAMAccountName: thm
 ```
 
 ## 

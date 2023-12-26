@@ -5,7 +5,11 @@
 ### Next Build
 ```sh
 sudo apt update && sudo apt upgrade
-sudo apt install xxd bloodhound-python
+sudo apt install xxd docker.io bloodhound-python keepassxc ncat sshpass 
+```
+
+```sh
+sudo apt install mingw-w64 neo4j remmina
 ```
 
 ### v2023-08-26; Done

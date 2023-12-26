@@ -1,3 +1,4 @@
+- [Problem](#problem)
 - [How to fix it](#how-to-fix-it)
 - [What’s happening?](#whats-happening)
 - [References](#references)
@@ -6,7 +7,7 @@
 
 If you use zsh for your shell very occasionally you may find the following message appearing indicating a corrupt history file.
 
-## 
+## [Problem](#problem-1)
 ```sh
 zsh: corrupt history file /home/kali/.zsh_history
 ```

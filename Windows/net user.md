@@ -79,11 +79,11 @@ net localgroup Administrators
 ```
 
 ## [Alternative](#alternative-1)
-```PowerShell
+```PowerShell Only
 Get-LocalUser
 ```
 
-```sh
+```sh CMD Only
 C:\Users\user\a>wmic useraccount where Disabled="FALSE" get Name,Disabled
 
 Disabled  Name   

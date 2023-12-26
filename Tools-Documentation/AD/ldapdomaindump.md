@@ -69,6 +69,7 @@ Misc options:
 But first, create a new directory to save all the output
 ```sh
 mkdir ldapdomaindump-1_unauth && cd $_
+mkdir ldapdomaindump-2_auth && cd $_
 # mkdir ldapdomaindump && cd ldapdomaindump # old way, use cd $_
 ```
 
