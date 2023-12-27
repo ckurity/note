@@ -17,3 +17,4 @@ https://github.com/dysfunc/ascii-emoji
  ✅ https://emojipedia.org/check-mark-button
  ❎ https://emojipedia.org/cross-mark-button
  🙅🏼‍♂️ https://emojipedia.org/man-gesturing-no-medium-light-skin-tone
+ 🤔 https://emojipedia.org/thinking-face

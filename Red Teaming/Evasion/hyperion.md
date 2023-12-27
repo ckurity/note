@@ -1,9 +1,9 @@
-- 
+- [Available in Kali](#available-in-kali)
 - [References](#references)
 
 -------------------------------------------
 
-## 
+## [Available in Kali](#available-in-kali)
 ```sh
 kali:~$ cd /usr/share/windows-resources/
 kali:/usr/share/windows-resources$ ls -lh
@@ -89,3 +89,4 @@ PWK 1.0 page 322 - 323
 
 https://www.kali.org/tools/hyperion/
 https://github.com/jivoi/pentest/blob/master/shell/hyperion_crypter.sh
+https://github.com/nullsecuritynet/tools/tree/main/binary/hyperion

