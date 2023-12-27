@@ -105,14 +105,57 @@ StartType   : Automatic
 Status      : Running
 ```
 
-## 
-```sh
+## [Alternative](#alternative)
+```sh CMD Only
+sc qc daclsvc
+sc query daclsvc
+```
 
+```sh CMD Only
+C:\Users\user>sc qc daclsvc
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: daclsvc
+        TYPE               : 10  WIN32_OWN_PROCESS
+        START_TYPE         : 3   DEMAND_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : "C:\Program Files\DACL Service\daclservice.exe"
+        LOAD_ORDER_GROUP   :
+        TAG                : 0
+        DISPLAY_NAME       : DACL Service
+        DEPENDENCIES       :
+        SERVICE_START_NAME : LocalSystem
+
+C:\Users\user>sc query daclsvc
+
+SERVICE_NAME: daclsvc
+        TYPE               : 10  WIN32_OWN_PROCESS
+        STATE              : 1  STOPPED
+        WIN32_EXIT_CODE    : 1077  (0x435)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
 ```
 
 ## 
 ```sh
+PS C:\Users\user> gsv daclsvc | fl *
 
+Name                : daclsvc
+RequiredServices    : {}
+CanPauseAndContinue : False
+CanShutdown         : False
+CanStop             : False
+DisplayName         : DACL Service
+DependentServices   : {}
+MachineName         : .
+ServiceName         : daclsvc
+ServicesDependedOn  : {}
+ServiceHandle       :
+Status              : Stopped
+ServiceType         : Win32OwnProcess
+Site                :
+Container           :
 ```
 
 # [References](#references-1)
