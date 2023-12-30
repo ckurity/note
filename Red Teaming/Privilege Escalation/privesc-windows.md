@@ -8,13 +8,17 @@
 ```sh
 Get-CimInstance -Namespace root/SecurityCenter2 -ClassName AntiVirusProduct
 ```
-
-## [How To Tell What AntiVirus Software Installed on a Remote Windows Computer]
-https://www.nextofwindows.com/how-to-tell-what-antivirus-software-installed-on-a-remote-windows-computer
-
-## 
+ 
 ```sh
+PS C:\> Get-CimInstance -Namespace root/SecurityCenter2 -ClassName AntiVirusProduct
 
+displayName              : Windows Defender
+instanceGuid             : {1337}
+pathToSignedProductExe   : windowsdefender://
+pathToSignedReportingExe : %ProgramFiles%\Windows Defender\MsMpeng.exe
+productState             : 1337
+timestamp                : Sat, 30 Dec 2023 12:17:47 GMT
+PSComputerName           :
 ```
 
 ## 
@@ -76,3 +80,6 @@ https://www.nextofwindows.com/how-to-tell-what-antivirus-software-installed-on-a
 - [Privilege Escalation on Windows: When You Want it and When You Don’t | Joseph Carson](https://delinea.com/blog/windows-privilege-escalation)
 - [Windows Red Team Privilege Escalation Techniques](https://hackersploit.org/windows-privilege-escalation-fundamentals/)
 
+
+## [How To Tell What AntiVirus Software Installed on a Remote Windows Computer]
+https://www.nextofwindows.com/how-to-tell-what-antivirus-software-installed-on-a-remote-windows-computer

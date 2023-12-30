@@ -56,8 +56,16 @@ Get-Module -ListAvailable
 
 ## 
 ```PowerShell
-
+PS C:> . .\script.ps1
+C:\script.ps1 : Cannot dot-source this command because it was defined in a different language mode. To invoke this command without importing its contents, omit the '.' operator.
+At line:1 char:1
++ . .\script.ps1
++ ~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [script.ps1], NotSupportedException
+    + FullyQualifiedErrorId : DotSourceNotSupported,script.ps1
 ```
+
+
 
 # PowerShell
 PowerShell for Pentesters
