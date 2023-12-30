@@ -118,3 +118,4 @@ ENUM_AV     10.10.192.27    445    LUNDC            Windows Defender INSTALLED
 
 # [References](#references-1)
 
+https://cheatsheet.haax.fr/windows-systems/exploitation/crackmapexec/

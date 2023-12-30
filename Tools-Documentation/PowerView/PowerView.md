@@ -407,3 +407,6 @@ menu
 ```
 
 ```
+
+# PowerView CheatSheet
+https://zflemingg1.gitbook.io/undergrad-tutorials/powerview/powerview-cheatsheet

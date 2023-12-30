@@ -4,10 +4,13 @@
 
 -------------------------------------------
 
-## 
+## [Recon]
 ```sh
-
+Get-CimInstance -Namespace root/SecurityCenter2 -ClassName AntiVirusProduct
 ```
+
+## [How To Tell What AntiVirus Software Installed on a Remote Windows Computer]
+https://www.nextofwindows.com/how-to-tell-what-antivirus-software-installed-on-a-remote-windows-computer
 
 ## 
 ```sh

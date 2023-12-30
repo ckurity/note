@@ -51,6 +51,12 @@ debian
 
 ## [OS Version & Architecture](#os-version--architecture-1)
 ```sh
+nl /etc/issue
+nl /etc/os-release
+nl /proc/version
+```
+
+```sh
 user@debian:~$ nl /etc/issue
      1  Debian GNU/Linux 6.0 \n \l
 
@@ -68,6 +74,10 @@ user@debian:~$ ls -lh /etc/*e
 -rw-r--r-- 1 root root  823 Aug  6  2010 /etc/profile
 -rw-r--r-- 1 root root   11 May 12  2017 /etc/timezone
 user@debian:~$ 
+
+TCM@debian:~$ nl /proc/version
+     1  Linux version 2.6.32-5-amd64 (Debian 2.6.32-48squeeze6) (jmm@debian.org) (gcc version 4.3.5 (Debian 4.3.5-4) ) #1 SMP Tue May 13 16:34:35 UTC 2014
+TCM@debian:~$
 ```
 
 ## [Find SUID Files](#find-suid-files)
@@ -113,3 +123,6 @@ Privilege Escalation on Linux Platform (7) | Jie Liau | Mar 27, 2020 | https://j
 # REVIEW
 
 Linux Privilege Escalation Guide(Updated for 2023) | Rashid-Feroze | March 20, 2023 | https://payatu.com/blog/a-guide-to-linux-privilege-escalation/
+
+
+https://github.com/RoqueNight/Linux-Privilege-Escalation-Basics

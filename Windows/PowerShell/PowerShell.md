@@ -23,6 +23,19 @@ function hi() {
 hi
 ```
 
+```PowerShell
+PS C:\> gcm halo*
+PS C:\> gc .\hello.ps1
+function halo() {
+  Write-Host "Hello, World by Host!"
+  Write-Output "Hello, world by Output!"
+}
+PS C:\> . .\hello.ps1
+PS C:\> gcm halo*
+[update here]
+PS C:\> halo
+```
+
 ## 
 ```PowerShell
 gmo
