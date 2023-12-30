@@ -1,4 +1,4 @@
-```
+```sh
 PS C:\Users\Administrator> Get-ExecutionPolicy
 Restricted
 PS C:\Users\Administrator> Get-ExecutionPolicy -l
@@ -12,7 +12,7 @@ MachinePolicy       Undefined
  LocalMachine       Undefined
 ```
 
-```
+```sh
  PS C:\> Set-ExecutionPolicy Bypass
 
 Execution Policy Change
@@ -21,7 +21,8 @@ https:/go.microsoft.com/fwlink/?LinkID=135170. Do you want to change the executi
 [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"): y
 PS C:\>
 ```
-```
+
+```sh
 PS C:\> Get-ExecutionPolicy
 Bypass
 PS C:\>
@@ -39,7 +40,8 @@ MachinePolicy       Undefined
 
 PS C:\>
 ```
-```
+
+```sh
 PS C:\> . $PROFILE
 PS C:\> i
 

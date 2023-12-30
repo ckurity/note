@@ -1,6 +1,11 @@
 https://devblogs.microsoft.com/scripting/powertip-obtain-a-list-of-all-functions-in-powershell/
 
+
+```sh
+ls function:
 ```
+
+```sh
 PS C:\PC10> dir function: | sls inv
 
 Invoke-Kerberoast
@@ -8,7 +13,7 @@ Invoke-RevertToSelf
 Invoke-UserImpersonation
 ```
 
-```
+```sh
 PS C:\PC10> dir function: | sls get-d
 
 Get-Domain
@@ -45,5 +50,7 @@ Get-DomainTrustMapping
 Get-DomainUser
 Get-DomainUserEvent
 ```
-```
+
+```sh
+
 ```

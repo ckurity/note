@@ -20,12 +20,12 @@ Function        Get-LogProperties                                  1.0.0.0    PS
 
 gcm | sls invoke-b
 
-```
+```sh
 gcm | sls get-dom
 . .\PowerView.ps1
 ```
 
-```
+```sh
 # BEFORE
 PS C:\> gcm | sls get-dom
 PS C:\> . .\PowerView.ps1

@@ -1,11 +1,13 @@
 https://devblogs.microsoft.com/scripting/powertip-use-windows-powershell-to-display-all-environment-variables/
 
 DOS = SET
-
+```sh
 ls env:
 dir env:
 ls env:u*
+```
 
+```sh
 *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> dir env:
 
 Name                           Value
@@ -65,3 +67,4 @@ TMP                            C:\Users\SVC-AL~1\AppData\Local\Temp
 
 *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> cd $env:tmp
 *Evil-WinRM* PS C:\Users\svc-alfresco\AppData\Local\Temp> 
+```
