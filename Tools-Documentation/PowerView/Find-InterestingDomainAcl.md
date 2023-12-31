@@ -30,9 +30,32 @@ Get-Acl -Path "AD:\$PathToObject" |
     }
 ```
 
+Explanation:
+1.	Retrieve ACLs:
+o	Get-Acl -Path "AD:\$PathToObject" fetches the ACL for the specified Active Directory object.
+
+2.	Filter Non-Built-In Entries:
+o	Where-Object { $_.IdentityReference -notlike "*BUILTIN*" } filters Access entries to exclude those associated with built-in accounts or groups.
+3.	Resolve GUIDs:
+o	try-catch block attempts to resolve GUIDs to names using Get-ADObject. If resolution fails, the original GUID is used.
+4.	Output Information:
+o	Write-Output commands display the object's path, resolved identity reference, and ActiveDirectoryRights for each filtered entry.
+Remember:
+•	Replace $PathToObject with the actual path to the AD object you want to analyze.
+•	This approach involves iterating through objects and resolving GUIDs, potentially affecting performance in large-scale scenarios.
+•	For comprehensive domain-wide analysis with GUI-based visualization and advanced features, consider tools like BloodHound or third-party ACL auditing solutions.
+
 ## 
 ```sh
+PS C:\> Get-Acl -Path "AD:\CN=hr,CN=Users,DC=AOC,DC=local"
 
+Path                                                                                               Owner             Access
+----                                                                                               -----             ------
+Microsoft.ActiveDirectory.Management.dll\ActiveDirectory:://RootDSE/CN=hr,CN=Users,DC=AOC,DC=local AOC\Domain Admins NT AUTHORITY\SELF Allo...
+
+PS C:\>
+
+$PathToObject = Get-Acl -Path "AD:\CN=hr,CN=Users,DC=AOC,DC=local"
 ```
 
 ## 

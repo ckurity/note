@@ -79,3 +79,5 @@ https://github.com/matro7sh/BypassAV/blob/main/Bypass-AV.md
 https://github.com/phra/PEzor
 
 https://iwantmore.pizza/posts/PEzor.html
+
+https://medium.com/@agonhysenaj/running-mimikatz-with-havoc-donut-and-freeze-6fd040deea01
