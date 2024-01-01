@@ -82,17 +82,25 @@ TCM@debian:~$
 
 ## [Find SUID Files](#find-suid-files)
 ```sh
+find / -perm -04000 -ls 2>/dev/null
 find / -perm -u=s -type f 2>/dev/null
+find / -perm -u=s -type f 2>/dev/null | xargs ls -lh
+find / -perm -u=s -type f -exec ls -lh {} +  2>/dev/null
 ```
 
-## 
+## [Normal Permission]
 ```sh
-
+$ ls -lh /etc/{passwd,shadow}
+-rw-r--r-- 1 root root   3.2K Sep 17 23:29 /etc/passwd
+-rw-r----- 1 root shadow 1.4K Sep 17 23:29 /etc/shadow
 ```
 
-## 
+## [Weak Permission]
 ```sh
-
+TCM@debian:~$ ls -lh /etc/{passwd,shadow}
+-rw-r--r-- 1 root root   950 Jun 17  2020 /etc/passwd ✅
+-rw-rw-r-- 1 root shadow 809 Jun 17  2020 /etc/shadow ❎
+TCM@debian:~$
 ```
 
 ## 
