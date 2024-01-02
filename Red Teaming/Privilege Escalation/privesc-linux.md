@@ -120,8 +120,6 @@ TCM@debian:~$
 
 # [References](#references-1)
 
-
-
 Basic Linux Privilege Escalation (13) | https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
 
 Privilege Escalation (9) | https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_-_linux.html
@@ -134,3 +132,9 @@ Linux Privilege Escalation Guide(Updated for 2023) | Rashid-Feroze | March 20, 2
 
 
 https://github.com/RoqueNight/Linux-Privilege-Escalation-Basics
+
+## PWK 2
+
+
+## PWK 3
+page 528 - 562 (34 pages)

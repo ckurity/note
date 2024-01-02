@@ -83,3 +83,9 @@ PSComputerName           :
 
 ## [How To Tell What AntiVirus Software Installed on a Remote Windows Computer]
 https://www.nextofwindows.com/how-to-tell-what-antivirus-software-installed-on-a-remote-windows-computer
+
+## PWK 2
+
+
+## PWK 3
+page 472 - 527 (56 pages)
