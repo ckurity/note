@@ -1,10 +1,12 @@
 - [Initial Config](#initial-config)
 - [Creating a multi-line cursor](#creating-a-multi-line-cursor)
 - [Automatically Numbering Lines](#automatically-numbering-lines)
+- [Download Extension (Manually)](#download-extension-manually)
+- [Command Palette](#command-palette)
 
 ----------------------------
 
-### Initial Config
+## Initial Config
 ```sh
 VS Code > Explorer (Ctrl + Shift + E) > 3 dots (...) > Open Editors
 ```
@@ -40,10 +42,11 @@ To highlight a few lines and then automatically number them at the beginning of 
 This method allows you to quickly and easily number highlighted lines in Visual Studio Code.
 ```
 
-Download Extension (Manually)
+## [Download Extension (Manually)](#download-extension-manually-1)
 https://marketplace.visualstudio.com/items?itemName=neptunedesign.vs-sequential-number
 
-### [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette)
+## [Command Palette](#command-palette-1)
+https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette
 ```sh
 The Command Palette provides access to many commands. You can execute editor commands, open files, search for symbols, and see a quick outline of a file, all using the same interactive window. Here are a few tips:
 

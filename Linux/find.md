@@ -7,7 +7,7 @@
         - [Find files, but not ext '*.txt' or '*.ini'](#find-mnt--type-f---name-txt---name-ini-2devnull--exec-ls--lh)
 
 ### Common Usage
-```
+```sh
 find / -name *flag*.txt 2>/dev/null
 find / -name *flag*.txt -exec ls -lh {} + 2>/dev/null
 find / -name *flag*.txt -exec cat {} + 2>/dev/null
