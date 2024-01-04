@@ -8,6 +8,10 @@ This site offers a scanning service against 26 AVs free of charge without distri
 
 https://redfoxsecurity.medium.com/antivirus-evasion-26a30f072f76
 
+https://antiscan.me/
+https://kleenscan.com/index
+https://avcheck.net/
+
 ## 
 ```sh
 
