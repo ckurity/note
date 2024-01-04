@@ -43,7 +43,7 @@ See 'docker --help'
 ### Solution
 ```sh
 DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-mkdir -p $DOCKER_CONFIG/cli-plugins
+mkdir -p $DOCKER_CONFIG/cli-plugins; cd $_; ls -lh
 ```
 
 ### Check latest version from https://github.com/docker/compose/releases/latest
