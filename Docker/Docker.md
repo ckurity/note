@@ -49,7 +49,8 @@ mkdir -p $DOCKER_CONFIG/cli-plugins
 ### Check latest version from https://github.com/docker/compose/releases/latest
 https://github.com/docker/compose/releases
 ```sh
-curl -sL https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+DOCKER_COMPOSE_FILE=https://github.com/docker/compose/releases/download/v2.24.0-birthday.10/docker-compose-linux-x86_64
+curl -L $DOCKER_COMPOSE_FILE -o $DOCKER_CONFIG/cli-plugins/docker-compose
 
 chmod u+x $DOCKER_CONFIG/cli-plugins/docker-compose
 ```
