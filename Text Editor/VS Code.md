@@ -58,3 +58,6 @@ The Command Palette provides access to many commands. You can execute editor com
 
 Type ? into the input field to get a list of available commands you can execute from here:
 ```
+
+## [Tabnine]
+Auto Type
